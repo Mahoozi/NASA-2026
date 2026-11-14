@@ -99,7 +99,7 @@ Rules: see `plan/PLAN.md` Stage 3b. Anything unfinished at 22:00 is cut.
   - Optional dashed line between adjacent extinction points of the same material, labelled "line between recorded points, not a fit". No regression or ML.
   - Tests: B14 → extinction, 15%, 2 cm/s; B18 → blowoff, 17.4%, 10 cm/s; point counts match the report; Moon Base → refusal; a banned-words test (safe, unsafe, risk, rating, probability, likely) over the panel text.
   Commit: `Add recorded flammability limits`.
-- [ ] **A3b.3 Published findings panel (≈45 min, after B pushes `findings.json`).** In the Lab, show up to 3 findings whose tags overlap the scenario (material, O2, flow, gravity, or topic `partial-gravity` when gravity is lunar/mars). Each shows claim, verbatim quote, source link, and label "Published finding; quote verified against source". Empty state if none match.
+- [ ] **A3b.3 Published findings panel (≈45 min, after B pushes `findings.json`).** In the Lab, show up to 3 findings whose tags overlap the scenario (material, O2, flow, gravity, or topic `partial-gravity` when gravity is lunar/martian). Each shows claim, verbatim quote, source link, and label "Published finding; quote verified against source". Empty state if none match.
   Commit: `Show published findings in Lab`.
 - [ ] **A3b.4 Optional, only if started before 21:00.** "NASA Exploration Atmosphere" preset (8.2 psia, 34% O2) cited to NTRS 20220011152 (https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf); quote only fetched text.
 

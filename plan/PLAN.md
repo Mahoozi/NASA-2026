@@ -45,7 +45,7 @@ Until B's v0 lands, A reads `data/investigations.sample.json` (read-only). After
 
 ## 3. Stages
 
-Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when the stage's items are committed. **Local judging is Sun 15:00 at Vanier, in person: a live demo plus a 30-second video (no slides). Feature freeze is Sun 11:30. Final submission by Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
+Times are America/Toronto, weekend of Sat 14 – Sun 15 Nov 2026. "Due" is when the stage's items are committed. **Local judging is Sun 15:00 at Vanier, in person: a live demo plus a 30-second video (no slides). Feature freeze is Sun 11:30. Final submission by Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
 
 **Saturday evening:** A does the landing page and the README. B does demo-answer caching and repo tidy-up.
 

@@ -97,6 +97,6 @@ export type Finding = {
     materials?: string[];            // MaterialFamily values
     o2Range?: [number, number];      // % by volume
     flowRange?: [number, number];    // cm/s
-    gravity?: ("micro" | "lunar" | "mars" | "earth")[];
+    gravity?: NonNullable<Scenario["gravity"]>[];   // same values as Scenario.gravity
   };
 };
