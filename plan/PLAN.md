@@ -45,15 +45,15 @@ Until B's v0 lands, A reads `data/investigations.sample.json` (read-only). After
 
 ## 3. Stages
 
-Hours are from the moment the plan is committed. If a stage overruns, use the cut list in §9, don't slide the freeze.
+Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when the stage's items are committed. **Sun 17:00 is feature freeze. Submit at Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
 
-| Stage | Hours | A — Scenario Lab | B — Ask / Investigations / Evals |
+| Stage | Due | A — Scenario Lab | B — Ask / Investigations / Evals |
 |---|---|---|---|
-| **0 Contracts** | 0–1 | `lib/match.ts` stub with final signature | `investigations.json` v0; empty `corpus.json`, `golden.json`; `.env.local` with `OPENAI_API_KEY` |
-| **1 Core** | 1–10 | Real scoring in `match.ts` + `pipeline/match.test.ts`; Lab scenario form → ranked investigations with coverage badges | `pipeline/corpus_build.ts` (PSI pages + guide PDF → `corpus.json`); fill `investigations.json`; `lib/retrieve.ts` (MiniSearch); `/api/ask` with real LLM call, citation verification, `insufficient_evidence` path |
-| **2 Show it** | 10–22 | Gap chart (runs scatter + scenario marker + matching runs highlighted); matching runs table with flags; "where the evidence runs out" panel | `/ask` page rendering sentences + verified citations; `/investigations` cards + `/investigations/[id]`; `golden.json` (≥10 questions) + `/evals` scorecard + `npm run evals` |
-| **3 Integrate** | 22–32 | "Ask about this scenario" button → `/ask` with scenario + top investigation ids; Lab rows link to `/investigations/[id]`; Lab accepts `?investigation=` | `/api/ask` uses `matchInvestigations` when `context.scenario` is present; `hasRunData` cards link to `/lab?investigation=PSI-25`; delete `data/investigations.sample.json` |
-| **4 Freeze** | 32–48 | README / REFERENCES (data sources, images); demo script; bug-only commits | Same; human deploys to Vercel; both rehearse the demo |
+| **0 Contracts** | Sat 13:45 | `lib/match.ts` stub with final signature | `investigations.json` v0; empty `corpus.json`, `golden.json`; `.env.local` with `OPENAI_API_KEY`; **Vercel deploy of `main` (human)** so every later push is a preview |
+| **1 Core** | Sat 18:00 | Real scoring in `match.ts` + `pipeline/match.test.ts`; Lab scenario form → ranked investigations with coverage badges | `pipeline/corpus_build.ts` (PSI pages + guide PDF → `corpus.json`); fill `investigations.json`; `lib/retrieve.ts` (MiniSearch); `/api/ask` with real LLM call, citation verification, `insufficient_evidence` path |
+| **2 Show it** | Sun 13:00 | Gap chart (runs scatter + scenario marker + matching runs highlighted); matching runs table with flags; "where the evidence runs out" panel | `/ask` page rendering sentences + verified citations; `/investigations` cards + `/investigations/[id]`; `golden.json` (≥10 questions) + `/evals` scorecard + `npm run evals` |
+| **3 Integrate** | Sun 17:00 (feature freeze) | "Ask about this scenario" button → `/ask` with scenario + top investigation ids; Lab rows link to `/investigations/[id]`; Lab accepts `?investigation=` | `/api/ask` uses `matchInvestigations` when `context.scenario` is present; `hasRunData` cards link to `/lab?investigation=PSI-25`; delete `data/investigations.sample.json` |
+| **4 Freeze** | Sun 17:00–21:00, submit 21:00 | README / REFERENCES (data sources, images); demo script; bug-only commits | Same; confirm the production deploy is the frozen commit; both rehearse the demo |
 
 Each person's "done when" checks are in their own file.
 
@@ -110,11 +110,11 @@ Invoke with the Skill tool, or by name: "load the `ai-sdk` skill then …". If a
 
 | Stage | Person A (Lab) | Person B (Ask / Investigations / Evals) |
 |---|---|---|
-| 0 Contracts | `tdd` — write `pipeline/match.test.ts` seams before scoring | — |
+| 0 Contracts | `tdd` — write `pipeline/match.test.ts` seams before scoring | `deploy-to-vercel` + `vercel-cli-with-tokens` (human runs the deploy) |
 | 1 Core | `tdd` + `vitest` for `match.ts`; `shadcn` for the scenario form (Select, Input, Badge); `vercel-react-best-practices` for client/server split of `/lab` | `anthropic-skills:pdf` (user set) for extracting the guide PDF; `ai-sdk` for `/api/ask` — it says to read `node_modules/ai/docs`, do that, we have `ai@7`; `rag-implementation` **only** its chunking and citation-grounding sections (we use MiniSearch, not a vector DB); `vitest` for `retrieve.test.ts` |
 | 2 Show it | `dataviz` (user set) **before** writing the gap chart; `frontend-design` for one visual pass on `/lab`; `shadcn` for Table/Tooltip/Card | `frontend-design` for `/ask` and `/investigations`; `shadcn` for cards and detail layout; `design:ux-copy` (user set) for the `insufficient_evidence` wording |
 | 3 Integrate | `web-design-guidelines` review of `/lab` | `web-design-guidelines` review of `/ask`, `/investigations`; `design:accessibility-review` (user set) on both |
-| 4 Freeze | `writing-guidelines` on README / REFERENCES; `deploy-to-vercel` + `vercel-cli-with-tokens` (human runs the deploy) | `writing-guidelines` on `pipeline/corpus_report.md`; `engineering:documentation` (user set) for the README "how it works" |
+| 4 Freeze | `writing-guidelines` on README / REFERENCES | `writing-guidelines` on `pipeline/corpus_report.md`; `engineering:documentation` (user set) for the README "how it works" |
 | any | `/code-review` before each commit that touches `match.ts`; `Explore` agent to find where the other track put something | `/code-review` before each commit that touches `/api/ask`; `Explore` agent likewise |
 
 Installed but **not** for this project (leave them, don't load them): `vercel-react-native-skills`, `vercel-react-view-transitions`, `vercel-optimize`, `vercel-composition-patterns`.
@@ -127,10 +127,9 @@ Want another skill? `npx skills find <query>`, prefer 1K+ installs from a known 
 
 **Cut first if behind, in this order:**
 
-1. `/evals` page (keep `npm run evals` as a CLI table)
-2. `/investigations/[id]` detail pages (keep cards)
-3. Chart annotations / highlighting (keep the scatter)
+1. `/investigations/[id]` detail pages (keep cards)
+2. Chart annotations / highlighting (keep the scatter)
+3. Lab → Ask handoff (keep a plain link)
 4. Gravity dimension in matching (state "all runs are ISS microgravity" as text)
-5. Lab → Ask handoff (keep a plain link)
 
-Never cut: citation verification, flags in the UI, the `insufficient_evidence` path.
+Never cut: citation verification, flags in the UI, the `insufficient_evidence` path, the `/evals` scorecard.

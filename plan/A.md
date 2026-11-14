@@ -35,14 +35,19 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   | `flowCmS` | per run: 1 if inside `[flowCmS.min, flowCmS.max]`, linear to 0 at 5 cm/s outside; null range = 0 |
   | `gravity` | `micro` = 1 for every ISS run; `lunar` / `martian` / `1g` = 0 (no data) |
   | `safetyArea` | 1 if in `investigation.safetyArea`, else 0 |
+  - **Run-level dimensions (material, O2, flow) are scored per run, as a set.** For each investigation with runs, compute every run's mean over the run-level dimensions the scenario specifies, pick the single best run, and use *that run's* per-dimension values in `breakdown`. Never take the best O2 from one run and the best flow from another. Investigation-level dimensions (gravity, safetyArea) are added to the same breakdown.
   - `score` = mean of specified dimensions. No specified dimension → score 0, coverage `none`.
-  - `matchingRunIds` = runs of that investigation whose every run-level dimension (material, O2, flow) is ≥ 0.5.
+  - `matchingRunIds` = runs of that investigation whose every specified run-level dimension is ≥ 0.5.
   - `coverage`: `direct` if score ≥ 0.8 **and** at least one matching run; `partial` if score ≥ 0.4; else `none`. Investigations with `hasRunData: false` can reach at most `partial` (we have no runs to show).
   - `breakdown` keys are the dimension names above.
   Done when: `pipeline/match.test.ts` (vitest) covers each dimension with real PSI-25 runs (B14, O5b, P8, T17, M5) and a `hasRunData: false` investigation, and `npm test` passes.
   Commit: `Add investigation matching`.
 - [ ] **Lab scenario form** (`app/lab/scenario-form.tsx`, client). Skills: `shadcn` (add Select via `npx shadcn@latest add select`, commit alone), `vercel-react-best-practices`. Fields: material family (select from `MaterialFamily`), O2 % (number), flow cm/s (number), gravity (select), safety area (select). All optional. State in URL search params (`?material=PMMA%20rod&o2=17&flow=5&gravity=micro`) so a scenario is a link.
-  Done when: changing a field updates the URL and the ranked list without reload.
+  Two preset buttons, each with a visible source line under it:
+  - **ISS cabin air** → `o2=21`, `gravity=micro`. Source line computed from `data/runs.json`: "BASS-II runs started at <min>–<max>% O2 in ISS air", min/max over runs with `o2InitialPct ≥ 20.5`.
+  - **Moon Base (planned)** → `o2=30`, `pressure=10.2`, `gravity=lunar`. Source line: "NASA Space Apps challenge brief: likely 30% oxygen or more at 10.2 psi or less."
+  - Under the pressure field: "Pressure is context only; the BASS-II table does not record it."
+  Done when: changing a field updates the URL and the ranked list without reload; each preset sets the URL in one click and its source line shows real numbers.
   Commit: `Add scenario form`.
 - [ ] **Ranked investigations list** (`app/lab/ranked-list.tsx`). Reads `data/investigations.json` (fallback to `data/investigations.sample.json` until B's v0 lands — leave `// TODO(B)`), calls `matchInvestigations`, shows acronym, name, coverage badge, score bar, breakdown chips, "n matching runs".
   Done when: `/lab?material=PMMA%20rod&o2=17&flow=5` puts PSI-25 first with `direct`.
@@ -53,9 +58,9 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [ ] **Gap chart** (`app/lab/gap-chart.tsx`, Recharts `ScatterChart`). X = `flowCmS.max` (or min when max is null), Y = `o2InitialPct`, one point per run, colour by material family, matching runs full opacity and others dimmed, scenario as a reference marker. Runs with null O2 or flow are counted in a caption ("12 runs not plotted: airflow not numeric"), never dropped silently. Skills: `dataviz` (load before writing a line of chart code), then `frontend-design` for one visual pass over the whole `/lab` page.
   Done when: chart renders on `/lab`, legend lists families, caption counts unplotted runs.
   Commit: `Add gap chart`.
-- [ ] **Matching runs table.** Reuse `app/lab/runs-table.tsx`; filter to `matchingRunIds` when a scenario is set, with a toggle "show all 129". Flags badge stays.
+- [ ] **Matching runs table.** Reuse `app/lab/runs-table.tsx`; filter to `matchingRunIds` when a scenario is set, with a toggle "show all 129". Flags badge stays. Runs with no event keyword display "outcome not recorded", never a dash or anything implying the sample kept burning (applies from Stage 1 on).
   Commit: `Filter runs table by scenario`.
-- [ ] **"Where the evidence runs out" panel** (`app/lab/gaps-panel.tsx`). For each specified dimension with closeness 0 across *all* investigations, one plain sentence derived from data (e.g. "No run in the table was performed at lunar gravity"; "No run used Nomex at 17% O2"). Wording is templated from the breakdown, never free text, never a verdict.
+- [ ] **"Where the evidence runs out" panel** (`app/lab/gaps-panel.tsx`). For each specified dimension with closeness 0 across *all* investigations, one plain sentence that carries the numbers computed from `data/runs.json`, e.g. "No run started above 22.2% oxygen; your scenario is 30%." or "0 of 129 runs were at lunar gravity." or "No run used Nomex between 16% and 18% O2." Every number in a sentence is computed at render time, never hardcoded; wording is templated, never free text, never a verdict.
   Done when: scenario with `gravity=lunar` shows the gravity sentence.
   Commit: `Add evidence gaps panel`.
 
@@ -71,7 +76,6 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 ## Stage 4 — Freeze (hour 32–48)
 
 - [ ] `README.md`: screenshots, "how it works" (3 bullets), link to `pipeline/psi_bass2_columns.md`. Skill: `writing-guidelines`.
-- [ ] Deploy (human runs it). Skills: `deploy-to-vercel`, `vercel-cli-with-tokens`. Set `OPENAI_API_KEY` in the Vercel project, never in the repo.
 - [ ] `REFERENCES.md`: PSI-25 URL, guide PDF title, any image sources.
 - [ ] Rehearse demo. Bug-only commits.
 

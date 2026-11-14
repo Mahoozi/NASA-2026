@@ -20,6 +20,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] `data/corpus.json` = `[]`, `data/golden.json` = `[]`. Commit: `Add empty corpus and golden set`.
   Note: `data/corpus.json` already holds the 120 PSI section docs (see `pipeline/corpus_report.md`), not `[]`.
 - [ ] `.env.local` with `OPENAI_API_KEY=` (never committed).
+- [ ] **Vercel deploy of `main` (human runs it).** Skills: `deploy-to-vercel`, `vercel-cli-with-tokens`. Set `OPENAI_API_KEY` and `OPENAI_MODEL` in the Vercel project, never in the repo. Done when: the production URL serves `/` and every later push gets a preview URL.
 
 ## Stage 1 — Core (hour 1–10)
 
