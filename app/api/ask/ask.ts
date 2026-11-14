@@ -66,14 +66,20 @@ function buildPrompt(question: string, docs: CorpusDoc[], scenarioBlock?: string
   return `Documents:\n${blocks.join("\n\n")}\n\n${scenario}Question: ${JSON.stringify(question)}`;
 }
 
+export type AnswerOptions = {
+  /** Total time budget for the LLM call, retries included. Default: none. */
+  timeoutMs?: number;
+};
+
 /**
  * Retrieve corpus docs for the question, ask the model for a cited answer,
  * then verify every quote against the corpus. With a scenario and no
  * investigationIds, the top scenario matches are boosted in retrieval and
  * their coverage is given to the model as data. Reads OPENAI_API_KEY and
- * OPENAI_MODEL from process.env.
+ * OPENAI_MODEL from process.env. With opts.timeoutMs the LLM call is aborted
+ * (and throws) past that budget.
  */
-export async function answer(req: AskRequest): Promise<AskResponse> {
+export async function answer(req: AskRequest, opts: AnswerOptions = {}): Promise<AskResponse> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new MissingApiKeyError();
 
@@ -99,6 +105,7 @@ export async function answer(req: AskRequest): Promise<AskResponse> {
         docs,
         scenario && scenarioPromptBlock(scenario, matches),
       ),
+      ...(opts.timeoutMs !== undefined && { timeout: { totalMs: opts.timeoutMs } }),
       output: Output.object({
         schema: draftSchema(docs.map((d) => d.id) as [string, ...string[]]),
       }),

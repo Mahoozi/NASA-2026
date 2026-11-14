@@ -1,6 +1,10 @@
 import { z } from "zod";
 import type { AskResponse } from "@/lib/schema";
 import { answer, MissingApiKeyError } from "./ask";
+import { CACHE_SOURCE_HEADER, findCachedAnswer } from "./cache";
+
+/** LLM budget (retries included) for cached questions; past it the cache answers. */
+const CACHED_QUESTION_TIMEOUT_MS = 20_000;
 
 const materialFamily = z.enum([
   "PMMA film", "PMMA slab", "PMMA rod", "PMMA sphere",
@@ -44,10 +48,20 @@ export async function POST(req: Request) {
     );
   }
 
+  // Demo safety net: a recorded real answer for this exact question + context.
+  // Only then is the live call time-limited; other questions behave as before.
+  const cached = findCachedAnswer(parsed.data);
   try {
-    const response: AskResponse = await answer(parsed.data);
+    const response: AskResponse = await answer(
+      parsed.data,
+      cached ? { timeoutMs: CACHED_QUESTION_TIMEOUT_MS } : {},
+    );
     return Response.json(response);
   } catch (err) {
+    if (cached) {
+      console.warn("ask: live answer failed, serving demo cache", err instanceof Error ? err.message : err);
+      return Response.json(cached, { headers: { [CACHE_SOURCE_HEADER]: "cache" } });
+    }
     if (err instanceof MissingApiKeyError) {
       return Response.json({ error: "OPENAI_API_KEY is not set" }, { status: 503 });
     }
