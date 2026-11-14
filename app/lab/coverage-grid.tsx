@@ -38,6 +38,20 @@ export function coverageCounts(runs: Run[]) {
   return { counts, outside };
 }
 
+const SPHERICAL_FLAG = "spherical sample: material not stated in table";
+
+/**
+ * Display name for a family. "other" is only renamed while every run in it is a
+ * spherical section (the importer's flag), so the label can't outlive the data.
+ */
+export function familyLabel(family: MaterialFamily, runs: Run[]): string {
+  if (family !== "other") return family;
+  const other = runs.filter((r) => r.material.family === "other");
+  return other.length && other.every((r) => r.flags.includes(SPHERICAL_FLAG))
+    ? "Spherical section (material not stated)"
+    : "other";
+}
+
 export function CoverageGrid({
   runs,
   scenario,
@@ -48,6 +62,9 @@ export function CoverageGrid({
   onPick: (family: MaterialFamily, o2Pct: number) => void;
 }) {
   const { counts, outside } = coverageCounts(runs);
+  // Only families with at least one run: an all-empty row for a family that is
+  // not in the data would claim a gap we cannot show.
+  const families = MATERIAL_FAMILIES.filter((f) => counts.get(f)!.some((n) => n > 0));
   const activeBand =
     scenario.o2Pct === undefined
       ? -1
@@ -72,10 +89,10 @@ export function CoverageGrid({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {MATERIAL_FAMILIES.map((family) => (
+        {families.map((family) => (
           <TableRow key={family} className="hover:bg-transparent">
             <TableHead scope="row" className="font-normal">
-              {family}
+              {familyLabel(family, runs)}
             </TableHead>
             {counts.get(family)!.map((n, i) => {
               const band = O2_BANDS[i];
@@ -85,7 +102,7 @@ export function CoverageGrid({
                   <button
                     type="button"
                     onClick={() => onPick(family, band.mid)}
-                    aria-label={`${family}, ${band.label}% O2: ${n === 0 ? "no runs" : `${n} run${n === 1 ? "" : "s"}`}. Set scenario to ${family} at ${band.mid}% O2.`}
+                    aria-label={`${familyLabel(family, runs)}, ${band.label}% O2: ${n === 0 ? "no runs" : `${n} run${n === 1 ? "" : "s"}`}. Set scenario to ${family} at ${band.mid}% O2.`}
                     aria-pressed={active}
                     className={cn(
                       "flex h-9 w-full min-w-12 items-center justify-center rounded-md text-sm tabular-nums outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
