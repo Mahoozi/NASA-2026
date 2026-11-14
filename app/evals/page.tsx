@@ -47,7 +47,7 @@ export default function EvalsPage() {
         <h1 className="text-2xl font-semibold">Scorecard</h1>
         <p className="max-w-prose text-sm text-muted-foreground">
           How the Ask page does on a fixed set of golden questions: some answered by a specific
-          NASA source, some comparing two investigations, and some the sources can&apos;t answer,
+          NASA source, some comparing two investigations, and some the sources can’t answer,
           where the right result is to say so.
         </p>
         <p className="text-sm">
@@ -66,7 +66,7 @@ export default function EvalsPage() {
           <p className="font-medium text-destructive">Placeholder: not a real eval run.</p>
           <p className="text-muted-foreground">
             No golden question has been run yet, so every count below is empty. Run{" "}
-            <code className="font-mono">npm run evals</code> to record real results.
+            <code translate="no" className="font-mono">npm run evals</code> to record real results.
           </p>
         </div>
       )}
@@ -163,7 +163,7 @@ function Total({
       >
         <ProgressLabel>{label}</ProgressLabel>
       </Progress>
-      <p className="text-sm text-muted-foreground">{text}</p>
+      <p className="text-sm text-muted-foreground tabular-nums">{text}</p>
     </div>
   );
 }
@@ -189,7 +189,7 @@ function QuestionTable({ items }: { items: EvalItem[] }) {
             <TableRow key={i.id} className={cn(!i.statusMatch && "bg-destructive/5")}>
               <TableCell className="whitespace-normal align-top">
                 <p>{i.question}</p>
-                <p className="font-mono text-xs text-muted-foreground">{i.id}</p>
+                <p translate="no" className="font-mono text-xs text-muted-foreground">{i.id}</p>
                 {i.error && <p className="text-xs text-destructive">Error: {i.error}</p>}
               </TableCell>
               <TableCell className="align-top">{STATUS_LABEL[i.expectStatus]}</TableCell>
@@ -207,7 +207,7 @@ function QuestionTable({ items }: { items: EvalItem[] }) {
                   <ul className="flex flex-col gap-1">
                     {i.expectDocIds.map((id) => (
                       <li key={id}>
-                        <Badge variant={retrieved.has(id) ? "secondary" : "destructive"}>
+                        <Badge translate="no" variant={retrieved.has(id) ? "secondary" : "destructive"}>
                           {id}
                           <span className="sr-only">
                             {retrieved.has(id) ? " (retrieved)" : " (not retrieved)"}
@@ -223,7 +223,7 @@ function QuestionTable({ items }: { items: EvalItem[] }) {
                   </ul>
                 )}
               </TableCell>
-              <TableCell className="align-top text-sm">
+              <TableCell className="align-top text-sm tabular-nums">
                 {i.citations.length === 0 ? (
                   <span className="text-muted-foreground">None</span>
                 ) : (
