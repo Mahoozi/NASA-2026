@@ -89,7 +89,7 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
 - [ ] `README.md`: screenshots, "how it works" (3 bullets), link to `pipeline/psi_bass2_columns.md`. Skill: `writing-guidelines`.
 - [ ] `REFERENCES.md`: PSI-25 URL, guide PDF title, any image sources.
 - [ ] Rehearse demo. Bug-only commits.
-- [ ] 7 slides (shared deck).
+- [ ] Record 30-second demo video (Sun 11:30–12:30), upload to YouTube unlisted, add link to submission form.
 - [ ] Rehearse the demo three times.
 
 ## Gates (stop and ask)

@@ -45,9 +45,9 @@ Until B's v0 lands, A reads `data/investigations.sample.json` (read-only). After
 
 ## 3. Stages
 
-Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when the stage's items are committed. **Local judging is Sun 15:00 at Vanier, in person: a live demo plus 7 slides or a 30-second video. Feature freeze is Sun 11:30. Final submission by Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
+Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when the stage's items are committed. **Local judging is Sun 15:00 at Vanier, in person: a live demo plus a 30-second video (no slides). Feature freeze is Sun 11:30. Final submission by Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
 
-**Saturday evening:** A does the landing page, the README and a slide draft. B does demo-answer caching and repo tidy-up.
+**Saturday evening:** A does the landing page and the README. B does demo-answer caching and repo tidy-up.
 
 **Sunday:**
 
@@ -55,10 +55,11 @@ Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when 
 |---|---|
 | by 09:00 | Any cut-list item (§9) not working is cut, not finished |
 | 11:30 | Feature freeze |
-| 11:30–13:00 | Slides (7, shared deck) and cached demo answers |
+| 11:30–12:30 | Record 30-second demo video (Sun 11:30–12:30), upload to YouTube unlisted, add link to submission form. |
+| 11:30–13:00 | Cached demo answers |
 | 13:00–14:00 | Rehearse the 90-second demo (§9) three times |
 | 14:00–14:30 | Fill in and submit the Space Apps project page |
-| 15:00 | Judging at Vanier: live demo + 7 slides or a 30-second video |
+| 15:00 | Judging at Vanier: live demo + 30-second video |
 | after judging | Fixes only; final submission by 21:00; hard deadline 23:59 |
 
 | Stage | Due | A — Scenario Lab | B — Ask / Investigations / Evals |
