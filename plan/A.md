@@ -13,7 +13,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 0 — Contracts (hour 0–1)
 
-- [ ] **`lib/match.ts` stub.** Export exactly:
+- [x] **`lib/match.ts` stub.** Export exactly:
   ```ts
   export function matchInvestigations(
     scenario: Scenario,
