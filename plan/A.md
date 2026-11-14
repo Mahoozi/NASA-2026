@@ -104,6 +104,7 @@ Rules: see `plan/PLAN.md` Stage 3b. Anything unfinished at 22:00 is cut.
   Commit: `Add what-varied panel`.
 - [ ] **A3b.3 Published findings panel (≈45 min, after B pushes `findings.json`).** In the Lab, show up to 3 findings whose tags overlap the scenario (material, O2, flow, gravity, or topic `partial-gravity` when gravity is lunar/martian). Each shows claim, verbatim quote, source link, and label "Published finding; quote verified against source". Empty state if none match.
   Commit: `Show published findings in Lab`.
+  - Panel built and tested against a fixture in `app/lab/findings.test.ts` (commit `Add published findings panel`). Hidden while `data/findings.json` has no verified entries. Tick once B's file is on `main` and the panel shows real entries on the demo scenario and Moon Base.
 - [x] **A3b.4 Optional, only if started before 21:00.** "NASA Exploration Atmosphere" preset (8.2 psia, 34% O2) cited to NTRS 20220011152 (https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf); quote only fetched text.
 
 ## Stage 4 — Freeze (Sun 11:30–21:00: judging 15:00, final submission by 21:00)

@@ -6,7 +6,8 @@ import { useCallback, useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
-import type { Investigation, Run, Scenario } from "@/lib/schema";
+import type { Finding, Investigation, Run, Scenario } from "@/lib/schema";
+import { FindingsPanel } from "./findings-panel";
 import { Button } from "@/components/ui/button";
 import { AskLink } from "./ask-link";
 import { CoverageGrid } from "./coverage-grid";
@@ -28,10 +29,13 @@ export function LabClient({
   runs,
   investigations,
   pendingIds,
+  findings,
 }: {
   runs: Run[];
   investigations: Investigation[];
   pendingIds: string[];
+  /** Published findings whose quotes were verified against the corpus. */
+  findings: Finding[];
 }) {
   const params = useSearchParams();
   const pathname = usePathname();
@@ -170,6 +174,16 @@ export function LabClient({
         </h2>
         <LimitsPanel runs={runs} scenario={scenario} />
       </section>
+
+      {/* Hidden until data/findings.json has verified entries. */}
+      {scored && findings.length > 0 && (
+        <section aria-labelledby="findings-heading" className="flex flex-col gap-3">
+          <h2 id="findings-heading" className="text-lg font-semibold">
+            Published findings
+          </h2>
+          <FindingsPanel findings={findings} scenario={scenario} />
+        </section>
+      )}
 
       <section
         id={SPACE_VS_EARTH_ID}
