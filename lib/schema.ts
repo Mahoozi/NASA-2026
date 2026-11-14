@@ -36,6 +36,8 @@ export type Run = {
   co: { initialPpm: number | null; finalPpm: number | null; raw: string };
   flags: string[];
   sourceUrl: string;
+  flowDirection?: "concurrent" | "opposed";
+  observations?: { label: string; value: string }[];   // values copied verbatim from the source
 };
 
 export type Scenario = {
