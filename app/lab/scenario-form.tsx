@@ -47,7 +47,7 @@ export function ScenarioForm({ scenario, presets, onChange, onPreset }: Props) {
     <div className="flex flex-col gap-6">
       <FieldSet>
         <FieldLegend>Presets</FieldLegend>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {presets.map((p) => (
             <div key={p.id} className="flex flex-col items-start gap-1.5">
               <Button
