@@ -11,6 +11,7 @@ Raw PSI snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`
 | psi | 120 |
 | guide | 55 |
 | nasa-web | 4 |
+| ntrs | 150 |
 
 ## Investigations
 
@@ -93,3 +94,24 @@ Saved unmodified in `data/raw/` on 2026-11-14. Title is the page's `<h1>`; text 
 - PSI-117: no Experiment Hardware in PSI
 - PSI-142: no acronym in PSI
 - PSI-142: fuelPhase left empty (not stated in PSI record)
+
+## Published papers (NTRS)
+
+Fetched by `npm run fetch:ntrs` (pipeline/corpus_fetch_ntrs.ts) on 2026-11-14. NTRS API records saved unmodified as `data/raw/ntrs-<id>.json`; PDFs as `data/raw/ntrs-<id>.pdf` (git-ignored); page text, unedited, in `data/ntrs-papers.json`. One doc per page (`ntrs-<id>-p<page>`, source `ntrs`, shown as "Published paper" on /ask). Only papers NTRS marks reusable (public use / government permitted) are included.
+
+| NTRS id | Citation | Title | Type | NTRS reuse | PDF bytes | sha256 | Pages | Docs |
+|---|---|---|---|---|---|---|---|---|
+| [20160000593](https://ntrs.nasa.gov/citations/20160000593) | Ferkul et al. (2014) | Combustion of Solids in Microgravity: Results from the BASS-II Experiment | PRESENTATION | PUBLIC_USE_PERMITTED | 2690087 | `9f2c89db9e1954c3c44409364ed6764f7e7466250264c28ff2d425350287546c` | 21 | 20 |
+| [20150008962](https://ntrs.nasa.gov/citations/20150008962) | Zhao et al. (2015) | Concurrent Flame Growth, Spread and Extinction over Composite Fabric Samples in Low Speed Purely Forced Flow in Microgravity | CONFERENCE_PAPER | PUBLIC_USE_PERMITTED | 939683 | `50590fd7e6619203eb75a46f49e83556e6798a53e67869cd52ea89961c692c30` | 9 | 9 |
+| [20170008805](https://ntrs.nasa.gov/citations/20170008805) | Ferkul et al. (2017) | Results of Large-Scale Spacecraft Flammability Tests | PRESENTATION | PUBLIC_USE_PERMITTED | 5091642 | `e38ec36f54817aa97e0c01a05f12b212521d6320ce3f4cb7a38bb7c837cfea8d` | 36 | 36 |
+| [20180005168](https://ntrs.nasa.gov/citations/20180005168) | Urban et al. (2017) | Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-Manned Spacecraft | PRESENTATION | PUBLIC_USE_PERMITTED | 9049169 | `9ae2e365c850cbd0e136ea4e17cc5ecf68e5ac89d248b3c0a7b7b4bde9e2f402` | 32 | 32 |
+| [20240015307](https://ntrs.nasa.gov/citations/20240015307) | Zayac et al. (2024) | Flammability of Materials on the Moon | POSTER | GOV_PERMITTED | 1576492 | `eb86f426ee83c3edb3eda8053f33382248394f5bcb6aa6be171b59ddab5c3e47` | 1 | 1 |
+| [20260003925](https://ntrs.nasa.gov/citations/20260003925) | Abney et al. (2026) | Impacts of Reduced Pressure Atmospheres on Environmental Control and Life Support Systems (ECLSS) Architectures | TECHNICAL_MEMORANDUM | PUBLIC_USE_PERMITTED | 4208610 | `1d207280909ff46bf54b6b7e6805aa3c1b99d0824d96b37762c12b9b60b9d6f8` | 112 | 52 |
+
+Page filter: the ECLSS report (20260003925) keeps only pages that mention flammability, combustion, fire or ignition: 8, 13, 15, 17, 19, 21, 24, 33, 34, 37, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 55, 56, 59, 60, 61, 63, 64, 66, 67, 68, 70, 73, 74, 75, 77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 90, 92, 93, 96, 109, 111.
+
+### Not added
+
+- NTRS 20210022402 (Topical: Solid Fuel Combustion in Partial and Micro-Gravity): skipped, NTRS copyright determination is MAY_INCLUDE_COPYRIGHT_MATERIAL.
+- Olson, ICES-2019, Flammability Limits from BASS-II vs normal gravity (https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e): not on NTRS; CorpusDoc has no source value for non-NTRS papers (schema change requested).
+- Link et al. 2018, Scientific Reports (https://link.springer.com/10.1038/s41598-017-18398-4): not on NTRS; CorpusDoc has no source value for non-NTRS papers (schema change requested).

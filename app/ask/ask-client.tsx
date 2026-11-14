@@ -19,6 +19,15 @@ type State =
   | { kind: "done"; question: string; res: AskResponse }
   | { kind: "error"; question: string; message: string };
 
+/** Kind of source a corpus doc is, from its id prefix (data/corpus.json id scheme). */
+function sourceLabel(docId: string): string {
+  if (docId.startsWith("ntrs-")) return "Published paper";
+  if (docId.startsWith("psi-")) return "PSI page";
+  if (docId.startsWith("guide-")) return "NASA guide";
+  if (docId.startsWith("nasa-web-")) return "NASA web page";
+  return "Source";
+}
+
 /** What each failure means for the person asking, by HTTP status. */
 function errorMessage(status: number): string {
   if (status === 503) return "The answer service is not configured.";
@@ -91,7 +100,7 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
               rows={3}
             />
             <FieldDescription>
-              Answers quote the PSI investigation pages and the PSI guide. Press Ctrl + Enter or ⌘ + Enter
+              Answers quote the PSI investigation pages, NASA pages and published NASA papers. Press Ctrl + Enter or ⌘ + Enter
               to ask.
             </FieldDescription>
           </Field>
@@ -191,8 +200,8 @@ function Answer({
       {sentences.length === 0 ? (
         <p className="max-w-prose">
           The sources in this app don’t answer that question. That says nothing either way
-          about how a material or setup would behave; it only means none of the PSI pages or the
-          PSI guide covers it.
+          about how a material or setup would behave; it only means none of the PSI pages, NASA
+          pages or published NASA papers in this app covers it.
         </p>
       ) : (
         <>
@@ -214,6 +223,7 @@ function Answer({
                           <ExternalLinkIcon aria-hidden className="size-3.5" />
                           <span className="sr-only">(opens in a new tab)</span>
                         </a>
+                        <Badge variant="outline">{sourceLabel(c.docId)}</Badge>
                         <Badge variant="secondary">
                           <CheckIcon data-icon="inline-start" aria-hidden />
                           Quote verified

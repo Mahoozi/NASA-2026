@@ -121,6 +121,65 @@ const num = (id: string) => Number(id.replace(/^PSI-/, ""));
 
 export type GuidePage = { page: number; text: string };
 
+// Published NASA papers from NTRS (plan/B.md B3b.1). Page text is extracted by
+// pipeline/corpus_fetch_ntrs.ts into NTRS_PAPERS, which is committed.
+export const NTRS_PAPERS_FILE = "data/ntrs-papers.json";
+type NtrsPaperData = {
+  papers: {
+    id: string; title: string; authors: string[]; year: number; stiType: string;
+    determinationType: string; citationUrl: string; pdfUrl: string; bytes: number; sha256: string;
+    pages: { page: number; text: string }[];
+  }[];
+  skipped: { id: string; title: string; reason: string }[];
+};
+
+/**
+ * Pages kept per paper. The ECLSS report (112 pages) is mostly about life-support
+ * hardware; only its pages that mention flammability, combustion, fire or
+ * ignition go into the corpus, so they don't crowd out on-topic sources.
+ */
+const NTRS_PAGE_FILTER: Record<string, RegExp> = {
+  "20260003925": /flammab|combust|\bfire\b|ignit/i,
+};
+
+/** Sources listed in plan/B.md B3b.1 that are not in the corpus, and why. */
+export const PAPERS_NOT_ADDED = [
+  { source: "Olson, ICES-2019, Flammability Limits from BASS-II vs normal gravity", url: "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e", reason: "not on NTRS; CorpusDoc has no source value for non-NTRS papers (schema change requested)" },
+  { source: "Link et al. 2018, Scientific Reports", url: "https://link.springer.com/10.1038/s41598-017-18398-4", reason: "not on NTRS; CorpusDoc has no source value for non-NTRS papers (schema change requested)" },
+];
+
+/** "Ferkul, Paul V." or "Sandra L. Olson" → surname. */
+const surname = (name: string) => (name.includes(",") ? name.split(",")[0] : name.split(" ").at(-1) ?? name).trim();
+export const paperCitation = (p: { authors: string[]; year: number }) =>
+  `${p.authors.length ? surname(p.authors[0]) + (p.authors.length > 1 ? " et al." : "") : "NASA"} (${p.year})`;
+
+/** One CorpusDoc per kept page: id ntrs-<id>-p<page>, source "ntrs", text whitespace-collapsed. */
+export function paperDocs(data: NtrsPaperData): { docs: CorpusDoc[]; errors: string[]; kept: Record<string, number[]> } {
+  const docs: CorpusDoc[] = [];
+  const errors: string[] = [];
+  const kept: Record<string, number[]> = {};
+  for (const p of data.papers) {
+    if (!Number.isInteger(p.year)) errors.push(`ntrs-${p.id}: no year`);
+    const filter = NTRS_PAGE_FILTER[p.id];
+    kept[p.id] = [];
+    for (const pg of p.pages) {
+      const text = collapse(pg.text);
+      if (!text || (filter && !filter.test(text))) continue;
+      kept[p.id].push(pg.page);
+      docs.push({
+        id: `ntrs-${p.id}-p${pg.page}`,
+        source: "ntrs",
+        title: `${paperCitation(p)}. ${p.title}, p. ${pg.page}`,
+        url: p.citationUrl,
+        page: pg.page,
+        text,
+      });
+    }
+    if (!kept[p.id].length) errors.push(`ntrs-${p.id}: no pages kept`);
+  }
+  return { docs, errors, kept };
+}
+
 export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[], guidePages: GuidePage[], webPages: WebPage[] = []) {
   const errors: string[] = [];
   const notes: string[] = [];
@@ -322,6 +381,31 @@ function report(
   return lines.join("\n");
 }
 
+function papersReport(ntrs: NtrsPaperData, kept: Record<string, number[]>) {
+  return [
+    "",
+    "## Published papers (NTRS)",
+    "",
+    `Fetched by \`npm run fetch:ntrs\` (pipeline/corpus_fetch_ntrs.ts) on 2026-11-14. NTRS API records saved unmodified as \`data/raw/ntrs-<id>.json\`; PDFs as \`data/raw/ntrs-<id>.pdf\` (git-ignored); page text, unedited, in \`${NTRS_PAPERS_FILE}\`. One doc per page (\`ntrs-<id>-p<page>\`, source \`ntrs\`, shown as "Published paper" on /ask). Only papers NTRS marks reusable (public use / government permitted) are included.`,
+    "",
+    "| NTRS id | Citation | Title | Type | NTRS reuse | PDF bytes | sha256 | Pages | Docs |",
+    "|---|---|---|---|---|---|---|---|---|",
+    ...ntrs.papers.map(
+      (p) =>
+        `| [${p.id}](${p.citationUrl}) | ${paperCitation(p)} | ${p.title} | ${p.stiType} | ${p.determinationType} | ${p.bytes} | \`${p.sha256}\` | ${p.pages.length} | ${kept[p.id]?.length ?? 0} |`,
+    ),
+    "",
+    "Page filter: the ECLSS report (20260003925) keeps only pages that mention flammability, combustion, fire or ignition: " +
+      (kept["20260003925"] ?? []).join(", ") + ".",
+    "",
+    "### Not added",
+    "",
+    ...ntrs.skipped.map((s) => `- NTRS ${s.id} (${s.title}): skipped, ${s.reason}.`),
+    ...PAPERS_NOT_ADDED.map((s) => `- ${s.source} (${s.url}): ${s.reason}.`),
+    "",
+  ].join("\n");
+}
+
 function main() {
   const raw = JSON.parse(readFileSync(join(ROOT, RAW_PSI), "utf8")) as {
     hits: { total: number; hits: { _source: PsiRecord }[] };
@@ -339,11 +423,20 @@ function main() {
   });
 
   const { investigations, corpus, errors, notes, skippedGuidePages, guidePageCount } = build(records, runs, guidePages, webPages);
+  const ntrs = JSON.parse(readFileSync(join(ROOT, NTRS_PAPERS_FILE), "utf8")) as NtrsPaperData;
+  const papers = paperDocs(ntrs);
+  errors.push(...papers.errors);
+  const seen = new Set(corpus.map((d) => d.id));
+  for (const d of papers.docs) if (seen.has(d.id)) errors.push(`duplicate corpus id ${d.id}`);
+  corpus.push(...papers.docs);
   if (errors.length) throw new Error(`Build failed:\n${errors.join("\n")}`);
 
   writeFileSync(join(ROOT, "data", "investigations.json"), JSON.stringify(investigations, null, 2) + "\n");
   writeFileSync(join(ROOT, "data", "corpus.json"), JSON.stringify(corpus, null, 2) + "\n");
-  writeFileSync(join(ROOT, "pipeline", "corpus_report.md"), report(investigations, corpus, notes, guidePageCount, skippedGuidePages));
+  writeFileSync(
+    join(ROOT, "pipeline", "corpus_report.md"),
+    report(investigations, corpus, notes, guidePageCount, skippedGuidePages) + papersReport(ntrs, papers.kept),
+  );
   console.log(`investigations.json: ${investigations.length} investigations`);
   console.log(`corpus.json: ${corpus.length} docs (${corpus.filter((d) => d.source === "guide").length} guide pages, ${skippedGuidePages.length} skipped)`);
   console.log(`corpus_report.md: ${notes.length} notes`);
