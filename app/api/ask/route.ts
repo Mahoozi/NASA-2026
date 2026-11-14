@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { AskResponse } from "@/lib/schema";
+import { answer, MissingApiKeyError } from "./ask";
 
 const materialFamily = z.enum([
   "PMMA film", "PMMA slab", "PMMA rod", "PMMA sphere",
@@ -43,25 +44,14 @@ export async function POST(req: Request) {
     );
   }
 
-  // Hardcoded stub. No LLM call yet.
-  const response: AskResponse = {
-    status: "answered",
-    answer: [
-      {
-        sentence: "SAMPLE answer sentence. This is placeholder output, not NASA data.",
-        citations: [
-          {
-            docId: "SAMPLE-1",
-            url: "SAMPLE url",
-            title: "SAMPLE title",
-            quote: "SAMPLE quote",
-            verified: false,
-          },
-        ],
-      },
-    ],
-    investigationsMentioned: [],
-  };
-
-  return Response.json(response);
+  try {
+    const response: AskResponse = await answer(parsed.data);
+    return Response.json(response);
+  } catch (err) {
+    if (err instanceof MissingApiKeyError) {
+      return Response.json({ error: "OPENAI_API_KEY is not set" }, { status: 503 });
+    }
+    console.error("ask: answer generation failed", err);
+    return Response.json({ error: "Answer generation failed" }, { status: 502 });
+  }
 }
