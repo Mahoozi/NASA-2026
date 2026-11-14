@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-14T19:17:56.976Z",
+  "generatedAt": "2026-11-14T19:55:24.205Z",
   "model": "gpt-5.4-mini",
   "totals": {
     "questions": 24,
-    "statusMatches": 21,
+    "statusMatches": 24,
     "answeredExpected": 18,
-    "answeredCorrect": 15,
+    "answeredCorrect": 18,
     "refusalsExpected": 6,
     "refusalsCorrect": 6,
-    "wronglyRefused": 3,
-    "retrievalHits": 18,
-    "citations": 54,
-    "citationsVerified": 54,
-    "citationsExpected": 45
+    "wronglyRefused": 0,
+    "retrievalHits": 17,
+    "citations": 64,
+    "citationsVerified": 64,
+    "citationsExpected": 55
   },
   "items": [
     {
@@ -25,12 +25,12 @@
       "retrievedDocIds": [
         "psi-25-objectives",
         "psi-25-project",
+        "nasa-web-glenn-combustion-science",
         "guide-p24",
         "guide-p31",
         "psi-25-hypothesis",
         "psi-25-earth-benefits",
-        "psi-26-project",
-        "psi-62-objectives"
+        "psi-26-project"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -42,6 +42,11 @@
           "expected": true
         },
         {
+          "docId": "psi-25-project",
+          "verified": true,
+          "expected": false
+        },
+        {
           "docId": "psi-25-objectives",
           "verified": true,
           "expected": true
@@ -55,21 +60,6 @@
           "docId": "psi-25-objectives",
           "verified": true,
           "expected": true
-        },
-        {
-          "docId": "psi-25-project",
-          "verified": true,
-          "expected": false
-        },
-        {
-          "docId": "psi-25-project",
-          "verified": true,
-          "expected": false
-        },
-        {
-          "docId": "psi-25-project",
-          "verified": true,
-          "expected": false
         }
       ]
     },
@@ -87,9 +77,9 @@
         "psi-25-objectives",
         "psi-62-approach",
         "guide-p21",
+        "nasa-web-apollo-13",
         "psi-26-objectives",
-        "psi-26-earth-benefits",
-        "psi-99-objectives"
+        "psi-26-earth-benefits"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -97,16 +87,6 @@
       "citations": [
         {
           "docId": "psi-25-hypothesis",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-26-hypothesis",
-          "verified": true,
-          "expected": false
-        },
-        {
-          "docId": "guide-p21",
           "verified": true,
           "expected": true
         }
@@ -122,12 +102,12 @@
       "retrievedDocIds": [
         "psi-25-approach",
         "psi-25-objectives",
+        "nasa-web-apollo-13",
         "psi-25-hypothesis",
         "guide-p22",
         "guide-p31",
         "guide-p18",
-        "guide-p24",
-        "guide-p38"
+        "guide-p24"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -153,24 +133,19 @@
         "psi-98-approach"
       ],
       "retrievedDocIds": [
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
         "psi-98-approach",
         "psi-99-approach",
         "psi-100-approach",
+        "nasa-web-mir-fire",
         "guide-p19",
-        "psi-102-approach",
-        "psi-98-earth-benefits",
-        "guide-p16",
-        "psi-100-earth-benefits"
+        "nasa-web-glenn-combustion-science"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
-        {
-          "docId": "psi-98-approach",
-          "verified": true,
-          "expected": true
-        },
         {
           "docId": "psi-98-approach",
           "verified": true,
@@ -216,12 +191,12 @@
       "retrievedDocIds": [
         "psi-69-objectives",
         "psi-69-earth-benefits",
+        "nasa-web-glenn-combustion-science",
         "psi-69-hypothesis",
         "psi-69-approach",
         "guide-p15",
-        "guide-p12",
         "guide-p43",
-        "psi-26-objectives"
+        "guide-p12"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -253,13 +228,19 @@
         "guide-p21",
         "guide-p44",
         "guide-p17",
-        "psi-20-project",
-        "guide-p53"
+        "nasa-web-apollo-1",
+        "psi-20-project"
       ],
       "retrievalHit": true,
-      "gotStatus": "insufficient_evidence",
-      "statusMatch": false,
-      "citations": []
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-20-objectives",
+          "verified": true,
+          "expected": true
+        }
+      ]
     },
     {
       "id": "fact-daft-ptrak",
@@ -271,17 +252,33 @@
       "retrievedDocIds": [
         "psi-47-objectives",
         "psi-47-project",
+        "nasa-web-glenn-combustion-science",
         "psi-47-hypothesis",
         "psi-47-approach",
-        "guide-p37",
-        "guide-p45",
-        "guide-p15",
-        "guide-p34"
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
+        "guide-p37"
       ],
       "retrievalHit": true,
-      "gotStatus": "insufficient_evidence",
-      "statusMatch": false,
-      "citations": []
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-47-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-47-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-47-hypothesis",
+          "verified": true,
+          "expected": false
+        }
+      ]
     },
     {
       "id": "fact-same-procedure",
@@ -292,13 +289,13 @@
       ],
       "retrievedDocIds": [
         "psi-102-approach",
+        "nasa-web-glenn-combustion-science",
+        "nasa-web-apollo-13",
         "guide-p26",
+        "nasa-web-apollo-1",
         "guide-p8",
         "psi-101-objectives",
-        "guide-p13",
-        "guide-p34",
-        "psi-101-hypothesis",
-        "psi-102-hypothesis"
+        "nasa-web-mir-fire"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -326,12 +323,12 @@
       "retrievedDocIds": [
         "psi-107-objectives",
         "guide-p13",
+        "nasa-web-mir-fire",
         "psi-106-objectives",
-        "psi-60-objectives",
         "guide-p12",
-        "psi-107-approach",
-        "psi-106-project",
-        "psi-107-earth-benefits"
+        "psi-60-objectives",
+        "nasa-web-glenn-combustion-science",
+        "psi-107-approach"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -357,19 +354,45 @@
         "guide-p35"
       ],
       "retrievedDocIds": [
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
         "guide-p35",
+        "nasa-web-glenn-combustion-science",
         "guide-p26",
         "guide-p30",
         "guide-p31",
-        "guide-p48",
-        "guide-p22",
-        "guide-p41",
-        "guide-p34"
+        "guide-p48"
       ],
       "retrievalHit": true,
-      "gotStatus": "insufficient_evidence",
-      "statusMatch": false,
-      "citations": []
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "guide-p35",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p35",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p35",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p35",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p35",
+          "verified": true,
+          "expected": true
+        }
+      ]
     },
     {
       "id": "fact-guide-water-mist",
@@ -380,13 +403,13 @@
       ],
       "retrievedDocIds": [
         "guide-p26",
+        "nasa-web-mir-fire",
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
         "psi-99-approach",
         "guide-p22",
-        "psi-100-approach",
-        "psi-98-approach",
-        "guide-p39",
-        "guide-p35",
-        "psi-101-approach"
+        "nasa-web-glenn-combustion-science",
+        "psi-100-approach"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -478,8 +501,8 @@
         "psi-98-approach",
         "psi-100-hypothesis",
         "psi-100-earth-benefits",
-        "psi-99-project",
-        "psi-99-earth-benefits"
+        "nasa-web-glenn-combustion-science",
+        "psi-99-project"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -511,8 +534,8 @@
         "psi-62-objectives",
         "psi-25-project",
         "psi-25-approach",
-        "psi-25-earth-benefits",
         "psi-25-hypothesis",
+        "psi-25-earth-benefits",
         "psi-106-objectives"
       ],
       "retrievalHit": true,
@@ -520,11 +543,26 @@
       "statusMatch": true,
       "citations": [
         {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
           "docId": "psi-26-objectives",
           "verified": true,
           "expected": true
         },
         {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
           "docId": "psi-26-objectives",
           "verified": true,
           "expected": true
@@ -535,19 +573,9 @@
           "expected": true
         },
         {
-          "docId": "psi-25-objectives",
+          "docId": "psi-25-earth-benefits",
           "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-25-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-25-objectives",
-          "verified": true,
-          "expected": true
+          "expected": false
         }
       ]
     },
@@ -561,18 +589,28 @@
       ],
       "retrievedDocIds": [
         "psi-98-approach",
+        "nasa-web-glenn-combustion-science",
         "psi-26-approach",
         "psi-100-approach",
         "psi-99-approach",
         "psi-25-objectives",
-        "psi-98-hypothesis",
-        "psi-101-approach",
-        "guide-p19"
+        "nasa-web-apollo-13",
+        "psi-98-hypothesis"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
+        {
+          "docId": "psi-26-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        },
         {
           "docId": "psi-26-approach",
           "verified": true,
@@ -628,14 +666,24 @@
           "expected": true
         },
         {
-          "docId": "guide-p12",
+          "docId": "psi-69-objectives",
           "verified": true,
-          "expected": false
+          "expected": true
         },
         {
-          "docId": "guide-p12",
+          "docId": "psi-69-objectives",
           "verified": true,
-          "expected": false
+          "expected": true
+        },
+        {
+          "docId": "psi-68-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-68-objectives",
+          "verified": true,
+          "expected": true
         },
         {
           "docId": "psi-69-objectives",
@@ -659,15 +707,15 @@
       ],
       "retrievedDocIds": [
         "psi-101-objectives",
+        "nasa-web-apollo-13",
         "psi-101-hypothesis",
+        "nasa-web-apollo-1",
         "psi-101-earth-benefits",
+        "nasa-web-mir-fire",
         "psi-101-project",
-        "psi-102-hypothesis",
-        "psi-47-objectives",
-        "psi-102-objectives",
-        "guide-p23"
+        "psi-102-hypothesis"
       ],
-      "retrievalHit": true,
+      "retrievalHit": false,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
@@ -687,19 +735,24 @@
           "expected": true
         },
         {
-          "docId": "psi-102-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-102-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
           "docId": "psi-101-objectives",
           "verified": true,
           "expected": true
+        },
+        {
+          "docId": "psi-102-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-101-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-101-hypothesis",
+          "verified": true,
+          "expected": false
         }
       ]
     },
@@ -711,12 +764,12 @@
       "retrievedDocIds": [
         "psi-62-approach",
         "psi-62-objectives",
+        "nasa-web-apollo-1",
+        "nasa-web-glenn-combustion-science",
         "guide-p18",
         "guide-p11",
         "guide-p23",
-        "guide-p33",
-        "psi-62-earth-benefits",
-        "psi-62-project"
+        "guide-p33"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -734,8 +787,8 @@
         "guide-p31",
         "guide-p23",
         "psi-62-project",
-        "psi-62-hypothesis",
         "psi-62-objectives",
+        "psi-62-hypothesis",
         "guide-p33"
       ],
       "retrievalHit": false,
@@ -751,12 +804,12 @@
       "retrievedDocIds": [
         "psi-62-objectives",
         "psi-62-project",
+        "nasa-web-apollo-1",
         "psi-62-earth-benefits",
+        "nasa-web-glenn-combustion-science",
         "psi-62-hypothesis",
         "psi-62-approach",
-        "guide-p22",
-        "guide-p23",
-        "guide-p18"
+        "guide-p22"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -769,14 +822,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "nasa-web-apollo-13",
         "guide-p35",
         "psi-62-objectives",
         "psi-22-approach",
         "guide-p16",
-        "psi-62-project",
-        "psi-22-hypothesis",
-        "psi-62-earth-benefits",
-        "psi-22-project"
+        "nasa-web-mir-fire",
+        "nasa-web-apollo-1",
+        "psi-62-project"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -789,14 +842,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
+        "nasa-web-glenn-combustion-science",
+        "nasa-web-mir-fire",
         "psi-26-project",
-        "guide-p34",
         "psi-101-project",
         "psi-142-approach",
-        "psi-21-hypothesis",
-        "guide-p6",
-        "psi-102-project",
-        "psi-115-project"
+        "psi-21-hypothesis"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -809,14 +862,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
+        "nasa-web-glenn-combustion-science",
         "guide-p45",
         "psi-98-hypothesis",
         "psi-99-hypothesis",
         "psi-100-hypothesis",
-        "psi-102-earth-benefits",
-        "psi-101-earth-benefits",
-        "psi-47-earth-benefits",
-        "guide-p35"
+        "psi-102-earth-benefits"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
