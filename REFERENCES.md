@@ -67,6 +67,3 @@ Cited on the home page ("Why it matters"), not part of the corpus:
 - ESLint 9.39.5
 
 ## Images
-
-## AI tools
-- Claude Code (code assistance)
