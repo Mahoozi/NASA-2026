@@ -4269,5 +4269,5145 @@
       "negative CO reading (sensor offset)"
     ],
     "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-26:r1-t1",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "1",
+    "date": "2012-03-30",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r2-t42",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "42",
+    "date": "2012-03-30",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r3-t18",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "18",
+    "date": "2012-03-30",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r4-t7",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "7",
+    "date": "2012-04-05",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r5-t8",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "8",
+    "date": "2012-04-05",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r6-t43",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "43",
+    "date": "2012-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r7-t44",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "44",
+    "date": "2012-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r8-t45",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "45",
+    "date": "2012-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r9-t19",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "19",
+    "date": "2012-05-02",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r10-t20",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "20",
+    "date": "2012-05-02",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r11-t21",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "21",
+    "date": "2012-05-02",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r12-t4",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "4",
+    "date": "2012-05-10",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r13-t10",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "10",
+    "date": "2012-05-10",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r14-t12",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "12",
+    "date": "2012-05-10",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex blend 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r15-t54",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "54",
+    "date": "2012-05-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r16-t55",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "55",
+    "date": "2012-05-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r17-t56",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "56",
+    "date": "2012-05-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r18-t57",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "57",
+    "date": "2012-05-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r19-t110",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "110",
+    "date": "2012-05-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r20-t30",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "30",
+    "date": "2012-06-05",
+    "material": {
+      "family": "other",
+      "raw": "PMMA 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r21-t31",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "31",
+    "date": "2012-06-05",
+    "material": {
+      "family": "other",
+      "raw": "PMMA 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r22-t32",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "32",
+    "date": "2012-06-05",
+    "material": {
+      "family": "other",
+      "raw": "PMMA 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r23-t33",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "33",
+    "date": "2012-06-05",
+    "material": {
+      "family": "other",
+      "raw": "PMMA 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r24-t12-R",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "12-R",
+    "date": "2012-06-05",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex blend 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r24-t12-R2",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "12-R2",
+    "date": "2012-06-05",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex blend 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r25-t46",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "46",
+    "date": "2012-06-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r26-t47",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "47",
+    "date": "2012-06-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r27-t48",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "48",
+    "date": "2012-06-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r28-t49",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "49",
+    "date": "2012-06-11",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r29-t22",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "22",
+    "date": "2012-06-14",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r30-t23",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "23",
+    "date": "2012-06-14",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r31-t24",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "24",
+    "date": "2012-06-14",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r32-t25",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "25",
+    "date": "2012-06-14",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r33-t58",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "58",
+    "date": "2012-06-18",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r34-t59",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "59",
+    "date": "2012-06-18",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r35-t60",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "60",
+    "date": "2012-06-18",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r36-t61",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "61",
+    "date": "2012-06-18",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r37-t5",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "5",
+    "date": "2012-06-28",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r38-t14",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "14",
+    "date": "2012-06-28",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex III Natural"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r39-t66",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "66",
+    "date": "2012-06-28",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "PMMA slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r40-t67",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "67",
+    "date": "2012-06-28",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "PMMA slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r41-t34",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "34",
+    "date": "2012-06-29",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r42-t35",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "35",
+    "date": "6/29/`12",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "date unparseable in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r43-t16",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "16",
+    "date": "2012-06-29",
+    "material": {
+      "family": "other",
+      "raw": "ultem sheet"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r44-t5b",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "5b",
+    "date": "2012-06-29",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm opposed flow"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "flowDirection": "opposed",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "opposed flow"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r45-t6",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "6",
+    "date": "2012-07-03",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r46-t82",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "82",
+    "date": "2012-07-03",
+    "material": {
+      "family": "wax",
+      "raw": "candle"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r47-t82a",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "82a",
+    "date": "2012-07-03",
+    "material": {
+      "family": "wax",
+      "raw": "candle"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r48-t82b",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "82b",
+    "date": "2012-07-03",
+    "material": {
+      "family": "wax",
+      "raw": "candle"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r49-t68",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "68",
+    "date": "2012-07-03",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "pmma slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r50-t69",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "69",
+    "date": "2012-07-12",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "pmma slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r51-t111",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "111",
+    "date": "2012-07-12",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere wake ign"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake ign"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r52-t112",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "112",
+    "date": "2012-07-12",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere wake ign"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake ign"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r53-t113",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "113",
+    "date": "2012-07-12",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere wake ign"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake ign"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r54-t2",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "2",
+    "date": "2012-07-19",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r55-t3",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "3",
+    "date": "2012-07-19",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r56-t15",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "15",
+    "date": "2012-07-19",
+    "material": {
+      "family": "Nomex",
+      "raw": "nomex natural III"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r57-t13",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "13",
+    "date": "2012-07-19",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex blend 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r58-t17",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "17",
+    "date": "2012-07-19",
+    "material": {
+      "family": "other",
+      "raw": "ultem sheet"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r59-t114",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "114",
+    "date": "2012-07-19",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r60-t62",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "62",
+    "date": "2012-07-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r61-t63",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "63",
+    "date": "2012-07-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r62-t64",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "64",
+    "date": "2012-07-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r63-t65",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "65",
+    "date": "2012-07-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r64-t118",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "118",
+    "date": "2012-07-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r65-t11",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "11",
+    "date": "2012-08-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r66-t9",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "9",
+    "date": "2012-08-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r67-t102",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "102",
+    "date": "2012-08-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA sphere 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r68-t83a",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "83a",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r69-t83b",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "83b",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r70-t83c",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "83c",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r71-t84a",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "84a",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r72-t84b",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "84b",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r73-t86a",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "86a",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r74-t86b",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "86b",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r75-t86c",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "86c",
+    "date": "2012-08-16",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax Candle wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r76-t70",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "70",
+    "date": "2012-08-21",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "PMMA slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r77-t71",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "71",
+    "date": "2012-08-21",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "PMMA slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r78-t74",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "74",
+    "date": "2012-08-21",
+    "material": {
+      "family": "wax",
+      "raw": "paraffin wax slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r79-t75",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "75",
+    "date": "2012-08-21",
+    "material": {
+      "family": "wax",
+      "raw": "parrafin wax slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r80-t98",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "98",
+    "date": "2013-04-05",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r81-t99",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "99",
+    "date": "2013-04-05",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r82-t114",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "114",
+    "date": "2013-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "PMMA 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r83-t115",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "115",
+    "date": "2013-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r84-t116",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "116",
+    "date": "2013-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r85-t117",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "117",
+    "date": "2013-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r85-t117a",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "117a",
+    "date": "2013-04-09",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r86-t100",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "100",
+    "date": "2013-04-12",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma 2 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "shape inferred from rows sharing the sample number",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r87-t85",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "85",
+    "date": "2013-04-12",
+    "material": {
+      "family": "wax",
+      "raw": "candle paraffin wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r88-t93",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "93",
+    "date": "2013-04-12",
+    "material": {
+      "family": "wax",
+      "raw": "candle paraffin wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r89-t26",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "26",
+    "date": "2013-04-16",
+    "material": {
+      "family": "other",
+      "raw": "pmma 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r90-t27",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "27",
+    "date": "2013-04-16",
+    "material": {
+      "family": "other",
+      "raw": "pmma 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r91-t28",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "28",
+    "date": "2013-04-16",
+    "material": {
+      "family": "other",
+      "raw": "pmma 1 cm"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r89-t87",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "87",
+    "date": "2013-04-23",
+    "material": {
+      "family": "wax",
+      "raw": "candle Japan wax"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r90-t103",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "103",
+    "date": "2013-04-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r91-t104",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "104",
+    "date": "2013-04-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r92-t105",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "105",
+    "date": "2013-04-23",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r93-t38",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "38",
+    "date": "2013-04-26",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm sphere wake"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r94-t39",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "39",
+    "date": "2013-04-26",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm wake sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r95-t40",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "40",
+    "date": "2013-04-26",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "1 cm wake sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "wake"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r96-t72",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "72",
+    "date": "2013-04-26",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "pmma slab opposed"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "flowDirection": "opposed",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "opposed"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r97-t73",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "73",
+    "date": "2013-04-26",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "pmma slab oppsed"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "unrecognised note 'oppsed' in material column; flow direction not set",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "observations": [
+      {
+        "label": "note in material column",
+        "value": "oppsed"
+      }
+    ]
+  },
+  {
+    "id": "PSI-26:r98-t118",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "118",
+    "date": "2013-04-29",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm pmma sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r99-t119",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "119",
+    "date": "2013-04-29",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm pmma sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r100-t89",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "89",
+    "date": "2013-05-02",
+    "material": {
+      "family": "wax",
+      "raw": "parrafin wax candle"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r101-t95",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "95",
+    "date": "2013-05-02",
+    "material": {
+      "family": "wax",
+      "raw": "paraffin wax candle"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r102-t92",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "92",
+    "date": "2013-05-02",
+    "material": {
+      "family": "wax",
+      "raw": "candle Japan wax"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r103-t78",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "78",
+    "date": "2013-05-02",
+    "material": {
+      "family": "wax",
+      "raw": "paraffin wax slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r104-t50",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "50",
+    "date": "2103-05-15",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm pmma sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "date year implausible in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r105-t51",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "51",
+    "date": "2013-05-15",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r106-t52",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "52",
+    "date": "2013-05-15",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r107-t53",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "53",
+    "date": "2013-05-15",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r108-t106",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "106",
+    "date": "2013-05-17",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r109-t107",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "107",
+    "date": "2013-05-17",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r110-t108",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "108",
+    "date": "2013-05-17",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r111-t109",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "109",
+    "date": "2013-06-01",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "2 cm sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r112-t79",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "79",
+    "date": "2013-06-01",
+    "material": {
+      "family": "wax",
+      "raw": "flat wax slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r113-t80",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "80",
+    "date": "2013-06-01",
+    "material": {
+      "family": "wax",
+      "raw": "flat wax slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r114-t75",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "75",
+    "date": "2013-06-01",
+    "material": {
+      "family": "wax",
+      "raw": "flat wax slab"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r115-t53",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "53",
+    "date": "2013-06-01",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-26:r116-t53a",
+    "investigationId": "PSI-26",
+    "pi": "not stated in table",
+    "testId": "53a",
+    "date": "2013-06-01",
+    "material": {
+      "family": "PMMA sphere",
+      "raw": "pmma sphere"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": ""
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "date and GMT day disagree in source",
+      "oxygen not recorded in this table",
+      "airflow not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  },
+  {
+    "id": "PSI-98:S1",
+    "investigationId": "PSI-98",
+    "pi": "not stated in table",
+    "testId": "S1",
+    "date": "not stated in table",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL Fabric",
+      "thicknessMm": 3.7,
+      "widthCm": 94
+    },
+    "o2InitialPct": 21.5,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen given as a range in source (raw: 21.5 - 21.7)",
+      "thickness unit inconsistent between Saffire tables; not corrected"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length (cm)",
+        "value": "40.6"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "182"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "8"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "420"
+      },
+      {
+        "label": "camera 1",
+        "value": "S1C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S1C2"
+      }
+    ]
+  },
+  {
+    "id": "PSI-98:S2",
+    "investigationId": "PSI-98",
+    "pi": "not stated in table",
+    "testId": "S2",
+    "date": "not stated in table",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL Fabric",
+      "thicknessMm": 3.7,
+      "widthCm": 94
+    },
+    "o2InitialPct": 21.5,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 21.5)",
+      "thickness unit inconsistent between Saffire tables; not corrected"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+    "flowDirection": "opposed",
+    "observations": [
+      {
+        "label": "sample length (cm)",
+        "value": "40.6"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "182"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "8"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "70"
+      },
+      {
+        "label": "camera 1",
+        "value": "S2C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S2C2"
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-1",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-1",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "Silicone",
+      "thicknessMm": 0.27,
+      "widthCm": 5
+    },
+    "o2InitialPct": 21.5,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 21.5)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "Insignificant"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "~ 0"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "n/a"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "Complete"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "Acceleratory"
+      },
+      {
+        "label": "camera 1",
+        "value": "S1C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S1C2"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-2",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-2",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "Silicone",
+      "thicknessMm": 0.61,
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 22.1)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "Insignificant"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "~ 0"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "n/a"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "7.6 cm"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "1.2 mm/s"
+      },
+      {
+        "label": "camera 1",
+        "value": "n/a"
+      },
+      {
+        "label": "camera 2",
+        "value": "S2C2"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-3",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-3",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "Silicone",
+      "thicknessMm": 1.03,
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 22.1)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "Insignificant"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "~ 0"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "n/a"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "~ 0"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "n/a"
+      },
+      {
+        "label": "camera 2",
+        "value": "S3C2"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-4",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-4",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "Silicone",
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 22.1)",
+      "thickness ambiguous in source (raw: 037 mm)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "opposed",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "Insignificant"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "~ 0"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "n/a"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "Complete"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "0.6 mm/s"
+      },
+      {
+        "label": "camera 1",
+        "value": "S4C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S4C1"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-5",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-5",
+    "date": "not stated in table",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "Cotton-Fiberglass (SIBAL)",
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 22.1)",
+      "thickness ambiguous in source (raw: 037 mm)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "145 s"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "29 cm"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "2.1 mm/s"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "Complete"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "Acceleratory"
+      },
+      {
+        "label": "camera 1",
+        "value": "S5C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S5C2"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-6",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-6",
+    "date": "not stated in table",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "Cotton-Fiberglass (SIBAL)",
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "material blank in source; taken from the row above",
+      "oxygen approximate in source (raw: ~ 22.1)",
+      "thickness ambiguous in source (raw: 037 mm)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "115 s"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "29 cm"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "2.6 mm/s"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "Complete"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "Acceleratory"
+      },
+      {
+        "label": "camera 1",
+        "value": "S6C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S56C2"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-7",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-7",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "PMMA & Nomex",
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen approximate in source (raw: ~ 22.1)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample thickness",
+        "value": "0.85 and 0.37 mm"
+      },
+      {
+        "label": "sample length",
+        "value": "5 and 24 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "80 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "9.2 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "140 s"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "5 cm & 0 (note 2)"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "n/a (Nomex)"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "~ 0 (Nomex)"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "n/a (Nomex)"
+      },
+      {
+        "label": "camera 1",
+        "value": "S7C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "n/a"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      },
+      {
+        "label": "source note 2",
+        "value": "The PMMA portion was completely consumed but the Nomex was not ignited."
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-8",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-8",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "PMMA",
+      "widthCm": 5
+    },
+    "o2InitialPct": 22.1,
+    "o2FinalPct": 22,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample thickness",
+        "value": "See Fig. 5"
+      },
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "97 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "30 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "600 s"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "~ 10 cm (note 3)"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "Note 4"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "Complete"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "Acceleratory"
+      },
+      {
+        "label": "camera 1",
+        "value": "S8C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "n/a"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      },
+      {
+        "label": "source note 3",
+        "value": "This is the length of fuel with significant visible damage."
+      },
+      {
+        "label": "source note 4",
+        "value": "The flames remain anchored at the base of the sample which has a very slow regression rate (0.01 to 0.04 mm/s)"
+      }
+    ]
+  },
+  {
+    "id": "PSI-99:2-9",
+    "investigationId": "PSI-99",
+    "pi": "not stated in table",
+    "testId": "2-9",
+    "date": "not stated in table",
+    "material": {
+      "family": "other",
+      "raw": "PMMA",
+      "thicknessMm": 10,
+      "widthCm": 5
+    },
+    "o2InitialPct": 22,
+    "o2FinalPct": 21.9,
+    "flowCmS": {
+      "min": 20,
+      "max": 20,
+      "raw": "20 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "PMMA, shape not stated",
+      "material blank in source; taken from the row above"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "29 cm"
+      },
+      {
+        "label": "ignition power (W)",
+        "value": "97 W"
+      },
+      {
+        "label": "ignition time (s)",
+        "value": "30 s"
+      },
+      {
+        "label": "burn time (s)",
+        "value": "900 s"
+      },
+      {
+        "label": "microgravity burn length",
+        "value": "~ 10 cm (note 4)"
+      },
+      {
+        "label": "microgravity spread",
+        "value": "Note 4"
+      },
+      {
+        "label": "1-g burn length",
+        "value": "Complete"
+      },
+      {
+        "label": "1-g spread rate",
+        "value": "Acceleratory"
+      },
+      {
+        "label": "camera 1",
+        "value": "S9C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "n/a"
+      },
+      {
+        "label": "source note 1",
+        "value": "Derived from measured CO2 production and referenced to initial O2 concentration reported by ISS."
+      },
+      {
+        "label": "source note 4",
+        "value": "The flames remain anchored at the base of the sample which has a very slow regression rate (0.01 to 0.04 mm/s)"
+      }
+    ]
+  },
+  {
+    "id": "PSI-100:S1",
+    "investigationId": "PSI-100",
+    "pi": "not stated in table",
+    "testId": "S1",
+    "date": "not stated in table",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL Fabric",
+      "thicknessMm": 3.3,
+      "widthCm": 40.6
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 30,
+      "max": 30,
+      "raw": "30 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+    "flowDirection": "concurrent",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "94 cm"
+      },
+      {
+        "label": "camera 1",
+        "value": "S1C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S1C2"
+      }
+    ]
+  },
+  {
+    "id": "PSI-100:S2",
+    "investigationId": "PSI-100",
+    "pi": "not stated in table",
+    "testId": "S2",
+    "date": "not stated in table",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "SIBAL Fabric",
+      "thicknessMm": 3.3,
+      "widthCm": 40.6
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 30,
+      "max": 30,
+      "raw": "30 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": ""
+    },
+    "flags": [
+      "oxygen not recorded in this table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+    "flowDirection": "opposed",
+    "observations": [
+      {
+        "label": "sample length",
+        "value": "94 cm"
+      },
+      {
+        "label": "camera 1",
+        "value": "S2C1"
+      },
+      {
+        "label": "camera 2",
+        "value": "S2C2"
+      }
+    ]
   }
 ]
