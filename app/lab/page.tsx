@@ -2,6 +2,7 @@
 import { Suspense } from "react";
 import runsJson from "@/data/runs.json";
 import type { Run } from "@/lib/schema";
+import { DownloadDataset } from "./download-dataset";
 import { LabClient } from "./lab-client";
 import { loadInvestigations } from "./load-investigations";
 import { RunsTable } from "./runs-table";
@@ -33,6 +34,13 @@ export default function LabPage() {
           </p>
         </div>
         <RunsTable runs={runs} />
+      </section>
+
+      <section className="flex flex-col gap-3" aria-labelledby="download-heading">
+        <h2 id="download-heading" className="text-lg font-semibold">
+          Download
+        </h2>
+        <DownloadDataset runs={runs} />
       </section>
     </div>
   );
