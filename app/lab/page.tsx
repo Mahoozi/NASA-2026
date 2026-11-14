@@ -4,11 +4,9 @@ import runsJson from "@/data/runs.json";
 import type { Run } from "@/lib/schema";
 import { LabClient } from "./lab-client";
 import { loadInvestigations } from "./load-investigations";
-import { RunsTable } from "./runs-table";
 
 export default function LabPage() {
   const runs = runsJson as Run[];
-  const flagged = runs.filter((r) => r.flags.length).length;
   const { investigations, pendingIds } = loadInvestigations(runs);
   return (
     <div className="flex flex-col gap-10">
@@ -23,17 +21,6 @@ export default function LabPage() {
       <Suspense fallback={<p className="text-sm text-muted-foreground">Loading scenario…</p>}>
         <LabClient runs={runs} investigations={investigations} pendingIds={pendingIds} />
       </Suspense>
-
-      <section className="flex flex-col gap-3">
-        <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold">All BASS-II runs</h2>
-          <p className="text-sm text-muted-foreground">
-            PSI-25 (BASS-II): {runs.length} runs, {flagged} with data-quality flags.
-            Values are as recorded in the source table; flagged values were not corrected.
-          </p>
-        </div>
-        <RunsTable runs={runs} />
-      </section>
     </div>
   );
 }

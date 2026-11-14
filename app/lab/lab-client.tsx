@@ -1,12 +1,21 @@
 "use client";
 // Person A — owns the scenario state, which lives in the URL.
+// Page order: presets and form → summary + gaps → coverage grid → gap chart
+// → ranked investigations → runs table → download.
 import { useCallback, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { matchInvestigations } from "@/lib/match";
+import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
+import { CoverageGrid } from "./coverage-grid";
+import { DownloadDataset } from "./download-dataset";
+import { GapChart } from "./gap-chart";
+import { evidenceGaps } from "./gaps";
+import { GapsPanel } from "./gaps-panel";
 import { RankedList } from "./ranked-list";
+import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
+import { Summary } from "./summary";
 
 export function LabClient({
   runs,
@@ -20,10 +29,23 @@ export function LabClient({
   const params = useSearchParams();
   const pathname = usePathname();
   const scenario = useMemo(() => parseScenario(params), [params]);
+  const scored = hasScoredDimension(scenario);
   const presetList = useMemo(() => presets(runs), [runs]);
   const matches = useMemo(
     () => matchInvestigations(scenario, investigations, runs),
     [scenario, investigations, runs],
+  );
+  const gaps = useMemo(
+    () => evidenceGaps(scenario, runs, investigations),
+    [scenario, runs, investigations],
+  );
+  // Runs that match every run-level dimension set; null when none is set.
+  const matchingRunIds = useMemo(
+    () =>
+      RUN_DIMENSIONS.some((d) => scenario[d] !== undefined)
+        ? new Set(matches.flatMap((m) => m.matchingRunIds))
+        : null,
+    [scenario, matches],
   );
 
   // Native History API: Next keeps useSearchParams in sync, no server round trip.
@@ -36,20 +58,72 @@ export function LabClient({
   );
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+    <div className="flex flex-col gap-10">
       <ScenarioForm scenario={scenario} presets={presetList} onChange={setScenario} />
-      <section className="flex flex-col gap-3" aria-labelledby="ranked-heading">
-        <h2 id="ranked-heading" className="text-lg font-semibold">
-          Closest evidence
+
+      <section aria-labelledby="summary-heading" className="flex flex-col gap-4">
+        <h2 id="summary-heading" className="text-lg font-semibold">
+          Summary
         </h2>
-        {hasScoredDimension(scenario) ? (
-          <RankedList matches={matches} pendingIds={pendingIds} />
+        {scored ? (
+          <>
+            <Summary matches={matches} />
+            <GapsPanel report={gaps} />
+          </>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Pick a preset or set material, oxygen, airflow, gravity or safety area
-            to rank the investigations. Pressure alone is not scored.
+            Pick a preset or set material, oxygen, airflow, gravity or safety area.
+            Pressure alone is not scored.
           </p>
         )}
+      </section>
+
+      <section aria-labelledby="grid-heading" className="flex flex-col gap-3">
+        <h2 id="grid-heading" className="text-lg font-semibold">
+          Coverage grid: runs by material and starting oxygen
+        </h2>
+        <CoverageGrid
+          runs={runs}
+          scenario={scenario}
+          onPick={(materialFamily, o2Pct) => setScenario({ ...scenario, materialFamily, o2Pct })}
+        />
+      </section>
+
+      <section aria-labelledby="chart-heading" className="flex flex-col gap-3">
+        <h2 id="chart-heading" className="text-lg font-semibold">
+          Gap chart: airflow and starting oxygen of every run
+        </h2>
+        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} />
+      </section>
+
+      {scored && (
+        <section className="flex flex-col gap-3" aria-labelledby="ranked-heading">
+          <h2 id="ranked-heading" className="text-lg font-semibold">
+            Ranked investigations
+          </h2>
+          <RankedList matches={matches} pendingIds={pendingIds} />
+        </section>
+      )}
+
+      <section className="flex flex-col gap-3" aria-labelledby="runs-heading">
+        <div className="flex flex-col gap-1">
+          <h2 id="runs-heading" className="text-lg font-semibold">
+            BASS-II runs
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            PSI-25 (BASS-II): {runs.length} runs, {runs.filter((r) => r.flags.length).length} with
+            data-quality flags. Values are as recorded in the source table; flagged values were not
+            corrected.
+          </p>
+        </div>
+        <RunsTable runs={runs} matchingRunIds={matchingRunIds} />
+      </section>
+
+      <section className="flex flex-col gap-3" aria-labelledby="download-heading">
+        <h2 id="download-heading" className="text-lg font-semibold">
+          Download
+        </h2>
+        <DownloadDataset runs={runs} />
       </section>
     </div>
   );
