@@ -70,6 +70,14 @@ export function LabClient({
     (next: Scenario) => writeUrl(scenarioToQuery(next), investigationId),
     [writeUrl, investigationId],
   );
+  // After a preset, bring the summary, gaps panel and coverage grid into view.
+  const showSummary = () =>
+    requestAnimationFrame(() => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document
+        .getElementById("summary-heading")
+        ?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    });
   const clearInvestigation = () => writeUrl(scenarioToQuery(scenario), null);
 
   const focus = investigationId
@@ -89,10 +97,15 @@ export function LabClient({
 
   return (
     <div className="flex flex-col gap-10">
-      <ScenarioForm scenario={scenario} presets={presetList} onChange={setScenario} />
+      <ScenarioForm
+        scenario={scenario}
+        presets={presetList}
+        onChange={setScenario}
+        onPreset={showSummary}
+      />
 
       <section aria-labelledby="summary-heading" className="flex flex-col gap-4">
-        <h2 id="summary-heading" className="text-lg font-semibold">
+        <h2 id="summary-heading" className="scroll-mt-4 text-lg font-semibold">
           Summary
         </h2>
         {scored ? (

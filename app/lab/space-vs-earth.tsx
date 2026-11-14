@@ -44,7 +44,7 @@ export function SpaceVsEarth({ runs }: { runs: Run[] }) {
               {r.flags.includes(MATERIAL_FROM_ROW_ABOVE) ? (
                 <>
                   <span className="text-muted-foreground">(blank in source)</span>{" "}
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-sm text-muted-foreground">
                     row above: {r.material.raw}
                   </span>
                 </>

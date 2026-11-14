@@ -32,9 +32,11 @@ type Props = {
   scenario: Scenario;
   presets: Preset[];
   onChange: (next: Scenario) => void;
+  /** Called after a preset is applied, so the page can bring the results into view. */
+  onPreset?: () => void;
 };
 
-export function ScenarioForm({ scenario, presets, onChange }: Props) {
+export function ScenarioForm({ scenario, presets, onChange, onPreset }: Props) {
   const set = <K extends keyof Scenario>(key: K, value: Scenario[K]) => {
     const next = { ...scenario, [key]: value };
     if (value === undefined) delete next[key];
@@ -48,10 +50,16 @@ export function ScenarioForm({ scenario, presets, onChange }: Props) {
         <div className="grid gap-4 sm:grid-cols-2">
           {presets.map((p) => (
             <div key={p.id} className="flex flex-col items-start gap-1.5">
-              <Button variant="outline" onClick={() => onChange(p.scenario)}>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  onChange(p.scenario);
+                  onPreset?.();
+                }}
+              >
                 {p.label}
               </Button>
-              <p className="text-xs text-muted-foreground">{p.source}</p>
+              <p className="text-sm text-muted-foreground">{p.source}</p>
             </div>
           ))}
         </div>

@@ -137,7 +137,7 @@ function PointTooltip({ active, payload }: { active?: boolean; payload?: { paylo
   const flow =
     r.flowCmS.min === r.flowCmS.max ? `${r.flowCmS.max}` : `${r.flowCmS.min}–${r.flowCmS.max}`;
   return (
-    <div className="flex max-w-64 flex-col gap-0.5 rounded-md border border-border bg-popover px-2.5 py-2 text-xs text-popover-foreground shadow-md">
+    <div className="flex max-w-64 flex-col gap-0.5 rounded-md border border-border bg-popover px-2.5 py-2 text-sm text-popover-foreground shadow-md">
       <span className="font-medium">Test {r.testId}</span>
       <span>{materialLabel(r)} — {r.material.raw}</span>
       <span>Starting O₂ {r.o2InitialPct}% · airflow {flow} cm/s</span>
@@ -225,7 +225,7 @@ export function GapChart({
         .dark .gap-chart { --gc-s1:#3987e5; --gc-s2:#d95926; --gc-s3:#199e70; --gc-other:#898781; }
       `}</style>
 
-      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted-foreground" aria-label="Legend">
+      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-muted-foreground" aria-label="Legend">
         {families.map((f) => (
           <li key={f} className="flex items-center gap-1.5">
             <LegendMark family={f} />
@@ -243,7 +243,7 @@ export function GapChart({
         }${flow !== undefined ? ` Scenario airflow ${flow} cm/s.` : ""} The table below lists every run.`}
       >
         <ResponsiveContainer width="100%" height="100%">
-          <ScatterChart margin={{ top: 12, right: 16, bottom: 28, left: 4 }}>
+          <ScatterChart margin={{ top: 12, right: 24, bottom: 32, left: 4 }}>
             <CartesianGrid stroke="var(--border)" strokeDasharray="" vertical={false} />
             <ReferenceArea
               y1={MOON_O2}
@@ -256,7 +256,7 @@ export function GapChart({
                 value: "Moon Base planned atmosphere (≥30% O2, NASA challenge brief)",
                 position: "insideTopLeft",
                 fill: "var(--muted-foreground)",
-                fontSize: 12,
+                fontSize: 14,
               }}
             />
             <XAxis
@@ -265,14 +265,14 @@ export function GapChart({
               name="Airflow"
               unit=" cm/s"
               domain={[0, "dataMax"]}
-              tick={{ fill: "var(--muted-foreground)", fontSize: 12 }}
+              tick={{ fill: "var(--muted-foreground)", fontSize: 14 }}
               stroke="var(--border)"
               label={{
                 value: "Airflow (cm/s, highest recorded in the run)",
                 position: "insideBottom",
                 offset: -16,
                 fill: "var(--muted-foreground)",
-                fontSize: 12,
+                fontSize: 14,
               }}
             />
             <YAxis
@@ -283,9 +283,9 @@ export function GapChart({
               domain={Y_DOMAIN}
               ticks={[10, 15, 20, 25, 30, 35]}
               allowDataOverflow={false}
-              tick={{ fill: "var(--muted-foreground)", fontSize: 12 }}
+              tick={{ fill: "var(--muted-foreground)", fontSize: 14 }}
               stroke="var(--border)"
-              width={48}
+              width={56}
             />
             <Tooltip content={<PointTooltip />} cursor={false} isAnimationActive={false} />
             {[...groups].map(([key, points]) => (
@@ -301,7 +301,7 @@ export function GapChart({
                 fill="var(--background)"
                 stroke="var(--foreground)"
                 strokeWidth={2}
-                label={{ value: "Your scenario", position: "top", fill: "var(--foreground)", fontSize: 12 }}
+                label={{ value: "Your scenario", position: "top", offset: 10, fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
             {o2 !== undefined && flow === undefined && (
@@ -310,7 +310,7 @@ export function GapChart({
                 ifOverflow="extendDomain"
                 stroke="var(--foreground)"
                 strokeWidth={2}
-                label={{ value: `Your scenario: ${o2}% O2`, position: "insideBottomRight", fill: "var(--foreground)", fontSize: 12 }}
+                label={{ value: `Your scenario: ${o2}% O2`, position: "insideBottomRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
             {flow !== undefined && o2 === undefined && (
@@ -319,14 +319,14 @@ export function GapChart({
                 ifOverflow="extendDomain"
                 stroke="var(--foreground)"
                 strokeWidth={2}
-                label={{ value: `Your scenario: ${flow} cm/s`, position: "insideTopRight", fill: "var(--foreground)", fontSize: 12 }}
+                label={{ value: `Your scenario: ${flow} cm/s`, position: "insideTopRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
           </ScatterChart>
         </ResponsiveContainer>
       </div>
 
-      <figcaption className="flex flex-col gap-1 text-xs text-muted-foreground">
+      <figcaption className="flex flex-col gap-1 text-sm text-muted-foreground">
         <span>
           {plotted} of {runs.length} runs plotted: only runs that record both a starting oxygen
           and an airflow. X is the highest airflow recorded in a run, because crews stepped the
