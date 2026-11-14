@@ -4,12 +4,13 @@
  *   npm run build:corpus
  *
  * Reads  data/raw/psi-combustion-investigations-<date>.json (PSI API snapshot,
- *        never modified) and data/runs.json (for hasRunData)
+ *        never modified), data/runs.json (for hasRunData) and
+ *        data/guide-pages.json (Researcher's Guide page text, written by
+ *        pipeline/corpus_extract_guide.ts from the PDF in data/raw/)
  * Writes data/investigations.json, data/corpus.json, pipeline/corpus_report.md
  *
- * Text is copied verbatim from PSI. Nothing is summarised or filled in.
- * TODO(B): add the Researcher's Guide PDF pages (guide-p<page>) and NASA web
- * pages (nasa-web-<slug>) once their raw files are in data/raw/.
+ * Text is copied verbatim from PSI and the guide. Nothing is summarised or filled in.
+ * TODO(B): add NASA web pages (nasa-web-<slug>) once their raw files are in data/raw/.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -19,6 +20,20 @@ import type { CorpusDoc, Investigation, Run, SafetyArea } from "../lib/schema";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 export const RAW_PSI = "data/raw/psi-combustion-investigations-2026-11-14.json";
 export const pageUrl = (id: string) => `https://psi.nasa.gov/physci/repo/data/investigations/${id}`;
+
+// The Researcher's Guide PDF. Its text is extracted once by
+// pipeline/corpus_extract_guide.ts into GUIDE_PAGES, which is committed; the PDF
+// itself is git-ignored. bytes and sha256 identify the exact file that was read.
+export const GUIDE = {
+  title: "A Researcher’s Guide to: Combustion Science", // as printed on the cover (p. 1)
+  pageUrl: "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+  pdfUrl:
+    "https://www.nasa.gov/wp-content/uploads/2016/05/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+  file: "np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+  bytes: 1500825,
+  sha256: "5fe046efe4e35e506023e27a9784d041e893026f19c9987591483614aea5d6b6",
+};
+export const GUIDE_PAGES = "data/guide-pages.json";
 
 type FuelPhase = Investigation["fuelPhase"][number];
 type PsiRecord = Record<string, unknown> & { Accession: string };
@@ -83,7 +98,9 @@ export const collapse = (v: unknown) => str(v).replace(/\s+/g, " ").trim();
 const splitMulti = (v: unknown) => clean(v).split(/\s{2,}/).map((x) => x.trim()).filter(Boolean);
 const num = (id: string) => Number(id.replace(/^PSI-/, ""));
 
-export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[]) {
+export type GuidePage = { page: number; text: string };
+
+export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[], guidePages: GuidePage[]) {
   const errors: string[] = [];
   const notes: string[] = [];
   const investigations: Investigation[] = [];
@@ -166,6 +183,23 @@ export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[]
     }
   }
 
+  // Researcher's Guide: one doc per PDF page. A page with no letters (blank,
+  // or only its page number) is skipped and listed in the report.
+  const skippedGuidePages: GuidePage[] = [];
+  const seenPages = new Set<number>();
+  for (const p of guidePages) {
+    if (!Number.isInteger(p.page) || p.page < 1) errors.push(`guide: bad page number ${p.page}`);
+    if (seenPages.has(p.page)) errors.push(`guide: duplicate page ${p.page}`);
+    seenPages.add(p.page);
+    const text = collapse(p.text);
+    if (!/\p{L}/u.test(text)) {
+      skippedGuidePages.push({ page: p.page, text });
+      continue;
+    }
+    corpus.push({ id: `guide-p${p.page}`, source: "guide", title: `${GUIDE.title}, p. ${p.page}`, url: GUIDE.pageUrl, page: p.page, text });
+  }
+  if (!guidePages.length) errors.push(`guide: no pages in ${GUIDE_PAGES}`);
+
   // Asserts (plan/B.md Stage 1)
   for (const id of new Set([...Object.keys(SAFETY), ...Object.keys(FUEL)])) {
     if (!records.some((r) => r.Accession === id)) errors.push(`${id}: in curation tables but not in raw data`);
@@ -183,12 +217,20 @@ export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[]
   }
 
   investigations.sort((a, b) => num(a.id) - num(b.id));
-  corpus.sort((a, b) => num(a.investigationId ?? "") - num(b.investigationId ?? "")); // stable: keeps section order
+  // PSI docs by investigation, then guide pages; stable, so section and page order are kept.
+  const rank = (d: CorpusDoc) => (d.investigationId ? num(d.investigationId) : Number.MAX_SAFE_INTEGER);
+  corpus.sort((a, b) => rank(a) - rank(b));
   notes.sort((a, b) => num(a.split(":")[0]) - num(b.split(":")[0]));
-  return { investigations, corpus, errors, notes };
+  return { investigations, corpus, errors, notes, skippedGuidePages, guidePageCount: guidePages.length };
 }
 
-function report(investigations: Investigation[], corpus: CorpusDoc[], notes: string[]) {
+function report(
+  investigations: Investigation[],
+  corpus: CorpusDoc[],
+  notes: string[],
+  guidePageCount: number,
+  skippedGuidePages: GuidePage[],
+) {
   const bySource = new Map<string, number>();
   for (const d of corpus) bySource.set(d.source, (bySource.get(d.source) ?? 0) + 1);
   const lines = [
@@ -213,6 +255,21 @@ function report(investigations: Investigation[], corpus: CorpusDoc[], notes: str
         `| ${i.id} | ${i.acronym || "—"} | ${i.safetyArea.join(", ")} | ${i.fuelPhase.join(", ") || "—"} | ${i.platform || "—"} | ${i.hasRunData ? "yes" : "no"} | ${corpus.filter((d) => d.investigationId === i.id).length} |`,
     ),
     "",
+    "## Researcher's Guide PDF",
+    "",
+    `- Title (cover, p. 1): ${GUIDE.title}`,
+    `- NASA page: ${GUIDE.pageUrl}`,
+    `- PDF: ${GUIDE.pdfUrl}`,
+    `- File: \`data/raw/${GUIDE.file}\` (git-ignored)`,
+    `- Size: ${GUIDE.bytes} bytes`,
+    `- sha256: \`${GUIDE.sha256}\``,
+    `- Page text: \`${GUIDE_PAGES}\` (extracted by \`pipeline/corpus_extract_guide.ts\` with unpdf)`,
+    `- Pages: ${guidePageCount}; docs: ${corpus.filter((d) => d.source === "guide").length} (\`guide-p<page>\`, page = PDF page number)`,
+    "- Skipped pages (no text beyond the page number):",
+    ...(skippedGuidePages.length
+      ? skippedGuidePages.map((p) => `  - p. ${p.page}: ${p.text ? `"${p.text}"` : "no text"}`)
+      : ["  - none"]),
+    "",
     "## How labels were set",
     "",
     "- `safetyArea`: from the challenge text as recorded in the team handoff (BASS, BASS-II, Saffire, ACME BRE = prevention; SAME, SAME-R, DAFT = detection; FLEX = suppression; all others = fundamental).",
@@ -235,15 +292,16 @@ function main() {
   const records = raw.hits.hits.map((h) => h._source);
   if (records.length !== raw.hits.total) throw new Error("Raw PSI snapshot is incomplete");
   const runs = JSON.parse(readFileSync(join(ROOT, "data", "runs.json"), "utf8")) as Run[];
+  const guidePages = JSON.parse(readFileSync(join(ROOT, GUIDE_PAGES), "utf8")) as GuidePage[];
 
-  const { investigations, corpus, errors, notes } = build(records, runs);
+  const { investigations, corpus, errors, notes, skippedGuidePages, guidePageCount } = build(records, runs, guidePages);
   if (errors.length) throw new Error(`Build failed:\n${errors.join("\n")}`);
 
   writeFileSync(join(ROOT, "data", "investigations.json"), JSON.stringify(investigations, null, 2) + "\n");
   writeFileSync(join(ROOT, "data", "corpus.json"), JSON.stringify(corpus, null, 2) + "\n");
-  writeFileSync(join(ROOT, "pipeline", "corpus_report.md"), report(investigations, corpus, notes));
+  writeFileSync(join(ROOT, "pipeline", "corpus_report.md"), report(investigations, corpus, notes, guidePageCount, skippedGuidePages));
   console.log(`investigations.json: ${investigations.length} investigations`);
-  console.log(`corpus.json: ${corpus.length} docs`);
+  console.log(`corpus.json: ${corpus.length} docs (${corpus.filter((d) => d.source === "guide").length} guide pages, ${skippedGuidePages.length} skipped)`);
   console.log(`corpus_report.md: ${notes.length} notes`);
 }
 

@@ -24,8 +24,9 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 1 — Core (hour 1–10)
 
-- [ ] **`pipeline/corpus_build.ts`** (`npm run build:corpus`). Skills: `anthropic-skills:pdf` for the guide PDF text extraction; `rag-implementation` §chunking for how to split pages into docs (one doc per PSI section / PDF page is enough — no embeddings). Reads the raw PSI pages and the guide PDF, writes `data/corpus.json` as `CorpusDoc[]` and fills `objectives`, `approach`, `hypothesis`, `earthBenefits`, `doi` in `investigations.json`.
+- [x] **`pipeline/corpus_build.ts`** (`npm run build:corpus`). Skills: `anthropic-skills:pdf` for the guide PDF text extraction; `rag-implementation` §chunking for how to split pages into docs (one doc per PSI section / PDF page is enough — no embeddings). Reads the raw PSI pages and the guide PDF, writes `data/corpus.json` as `CorpusDoc[]` and fills `objectives`, `approach`, `hypothesis`, `earthBenefits`, `doi` in `investigations.json`.
   Progress: PSI part done (24 investigations, 120 docs, all text fields filled, report written). Guide PDF and NASA web pages still to add. No `doi` in the PSI API, so it is omitted.
+  Guide PDF added: 55 `guide-p<page>` docs from `data/guide-pages.json` (p. 4 has only its page number, skipped). NASA web pages still to add.
   - Doc id scheme: `psi-<n>-<section>` (`psi-25-objectives`, `psi-25-approach`, …), `guide-p<page>` one doc per PDF page, `nasa-web-<slug>`, `ntrs-<id>`.
   - `text` is the verbatim extracted text, whitespace collapsed. No summarising in the pipeline.
   - Assert: every investigation has ≥1 corpus doc; no doc has empty text; every `url` is on `psi.nasa.gov` or `nasa.gov` / `ntrs.nasa.gov`.
@@ -45,7 +46,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 - [ ] **`/ask` page.** Skills: `shadcn`, `frontend-design` (one pass), `design:ux-copy` for the `insufficient_evidence` text. Textarea + submit; render each sentence followed by its citations as links (title → url), verified ones marked, unverified never shown. `insufficient_evidence` renders as a plain statement, not an error. Read `?scenario=` and `?investigations=` from the URL (A's handoff) and pass them as `context`.
   Commit: `Build ask page`.
-- [ ] **`/investigations` cards + `/investigations/[id]`.** Skills: `shadcn`, `frontend-design`. Cards: acronym, name, safety areas, fuel phases, platform, "has run data" badge. Detail: objectives, approach, hypothesis, Earth benefits, link to PSI page, corpus docs listed. Cards with `hasRunData` link to `/lab?investigation=<id>`.
+- [x] **`/investigations` cards + `/investigations/[id]`.** Skills: `shadcn`, `frontend-design`. Cards: acronym, name, safety areas, fuel phases, platform, "has run data" badge. Detail: objectives, approach, hypothesis, Earth benefits, link to PSI page, corpus docs listed. Cards with `hasRunData` link to `/lab?investigation=<id>`.
   Commit: `Build investigations pages`.
 - [ ] **`data/golden.json`** (≥10 items): `{ id, question, expectDocIds: string[], expectStatus: "answered" | "insufficient_evidence" }`. Include ≥3 questions that must return `insufficient_evidence` (e.g. lunar gravity, a material not in any doc).
 - [ ] **`pipeline/evals.ts`** (`npm run evals`): runs every golden question through the same code path as the API (import the handler logic, not HTTP), writes `data/evals.latest.json`: per question status match, citation precision (verified ∩ expected / verified), and totals.
@@ -58,7 +59,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] `/api/ask`: when `context.scenario` is present and `investigationIds` is empty, call `matchInvestigations(scenario, investigations, runs)` from `@/lib/match` and use the top 3 ids for retrieval boosting. Mention coverage in the prompt context only as data, never as a verdict.
   Commit: `Use scenario matching in ask`.
 - [ ] **UI review.** Skills: `web-design-guidelines` on `app/ask/**` and `app/investigations/**`, then `design:accessibility-review`; fix only what they flag. Commit: `Review Ask and Investigations UI`.
-- [ ] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
+- [x] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
   Commit: `Remove sample investigations`.
 
 ## Stage 4 — Freeze (hour 32–48)

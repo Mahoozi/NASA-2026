@@ -9,6 +9,7 @@ Raw PSI snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`
 | Source | Docs |
 |---|---|
 | psi | 120 |
+| guide | 55 |
 
 ## Investigations
 
@@ -38,6 +39,19 @@ Raw PSI snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`
 | PSI-117 | — | fundamental | liquid droplet | Ground | no | 5 |
 | PSI-142 | — | fundamental | — | Ground | no | 5 |
 | PSI-159 | ACME CFI-G | fundamental | gas | International Space Station (ISS) | no | 5 |
+
+## Researcher's Guide PDF
+
+- Title (cover, p. 1): A Researcher’s Guide to: Combustion Science
+- NASA page: https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/
+- PDF: https://www.nasa.gov/wp-content/uploads/2016/05/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf
+- File: `data/raw/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf` (git-ignored)
+- Size: 1500825 bytes
+- sha256: `5fe046efe4e35e506023e27a9784d041e893026f19c9987591483614aea5d6b6`
+- Page text: `data/guide-pages.json` (extracted by `pipeline/corpus_extract_guide.ts` with unpdf)
+- Pages: 56; docs: 55 (`guide-p<page>`, page = PDF page number)
+- Skipped pages (no text beyond the page number):
+  - p. 4: "444"
 
 ## How labels were set
 
