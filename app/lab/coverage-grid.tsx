@@ -194,7 +194,7 @@ export function CoverageGrid({
         </TableBody>
       </Table>
       <p className="text-sm">
-        {atOrAbove(21)} of the {withO2.length} runs with a recorded starting oxygen (of{" "}
+        {atOrAbove(21)} of the {withO2.length} solid-material runs with a recorded starting oxygen (of{" "}
         {runs.length}) started at or above 21% oxygen; {atOrAbove(23)} started at or above 23%.
       </p>
     </div>

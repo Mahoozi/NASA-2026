@@ -12,6 +12,12 @@ export type GapReport = {
   gaps: string[];
   /** Nearest evidence per numeric dimension set, plus gravity and pressure context. */
   nearest: string[];
+  /**
+   * Set when the scenario's oxygen is above every imported run that records one:
+   * the highest of those values, so the panel can say higher-oxygen tests exist
+   * outside the imported solid-material runs (gaseous fuels, ACME CFI-G).
+   */
+  aboveSolidO2?: number;
 };
 
 // Same closeness limits as lib/match.ts: beyond these a run contributes 0.
@@ -33,7 +39,8 @@ function cite(runs: Run[]): string {
 
 /**
  * Who a sentence speaks about, with the counts that scope it: only runs that
- * record the value count, e.g. "run with a recorded starting oxygen (140 of 263)".
+ * record the value count, e.g. "solid-material run with a recorded starting oxygen
+ * (140 of 263)". Every imported run burned a solid material.
  */
 function scope(
   what: string,
@@ -41,7 +48,7 @@ function scope(
   all: Run[],
   family: string | undefined,
 ): string {
-  if (!family) return `run with a recorded ${what} (${pool.length} of ${all.length})`;
+  if (!family) return `solid-material run with a recorded ${what} (${pool.length} of ${all.length})`;
   const familyTotal = all.filter((r) => r.material.family === family).length;
   return `${family} run with a recorded ${what} (${pool.length} of ${familyTotal} ${family} runs)`;
 }
@@ -71,20 +78,21 @@ function o2Lines(s: number, runs: Run[], family: string | undefined, out: GapRep
   // Nearest evidence across all runs that record a starting oxygen.
   if (s > max) {
     const at = withO2.filter((r) => r.o2InitialPct === max);
+    out.aboveSolidO2 = max;
     out.nearest.push(
-      `Highest starting oxygen in any run: ${max}% (${cite(at)}). Your scenario: ${s}%, a gap of ${r1(s - max)} points.`,
+      `Highest starting oxygen in any imported solid-material run: ${max}% (${cite(at)}). Your scenario: ${s}%, a gap of ${r1(s - max)} points.`,
     );
   } else if (s < min) {
     const at = withO2.filter((r) => r.o2InitialPct === min);
     out.nearest.push(
-      `Lowest starting oxygen in any run: ${min}% (${cite(at)}). Your scenario: ${s}%, a gap of ${r1(min - s)} points.`,
+      `Lowest starting oxygen in any imported solid-material run: ${min}% (${cite(at)}). Your scenario: ${s}%, a gap of ${r1(min - s)} points.`,
     );
   } else {
     const d = Math.min(...values.map((v) => Math.abs(v - s)));
     const at = withO2.filter((r) => Math.abs(r.o2InitialPct! - s) === d);
     const v = at[0].o2InitialPct!;
     out.nearest.push(
-      `Closest starting oxygen in any run: ${v}% (${cite(at)}). Your scenario: ${s}%, ${d === 0 ? "no gap" : `a gap of ${r1(d)} points`}.`,
+      `Closest starting oxygen in any imported solid-material run: ${v}% (${cite(at)}). Your scenario: ${s}%, ${d === 0 ? "no gap" : `a gap of ${r1(d)} points`}.`,
     );
   }
 }

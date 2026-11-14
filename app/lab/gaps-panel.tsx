@@ -1,5 +1,6 @@
 // Person A
 import type { GapReport } from "./gaps";
+import { HigherOxygenNote } from "./higher-oxygen-note";
 
 export function GapsPanel({ report }: { report: GapReport }) {
   return (
@@ -17,6 +18,9 @@ export function GapsPanel({ report }: { report: GapReport }) {
         <p className="text-sm text-muted-foreground">
           Every dimension you set has at least one run or investigation within range.
         </p>
+      )}
+      {report.aboveSolidO2 !== undefined && (
+        <HigherOxygenNote maxSolidO2={report.aboveSolidO2} className="text-sm" />
       )}
       {report.nearest.length > 0 && (
         <div className="flex flex-col gap-1.5">

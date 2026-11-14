@@ -2,7 +2,7 @@
 
 **What NASA has burned in space, and what it hasn't.**
 
-NASA is planning a Moon Base that will likely run at **30% oxygen or more**. Every NASA flight test of solid materials we could find with a recorded starting oxygen stopped at **22.2%**. None were done in lunar or Martian gravity.
+NASA is planning a Moon Base that will likely run at **30% oxygen or more**. NASA's solid-material flight tests we imported (BASS-II, Saffire-I, Saffire-II) include 140 with a recorded starting oxygen; the highest is **22.2%**. Higher-oxygen microgravity tests exist: ACME CFI-G flowed up to 85% oxygen through a gaseous-fuel burner ([challenge brief](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/)), but none of the imported solid-material runs with a recorded starting oxygen started above 22.2%. None of the 263 imported runs were in lunar or Martian gravity.
 
 Firebreak makes that kind of gap visible. Pick a habitat scenario, and it ranks NASA's microgravity combustion investigations by how closely they match, shows the actual test runs behind each one, points out where the evidence runs out, and answers questions using only text it can cite and verify.
 
@@ -13,7 +13,7 @@ Firebreak makes that kind of gap visible. Pick a habitat scenario, and it ranks 
 
 - **Scenario Lab** (`/lab`): set material, oxygen, airflow and gravity, or use a preset ("ISS cabin air", "Moon Base (planned)"). Investigations are ranked with a per-dimension breakdown, and the matching runs light up on a chart.
 - **Coverage grid**: material × oxygen band, every cell a count of real tests. The empty cells are the story. A separate column shows runs whose source tables never recorded oxygen at all.
-- **Where the evidence runs out**: plain sentences computed from the data, like "No run with a recorded starting oxygen (140 of 263) started above 22.2%; your scenario is 30%." No risk scores, no verdicts.
+- **Where the evidence runs out**: plain sentences computed from the data, like "No solid-material run with a recorded starting oxygen (140 of 263) started above 22.2%; your scenario is 30%." No risk scores, no verdicts.
 - **Ask the evidence** (`/ask`): questions are answered only from NASA text. Every quote is checked word for word against its source before it's shown. If the sources don't cover it, the app says so (status `insufficient_evidence`) instead of answering.
 - **Scorecard** (`/evals`): we test the Ask feature on a fixed question set and publish the results, failures included.
 - **Investigations** (`/investigations`): all 24 PSI combustion investigations, filterable by safety area (prevention, detection, suppression, fundamental).

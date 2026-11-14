@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { HigherOxygenNote } from "./lab/higher-oxygen-note";
 import { presets, scenarioToQuery } from "./lab/scenario";
 
 const REPO = "https://github.com/Mahoozi/NASA-2026";
@@ -55,6 +56,10 @@ function readEvalTotals(): EvalTotals | null {
   return ok ? (t as EvalTotals) : null;
 }
 
+/** "A, B and C" */
+const listOf = (xs: string[]) =>
+  xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`;
+
 function landingFacts() {
   const runs = runsJson as Run[];
   const investigations = investigationsJson as Investigation[];
@@ -64,7 +69,10 @@ function landingFacts() {
     totalRuns: runs.length,
     tables: new Set(runs.map((r) => r.investigationId)).size,
     o2Runs: withO2.length,
-    o2Investigations: new Set(withO2.map((r) => r.investigationId)).size,
+    // Acronyms of the investigations whose tables record a starting oxygen.
+    o2Investigations: [...new Set(withO2.map((r) => r.investigationId))].map(
+      (id) => investigations.find((i) => i.id === id)?.acronym || id,
+    ),
     maxO2: Math.max(...withO2.map((r) => r.o2InitialPct!)),
     // Runs carry no gravity field; a run counts as lunar or Martian only if its
     // investigation's platform says so in data/investigations.json.
@@ -104,10 +112,11 @@ export default function Home() {
           The gap in one line
         </h2>
         <p className="max-w-3xl text-2xl font-medium tracking-tight text-balance">
-          {f.o2Runs} NASA flight tests with a recorded starting oxygen, across{" "}
-          {f.o2Investigations} investigations. Highest: {f.maxO2}%. Planned Moon Base
-          atmosphere: 30% or more.
+          {f.o2Runs} solid-material flight tests ({listOf(f.o2Investigations)}) with a
+          recorded starting oxygen. Highest: {f.maxO2}%. Planned Moon Base atmosphere: 30% or
+          more.
         </p>
+        <HigherOxygenNote maxSolidO2={f.maxO2} className="max-w-3xl text-base" />
         <p className="text-sm text-muted-foreground">
           {f.partialGravityRuns} of {f.totalRuns} imported runs were in lunar or Martian gravity.
         </p>
