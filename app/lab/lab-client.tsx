@@ -6,6 +6,7 @@ import { useCallback, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
+import { CoverageGrid } from "./coverage-grid";
 import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
@@ -73,6 +74,17 @@ export function LabClient({
             Pressure alone is not scored.
           </p>
         )}
+      </section>
+
+      <section aria-labelledby="grid-heading" className="flex flex-col gap-3">
+        <h2 id="grid-heading" className="text-lg font-semibold">
+          Coverage grid: runs by material and starting oxygen
+        </h2>
+        <CoverageGrid
+          runs={runs}
+          scenario={scenario}
+          onPick={(materialFamily, o2Pct) => setScenario({ ...scenario, materialFamily, o2Pct })}
+        />
       </section>
 
       <section aria-labelledby="chart-heading" className="flex flex-col gap-3">

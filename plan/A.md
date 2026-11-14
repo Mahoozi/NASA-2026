@@ -64,7 +64,7 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
   Also: Y axis fixed at 10–36% so the empty region above the data is visible; a shaded band from 30% up labelled "Moon Base planned atmosphere (≥30% O2, NASA challenge brief)"; the scenario marker is drawn even when it falls in empty space (a line when only one of O2 / flow is set).
   Done when: chart renders on `/lab`, legend lists families, caption counts unplotted runs.
   Commit: `Add gap chart`.
-- [ ] **Coverage grid** (`app/lab/coverage-grid.tsx`). Rows = material families, columns = starting-O2 bands <15, 15–17, 17–19, 19–21, 21–23, 23–30, 30–36 (lower-inclusive). Each cell shows the run count; zero cells are visibly empty and styled as gaps. Clicking a cell sets the scenario's material and the band's midpoint O2 (<15 uses 12.5, the chart's 10–15 range). Caption: "Microgravity only. No partial-gravity runs exist in PSI."
+- [x] **Coverage grid** (`app/lab/coverage-grid.tsx`). Rows = material families, columns = starting-O2 bands <15, 15–17, 17–19, 19–21, 21–23, 23–30, 30–36 (lower-inclusive). Each cell shows the run count; zero cells are visibly empty and styled as gaps. Clicking a cell sets the scenario's material and the band's midpoint O2 (<15 uses 12.5, the chart's 10–15 range). Caption: "Microgravity only. No partial-gravity runs exist in PSI."
   Commit: `Add coverage grid`.
 - [ ] **Dataset download.** "Download cleaned dataset (CSV)" and "(JSON)", client-side, all runs with every field. CSV: flags and events joined by "; ", first line a `#` comment with the PSI-25 source URL. JSON: `{ note, sourceUrl, runs }` with `runs` as `Run[]`.
   Commit: `Add dataset download`.
