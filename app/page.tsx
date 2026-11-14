@@ -173,17 +173,17 @@ export default function Home() {
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
                 {f.totalRuns} runs imported from {f.tables} PSI experiment tables; values the
-                source can&apos;t support are flagged, never corrected.{" "}
+                source can&apos;t support are flagged, never corrected. We found{" "}
                 <a
                   href={`${REPO}/blob/main/pipeline/source_discrepancies.md`}
                   target="_blank"
                   rel="noreferrer"
                   className="underline underline-offset-4 hover:text-foreground"
                 >
-                  {f.sourceDiscrepancies} places where a PSI table disagrees with a NASA paper
+                  {f.sourceDiscrepancies} discrepancies
                   <span className="sr-only"> (opens in a new tab)</span>
-                </a>
-                , flagged rather than silently fixed.
+                </a>{" "}
+                between PSI tables and NASA papers.
               </CardContent>
             </Card>
           </li>

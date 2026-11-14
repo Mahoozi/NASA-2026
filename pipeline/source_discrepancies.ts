@@ -16,6 +16,8 @@ export type SourceDiscrepancy = {
   field: string;
   tableValue: string;
   publishedValue: string;
+  /** Context that is not from the cited source; shown in the report's Note column. */
+  note?: string;
   source: { id: string; url: string; where: string };
   /** The flag added to each affected run. */
   flag: string;
@@ -45,7 +47,8 @@ export const SOURCE_DISCREPANCIES: SourceDiscrepancy[] = [
     samples: "all",
     field: "sample length × width",
     tableValue: "length 40.6 cm, width 94 cm",
-    publishedValue: "94 x 40.6 cm (Saffire-III's PSI table: length 94 cm, width 40.6 cm)",
+    publishedValue: "94 x 40.6 cm",
+    note: "Saffire-III's PSI table lists length 94, width 40.6",
     source: { ...NTRS_2017, where: "abstract" },
     flag: "length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide",
   },
@@ -124,7 +127,7 @@ export function buildDiscrepancyReport(runs: Run[]): string {
   const cell = (s: string) => s.replace(/\|/g, "\\|");
   const rows = SOURCE_DISCREPANCIES.map((d) => {
     const ids = flaggedRuns(runs, d).map((r) => r.testId).join(", ") || "none";
-    return `| ${d.psiId} | ${ids} | ${d.field} | ${cell(d.tableValue)} | ${cell(d.publishedValue)} | [${d.source.id}](${d.source.url}), ${d.source.where} |`;
+    return `| ${d.psiId} | ${ids} | ${d.field} | ${cell(d.tableValue)} | ${cell(d.publishedValue)} | [${d.source.id}](${d.source.url}), ${d.source.where} | ${cell(d.note ?? "")} |`;
   });
   return `# Source discrepancies
 
@@ -136,8 +139,8 @@ the CSV \`flags\` column.
 Generated from \`SOURCE_DISCREPANCIES\` in \`pipeline/source_discrepancies.ts\` (the same list the
 importer applies) and the flags in \`data/runs.json\`. ${SOURCE_DISCREPANCIES.length} discrepancies.
 
-| Investigation | Run(s) | Field | PSI table value | Published value | Source |
-|---|---|---|---|---|---|
+| Investigation | Run(s) | Field | PSI table value | Published value | Source | Note |
+|---|---|---|---|---|---|---|
 ${rows.join("\n")}
 
 <!-- count: ${SOURCE_DISCREPANCIES.length} -->
