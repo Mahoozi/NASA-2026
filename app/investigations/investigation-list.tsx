@@ -1,7 +1,7 @@
 "use client";
-// Person B — investigation cards with a safety-area filter.
+// Person B — investigation cards with a safety-area filter kept in ?area=.
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Investigation, SafetyArea } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -24,8 +24,35 @@ import {
 } from "@/components/ui/select";
 import { SAFETY_AREAS, fuelPhaseText, labHref, safetyLabel, shortName } from "./labels";
 
-export function InvestigationList({ investigations }: { investigations: Investigation[] }) {
-  const [area, setArea] = useState<SafetyArea | null>(null);
+const isArea = (v: string | null): v is SafetyArea => SAFETY_AREAS.some((a) => a.value === v);
+
+/** Reads and writes the filter in the URL. Render inside <Suspense>. */
+export function InvestigationBrowser({ investigations }: { investigations: Investigation[] }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const param = useSearchParams().get("area");
+  const area = isArea(param) ? param : null;
+
+  const setArea = (next: SafetyArea | null) => {
+    const params = new URLSearchParams(window.location.search);
+    if (next) params.set("area", next);
+    else params.delete("area");
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+  };
+
+  return <InvestigationList investigations={investigations} area={area} onAreaChange={setArea} />;
+}
+
+export function InvestigationList({
+  investigations,
+  area,
+  onAreaChange,
+}: {
+  investigations: Investigation[];
+  area: SafetyArea | null;
+  onAreaChange?: (area: SafetyArea | null) => void;
+}) {
   const shown = area ? investigations.filter((i) => i.safetyArea.includes(area)) : investigations;
   const count = (a: SafetyArea) => investigations.filter((i) => i.safetyArea.includes(a)).length;
   const items = [
@@ -38,7 +65,7 @@ export function InvestigationList({ investigations }: { investigations: Investig
       <div className="flex flex-wrap items-end justify-between gap-3">
         <Field className="w-full sm:w-64">
           <FieldLabel htmlFor="safety-area">Safety area</FieldLabel>
-          <Select items={items} value={area} onValueChange={(v) => setArea(v as SafetyArea | null)}>
+          <Select items={items} value={area} onValueChange={(v) => onAreaChange?.(v as SafetyArea | null)}>
             <SelectTrigger id="safety-area" className="w-full">
               <SelectValue />
             </SelectTrigger>
@@ -53,33 +80,47 @@ export function InvestigationList({ investigations }: { investigations: Investig
             </SelectContent>
           </Select>
         </Field>
-        <p className="text-sm text-muted-foreground" aria-live="polite">
+        <p className="text-sm text-muted-foreground tabular-nums" aria-live="polite">
           Showing {shown.length} of {investigations.length}
         </p>
       </div>
 
-      <ul className="grid gap-4 sm:grid-cols-2">
-        {shown.map((inv) => (
-          <li key={inv.id} className="flex">
-            <InvestigationCard inv={inv} />
-          </li>
-        ))}
-      </ul>
+      {shown.length ? (
+        <ul className="grid gap-4 sm:grid-cols-2">
+          {shown.map((inv) => (
+            <li key={inv.id} className="flex">
+              <InvestigationCard inv={inv} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          No investigations in this safety area. Choose another area or show all.
+        </p>
+      )}
     </div>
   );
 }
 
 function InvestigationCard({ inv }: { inv: Investigation }) {
   return (
-    <Card className="w-full">
+    <Card className="w-full min-w-0">
       <CardHeader>
         <CardTitle className="flex flex-wrap items-baseline gap-x-2">
-          <Link href={`/investigations/${inv.id}`} className="underline-offset-4 hover:underline">
+          <Link
+            href={`/investigations/${inv.id}`}
+            translate="no"
+            className="underline-offset-4 hover:underline"
+          >
             {shortName(inv)}
           </Link>
-          {inv.acronym && <span className="text-xs font-normal text-muted-foreground">{inv.id}</span>}
+          {inv.acronym && (
+            <span translate="no" className="text-xs font-normal text-muted-foreground">
+              {inv.id}
+            </span>
+          )}
         </CardTitle>
-        <CardDescription>{inv.name}</CardDescription>
+        <CardDescription className="text-pretty">{inv.name}</CardDescription>
         {inv.hasRunData && (
           <CardAction>
             <Badge>Has run data</Badge>
