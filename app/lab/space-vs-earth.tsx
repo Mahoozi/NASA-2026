@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { GravityBoundsNote } from "./gravity-bounds-note";
 
 export const SAFFIRE_II = "PSI-99";
 const MATERIAL_FROM_ROW_ABOVE = "material blank in source; taken from the row above";
@@ -24,39 +25,42 @@ export function SpaceVsEarth({ runs }: { runs: Run[] }) {
     v === undefined ? <span className="text-muted-foreground">not in table</span> : v;
 
   return (
-    <Table>
-      <TableCaption className="text-left">
-        Values copied verbatim from the PSI-99 experimental table.
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead scope="col">Sample</TableHead>
-          <TableHead scope="col">Material</TableHead>
-          <TableHead scope="col">Microgravity burn length</TableHead>
-          <TableHead scope="col">1-g burn length</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {rows.map((r) => (
-          <TableRow key={r.id}>
-            <TableCell className="font-medium">{r.testId}</TableCell>
-            <TableCell className="whitespace-normal">
-              {r.flags.includes(MATERIAL_FROM_ROW_ABOVE) ? (
-                <>
-                  <span className="text-muted-foreground">(blank in source)</span>{" "}
-                  <span className="text-sm text-muted-foreground">
-                    row above: {r.material.raw}
-                  </span>
-                </>
-              ) : (
-                r.material.raw
-              )}
-            </TableCell>
-            <TableCell className="whitespace-normal">{cell(observed(r, "microgravity burn length"))}</TableCell>
-            <TableCell className="whitespace-normal">{cell(observed(r, "1-g burn length"))}</TableCell>
+    <div className="flex flex-col gap-3">
+      <GravityBoundsNote className="max-w-3xl text-sm" />
+      <Table>
+        <TableCaption className="text-left">
+          Values copied verbatim from the PSI-99 experimental table.
+        </TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead scope="col">Sample</TableHead>
+            <TableHead scope="col">Material</TableHead>
+            <TableHead scope="col">Microgravity burn length</TableHead>
+            <TableHead scope="col">1-g burn length</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {rows.map((r) => (
+            <TableRow key={r.id}>
+              <TableCell className="font-medium">{r.testId}</TableCell>
+              <TableCell className="whitespace-normal">
+                {r.flags.includes(MATERIAL_FROM_ROW_ABOVE) ? (
+                  <>
+                    <span className="text-muted-foreground">(blank in source)</span>{" "}
+                    <span className="text-sm text-muted-foreground">
+                      row above: {r.material.raw}
+                    </span>
+                  </>
+                ) : (
+                  r.material.raw
+                )}
+              </TableCell>
+              <TableCell className="whitespace-normal">{cell(observed(r, "microgravity burn length"))}</TableCell>
+              <TableCell className="whitespace-normal">{cell(observed(r, "1-g burn length"))}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }
