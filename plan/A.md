@@ -40,6 +40,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   - `matchingRunIds` = runs of that investigation whose every specified run-level dimension is ≥ 0.5.
   - `coverage`: `direct` if score ≥ 0.8 **and** at least one matching run; `partial` if score ≥ 0.4; else `none`. Investigations with `hasRunData: false` can reach at most `partial` (we have no runs to show).
   - `breakdown` keys are the dimension names above.
+  - **Amended (Stage 2):** run-level dimensions are material, O2, flow **and gravity**, and they are scored only for investigations that have runs in `data/runs.json`. An investigation without runs is scored on `safetyArea` alone when the scenario sets it; otherwise score 0, coverage `none`, and the UI labels it "no test-level data imported".
   Done when: `pipeline/match.test.ts` (vitest) covers each dimension with real PSI-25 runs (B14, O5b, P8, T17, M5) and a `hasRunData: false` investigation, and `npm test` passes.
   Commit: `Add investigation matching`.
 - [x] **Lab scenario form** (`app/lab/scenario-form.tsx`, client). Skills: `shadcn` (add Select via `npx shadcn@latest add select`, commit alone), `vercel-react-best-practices`. Fields: material family (select from `MaterialFamily`), O2 % (number), flow cm/s (number), gravity (select), safety area (select). All optional. State in URL search params (`?material=PMMA%20rod&o2=17&flow=5&gravity=micro`) so a scenario is a link.
@@ -53,14 +54,24 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   Done when: `/lab?material=PMMA%20rod&o2=17&flow=5` puts PSI-25 first with `direct`.
   Commit: `Rank investigations in Lab`.
 
-## Stage 2 — Show it (hour 10–22)
+## Stage 2 — Show it (due Sun 13:00)
 
+Page order on `/lab`: presets and form → summary + gaps panel → coverage grid → gap chart → ranked investigations → runs table → download.
+
+- [ ] **Ranked list never shows a 0-score item as "top".** Only investigations scoring above 0 are listed. When none does, the list is replaced by the plain statement "No imported investigation covers this scenario", followed by the gaps panel.
+  Commit: `Hide zero-score investigations`.
 - [ ] **Gap chart** (`app/lab/gap-chart.tsx`, Recharts `ScatterChart`). X = `flowCmS.max` (or min when max is null), Y = `o2InitialPct`, one point per run, colour by material family, matching runs full opacity and others dimmed, scenario as a reference marker. Runs with null O2 or flow are counted in a caption ("12 runs not plotted: airflow not numeric"), never dropped silently. Skills: `dataviz` (load before writing a line of chart code), then `frontend-design` for one visual pass over the whole `/lab` page.
+  Also: Y axis fixed at 10–36% so the empty region above the data is visible; a shaded band from 30% up labelled "Moon Base planned atmosphere (≥30% O2, NASA challenge brief)"; the scenario marker is drawn even when it falls in empty space (a line when only one of O2 / flow is set).
   Done when: chart renders on `/lab`, legend lists families, caption counts unplotted runs.
   Commit: `Add gap chart`.
+- [ ] **Coverage grid** (`app/lab/coverage-grid.tsx`). Rows = material families, columns = starting-O2 bands <15, 15–17, 17–19, 19–21, 21–23, 23–30, 30–36 (lower-inclusive). Each cell shows the run count; zero cells are visibly empty and styled as gaps. Clicking a cell sets the scenario's material and the band's midpoint O2 (<15 uses 12.5, the chart's 10–15 range). Caption: "Microgravity only. No partial-gravity runs exist in PSI."
+  Commit: `Add coverage grid`.
+- [ ] **Dataset download.** "Download cleaned dataset (CSV)" and "(JSON)", client-side, all runs with every field. CSV: flags and events joined by "; ", first line a `#` comment with the PSI-25 source URL. JSON: `{ note, sourceUrl, runs }` with `runs` as `Run[]`.
+  Commit: `Add dataset download`.
 - [ ] **Matching runs table.** Reuse `app/lab/runs-table.tsx`; filter to `matchingRunIds` when a scenario is set, with a toggle "show all 129". Flags badge stays. Runs with no event keyword display "outcome not recorded", never a dash or anything implying the sample kept burning (applies from Stage 1 on).
   Commit: `Filter runs table by scenario`.
 - [ ] **"Where the evidence runs out" panel** (`app/lab/gaps-panel.tsx`). For each specified dimension with closeness 0 across *all* investigations, one plain sentence that carries the numbers computed from `data/runs.json`, e.g. "No run started above 22.2% oxygen; your scenario is 30%." or "0 of 129 runs were at lunar gravity." or "No run used Nomex between 16% and 18% O2." Every number in a sentence is computed at render time, never hardcoded; wording is templated, never free text, never a verdict.
+  Plus a "nearest evidence" line per numeric dimension set, e.g. "Highest starting oxygen in any run: 22.2% (test X). Your scenario: 30%, a gap of 7.8 points." For gravity other than micro: "0 of 129 runs were at lunar gravity; NASA's challenge brief states PSI holds no partial-gravity combustion data." No verdict words.
   Done when: scenario with `gravity=lunar` shows the gravity sentence.
   Commit: `Add evidence gaps panel`.
 
