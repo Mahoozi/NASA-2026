@@ -43,3 +43,12 @@ next-env.d.ts
 
 # raw NASA PDFs (not committed)
 data/raw/*.pdf
+
+# skills CLI (npx skills): keep the canonical copies and the lock file,
+# ignore the per-agent symlink folders it creates for other tools
+.*/
+!.agents/
+!.claude/
+!.github/
+/skills/
+/data/skills/

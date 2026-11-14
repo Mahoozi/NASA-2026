@@ -26,3 +26,5 @@ LLM calls go through the Vercel AI SDK (OpenAI, server-side only, key in OPENAI_
 ## Plan
 - Start of every session: read plan/PLAN.md, then plan/A.md or plan/B.md for the
   person you work for, then plan/REQUESTS.md. Tick items there in the same commit as the work.
+- Shared skills live in .claude/skills (managed by `npx skills`, lock in skills-lock.json) and are
+  committed, so a pull is all that's needed. plan/PLAN.md §8 says which skill to load for which task.

@@ -3,6 +3,8 @@
 Files you own: `app/lab/**`, `lib/match.ts`, `data/runs.json`, `pipeline/psi_*`, `pipeline/match*`.
 Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
+**Skills for this track** (see PLAN.md §8): `tdd`, `vitest`, `shadcn`, `vercel-react-best-practices`, `frontend-design`, `web-design-guidelines`, `writing-guidelines` (project set); `dataviz`, `/code-review`, `Explore` agent (user set). Each item below names the ones to load first.
+
 ## Already done
 
 - [x] Scaffold, schema, stubs (`3418429`)
@@ -25,7 +27,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 1 — Core (hour 1–10)
 
-- [ ] **Scoring in `lib/match.ts`.** Pure function, no I/O. Per-dimension closeness 0..1, only for dimensions the scenario specifies:
+- [ ] **Scoring in `lib/match.ts`.** Skills: `tdd` (agree the seams: the exported function only), `vitest`. Pure function, no I/O. Per-dimension closeness 0..1, only for dimensions the scenario specifies:
   | Dimension | Closeness |
   |---|---|
   | `materialFamily` | exact family = 1; same base (any PMMA ↔ any PMMA) = 0.5; else 0 |
@@ -39,7 +41,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   - `breakdown` keys are the dimension names above.
   Done when: `pipeline/match.test.ts` (vitest) covers each dimension with real PSI-25 runs (B14, O5b, P8, T17, M5) and a `hasRunData: false` investigation, and `npm test` passes.
   Commit: `Add investigation matching`.
-- [ ] **Lab scenario form** (`app/lab/scenario-form.tsx`, client). Fields: material family (select from `MaterialFamily`), O2 % (number), flow cm/s (number), gravity (select), safety area (select). All optional. State in URL search params (`?material=PMMA%20rod&o2=17&flow=5&gravity=micro`) so a scenario is a link.
+- [ ] **Lab scenario form** (`app/lab/scenario-form.tsx`, client). Skills: `shadcn` (add Select via `npx shadcn@latest add select`, commit alone), `vercel-react-best-practices`. Fields: material family (select from `MaterialFamily`), O2 % (number), flow cm/s (number), gravity (select), safety area (select). All optional. State in URL search params (`?material=PMMA%20rod&o2=17&flow=5&gravity=micro`) so a scenario is a link.
   Done when: changing a field updates the URL and the ranked list without reload.
   Commit: `Add scenario form`.
 - [ ] **Ranked investigations list** (`app/lab/ranked-list.tsx`). Reads `data/investigations.json` (fallback to `data/investigations.sample.json` until B's v0 lands — leave `// TODO(B)`), calls `matchInvestigations`, shows acronym, name, coverage badge, score bar, breakdown chips, "n matching runs".
@@ -48,7 +50,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 2 — Show it (hour 10–22)
 
-- [ ] **Gap chart** (`app/lab/gap-chart.tsx`, Recharts `ScatterChart`). X = `flowCmS.max` (or min when max is null), Y = `o2InitialPct`, one point per run, colour by material family, matching runs full opacity and others dimmed, scenario as a reference marker. Runs with null O2 or flow are counted in a caption ("12 runs not plotted: airflow not numeric"), never dropped silently. Load the `dataviz` skill before writing it.
+- [ ] **Gap chart** (`app/lab/gap-chart.tsx`, Recharts `ScatterChart`). X = `flowCmS.max` (or min when max is null), Y = `o2InitialPct`, one point per run, colour by material family, matching runs full opacity and others dimmed, scenario as a reference marker. Runs with null O2 or flow are counted in a caption ("12 runs not plotted: airflow not numeric"), never dropped silently. Skills: `dataviz` (load before writing a line of chart code), then `frontend-design` for one visual pass over the whole `/lab` page.
   Done when: chart renders on `/lab`, legend lists families, caption counts unplotted runs.
   Commit: `Add gap chart`.
 - [ ] **Matching runs table.** Reuse `app/lab/runs-table.tsx`; filter to `matchingRunIds` when a scenario is set, with a toggle "show all 129". Flags badge stays.
@@ -59,6 +61,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 3 — Integrate (hour 22–32)
 
+- [ ] **UI review.** Skill: `web-design-guidelines` on `app/lab/**`; fix only what it flags. Commit: `Review Lab UI`.
 - [ ] **Handoff button.** "Ask about this scenario" → navigates to `/ask?scenario=<json>&investigations=PSI-25,PSI-xx` (top 3 by score). B's `/ask` reads those params. If B's page does not read them yet, the link still works as a plain link.
   Commit: `Link Lab to Ask`.
 - [ ] **Lab accepts `?investigation=PSI-25`** and pre-filters the runs table. Rows link to `/investigations/[id]`.
@@ -67,7 +70,8 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 4 — Freeze (hour 32–48)
 
-- [ ] `README.md`: screenshots, "how it works" (3 bullets), link to `pipeline/psi_bass2_columns.md`.
+- [ ] `README.md`: screenshots, "how it works" (3 bullets), link to `pipeline/psi_bass2_columns.md`. Skill: `writing-guidelines`.
+- [ ] Deploy (human runs it). Skills: `deploy-to-vercel`, `vercel-cli-with-tokens`. Set `OPENAI_API_KEY` in the Vercel project, never in the repo.
 - [ ] `REFERENCES.md`: PSI-25 URL, guide PDF title, any image sources.
 - [ ] Rehearse demo. Bug-only commits.
 

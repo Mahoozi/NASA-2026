@@ -45,7 +45,7 @@ Until B's v0 lands, A reads `data/investigations.sample.json` (read-only). After
 
 ## 3. Stages
 
-Hours are from the moment the plan is committed. If a stage overruns, use the cut list in §8, don't slide the freeze.
+Hours are from the moment the plan is committed. If a stage overruns, use the cut list in §9, don't slide the freeze.
 
 | Stage | Hours | A — Scenario Lab | B — Ask / Investigations / Evals |
 |---|---|---|---|
@@ -86,7 +86,7 @@ Each person's "done when" checks are in their own file.
 
 1. Read `CLAUDE.md`, `lib/schema.ts`, `plan/PLAN.md`, your `plan/A.md` or `plan/B.md`, `plan/REQUESTS.md`.
 2. `git status` and `git log --oneline -10`. Note anything the other track landed that you consume.
-3. Take the first unchecked item in your file. Tick it in the file when its "done when" passes, in the same commit as the work.
+3. Take the first unchecked item in your file. Load the skills listed for it (§8) before starting. Tick it in the file when its "done when" passes, in the same commit as the work.
 4. Before finishing a session: `npm test && npm run lint && npm run build` green, everything committed, `plan/<you>.md` ticked, requests for the other side written down.
 
 ## 7. Stop-and-ask gates
@@ -99,7 +99,29 @@ Stop and ask the human instead of guessing when:
 - the LLM produced an answer with no citation that verifies → return `insufficient_evidence`, never patch the answer;
 - a raw file in `data/raw` looks wrong (don't fix it — flag it).
 
-## 8. Demo script and cut list
+## 8. Skills and agents: who uses what, when
+
+Skills are reference material a Claude session loads before a task. Two sets exist:
+
+- **Project set** (committed, same for both of us): `.claude/skills/*` managed with the `skills` CLI (`npx skills list`, lock in `skills-lock.json`). After `git pull`, nothing to install — the copies are in the repo.
+- **User set** (built into Claude Code or installed per user; your session may not list all of them): `dataviz`, `/code-review`, `/simplify`, `run`, `engineering:*`, `design:*`, `anthropic-skills:pdf`, agents `Explore` and `Plan`.
+
+Invoke with the Skill tool, or by name: "load the `ai-sdk` skill then …". If a skill is missing from your session, say so and continue without it; never block on a skill.
+
+| Stage | Person A (Lab) | Person B (Ask / Investigations / Evals) |
+|---|---|---|
+| 0 Contracts | `tdd` — write `pipeline/match.test.ts` seams before scoring | — |
+| 1 Core | `tdd` + `vitest` for `match.ts`; `shadcn` for the scenario form (Select, Input, Badge); `vercel-react-best-practices` for client/server split of `/lab` | `anthropic-skills:pdf` (user set) for extracting the guide PDF; `ai-sdk` for `/api/ask` — it says to read `node_modules/ai/docs`, do that, we have `ai@7`; `rag-implementation` **only** its chunking and citation-grounding sections (we use MiniSearch, not a vector DB); `vitest` for `retrieve.test.ts` |
+| 2 Show it | `dataviz` (user set) **before** writing the gap chart; `frontend-design` for one visual pass on `/lab`; `shadcn` for Table/Tooltip/Card | `frontend-design` for `/ask` and `/investigations`; `shadcn` for cards and detail layout; `design:ux-copy` (user set) for the `insufficient_evidence` wording |
+| 3 Integrate | `web-design-guidelines` review of `/lab` | `web-design-guidelines` review of `/ask`, `/investigations`; `design:accessibility-review` (user set) on both |
+| 4 Freeze | `writing-guidelines` on README / REFERENCES; `deploy-to-vercel` + `vercel-cli-with-tokens` (human runs the deploy) | `writing-guidelines` on `pipeline/corpus_report.md`; `engineering:documentation` (user set) for the README "how it works" |
+| any | `/code-review` before each commit that touches `match.ts`; `Explore` agent to find where the other track put something | `/code-review` before each commit that touches `/api/ask`; `Explore` agent likewise |
+
+Installed but **not** for this project (leave them, don't load them): `vercel-react-native-skills`, `vercel-react-view-transitions`, `vercel-optimize`, `vercel-composition-patterns`.
+
+Want another skill? `npx skills find <query>`, prefer 1K+ installs from a known source, install with `npx skills add <owner/repo@skill> -a claude-code -y`, commit `.claude/skills/<name>` and `skills-lock.json` alone as `Add <name> skill`.
+
+## 9. Demo script and cut list
 
 **Demo (90 s):** Home → Lab: pick "PMMA rod, 17% O2, 5 cm/s, microgravity" → show direct coverage on PSI-25, partial elsewhere, chart with the matching runs lit up, panel saying no lunar-gravity data exists → "Ask about this scenario" → answer with verified citations → open PSI-25 investigation page → Scorecard.
 
