@@ -65,6 +65,12 @@ describe("parseMaterial", () => {
   it("T28b: 1 cm SIBAL", () => {
     expect(parseMaterial("1 cm SIBAL").material.widthCm).toBe(1);
   });
+  it("T3/T7: spherical section is 'other', flagged, and gets no width", () => {
+    expect(parseMaterial("4 cm spherical section")).toEqual({
+      material: { family: "other", raw: "4 cm spherical section" },
+      flags: [FLAG.spherical],
+    });
+  });
   it("F4: wax candle", () => {
     expect(parseMaterial("Japan Wax candle")).toEqual({
       material: { family: "wax", raw: "Japan Wax candle" },

@@ -207,7 +207,9 @@ export function parseMaterial(rawCell: string): ParsedMaterial {
 
   const material: Run["material"] = { family, raw };
   if (thicknessMm !== undefined) material.thicknessMm = thicknessMm;
-  if (widthCm !== undefined) material.widthCm = widthCm;
+  // A "<n> cm" on an unidentified sample (e.g. "4 cm spherical section")
+  // is not known to be a width, so it is not recorded as one.
+  if (widthCm !== undefined && family !== "other") material.widthCm = widthCm;
   if (diameterIn !== undefined) material.diameterIn = diameterIn;
   return { material, flags };
 }

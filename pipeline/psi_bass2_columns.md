@@ -48,7 +48,7 @@ General rule: values are never dropped, corrected, averaged or filled in. A valu
 - `family` (case-insensitive, first match wins): `sibal` → SIBAL fabric; `nomex` → Nomex; `wax` → wax; `spherical` → other (flag *spherical sample: material not stated in table*); `rod` → PMMA rod; `film` or `micron` or thickness ≤ 0.5 mm → PMMA film; `slab` or `sided` or thickness ≥ 1 mm → PMMA slab; otherwise other.
 - If the family is a PMMA type but the text does not say "PMMA", flag *material inferred as PMMA from sibling rows*.
 - `thicknessMm`: `<n> micron` → n/1000, otherwise `<n> mm` / `<n>mm` → n.
-- `widthCm`: first `<n> cm`. This also matches "4 cm spherical section" (T3, T7), where the 4 cm is likely the sample size rather than a width.
+- `widthCm`: first `<n> cm`, but only when the family is not `other`. The "4 cm spherical section" rows (T3, T7) get no width, because the 4 cm is likely the sample's size, not a width. The text is still in `raw`.
 - `diameterIn`: `1/4` → 0.25, `3/8` → 0.375, `1/2` or `0.5` → 0.5.
 
 ### o2InitialPct / o2FinalPct

@@ -3418,8 +3418,7 @@
     "date": "2014-06-27",
     "material": {
       "family": "other",
-      "raw": "4 cm spherical section",
-      "widthCm": 4
+      "raw": "4 cm spherical section"
     },
     "o2InitialPct": 17.2,
     "o2FinalPct": 16.8,
@@ -3546,8 +3545,7 @@
     "date": "2014-07-09",
     "material": {
       "family": "other",
-      "raw": "4 cm spherical section",
-      "widthCm": 4
+      "raw": "4 cm spherical section"
     },
     "o2InitialPct": 17.3,
     "o2FinalPct": 17.1,
