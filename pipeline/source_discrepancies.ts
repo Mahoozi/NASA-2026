@@ -48,7 +48,7 @@ export const SOURCE_DISCREPANCIES: SourceDiscrepancy[] = [
     field: "sample length × width",
     tableValue: "length 40.6 cm, width 94 cm",
     publishedValue: "94 x 40.6 cm",
-    note: "Saffire-III's PSI table lists length 94, width 40.6",
+    note: "Saffire-III's PSI table lists length 94 cm, width 40.6 cm",
     source: { ...NTRS_2017, where: "abstract" },
     flag: "length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide",
   },

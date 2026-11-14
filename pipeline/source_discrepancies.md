@@ -10,7 +10,7 @@ importer applies) and the flags in `data/runs.json`. 6 discrepancies.
 
 | Investigation | Run(s) | Field | PSI table value | Published value | Source | Note |
 |---|---|---|---|---|---|---|
-| PSI-98 | S1, S2 | sample length × width | length 40.6 cm, width 94 cm | 94 x 40.6 cm | [NTRS 20170008805](https://ntrs.nasa.gov/citations/20170008805), abstract | Saffire-III's PSI table lists length 94, width 40.6 |
+| PSI-98 | S1, S2 | sample length × width | length 40.6 cm, width 94 cm | 94 x 40.6 cm | [NTRS 20170008805](https://ntrs.nasa.gov/citations/20170008805), abstract | Saffire-III's PSI table lists length 94 cm, width 40.6 cm |
 | PSI-98 | S1, S2 | thickness | 0.37 cm | 0.37 mm (I-1, I-2) | [NTRS 20180005168](https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf), p. 30, Table 1 |  |
 | PSI-99 | 2-6 | airflow | 20 cm/s | 25 cm/s (II-6) | [NTRS 20180005168](https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf), p. 30, Table 1 |  |
 | PSI-100 | S1, S2 | airflow | 30 cm/s | 25 cm/s (III-1, III-2) | [NTRS 20180005168](https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf), p. 16; p. 30, Table 1 |  |

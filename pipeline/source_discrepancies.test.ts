@@ -42,4 +42,12 @@ describe("source discrepancies", () => {
     const ntrsFlags = new Set(runs.flatMap((r) => r.flags.filter((f) => /\bNTRS \d{11}\b/.test(f))));
     expect(ntrsFlags.size).toBe(SOURCE_DISCREPANCIES.length);
   });
+
+  it("keeps the README discrepancy count in sync with the audit list", () => {
+    const readme = readFileSync(new URL("../README.md", import.meta.url), "utf8");
+    const count = readme.match(/\bWe found (\d+) such discrepancies\b/);
+    expect(count, 'README.md must include "We found N such discrepancies" with a numeric N').not.toBeNull();
+    expect(Number(count![1]), "README.md discrepancy count must equal SOURCE_DISCREPANCIES.length")
+      .toBe(SOURCE_DISCREPANCIES.length);
+  });
 });

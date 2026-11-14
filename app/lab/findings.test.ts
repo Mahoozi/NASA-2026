@@ -2,8 +2,9 @@
 // never be copied into data/.
 import { renderToStaticMarkup } from "react-dom/server";
 import { createElement } from "react";
+import { parse } from "node-html-parser";
 import { describe, expect, it } from "vitest";
-import type { CorpusDoc, Finding } from "../../lib/schema";
+import type { CorpusDoc, Finding, Scenario } from "../../lib/schema";
 import { FINDINGS_EMPTY, FindingsPanel } from "./findings-panel";
 import { FINDING_LABEL, findingOverlaps, relevantFindings, verifiedFindings } from "./findings";
 import { presets } from "./scenario";
@@ -66,6 +67,9 @@ describe("published findings", () => {
     ];
     expect(verifiedFindings(fixture, corpus).map((f) => f.id)).toEqual(["fx-a", "fx-c"]);
     expect(verifiedFindings([{ ...fixture[0], sourceDocId: "missing" }], corpus)).toEqual([]);
+    expect(verifiedFindings([{ ...fixture[0], quote: "Fixture  quote A" }], corpus)).toEqual([]);
+    expect(verifiedFindings([{ ...fixture[0], quote: "" }], corpus)).toEqual([]);
+    expect(verifiedFindings([], corpus)).toEqual([]);
   });
 
   it("renders claim, quote, source link and label", () => {
@@ -89,6 +93,73 @@ describe("published findings", () => {
 
   it("every entry in data/findings.json has a quote found verbatim in data/corpus.json", () => {
     const findings = findingsJson as Finding[];
-    expect(verifiedFindings(findings, corpusJson as CorpusDoc[])).toHaveLength(findings.length);
+    const corpus = corpusJson as CorpusDoc[];
+    const verified = verifiedFindings(findings, corpus);
+    const sourceIds = new Set(corpus.map((doc) => doc.id));
+    const rejected = findings.filter((finding) => !verified.includes(finding)).map((finding) => ({
+      id: finding.id,
+      sourceDocId: finding.sourceDocId,
+      sourceExists: sourceIds.has(finding.sourceDocId),
+      quotePreview: finding.quote.slice(0, 80),
+    }));
+    expect(rejected, `Rejected findings (exact substring required):\n${JSON.stringify(rejected, null, 2)}`).toEqual([]);
   });
+
+  it("selects real PMMA findings for the demo", () => {
+    const verified = verifiedFindings(findingsJson as Finding[], corpusJson as CorpusDoc[]);
+    const selected = relevantFindings(demo, verified);
+    expect(selected.length).toBeGreaterThan(0);
+    expect(selected.some(({ finding, overlaps }) =>
+      finding.tags.materials?.includes(demo.materialFamily) && overlaps.includes("material"),
+    )).toBe(true);
+  });
+
+  it("selects the prospective FM2 finding and supported atmosphere evidence for Moon Base", () => {
+    const verified = verifiedFindings(findingsJson as Finding[], corpusJson as CorpusDoc[]);
+    const selected = relevantFindings(moon, verified);
+    const fm2 = selected.find(({ finding }) => finding.id === "fm2-lunar-reference")?.finding;
+    expect(fm2, "Moon Base must include the prospective FM2 finding").toBeDefined();
+    expect(fm2!.claim).toContain("planned");
+    expect(fm2!.quote).toContain("will be sent to the Lunar surface");
+    expect(selected.some(({ finding, overlaps }) =>
+      finding.tags.topic === "atmosphere" && overlaps.includes("oxygen"),
+    )).toBe(true);
+  });
+
+  it("caps real-data selection at three across presets and tagged scenario dimensions", () => {
+    const verified = verifiedFindings(findingsJson as Finding[], corpusJson as CorpusDoc[]);
+    const scenarios: Scenario[] = [
+      {}, demo, ...presets(runsJson as Run[]).map((preset) => preset.scenario),
+      ...verified.flatMap((finding) => [
+        ...(finding.tags.materials ?? []).map((materialFamily) => ({ materialFamily }) as Scenario),
+        ...(finding.tags.o2Range ?? []).map((o2Pct) => ({ o2Pct })),
+        ...(finding.tags.flowRange ?? []).map((flowCmS) => ({ flowCmS })),
+        ...(finding.tags.gravity ?? []).map((gravity) => ({ gravity })),
+      ]),
+    ];
+    expect(scenarios.some((scenario) => relevantFindings(scenario, verified).length === 3)).toBe(true);
+    for (const scenario of scenarios) {
+      expect(relevantFindings(scenario, verified).length, JSON.stringify(scenario)).toBeLessThanOrEqual(3);
+    }
+  });
+
+  for (const [name, scenario] of [["demo", demo], ["Moon Base", moon]] as const) {
+    it(`renders the real selected findings for ${name} with source links and verification labels`, () => {
+      const verified = verifiedFindings(findingsJson as Finding[], corpusJson as CorpusDoc[]);
+      const selected = relevantFindings(scenario, verified);
+      const rows = parse(render(verified, scenario)).querySelectorAll("li");
+      expect(rows).toHaveLength(selected.length);
+      expect(rows.length).toBeGreaterThan(0);
+      for (const { finding } of selected) {
+        const row = rows.find((node) => node.querySelector("a")?.getAttribute("href") === finding.url &&
+          node.querySelectorAll("p").some((p) => p.text === finding.claim));
+        expect(row, `Missing rendered finding ${finding.id}`).toBeDefined();
+        expect(row!.querySelectorAll("p").some((p) => p.text === FINDING_LABEL)).toBe(true);
+        expect(row!.querySelector("a")!.text).toContain(finding.sourceTitle);
+        // The panel changes nested quote marks for typography; all quoted words must survive.
+        const words = (text: string) => text.replace(/[“”‘’"']/g, "");
+        expect(words(row!.querySelector("blockquote")!.text)).toBe(words(finding.quote));
+      }
+    });
+  }
 });
