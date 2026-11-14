@@ -12,7 +12,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - `lib/schema.ts` types: `Investigation`, `CorpusDoc`, `AskRequest`, `AskResponse`.
 - `data/runs.json` and (from Stage 0) `lib/match.ts` from A.
 
-## Stage 0 — Contracts (hour 0–1)
+## Stage 0 — Contracts (due Sat 13:45)
 
 - [x] **`data/investigations.json` v0.** One entry per PSI combustion investigation, real values only, taken from the PSI pages: `id` (`"PSI-25"`), `acronym`, `name`, `url`, `safetyArea`, `fuelPhase`, `facility`, `platform`, `hasRunData` (true only for PSI-25 for now). `objectives` and `approach` as `""` until Stage 1.
   Done when: file parses as `Investigation[]` and includes PSI-25.
@@ -22,7 +22,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] `.env.local` with `OPENAI_API_KEY=` (never committed).
 - [x] **Vercel deploy of `main` (human runs it).** Skills: `deploy-to-vercel`, `vercel-cli-with-tokens`. Set `OPENAI_API_KEY` and `OPENAI_MODEL` in the Vercel project, never in the repo. Done when: the production URL serves `/` and every later push gets a preview URL.
 
-## Stage 1 — Core (hour 1–10)
+## Stage 1 — Core (due Sat 18:00)
 
 - [x] **`pipeline/corpus_build.ts`** (`npm run build:corpus`). Skills: `anthropic-skills:pdf` for the guide PDF text extraction; `rag-implementation` §chunking for how to split pages into docs (one doc per PSI section / PDF page is enough — no embeddings). Reads the raw PSI pages and the guide PDF, writes `data/corpus.json` as `CorpusDoc[]` and fills `objectives`, `approach`, `hypothesis`, `earthBenefits`, `doi` in `investigations.json`.
   Progress: PSI part done (24 investigations, 120 docs, all text fields filled, report written). Guide PDF and NASA web pages still to add. No `doi` in the PSI API, so it is omitted.
@@ -42,7 +42,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   Done when: `curl -X POST /api/ask -d '{"question":"What did BASS-II burn?"}'` returns ≥1 sentence with `verified: true`, and an off-topic question returns `insufficient_evidence`.
   Commit: `Implement ask API with verified citations`.
 
-## Stage 2 — Show it (hour 10–22)
+## Stage 2 — Show it (due Sun 09:00)
 
 - [x] **`/ask` page.** Skills: `shadcn`, `frontend-design` (one pass), `design:ux-copy` for the `insufficient_evidence` text. Textarea + submit; render each sentence followed by its citations as links (title → url), verified ones marked, unverified never shown. `insufficient_evidence` renders as a plain statement, not an error. Read `?scenario=` and `?investigations=` from the URL (A's handoff) and pass them as `context`.
   Commit: `Build ask page`.
@@ -54,7 +54,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   Done when: `npm run evals` runs end to end and `/evals` shows the numbers.
   Commit: `Add golden set and scorecard`.
 
-## Stage 3 — Integrate (hour 22–32)
+## Stage 3 — Integrate (due Sun 11:30, feature freeze)
 
 - [x] `/api/ask`: when `context.scenario` is present and `investigationIds` is empty, call `matchInvestigations(scenario, investigations, runs)` from `@/lib/match` and use the top 3 ids for retrieval boosting. Mention coverage in the prompt context only as data, never as a verdict.
   Commit: `Use scenario matching in ask`.
@@ -62,11 +62,13 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
   Commit: `Remove sample investigations`.
 
-## Stage 4 — Freeze (hour 32–48)
+## Stage 4 — Freeze (Sun 11:30–21:00: judging 15:00, final submission by 21:00)
 
 - [x] `REFERENCES.md`: every PSI page URL, guide PDF title, NTRS ids used. Skill: `writing-guidelines`; `engineering:documentation` for the README "how it works" section.
 - [ ] Rehearse `/ask` with the demo scenario; make sure the golden set includes it.
 - [ ] Bug-only commits.
+- [ ] 7 slides (shared deck).
+- [ ] Rehearse the demo three times.
 
 ## Gates (stop and ask)
 

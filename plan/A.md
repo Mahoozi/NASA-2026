@@ -11,7 +11,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] BASS-II import → `data/runs.json`, 129 runs, flags, tests, report (`7050936`)
 - [x] `/lab` sortable runs table with flags tooltip
 
-## Stage 0 — Contracts (hour 0–1)
+## Stage 0 — Contracts (due Sat 13:45)
 
 - [x] **`lib/match.ts` stub.** Export exactly:
   ```ts
@@ -25,7 +25,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   Done when: `npm run build` passes and B can `import { matchInvestigations } from "@/lib/match"`.
   Commit: `Add match.ts stub`.
 
-## Stage 1 — Core (hour 1–10)
+## Stage 1 — Core (due Sat 18:00)
 
 - [x] **Scoring in `lib/match.ts`.** Skills: `tdd` (agree the seams: the exported function only), `vitest`. Pure function, no I/O. Per-dimension closeness 0..1, only for dimensions the scenario specifies:
   | Dimension | Closeness |
@@ -54,7 +54,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   Done when: `/lab?material=PMMA%20rod&o2=17&flow=5` puts PSI-25 first with `direct`.
   Commit: `Rank investigations in Lab`.
 
-## Stage 2 — Show it (due Sun 13:00)
+## Stage 2 — Show it (due Sun 09:00)
 
 Page order on `/lab`: presets and form → summary + gaps panel → coverage grid → gap chart → ranked investigations → runs table → download.
 
@@ -75,7 +75,7 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
   Done when: scenario with `gravity=lunar` shows the gravity sentence.
   Commit: `Add evidence gaps panel`.
 
-## Stage 3 — Integrate (hour 22–32)
+## Stage 3 — Integrate (due Sun 11:30, feature freeze)
 
 - [ ] **UI review.** Skill: `web-design-guidelines` on `app/lab/**`; fix only what it flags. Commit: `Review Lab UI`.
 - [x] **Handoff button.** "Ask about this scenario" → navigates to `/ask?scenario=<json>&investigations=PSI-25,PSI-xx` (top 3 by score). B's `/ask` reads those params. If B's page does not read them yet, the link still works as a plain link.
@@ -84,11 +84,13 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
   Commit: `Link Lab rows to investigations`.
 - [x] Remove the `investigations.sample.json` fallback once B has deleted the file.
 
-## Stage 4 — Freeze (hour 32–48)
+## Stage 4 — Freeze (Sun 11:30–21:00: judging 15:00, final submission by 21:00)
 
 - [ ] `README.md`: screenshots, "how it works" (3 bullets), link to `pipeline/psi_bass2_columns.md`. Skill: `writing-guidelines`.
 - [ ] `REFERENCES.md`: PSI-25 URL, guide PDF title, any image sources.
 - [ ] Rehearse demo. Bug-only commits.
+- [ ] 7 slides (shared deck).
+- [ ] Rehearse the demo three times.
 
 ## Gates (stop and ask)
 

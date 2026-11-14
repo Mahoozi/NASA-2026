@@ -45,15 +45,29 @@ Until B's v0 lands, A reads `data/investigations.sample.json` (read-only). After
 
 ## 3. Stages
 
-Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when the stage's items are committed. **Sun 17:00 is feature freeze. Submit at Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
+Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when the stage's items are committed. **Local judging is Sun 15:00 at Vanier, in person: a live demo plus 7 slides or a 30-second video. Feature freeze is Sun 11:30. Final submission by Sun 21:00. Hard deadline Sun 23:59.** If a stage overruns, use the cut list in §9, don't slide the freeze.
+
+**Saturday evening:** A does the landing page, the README and a slide draft. B does demo-answer caching and repo tidy-up.
+
+**Sunday:**
+
+| Time | What |
+|---|---|
+| by 09:00 | Any cut-list item (§9) not working is cut, not finished |
+| 11:30 | Feature freeze |
+| 11:30–13:00 | Slides (7, shared deck) and cached demo answers |
+| 13:00–14:00 | Rehearse the 90-second demo (§9) three times |
+| 14:00–14:30 | Fill in and submit the Space Apps project page |
+| 15:00 | Judging at Vanier: live demo + 7 slides or a 30-second video |
+| after judging | Fixes only; final submission by 21:00; hard deadline 23:59 |
 
 | Stage | Due | A — Scenario Lab | B — Ask / Investigations / Evals |
 |---|---|---|---|
 | **0 Contracts** | Sat 13:45 | `lib/match.ts` stub with final signature | `investigations.json` v0; empty `corpus.json`, `golden.json`; `.env.local` with `OPENAI_API_KEY`; **Vercel deploy of `main` (human)** so every later push is a preview |
 | **1 Core** | Sat 18:00 | Real scoring in `match.ts` + `pipeline/match.test.ts`; Lab scenario form → ranked investigations with coverage badges | `pipeline/corpus_build.ts` (PSI pages + guide PDF → `corpus.json`); fill `investigations.json`; `lib/retrieve.ts` (MiniSearch); `/api/ask` with real LLM call, citation verification, `insufficient_evidence` path |
-| **2 Show it** | Sun 13:00 | Gap chart (runs scatter + scenario marker + matching runs highlighted); matching runs table with flags; "where the evidence runs out" panel | `/ask` page rendering sentences + verified citations; `/investigations` cards + `/investigations/[id]`; `golden.json` (≥10 questions) + `/evals` scorecard + `npm run evals` |
-| **3 Integrate** | Sun 17:00 (feature freeze) | "Ask about this scenario" button → `/ask` with scenario + top investigation ids; Lab rows link to `/investigations/[id]`; Lab accepts `?investigation=` | `/api/ask` uses `matchInvestigations` when `context.scenario` is present; `hasRunData` cards link to `/lab?investigation=PSI-25`; delete `data/investigations.sample.json` |
-| **4 Freeze** | Sun 17:00–21:00, submit 21:00 | README / REFERENCES (data sources, images); demo script; bug-only commits | Same; confirm the production deploy is the frozen commit; both rehearse the demo |
+| **2 Show it** | Sun 09:00 | Gap chart (runs scatter + scenario marker + matching runs highlighted); matching runs table with flags; "where the evidence runs out" panel | `/ask` page rendering sentences + verified citations; `/investigations` cards + `/investigations/[id]`; `golden.json` (≥10 questions) + `/evals` scorecard + `npm run evals` |
+| **3 Integrate** | Sun 11:30 (feature freeze) | "Ask about this scenario" button → `/ask` with scenario + top investigation ids; Lab rows link to `/investigations/[id]`; Lab accepts `?investigation=` | `/api/ask` uses `matchInvestigations` when `context.scenario` is present; `hasRunData` cards link to `/lab?investigation=PSI-25`; delete `data/investigations.sample.json` |
+| **4 Freeze** | Sun 11:30–21:00: judging 15:00, final submission by 21:00 | README / REFERENCES (data sources, images); demo script; bug-only commits | Same; confirm the production deploy is the frozen commit; both rehearse the demo |
 
 Each person's "done when" checks are in their own file.
 
@@ -63,7 +77,8 @@ Each person's "done when" checks are in their own file.
 2. **Shared files** and the only way to touch them:
    - `package.json` / `package-lock.json`: only *add* dependencies. Commit that alone, right away, as `Add <dep>`. Never remove or bump someone else's dep.
    - `components/ui/*`: add new shadcn components with `npx shadcn@latest add <name>`, commit alone as `Add <name> component`. Never edit an existing one; wrap it in your own folder instead.
-   - `app/layout.tsx`, `components/nav.tsx`, `app/page.tsx`, `app/globals.css`: frozen until Stage 4. Need a change? `plan/REQUESTS.md`.
+   - `app/layout.tsx`, `components/nav.tsx`, `app/globals.css`: frozen until Stage 4. Need a change? `plan/REQUESTS.md`.
+   - `app/page.tsx` (landing page): unfrozen for Person A only. Person B requests changes through `plan/REQUESTS.md`.
    - `lib/schema.ts`: frozen. A change needs both humans, lands as its own commit `Change schema: <what>` before anything depends on it, and both sides update their consumers in the next commit.
    - `CLAUDE.md`, `plan/*.md`: anyone can edit; keep it to additions.
 3. **Missing input from the other track?** Code against the type, leave `// TODO(A): …` or `// TODO(B): …`, keep going. Never build your own copy of the other side's artifact.
@@ -124,6 +139,8 @@ Want another skill? `npx skills find <query>`, prefer 1K+ installs from a known 
 ## 9. Demo script and cut list
 
 **Demo (90 s):** Home → Lab: pick "PMMA rod, 17% O2, 5 cm/s, microgravity" → show direct coverage on PSI-25, partial elsewhere, chart with the matching runs lit up, panel saying no lunar-gravity data exists → "Ask about this scenario" → answer with verified citations → open PSI-25 investigation page → Scorecard.
+
+**Any cut-list item not working by Sunday 09:00 is cut, not finished.**
 
 **Cut first if behind, in this order:**
 
