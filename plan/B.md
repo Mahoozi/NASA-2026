@@ -59,6 +59,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] `/api/ask`: when `context.scenario` is present and `investigationIds` is empty, call `matchInvestigations(scenario, investigations, runs)` from `@/lib/match` and use the top 3 ids for retrieval boosting. Mention coverage in the prompt context only as data, never as a verdict.
   Commit: `Use scenario matching in ask`.
 - [ ] **UI review.** Skills: `web-design-guidelines` on `app/ask/**` and `app/investigations/**`, then `design:accessibility-review`; fix only what they flag. Commit: `Review Ask and Investigations UI`.
+  Progress: `web-design-guidelines` reviews done for `app/ask/**` + `app/evals/**` (`23ce8a8`) and `app/investigations/**` (`918a2a8`); accessibility review still to do. Demo check: the Lab handoff for the demo scenario (PMMA rod, 17% O2, 5 cm/s, micro) sends PSI-25, PSI-26, PSI-98, which matches `data/demo-cache.json` entry 1 (cache hit), and the live API answers it with 4 verified citations to PSI-25.
 - [x] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
   Commit: `Remove sample investigations`.
 
@@ -67,7 +68,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] `REFERENCES.md`: every PSI page URL, guide PDF title, NTRS ids used. Skill: `writing-guidelines`; `engineering:documentation` for the README "how it works" section.
 - [ ] Rehearse `/ask` with the demo scenario; make sure the golden set includes it.
 - [ ] Bug-only commits.
-- [ ] 7 slides (shared deck).
+- [ ] 30-second video (Person A records; B checks /ask answers in it).
 - [ ] Rehearse the demo three times.
 
 ## Gates (stop and ask)
