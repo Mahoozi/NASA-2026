@@ -58,7 +58,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 Page order on `/lab`: presets and form → summary + gaps panel → coverage grid → gap chart → ranked investigations → runs table → download.
 
-- [ ] **Ranked list never shows a 0-score item as "top".** Only investigations scoring above 0 are listed. When none does, the list is replaced by the plain statement "No imported investigation covers this scenario", followed by the gaps panel.
+- [x] **Ranked list never shows a 0-score item as "top".** Only investigations scoring above 0 are listed. When none does, the list is replaced by the plain statement "No imported investigation covers this scenario", followed by the gaps panel.
   Commit: `Hide zero-score investigations`.
 - [ ] **Gap chart** (`app/lab/gap-chart.tsx`, Recharts `ScatterChart`). X = `flowCmS.max` (or min when max is null), Y = `o2InitialPct`, one point per run, colour by material family, matching runs full opacity and others dimmed, scenario as a reference marker. Runs with null O2 or flow are counted in a caption ("12 runs not plotted: airflow not numeric"), never dropped silently. Skills: `dataviz` (load before writing a line of chart code), then `frontend-design` for one visual pass over the whole `/lab` page.
   Also: Y axis fixed at 10–36% so the empty region above the data is visible; a shaded band from 30% up labelled "Moon Base planned atmosphere (≥30% O2, NASA challenge brief)"; the scenario marker is drawn even when it falls in empty space (a line when only one of O2 / flow is set).
