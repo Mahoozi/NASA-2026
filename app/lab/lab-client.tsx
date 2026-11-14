@@ -14,6 +14,7 @@ import { DownloadDataset } from "./download-dataset";
 import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
+import { SPACE_VS_EARTH_ID } from "./gravity-bounds-note";
 import { RankedList } from "./ranked-list";
 import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
@@ -148,7 +149,11 @@ export function LabClient({
         <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} />
       </section>
 
-      <section aria-labelledby="space-earth-heading" className="flex flex-col gap-3">
+      <section
+        id={SPACE_VS_EARTH_ID}
+        aria-labelledby="space-earth-heading"
+        className="flex scroll-mt-4 flex-col gap-3"
+      >
         <h2 id="space-earth-heading" className="text-lg font-semibold">
           Space vs Earth (Saffire-II)
         </h2>

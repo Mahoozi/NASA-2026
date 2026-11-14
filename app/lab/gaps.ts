@@ -18,6 +18,8 @@ export type GapReport = {
    * outside the imported solid-material runs (gaseous fuels, ACME CFI-G).
    */
   aboveSolidO2?: number;
+  /** Set when the scenario's gravity is lunar or Martian (no imported run is). */
+  partialGravity?: boolean;
 };
 
 // Same closeness limits as lib/match.ts: beyond these a run contributes 0.
@@ -163,6 +165,7 @@ export function evidenceGaps(
         ? `0 of ${n} runs were at ${label}.`
         : `0 of ${n} runs were at ${label}; NASA's challenge brief states PSI holds no partial-gravity combustion data.`,
     );
+    if (scenario.gravity !== "1g") out.partialGravity = true;
   }
 
   if (scenario.safetyArea !== undefined) {

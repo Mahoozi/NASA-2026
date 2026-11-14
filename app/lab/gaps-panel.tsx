@@ -1,5 +1,6 @@
 // Person A
 import type { GapReport } from "./gaps";
+import { GravityBoundsNote } from "./gravity-bounds-note";
 import { HigherOxygenNote } from "./higher-oxygen-note";
 
 export function GapsPanel({ report }: { report: GapReport }) {
@@ -22,6 +23,7 @@ export function GapsPanel({ report }: { report: GapReport }) {
       {report.aboveSolidO2 !== undefined && (
         <HigherOxygenNote maxSolidO2={report.aboveSolidO2} className="text-sm" />
       )}
+      {report.partialGravity && <GravityBoundsNote linkToPanel className="text-sm" />}
       {report.nearest.length > 0 && (
         <div className="flex flex-col gap-1.5">
           <h4 className="text-sm font-medium text-muted-foreground">Nearest evidence</h4>

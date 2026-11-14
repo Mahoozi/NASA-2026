@@ -75,6 +75,15 @@ export function issAirO2Range(runs: Run[], threshold = 20.5) {
   return o2.length ? { min: Math.min(...o2), max: Math.max(...o2), n: o2.length } : null;
 }
 
+/**
+ * Challenge brief: "the Moon Base and pressurized rover(s) will be at a pressure and
+ * oxygen concentration between those in a spacesuit and the Earth's atmosphere. The
+ * intermediate oxygen concentration used on the Moon will likely be 30% or greater,
+ * with a corresponding pressure of 10.2 psi or less."
+ */
+const MOON_ATMOSPHERE_SOURCE =
+  "NASA Space Apps challenge brief: likely 30% oxygen or more at 10.2 psi or less.";
+
 export type Preset = { id: string; label: string; scenario: Scenario; source: string };
 
 export function presets(runs: Run[]): Preset[] {
@@ -92,7 +101,15 @@ export function presets(runs: Run[]): Preset[] {
       id: "moon",
       label: "Moon Base (planned)",
       scenario: { o2Pct: 30, pressurePsi: 10.2, gravity: "lunar" },
-      source: "NASA Space Apps challenge brief: likely 30% oxygen or more at 10.2 psi or less.",
+      source: MOON_ATMOSPHERE_SOURCE,
+    },
+    // The brief expects the Moon Base and pressurized rover(s) to share the same
+    // intermediate atmosphere, so this preset uses the Moon Base values.
+    {
+      id: "rover",
+      label: "Pressurized rover (planned)",
+      scenario: { o2Pct: 30, pressurePsi: 10.2, gravity: "lunar" },
+      source: MOON_ATMOSPHERE_SOURCE,
     },
   ];
 }
