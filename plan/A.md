@@ -82,7 +82,7 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
   Commit: `Link Lab to Ask`.
 - [x] **Lab accepts `?investigation=PSI-25`** and pre-filters the runs table. Rows link to `/investigations/[id]`.
   Commit: `Link Lab rows to investigations`.
-- [ ] Remove the `investigations.sample.json` fallback once B has deleted the file.
+- [x] Remove the `investigations.sample.json` fallback once B has deleted the file.
 
 ## Stage 4 — Freeze (hour 32–48)
 

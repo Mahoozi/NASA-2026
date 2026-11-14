@@ -1,15 +1,9 @@
-// Person A — server only (reads data/ at build/render time).
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+// Person A
+import investigationsJson from "@/data/investigations.json";
 import type { Investigation, Run } from "@/lib/schema";
 
-export type InvestigationSource = "investigations.json" | "investigations.sample.json";
-
 /**
- * Investigations to rank in the Lab.
- *
- * Reads Person B's data/investigations.json, falling back to the sample file
- * until it lands. TODO(B): drop the fallback once investigations.json exists.
+ * Investigations to rank in the Lab: Person B's data/investigations.json.
  *
  * Any investigation id that has runs in data/runs.json but no entry in the
  * file gets a "details pending" entry built only from what the runs carry
@@ -19,13 +13,8 @@ export type InvestigationSource = "investigations.json" | "investigations.sample
 export function loadInvestigations(runs: Run[]): {
   investigations: Investigation[];
   pendingIds: string[];
-  source: InvestigationSource;
 } {
-  const dataDir = join(process.cwd(), "data");
-  const source: InvestigationSource = existsSync(join(dataDir, "investigations.json"))
-    ? "investigations.json"
-    : "investigations.sample.json";
-  const listed = JSON.parse(readFileSync(join(dataDir, source), "utf8")) as Investigation[];
+  const listed = investigationsJson as Investigation[];
 
   const known = new Set(listed.map((i) => i.id));
   const pending = new Map<string, string>();
@@ -47,5 +36,5 @@ export function loadInvestigations(runs: Run[]): {
     hasRunData: true,
   }));
 
-  return { investigations: [...listed, ...placeholders], pendingIds: [...pending.keys()], source };
+  return { investigations: [...listed, ...placeholders], pendingIds: [...pending.keys()] };
 }
