@@ -27,7 +27,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 1 — Core (hour 1–10)
 
-- [ ] **Scoring in `lib/match.ts`.** Skills: `tdd` (agree the seams: the exported function only), `vitest`. Pure function, no I/O. Per-dimension closeness 0..1, only for dimensions the scenario specifies:
+- [x] **Scoring in `lib/match.ts`.** Skills: `tdd` (agree the seams: the exported function only), `vitest`. Pure function, no I/O. Per-dimension closeness 0..1, only for dimensions the scenario specifies:
   | Dimension | Closeness |
   |---|---|
   | `materialFamily` | exact family = 1; same base (any PMMA ↔ any PMMA) = 0.5; else 0 |
