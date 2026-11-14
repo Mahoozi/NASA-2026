@@ -21,6 +21,7 @@ import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
 import { SpaceVsEarth } from "./space-vs-earth";
+import { WhatVaried } from "./what-varied";
 import { Summary } from "./summary";
 
 export function LabClient({
@@ -53,6 +54,19 @@ export function LabClient({
         ? new Set(matches.flatMap((m) => m.matchingRunIds))
         : null,
     [scenario, matches],
+  );
+
+  // Investigations with runs whose coverage for the scenario is direct or partial.
+  const matchedCoverage = useMemo(
+    () =>
+      new Map(
+        scored
+          ? matches
+              .filter((m) => m.coverage !== "none" && withRuns.has(m.investigation.id))
+              .map((m) => [m.investigation.id, m.coverage] as const)
+          : [],
+      ),
+    [scored, matches, withRuns],
   );
 
   // Native History API: Next keeps useSearchParams in sync, no server round trip.
@@ -176,6 +190,13 @@ export function LabClient({
           <RankedList matches={matches} pendingIds={pendingIds} withRuns={withRuns} />
         </section>
       )}
+
+      <section aria-labelledby="varied-heading" className="flex flex-col gap-3">
+        <h2 id="varied-heading" className="text-lg font-semibold">
+          What varied and what was held fixed
+        </h2>
+        <WhatVaried runs={runs} investigations={investigations} matchedCoverage={matchedCoverage} />
+      </section>
 
       <section className="flex flex-col gap-3" aria-labelledby="runs-heading">
         <div className="flex flex-col gap-1">
