@@ -10,7 +10,8 @@
     "import:psi": "tsx pipeline/psi_import_bass2.ts",
     "fetch:psi": "tsx pipeline/corpus_fetch_psi.ts",
     "build:corpus": "tsx pipeline/corpus_build.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "evals": "tsx pipeline/evals.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.118",
