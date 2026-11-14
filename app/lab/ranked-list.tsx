@@ -1,5 +1,6 @@
 // Person A — ranked investigations for the current scenario.
 // Only investigations scoring above 0 are listed; a 0-score item is never "top".
+import Link from "next/link";
 import type { InvestigationMatch } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -62,15 +63,21 @@ export function RankedList({
                 <CardHeader>
                   <CardTitle className="flex flex-wrap items-center gap-2">
                     <span className="text-muted-foreground tabular-nums">{i + 1}.</span>
+                    <Link
+                      href={`/investigations/${encodeURIComponent(m.investigation.id)}`}
+                      className="underline-offset-4 hover:underline"
+                    >
+                      {investigationLabel(m.investigation)}
+                    </Link>
+                    {pending && <Badge variant="outline">details pending</Badge>}
                     <a
                       href={m.investigation.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="underline-offset-4 hover:underline"
+                      className="text-xs font-normal text-muted-foreground underline-offset-4 hover:underline"
                     >
-                      {investigationLabel(m.investigation)}
+                      PSI page ↗<span className="sr-only"> (opens in a new tab)</span>
                     </a>
-                    {pending && <Badge variant="outline">details pending</Badge>}
                   </CardTitle>
                   <CardDescription>{m.investigation.name}</CardDescription>
                   <CardAction>

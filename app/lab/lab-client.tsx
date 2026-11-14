@@ -3,6 +3,7 @@
 // Page order: presets and form → summary + gaps → coverage grid → gap chart
 // → ranked investigations → runs table → download.
 import { useCallback, useMemo } from "react";
+import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
@@ -141,7 +142,18 @@ export function LabClient({
             Imported runs
           </h2>
           <p className="text-sm text-muted-foreground">
-            {runSources.map((s) => `${s.id} (${s.acronym || s.id})`).join(", ")}: {runs.length} runs,{" "}
+            {runSources.map((s, i) => (
+              <span key={s.id}>
+                {i > 0 && ", "}
+                <Link
+                  href={`/investigations/${encodeURIComponent(s.id)}`}
+                  className="underline underline-offset-4 hover:text-foreground"
+                >
+                  {s.id} ({s.acronym || s.id})
+                </Link>
+              </span>
+            ))}
+            : {runs.length} runs,{" "}
             {runs.filter((r) => r.flags.length).length} with data-quality flags. Values are as
             recorded in the source table; flagged values were not corrected.
           </p>
