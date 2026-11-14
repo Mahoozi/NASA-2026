@@ -1,0 +1,98 @@
+[
+  {
+    "id": "SAMPLE-1",
+    "investigationId": "SAMPLE-1",
+    "pi": "SAMPLE pi 1",
+    "testId": "SAMPLE test 1",
+    "date": "SAMPLE date",
+    "material": {
+      "family": "other",
+      "raw": "SAMPLE material 1"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "SAMPLE flow"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": "SAMPLE co"
+    },
+    "flags": [
+      "SAMPLE flag"
+    ],
+    "sourceUrl": "SAMPLE url"
+  },
+  {
+    "id": "SAMPLE-2",
+    "investigationId": "SAMPLE-2",
+    "pi": "SAMPLE pi 2",
+    "testId": "SAMPLE test 2",
+    "date": "SAMPLE date",
+    "material": {
+      "family": "other",
+      "raw": "SAMPLE material 2"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "SAMPLE flow"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": "SAMPLE co"
+    },
+    "flags": [
+      "SAMPLE flag"
+    ],
+    "sourceUrl": "SAMPLE url"
+  },
+  {
+    "id": "SAMPLE-3",
+    "investigationId": "SAMPLE-3",
+    "pi": "SAMPLE pi 3",
+    "testId": "SAMPLE test 3",
+    "date": "SAMPLE date",
+    "material": {
+      "family": "other",
+      "raw": "SAMPLE material 3"
+    },
+    "o2InitialPct": null,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "SAMPLE flow"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": "SAMPLE co"
+    },
+    "flags": [
+      "SAMPLE flag"
+    ],
+    "sourceUrl": "SAMPLE url"
+  }
+]
