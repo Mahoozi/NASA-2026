@@ -3,11 +3,13 @@ import { Suspense } from "react";
 import runsJson from "@/data/runs.json";
 import type { Run } from "@/lib/schema";
 import { LabClient } from "./lab-client";
+import { loadInvestigations } from "./load-investigations";
 import { RunsTable } from "./runs-table";
 
 export default function LabPage() {
   const runs = runsJson as Run[];
   const flagged = runs.filter((r) => r.flags.length).length;
+  const { investigations, pendingIds } = loadInvestigations(runs);
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-1">
@@ -19,7 +21,7 @@ export default function LabPage() {
       </div>
 
       <Suspense fallback={<p className="text-sm text-muted-foreground">Loading scenario…</p>}>
-        <LabClient runs={runs} />
+        <LabClient runs={runs} investigations={investigations} pendingIds={pendingIds} />
       </Suspense>
 
       <section className="flex flex-col gap-3">

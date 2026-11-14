@@ -49,7 +49,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   - Under the pressure field: "Pressure is context only; the BASS-II table does not record it."
   Done when: changing a field updates the URL and the ranked list without reload; each preset sets the URL in one click and its source line shows real numbers.
   Commit: `Add scenario form`.
-- [ ] **Ranked investigations list** (`app/lab/ranked-list.tsx`). Reads `data/investigations.json` (fallback to `data/investigations.sample.json` until B's v0 lands — leave `// TODO(B)`), calls `matchInvestigations`, shows acronym, name, coverage badge, score bar, breakdown chips, "n matching runs".
+- [x] **Ranked investigations list** (`app/lab/ranked-list.tsx`). Reads `data/investigations.json` (fallback to `data/investigations.sample.json` until B's v0 lands — leave `// TODO(B)`), calls `matchInvestigations`, shows acronym, name, coverage badge, score bar, breakdown chips, "n matching runs".
   Done when: `/lab?material=PMMA%20rod&o2=17&flow=5` puts PSI-25 first with `direct`.
   Commit: `Rank investigations in Lab`.
 
