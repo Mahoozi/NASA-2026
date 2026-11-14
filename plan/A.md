@@ -78,7 +78,7 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
 ## Stage 3 — Integrate (hour 22–32)
 
 - [ ] **UI review.** Skill: `web-design-guidelines` on `app/lab/**`; fix only what it flags. Commit: `Review Lab UI`.
-- [ ] **Handoff button.** "Ask about this scenario" → navigates to `/ask?scenario=<json>&investigations=PSI-25,PSI-xx` (top 3 by score). B's `/ask` reads those params. If B's page does not read them yet, the link still works as a plain link.
+- [x] **Handoff button.** "Ask about this scenario" → navigates to `/ask?scenario=<json>&investigations=PSI-25,PSI-xx` (top 3 by score). B's `/ask` reads those params. If B's page does not read them yet, the link still works as a plain link.
   Commit: `Link Lab to Ask`.
 - [ ] **Lab accepts `?investigation=PSI-25`** and pre-filters the runs table. Rows link to `/investigations/[id]`.
   Commit: `Link Lab rows to investigations`.

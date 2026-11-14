@@ -6,6 +6,7 @@ import { useCallback, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
+import { AskLink } from "./ask-link";
 import { CoverageGrid } from "./coverage-grid";
 import { DownloadDataset } from "./download-dataset";
 import { GapChart } from "./gap-chart";
@@ -69,6 +70,9 @@ export function LabClient({
           <>
             <Summary matches={matches} />
             <GapsPanel report={gaps} />
+            <div>
+              <AskLink scenario={scenario} matches={matches} />
+            </div>
           </>
         ) : (
           <p className="text-sm text-muted-foreground">
