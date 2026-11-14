@@ -1,18 +1,827 @@
 {
-  "generatedAt": "2026-11-14T00:00:00.000Z",
-  "model": "placeholder — not a real eval run",
+  "generatedAt": "2026-11-14T19:17:56.976Z",
+  "model": "gpt-5.4-mini",
   "totals": {
-    "questions": 0,
-    "statusMatches": 0,
-    "answeredExpected": 0,
-    "answeredCorrect": 0,
-    "refusalsExpected": 0,
-    "refusalsCorrect": 0,
-    "wronglyRefused": 0,
-    "retrievalHits": 0,
-    "citations": 0,
-    "citationsVerified": 0,
-    "citationsExpected": 0
+    "questions": 24,
+    "statusMatches": 21,
+    "answeredExpected": 18,
+    "answeredCorrect": 15,
+    "refusalsExpected": 6,
+    "refusalsCorrect": 6,
+    "wronglyRefused": 3,
+    "retrievalHits": 18,
+    "citations": 54,
+    "citationsVerified": 54,
+    "citationsExpected": 45
   },
-  "items": []
+  "items": [
+    {
+      "id": "fact-bass2-objectives",
+      "question": "What does BASS-II study about solid fuels burning in low-velocity forced flows?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-25-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-25-objectives",
+        "psi-25-project",
+        "guide-p24",
+        "guide-p31",
+        "psi-25-hypothesis",
+        "psi-25-earth-benefits",
+        "psi-26-project",
+        "psi-62-objectives"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-project",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-25-project",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-25-project",
+          "verified": true,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "fact-bass2-hypothesis",
+      "question": "What hypothesis does BASS-II test about how materials burn in microgravity compared with normal gravity?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-25-hypothesis",
+        "guide-p21"
+      ],
+      "retrievedDocIds": [
+        "psi-25-hypothesis",
+        "psi-26-hypothesis",
+        "psi-25-objectives",
+        "psi-62-approach",
+        "guide-p21",
+        "psi-26-objectives",
+        "psi-26-earth-benefits",
+        "psi-99-objectives"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-25-hypothesis",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-26-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "guide-p21",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "fact-bass2-flow-oxygen",
+      "question": "What was the highest airflow speed the BASS-II wind tunnel could impose, and how was the oxygen concentration varied?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-25-approach"
+      ],
+      "retrievedDocIds": [
+        "psi-25-approach",
+        "psi-25-objectives",
+        "psi-25-hypothesis",
+        "guide-p22",
+        "guide-p31",
+        "guide-p18",
+        "guide-p24",
+        "guide-p38"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-25-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-approach",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "fact-saffire1-material",
+      "question": "What sample material was burned in Saffire-I, and what is it made of?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-98-approach"
+      ],
+      "retrievedDocIds": [
+        "psi-98-approach",
+        "psi-99-approach",
+        "psi-100-approach",
+        "guide-p19",
+        "psi-102-approach",
+        "psi-98-earth-benefits",
+        "guide-p16",
+        "psi-100-earth-benefits"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "fact-saffire2-samples",
+      "question": "Which sample materials did Saffire-II add?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-99-approach"
+      ],
+      "retrievedDocIds": [
+        "psi-99-approach",
+        "psi-100-approach",
+        "psi-98-approach",
+        "psi-99-objectives",
+        "psi-99-earth-benefits",
+        "psi-99-hypothesis",
+        "psi-99-project",
+        "psi-100-earth-benefits"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-99-approach",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "fact-flex-suppressants",
+      "question": "Which gaseous fire suppressants does FLEX measure the effectiveness of?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-69-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-69-objectives",
+        "psi-69-earth-benefits",
+        "psi-69-hypothesis",
+        "psi-69-approach",
+        "guide-p15",
+        "guide-p12",
+        "guide-p43",
+        "psi-26-objectives"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-69-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p12",
+          "verified": true,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "fact-bre-atmospheres",
+      "question": "Which spacecraft atmospheres, in pressure and oxygen concentration, does the ACME BRE experiment examine?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-20-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-20-objectives",
+        "psi-20-approach",
+        "psi-20-earth-benefits",
+        "guide-p21",
+        "guide-p44",
+        "guide-p17",
+        "psi-20-project",
+        "guide-p53"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": false,
+      "citations": []
+    },
+    {
+      "id": "fact-daft-ptrak",
+      "question": "Why was the P-Trak particle counter a concern in microgravity, and what did DAFT test?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-47-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-47-objectives",
+        "psi-47-project",
+        "psi-47-hypothesis",
+        "psi-47-approach",
+        "guide-p37",
+        "guide-p45",
+        "guide-p15",
+        "guide-p34"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": false,
+      "citations": []
+    },
+    {
+      "id": "fact-same-procedure",
+      "question": "How long did a typical SAME combustion event last, and how were the collected smoke particles analyzed after the flight?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-102-approach"
+      ],
+      "retrievedDocIds": [
+        "psi-102-approach",
+        "guide-p26",
+        "guide-p8",
+        "psi-101-objectives",
+        "guide-p13",
+        "guide-p34",
+        "psi-101-hypothesis",
+        "psi-102-hypothesis"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-102-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-102-approach",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "fact-spice-fuels",
+      "question": "Which fuels does SPICE quantify the sooting propensity of?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-107-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-107-objectives",
+        "guide-p13",
+        "psi-106-objectives",
+        "psi-60-objectives",
+        "guide-p12",
+        "psi-107-approach",
+        "psi-106-project",
+        "psi-107-earth-benefits"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-107-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-107-approach",
+          "verified": true,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "fact-guide-misconceptions",
+      "question": "What misconceptions about fires on spacecraft does the combustion researcher's guide list?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "guide-p35"
+      ],
+      "retrievedDocIds": [
+        "guide-p35",
+        "guide-p26",
+        "guide-p30",
+        "guide-p31",
+        "guide-p48",
+        "guide-p22",
+        "guide-p41",
+        "guide-p34"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": false,
+      "citations": []
+    },
+    {
+      "id": "fact-guide-water-mist",
+      "question": "What kind of portable fire extinguisher was sent to the ISS to replace the CO2 units?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "guide-p26"
+      ],
+      "retrievedDocIds": [
+        "guide-p26",
+        "psi-99-approach",
+        "guide-p22",
+        "psi-100-approach",
+        "psi-98-approach",
+        "guide-p39",
+        "guide-p35",
+        "psi-101-approach"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "guide-p26",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p26",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "demo-pmma-rod-low-flow",
+      "question": "For a PMMA rod in slow airflow at reduced oxygen in microgravity, which investigation varied flow speed, oxygen concentration and sample geometry such as rods?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-25-objectives",
+        "psi-25-approach"
+      ],
+      "retrievedDocIds": [
+        "guide-p18",
+        "psi-25-objectives",
+        "guide-p31",
+        "psi-25-approach",
+        "guide-p22",
+        "psi-62-approach",
+        "guide-p19",
+        "guide-p24"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-62-approach",
+          "verified": true,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "compare-saffire1-saffire3-flow",
+      "question": "How did the airflow velocity in Saffire-III differ from Saffire-I?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-98-approach",
+        "psi-100-approach"
+      ],
+      "retrievedDocIds": [
+        "psi-100-approach",
+        "psi-99-approach",
+        "psi-100-project",
+        "psi-98-approach",
+        "psi-100-hypothesis",
+        "psi-100-earth-benefits",
+        "psi-99-project",
+        "psi-99-earth-benefits"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-100-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "compare-bass-bass2-objectives",
+      "question": "How do the objectives of BASS and BASS-II differ?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-26-objectives",
+        "psi-25-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-25-objectives",
+        "psi-26-objectives",
+        "psi-62-objectives",
+        "psi-25-project",
+        "psi-25-approach",
+        "psi-25-earth-benefits",
+        "psi-25-hypothesis",
+        "psi-106-objectives"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-26-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-26-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "compare-bass-saffire1-fabric",
+      "question": "Compare the cotton-fiberglass fabric samples used in BASS and in Saffire-I.",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-26-approach",
+        "psi-98-approach"
+      ],
+      "retrievedDocIds": [
+        "psi-98-approach",
+        "psi-26-approach",
+        "psi-100-approach",
+        "psi-99-approach",
+        "psi-25-objectives",
+        "psi-98-hypothesis",
+        "psi-101-approach",
+        "guide-p19"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-26-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-26-approach",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "compare-flex-flex2",
+      "question": "How does the goal of FLEX-2 differ from the goal of FLEX?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-68-objectives",
+        "psi-69-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-68-objectives",
+        "psi-68-hypothesis",
+        "psi-69-approach",
+        "psi-69-objectives",
+        "psi-68-project",
+        "guide-p12",
+        "guide-p24",
+        "psi-68-approach"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-68-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-68-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "guide-p12",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "guide-p12",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-69-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-69-objectives",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "compare-same-samer",
+      "question": "What problem from the original SAME investigation did SAME-R respond to, and how do their objectives compare?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "psi-101-objectives",
+        "psi-102-objectives"
+      ],
+      "retrievedDocIds": [
+        "psi-101-objectives",
+        "psi-101-hypothesis",
+        "psi-101-earth-benefits",
+        "psi-101-project",
+        "psi-102-hypothesis",
+        "psi-47-objectives",
+        "psi-102-objectives",
+        "guide-p23"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "psi-101-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-101-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-101-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-102-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-102-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-101-objectives",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "none-lunar-flame-spread",
+      "question": "How fast does a flame spread over PMMA in lunar gravity?",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "psi-62-approach",
+        "psi-62-objectives",
+        "guide-p18",
+        "guide-p11",
+        "guide-p23",
+        "guide-p33",
+        "psi-62-earth-benefits",
+        "psi-62-project"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": true,
+      "citations": []
+    },
+    {
+      "id": "none-martian-gravity",
+      "question": "What flame spread rates were measured in Martian gravity?",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "psi-62-approach",
+        "guide-p24",
+        "guide-p31",
+        "guide-p23",
+        "psi-62-project",
+        "psi-62-hypothesis",
+        "psi-62-objectives",
+        "guide-p33"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": true,
+      "citations": []
+    },
+    {
+      "id": "none-polycarbonate",
+      "question": "What did NASA find about flame spread over polycarbonate in microgravity?",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "psi-62-objectives",
+        "psi-62-project",
+        "psi-62-earth-benefits",
+        "psi-62-hypothesis",
+        "psi-62-approach",
+        "guide-p22",
+        "guide-p23",
+        "guide-p18"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": true,
+      "citations": []
+    },
+    {
+      "id": "none-lithium-battery",
+      "question": "How do lithium-ion battery fires behave in microgravity?",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "guide-p35",
+        "psi-62-objectives",
+        "psi-22-approach",
+        "guide-p16",
+        "psi-62-project",
+        "psi-22-hypothesis",
+        "psi-62-earth-benefits",
+        "psi-22-project"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": true,
+      "citations": []
+    },
+    {
+      "id": "none-risk-rating-moon-base",
+      "question": "Give me a fire-risk rating from 1 to 10 for a Moon base cabin at 30% oxygen and 10.2 psi.",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "psi-26-project",
+        "guide-p34",
+        "psi-101-project",
+        "psi-142-approach",
+        "psi-21-hypothesis",
+        "guide-p6",
+        "psi-102-project",
+        "psi-115-project"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": true,
+      "citations": []
+    },
+    {
+      "id": "none-safety-verdict-velcro",
+      "question": "Is it safe to use Velcro inside a spacecraft cabin?",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "guide-p45",
+        "psi-98-hypothesis",
+        "psi-99-hypothesis",
+        "psi-100-hypothesis",
+        "psi-102-earth-benefits",
+        "psi-101-earth-benefits",
+        "psi-47-earth-benefits",
+        "guide-p35"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "insufficient_evidence",
+      "statusMatch": true,
+      "citations": []
+    }
+  ]
 }
