@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { InvestigationBrowser, InvestigationList } from "./investigation-list";
 import { investigations } from "./data";
 import { CompareTable } from "./compare-table";
+import { FireSafetyStrip } from "./fire-safety-strip";
 
 export default function InvestigationsPage() {
   return (
@@ -15,6 +16,13 @@ export default function InvestigationsPage() {
           to the source.
         </p>
       </div>
+      <section aria-labelledby="fire-safety-heading" className="flex flex-col gap-3">
+        <h2 id="fire-safety-heading" className="text-lg font-semibold">
+          Prevention · Detection · Suppression
+        </h2>
+        <FireSafetyStrip />
+      </section>
+
       <section aria-labelledby="compare-heading" className="flex flex-col gap-3">
         <h2 id="compare-heading" className="text-lg font-semibold">
           Compare investigations
