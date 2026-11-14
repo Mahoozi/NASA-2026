@@ -6,6 +6,7 @@ import { useCallback, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
+import { Button } from "@/components/ui/button";
 import { AskLink } from "./ask-link";
 import { CoverageGrid } from "./coverage-grid";
 import { DownloadDataset } from "./download-dataset";
@@ -50,12 +51,37 @@ export function LabClient({
   );
 
   // Native History API: Next keeps useSearchParams in sync, no server round trip.
-  const setScenario = useCallback(
-    (next: Scenario) => {
-      const q = scenarioToQuery(next);
+  // ?investigation=PSI-25 pre-filters the runs table. It is not part of the
+  // scenario, so it survives scenario edits and is cleared on its own.
+  const investigationId = params.get("investigation");
+  const writeUrl = useCallback(
+    (scenarioQuery: string, investigation: string | null) => {
+      const p = new URLSearchParams(scenarioQuery);
+      if (investigation) p.set("investigation", investigation);
+      const q = p.toString();
       window.history.replaceState(null, "", q ? `${pathname}?${q}` : pathname);
     },
     [pathname],
+  );
+  const setScenario = useCallback(
+    (next: Scenario) => writeUrl(scenarioToQuery(next), investigationId),
+    [writeUrl, investigationId],
+  );
+  const clearInvestigation = () => writeUrl(scenarioToQuery(scenario), null);
+
+  const focus = investigationId
+    ? investigations.find((i) => i.id === investigationId) ?? null
+    : null;
+  const tableRuns = useMemo(
+    () => (investigationId ? runs.filter((r) => r.investigationId === investigationId) : runs),
+    [runs, investigationId],
+  );
+  const runSources = useMemo(
+    () =>
+      [...new Set(runs.map((r) => r.investigationId))].map(
+        (id) => investigations.find((i) => i.id === id) ?? { id, acronym: id },
+      ),
+    [runs, investigations],
   );
 
   return (
@@ -112,15 +138,31 @@ export function LabClient({
       <section className="flex flex-col gap-3" aria-labelledby="runs-heading">
         <div className="flex flex-col gap-1">
           <h2 id="runs-heading" className="text-lg font-semibold">
-            BASS-II runs
+            Imported runs
           </h2>
           <p className="text-sm text-muted-foreground">
-            PSI-25 (BASS-II): {runs.length} runs, {runs.filter((r) => r.flags.length).length} with
-            data-quality flags. Values are as recorded in the source table; flagged values were not
-            corrected.
+            {runSources.map((s) => `${s.id} (${s.acronym || s.id})`).join(", ")}: {runs.length} runs,{" "}
+            {runs.filter((r) => r.flags.length).length} with data-quality flags. Values are as
+            recorded in the source table; flagged values were not corrected.
           </p>
         </div>
-        <RunsTable runs={runs} matchingRunIds={matchingRunIds} />
+        {investigationId && (
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-sm">
+              {tableRuns.length
+                ? `Showing runs from ${investigationId}${focus?.acronym ? ` (${focus.acronym})` : ""} only.`
+                : focus
+                  ? `No test-level data imported for ${investigationId}${focus.acronym ? ` (${focus.acronym})` : ""}.`
+                  : `${investigationId} is not an imported investigation.`}
+            </p>
+            <Button variant="outline" size="sm" onClick={clearInvestigation}>
+              Show runs from all investigations
+            </Button>
+          </div>
+        )}
+        {(tableRuns.length > 0 || !investigationId) && (
+          <RunsTable runs={tableRuns} matchingRunIds={matchingRunIds} />
+        )}
       </section>
 
       <section className="flex flex-col gap-3" aria-labelledby="download-heading">

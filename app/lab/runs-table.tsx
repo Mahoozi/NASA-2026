@@ -97,6 +97,8 @@ export function RunsTable({
   const [sort, setSort] = useState<{ key: SortKey; dir: Dir }>({ key: "test", dir: "asc" });
   const [showAll, setShowAll] = useState(false);
   const filtering = matchingRunIds !== null && !showAll;
+  // Count matches among the runs this table was given (it may be pre-filtered).
+  const matchCount = matchingRunIds ? runs.filter((r) => matchingRunIds.has(r.id)).length : 0;
   const rows = useMemo(
     () =>
       runs
@@ -114,15 +116,15 @@ export function RunsTable({
         <div className="flex flex-wrap items-center gap-3">
           <p className="text-sm text-muted-foreground" aria-live="polite">
             {filtering
-              ? `Showing the ${matchingRunIds.size} of ${runs.length} runs that match every run-level dimension you set.`
+              ? `Showing the ${matchCount} of ${runs.length} runs that match every run-level dimension you set.`
               : `Showing all ${runs.length} runs.`}
           </p>
           <Button variant="outline" size="sm" onClick={() => setShowAll((v) => !v)} aria-pressed={showAll}>
-            {showAll ? `Show only the ${matchingRunIds.size} matching` : `Show all ${runs.length}`}
+            {showAll ? `Show only the ${matchCount} matching` : `Show all ${runs.length}`}
           </Button>
         </div>
       )}
-      {filtering && matchingRunIds.size === 0 ? (
+      {filtering && matchCount === 0 ? (
         <p className="text-sm">No run matches every run-level dimension you set.</p>
       ) : (
     <Table>
