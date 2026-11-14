@@ -1,1 +1,146 @@
-[]
+[
+  {
+    "id": "fact-bass2-objectives",
+    "question": "What does BASS-II study about solid fuels burning in low-velocity forced flows?",
+    "expectDocIds": ["psi-25-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-bass2-hypothesis",
+    "question": "What hypothesis does BASS-II test about how materials burn in microgravity compared with normal gravity?",
+    "expectDocIds": ["psi-25-hypothesis", "guide-p21"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-bass2-flow-oxygen",
+    "question": "What was the highest airflow speed the BASS-II wind tunnel could impose, and how was the oxygen concentration varied?",
+    "expectDocIds": ["psi-25-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-saffire1-material",
+    "question": "What sample material was burned in Saffire-I, and what is it made of?",
+    "expectDocIds": ["psi-98-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-saffire2-samples",
+    "question": "Which sample materials did Saffire-II add?",
+    "expectDocIds": ["psi-99-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-flex-suppressants",
+    "question": "Which gaseous fire suppressants does FLEX measure the effectiveness of?",
+    "expectDocIds": ["psi-69-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-bre-atmospheres",
+    "question": "Which spacecraft atmospheres, in pressure and oxygen concentration, does the ACME BRE experiment examine?",
+    "expectDocIds": ["psi-20-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-daft-ptrak",
+    "question": "Why was the P-Trak particle counter a concern in microgravity, and what did DAFT test?",
+    "expectDocIds": ["psi-47-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-same-procedure",
+    "question": "How long did a typical SAME combustion event last, and how were the collected smoke particles analyzed after the flight?",
+    "expectDocIds": ["psi-102-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-spice-fuels",
+    "question": "Which fuels does SPICE quantify the sooting propensity of?",
+    "expectDocIds": ["psi-107-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-guide-misconceptions",
+    "question": "What misconceptions about fires on spacecraft does the combustion researcher's guide list?",
+    "expectDocIds": ["guide-p35"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "fact-guide-water-mist",
+    "question": "What kind of portable fire extinguisher was sent to the ISS to replace the CO2 units?",
+    "expectDocIds": ["guide-p26"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "demo-pmma-rod-low-flow",
+    "question": "For a PMMA rod in slow airflow at reduced oxygen in microgravity, which investigation varied flow speed, oxygen concentration and sample geometry such as rods?",
+    "expectDocIds": ["psi-25-objectives", "psi-25-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "compare-saffire1-saffire3-flow",
+    "question": "How did the airflow velocity in Saffire-III differ from Saffire-I?",
+    "expectDocIds": ["psi-98-approach", "psi-100-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "compare-bass-bass2-objectives",
+    "question": "How do the objectives of BASS and BASS-II differ?",
+    "expectDocIds": ["psi-26-objectives", "psi-25-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "compare-bass-saffire1-fabric",
+    "question": "Compare the cotton-fiberglass fabric samples used in BASS and in Saffire-I.",
+    "expectDocIds": ["psi-26-approach", "psi-98-approach"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "compare-flex-flex2",
+    "question": "How does the goal of FLEX-2 differ from the goal of FLEX?",
+    "expectDocIds": ["psi-68-objectives", "psi-69-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "compare-same-samer",
+    "question": "What problem from the original SAME investigation did SAME-R respond to, and how do their objectives compare?",
+    "expectDocIds": ["psi-101-objectives", "psi-102-objectives"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "none-lunar-flame-spread",
+    "question": "How fast does a flame spread over PMMA in lunar gravity?",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
+  },
+  {
+    "id": "none-martian-gravity",
+    "question": "What flame spread rates were measured in Martian gravity?",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
+  },
+  {
+    "id": "none-polycarbonate",
+    "question": "What did NASA find about flame spread over polycarbonate in microgravity?",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
+  },
+  {
+    "id": "none-lithium-battery",
+    "question": "How do lithium-ion battery fires behave in microgravity?",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
+  },
+  {
+    "id": "none-risk-rating-moon-base",
+    "question": "Give me a fire-risk rating from 1 to 10 for a Moon base cabin at 30% oxygen and 10.2 psi.",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
+  },
+  {
+    "id": "none-safety-verdict-velcro",
+    "question": "Is it safe to use Velcro inside a spacecraft cabin?",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
+  }
+]

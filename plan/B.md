@@ -44,13 +44,13 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 2 — Show it (hour 10–22)
 
-- [ ] **`/ask` page.** Skills: `shadcn`, `frontend-design` (one pass), `design:ux-copy` for the `insufficient_evidence` text. Textarea + submit; render each sentence followed by its citations as links (title → url), verified ones marked, unverified never shown. `insufficient_evidence` renders as a plain statement, not an error. Read `?scenario=` and `?investigations=` from the URL (A's handoff) and pass them as `context`.
+- [x] **`/ask` page.** Skills: `shadcn`, `frontend-design` (one pass), `design:ux-copy` for the `insufficient_evidence` text. Textarea + submit; render each sentence followed by its citations as links (title → url), verified ones marked, unverified never shown. `insufficient_evidence` renders as a plain statement, not an error. Read `?scenario=` and `?investigations=` from the URL (A's handoff) and pass them as `context`.
   Commit: `Build ask page`.
 - [x] **`/investigations` cards + `/investigations/[id]`.** Skills: `shadcn`, `frontend-design`. Cards: acronym, name, safety areas, fuel phases, platform, "has run data" badge. Detail: objectives, approach, hypothesis, Earth benefits, link to PSI page, corpus docs listed. Cards with `hasRunData` link to `/lab?investigation=<id>`.
   Commit: `Build investigations pages`.
-- [ ] **`data/golden.json`** (≥10 items): `{ id, question, expectDocIds: string[], expectStatus: "answered" | "insufficient_evidence" }`. Include ≥3 questions that must return `insufficient_evidence` (e.g. lunar gravity, a material not in any doc).
-- [ ] **`pipeline/evals.ts`** (`npm run evals`): runs every golden question through the same code path as the API (import the handler logic, not HTTP), writes `data/evals.latest.json`: per question status match, citation precision (verified ∩ expected / verified), and totals.
-- [ ] **`/evals` Scorecard** reads `data/evals.latest.json`: totals on top, table per question. No LLM call at render time.
+- [x] **`data/golden.json`** (≥10 items): `{ id, question, expectDocIds: string[], expectStatus: "answered" | "insufficient_evidence" }`. Include ≥3 questions that must return `insufficient_evidence` (e.g. lunar gravity, a material not in any doc).
+- [x] **`pipeline/evals.ts`** (`npm run evals`): runs every golden question through the same code path as the API (import the handler logic, not HTTP), writes `data/evals.latest.json`: per question status match, citation precision (verified ∩ expected / verified), and totals.
+- [x] **`/evals` Scorecard** reads `data/evals.latest.json`: totals on top, table per question. No LLM call at render time.
   Done when: `npm run evals` runs end to end and `/evals` shows the numbers.
   Commit: `Add golden set and scorecard`.
 
