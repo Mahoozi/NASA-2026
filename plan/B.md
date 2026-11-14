@@ -34,7 +34,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] **`lib/retrieve.ts`.** Skills: `tdd`, `vitest`. `retrieve(question: string, ctx?: AskRequest["context"], k = 8): CorpusDoc[]` using MiniSearch over `title` + `text`, boosting docs whose `investigationId` is in `ctx.investigationIds`. Pure, builds the index once per process.
   Done when: `pipeline/retrieve.test.ts` shows a BASS-II question returns a `psi-25-*` doc in the top 3.
   Commit: `Add corpus retrieval`.
-- [ ] **`/api/ask` real implementation.** Skill: `ai-sdk` — it tells you to read `node_modules/ai/docs/` for the installed version (`ai@7`, `@ai-sdk/openai@4`); do that, don't write SDK calls from memory. We use `createOpenAI({ apiKey })` with `OPENAI_API_KEY`, not the AI Gateway. Vercel AI SDK, `@ai-sdk/openai`, server only. Prompt rule: answer in ≤4 sentences; every sentence carries ≥1 citation `{docId, quote}` where `quote` is copied verbatim from the retrieved doc; if the retrieved docs do not answer the question, return `status: "insufficient_evidence"` with an empty answer. Use `generateObject` with a zod schema shaped like `AskResponse`.
+- [x] **`/api/ask` real implementation.** Skill: `ai-sdk` — it tells you to read `node_modules/ai/docs/` for the installed version (`ai@7`, `@ai-sdk/openai@4`); do that, don't write SDK calls from memory. We use `createOpenAI({ apiKey })` with `OPENAI_API_KEY`, not the AI Gateway. Vercel AI SDK, `@ai-sdk/openai`, server only. Prompt rule: answer in ≤4 sentences; every sentence carries ≥1 citation `{docId, quote}` where `quote` is copied verbatim from the retrieved doc; if the retrieved docs do not answer the question, return `status: "insufficient_evidence"` with an empty answer. Use `generateObject` with a zod schema shaped like `AskResponse`.
   - **Citation verification (server, after the LLM):** `verified = corpusDoc.text.includes(quote)` after whitespace collapse. Fill `url` and `title` from the corpus, never from the LLM. If a sentence has zero verified citations, drop the sentence. If no sentence survives, return `insufficient_evidence`.
   - `investigationsMentioned` = investigation ids of verified citations.
   - No API key → 503 with a clear message (so A's Lab still builds).
@@ -55,7 +55,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 3 — Integrate (hour 22–32)
 
-- [ ] `/api/ask`: when `context.scenario` is present and `investigationIds` is empty, call `matchInvestigations(scenario, investigations, runs)` from `@/lib/match` and use the top 3 ids for retrieval boosting. Mention coverage in the prompt context only as data, never as a verdict.
+- [x] `/api/ask`: when `context.scenario` is present and `investigationIds` is empty, call `matchInvestigations(scenario, investigations, runs)` from `@/lib/match` and use the top 3 ids for retrieval boosting. Mention coverage in the prompt context only as data, never as a verdict.
   Commit: `Use scenario matching in ask`.
 - [ ] **UI review.** Skills: `web-design-guidelines` on `app/ask/**` and `app/investigations/**`, then `design:accessibility-review`; fix only what they flag. Commit: `Review Ask and Investigations UI`.
 - [ ] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
