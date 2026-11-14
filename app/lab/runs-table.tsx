@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { Run } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -85,17 +86,45 @@ function FlagsBadge({ flags }: { flags: string[] }) {
   );
 }
 
-export function RunsTable({ runs }: { runs: Run[] }) {
+export function RunsTable({
+  runs,
+  matchingRunIds = null,
+}: {
+  runs: Run[];
+  /** Runs matching the scenario; null when no run-level dimension is set (no filter). */
+  matchingRunIds?: Set<string> | null;
+}) {
   const [sort, setSort] = useState<{ key: SortKey; dir: Dir }>({ key: "test", dir: "asc" });
+  const [showAll, setShowAll] = useState(false);
+  const filtering = matchingRunIds !== null && !showAll;
   const rows = useMemo(
-    () => [...runs].sort((a, b) => compare(a, b, sort.key, sort.dir)),
-    [runs, sort],
+    () =>
+      runs
+        .filter((r) => !filtering || matchingRunIds!.has(r.id))
+        .sort((a, b) => compare(a, b, sort.key, sort.dir)),
+    [runs, sort, filtering, matchingRunIds],
   );
 
   const toggle = (key: SortKey) =>
     setSort((s) => (s.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "asc" }));
 
   return (
+    <div className="flex flex-col gap-3">
+      {matchingRunIds !== null && (
+        <div className="flex flex-wrap items-center gap-3">
+          <p className="text-sm text-muted-foreground" aria-live="polite">
+            {filtering
+              ? `Showing the ${matchingRunIds.size} of ${runs.length} runs that match every run-level dimension you set.`
+              : `Showing all ${runs.length} runs.`}
+          </p>
+          <Button variant="outline" size="sm" onClick={() => setShowAll((v) => !v)} aria-pressed={showAll}>
+            {showAll ? `Show only the ${matchingRunIds.size} matching` : `Show all ${runs.length}`}
+          </Button>
+        </div>
+      )}
+      {filtering && matchingRunIds.size === 0 ? (
+        <p className="text-sm">No run matches every run-level dimension you set.</p>
+      ) : (
     <Table>
       <TableHeader>
         <TableRow>
@@ -145,5 +174,7 @@ export function RunsTable({ runs }: { runs: Run[] }) {
         ))}
       </TableBody>
     </Table>
+      )}
+    </div>
   );
 }

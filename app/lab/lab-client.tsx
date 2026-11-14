@@ -7,10 +7,12 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
 import { CoverageGrid } from "./coverage-grid";
+import { DownloadDataset } from "./download-dataset";
 import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
 import { RankedList } from "./ranked-list";
+import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
 import { Summary } from "./summary";
@@ -102,6 +104,27 @@ export function LabClient({
           <RankedList matches={matches} pendingIds={pendingIds} />
         </section>
       )}
+
+      <section className="flex flex-col gap-3" aria-labelledby="runs-heading">
+        <div className="flex flex-col gap-1">
+          <h2 id="runs-heading" className="text-lg font-semibold">
+            BASS-II runs
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            PSI-25 (BASS-II): {runs.length} runs, {runs.filter((r) => r.flags.length).length} with
+            data-quality flags. Values are as recorded in the source table; flagged values were not
+            corrected.
+          </p>
+        </div>
+        <RunsTable runs={runs} matchingRunIds={matchingRunIds} />
+      </section>
+
+      <section className="flex flex-col gap-3" aria-labelledby="download-heading">
+        <h2 id="download-heading" className="text-lg font-semibold">
+          Download
+        </h2>
+        <DownloadDataset runs={runs} />
+      </section>
     </div>
   );
 }
