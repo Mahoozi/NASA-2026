@@ -81,3 +81,22 @@ export type AskResponse = {
   }[];
   investigationsMentioned: string[];
 };
+
+/** A published finding: a verbatim quote from a CorpusDoc, with neutral tags. */
+export type Finding = {
+  id: string;
+  claim: string;          // our neutral one-line paraphrase; must not add anything the quote doesn't say
+  quote: string;          // verbatim; must be an exact substring of the source CorpusDoc text
+  sourceDocId: string;    // id of a CorpusDoc in data/corpus.json
+  sourceTitle: string;
+  url: string;
+  year: number;
+  investigations: string[];   // PSI ids, may be empty
+  tags: {
+    topic: "flammability-limit" | "flame-spread" | "test-method" | "partial-gravity" | "atmosphere";
+    materials?: string[];            // MaterialFamily values
+    o2Range?: [number, number];      // % by volume
+    flowRange?: [number, number];    // cm/s
+    gravity?: ("micro" | "lunar" | "mars" | "earth")[];
+  };
+};
