@@ -84,7 +84,26 @@ export function issAirO2Range(runs: Run[], threshold = 20.5) {
 const MOON_ATMOSPHERE_SOURCE =
   "NASA Space Apps challenge brief: likely 30% oxygen or more at 10.2 psi or less.";
 
-export type Preset = { id: string; label: string; scenario: Scenario; source: string };
+/**
+ * Garbino et al., "Open Atmospheres Forum: Exploration Atmospheres Validation Study",
+ * NASA Johnson Space Center presentation, 5 Aug 2022 (NTRS 20220011152), p. 10:
+ * "Equilibrate to Exploration Atmosphere: 8.2psi/34% O2 for 48 hrs". The source
+ * gives no gravity for the atmosphere itself, so the preset leaves gravity unset.
+ */
+export const EXPLORATION_ATMOSPHERE = {
+  ntrs: "20220011152",
+  url: "https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf",
+  quote: "Exploration Atmosphere: 8.2psi/34% O2",
+} as const;
+
+export type Preset = {
+  id: string;
+  label: string;
+  scenario: Scenario;
+  source: string;
+  /** Link for the source line, when it is a document. */
+  sourceUrl?: string;
+};
 
 export function presets(runs: Run[]): Preset[] {
   const iss = issAirO2Range(runs);
@@ -110,6 +129,13 @@ export function presets(runs: Run[]): Preset[] {
       label: "Pressurized rover (planned)",
       scenario: { o2Pct: 30, pressurePsi: 10.2, gravity: "lunar" },
       source: MOON_ATMOSPHERE_SOURCE,
+    },
+    {
+      id: "exploration",
+      label: "NASA Exploration Atmosphere",
+      scenario: { o2Pct: 34, pressurePsi: 8.2 },
+      source: `NASA JSC, Open Atmospheres Forum 2022 (NTRS ${EXPLORATION_ATMOSPHERE.ntrs}): “${EXPLORATION_ATMOSPHERE.quote}”. Gravity not stated, so left unset.`,
+      sourceUrl: EXPLORATION_ATMOSPHERE.url,
     },
   ];
 }

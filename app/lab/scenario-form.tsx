@@ -47,7 +47,7 @@ export function ScenarioForm({ scenario, presets, onChange, onPreset }: Props) {
     <div className="flex flex-col gap-6">
       <FieldSet>
         <FieldLegend>Presets</FieldLegend>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {presets.map((p) => (
             <div key={p.id} className="flex flex-col items-start gap-1.5">
               <Button
@@ -59,7 +59,21 @@ export function ScenarioForm({ scenario, presets, onChange, onPreset }: Props) {
               >
                 {p.label}
               </Button>
-              <p className="text-sm text-muted-foreground">{p.source}</p>
+              <p className="text-sm text-muted-foreground">
+                {p.sourceUrl ? (
+                  <a
+                    href={p.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    {p.source}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : (
+                  p.source
+                )}
+              </p>
             </div>
           ))}
         </div>
