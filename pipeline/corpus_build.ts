@@ -429,6 +429,16 @@ function main() {
   const seen = new Set(corpus.map((d) => d.id));
   for (const d of papers.docs) if (seen.has(d.id)) errors.push(`duplicate corpus id ${d.id}`);
   corpus.push(...papers.docs);
+  // data/findings.json quotes must stay verbatim in the corpus this build writes.
+  const findings = JSON.parse(readFileSync(join(ROOT, "data", "findings.json"), "utf8")) as {
+    id: string; quote: string; sourceDocId: string;
+  }[];
+  for (const f of findings) {
+    const doc = corpus.find((d) => d.id === f.sourceDocId);
+    if (!doc || !collapse(doc.text).includes(collapse(f.quote))) {
+      errors.push(`finding ${f.id}: quote is not verbatim in corpus doc ${f.sourceDocId}`);
+    }
+  }
   if (errors.length) throw new Error(`Build failed:\n${errors.join("\n")}`);
 
   writeFileSync(join(ROOT, "data", "investigations.json"), JSON.stringify(investigations, null, 2) + "\n");

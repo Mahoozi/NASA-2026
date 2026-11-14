@@ -1,1 +1,189 @@
-[]
+[
+  {
+    "id": "bass2-pmma-rod-spreads-below-1g-blowoff",
+    "claim": "In BASS-II, a ¼-inch PMMA rod kept spreading steadily at 13.6% oxygen; in normal gravity the same rod blows off at 16% oxygen.",
+    "quote": "The 1g blowoff for the ¼” rod is at 16% oxygen, whereas we obtained steady spreading at 13.6% oxygen in BASS-II.",
+    "sourceDocId": "ntrs-20160000593-p18",
+    "sourceTitle": "Ferkul et al. (2014). Combustion of Solids in Microgravity: Results from the BASS-II Experiment, p. 18",
+    "url": "https://ntrs.nasa.gov/citations/20160000593",
+    "year": 2014,
+    "investigations": [
+      "PSI-25"
+    ],
+    "tags": {
+      "topic": "flammability-limit",
+      "materials": [
+        "PMMA rod"
+      ],
+      "o2Range": [
+        13.6,
+        16
+      ],
+      "gravity": [
+        "micro",
+        "1g"
+      ]
+    }
+  },
+  {
+    "id": "bass2-derate-1g-limits",
+    "claim": "The BASS-II results led the authors to state that normal-gravity flammability limits for this PMMA rod should be lowered by at least 2.4% O2.",
+    "quote": "Thus the material has a negative Oxygen Margin of Safety of 2.4% O2, and the normal gravity flammability limits should be de-rated by at least that much.",
+    "sourceDocId": "ntrs-20160000593-p18",
+    "sourceTitle": "Ferkul et al. (2014). Combustion of Solids in Microgravity: Results from the BASS-II Experiment, p. 18",
+    "url": "https://ntrs.nasa.gov/citations/20160000593",
+    "year": 2014,
+    "investigations": [
+      "PSI-25"
+    ],
+    "tags": {
+      "topic": "test-method",
+      "materials": [
+        "PMMA rod"
+      ],
+      "gravity": [
+        "micro",
+        "1g"
+      ]
+    }
+  },
+  {
+    "id": "bass2-hypothesis-1g-test",
+    "claim": "BASS-II's hypothesis: with adequate ventilation, materials may burn more readily in microgravity than in normal gravity, so NASA's 1-g material test may need to be re-evaluated.",
+    "quote": "Materials in microgravity, with adequate ventilation, may burn more readily compared to normal gravity with other conditions being identical (pressure, oxygen concentration, temperature, etc.) ― As a result, the 1-g test currently used by NASA to rate materials for space may need to be re-evaluated from a margin- of-safety point of view.",
+    "sourceDocId": "ntrs-20160000593-p6",
+    "sourceTitle": "Ferkul et al. (2014). Combustion of Solids in Microgravity: Results from the BASS-II Experiment, p. 6",
+    "url": "https://ntrs.nasa.gov/citations/20160000593",
+    "year": 2014,
+    "investigations": [
+      "PSI-25"
+    ],
+    "tags": {
+      "topic": "test-method",
+      "gravity": [
+        "micro",
+        "1g"
+      ]
+    }
+  },
+  {
+    "id": "saffire-steady-spread-unlike-1g",
+    "claim": "Saffire I–III showed that steady flame spread over a large, thin charring surface was possible in low gravity, unlike in normal gravity.",
+    "quote": "Flame spread over a large thin charring surface in low-gravity showed that steady flame spread was possible (unlike normal gravity).",
+    "sourceDocId": "ntrs-20180005168-p18",
+    "sourceTitle": "Urban et al. (2017). Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-Manned Spacecraft, p. 18",
+    "url": "https://ntrs.nasa.gov/citations/20180005168",
+    "year": 2017,
+    "investigations": [
+      "PSI-98",
+      "PSI-99",
+      "PSI-100"
+    ],
+    "tags": {
+      "topic": "flame-spread",
+      "gravity": [
+        "micro",
+        "1g"
+      ]
+    }
+  },
+  {
+    "id": "saffire-concurrent-flame-length-plateau",
+    "claim": "On the 40.6-cm-wide sample, the concurrent-flow flame length levelled off at about 40 mm and the opposed-flow flame at 24 mm.",
+    "quote": "40.6-cm wide sample ‒ For the concurrent flame, the length reaches a plateau value of around 40 mm, while the opposed-flow flame is a bit shorter at 24 mm.",
+    "sourceDocId": "ntrs-20170008805-p21",
+    "sourceTitle": "Ferkul et al. (2017). Results of Large-Scale Spacecraft Flammability Tests, p. 21",
+    "url": "https://ntrs.nasa.gov/citations/20170008805",
+    "year": 2017,
+    "investigations": [],
+    "tags": {
+      "topic": "flame-spread",
+      "materials": [
+        "SIBAL fabric"
+      ],
+      "gravity": [
+        "micro"
+      ]
+    }
+  },
+  {
+    "id": "bass-fabric-quenching-speeds",
+    "claim": "Low-speed quenching of flames on the fabric samples occurred at flow speeds between 1 and 5 cm/s, at higher speeds in lower-oxygen atmospheres.",
+    "quote": "The quenching speeds were found to be between 1 and 5 cm/s with higher speed in lower oxygen atmosphere.",
+    "sourceDocId": "ntrs-20150008962-p1",
+    "sourceTitle": "Zhao et al. (2015). Concurrent Flame Growth, Spread and Extinction over Composite Fabric Samples in Low Speed Purely Forced Flow in Microgravity, p. 1",
+    "url": "https://ntrs.nasa.gov/citations/20150008962",
+    "year": 2015,
+    "investigations": [
+      "PSI-26",
+      "PSI-25"
+    ],
+    "tags": {
+      "topic": "flammability-limit",
+      "materials": [
+        "SIBAL fabric"
+      ],
+      "o2Range": [
+        16,
+        21
+      ],
+      "flowRange": [
+        1,
+        5
+      ],
+      "gravity": [
+        "micro"
+      ]
+    }
+  },
+  {
+    "id": "fm2-lunar-reference",
+    "claim": "FM2 is planned to fly to the lunar surface to provide reference data on how materials burn in long-term lunar gravity.",
+    "quote": "Flammability of Materials on the Moon will be sent to the Lunar surface on the SpaceX Human Lander System demonstration flight. It will provide the reference for how materials burn under the effect of long term Lunar gravity to help understand and mitigate the risk for future surface exploration missions.",
+    "sourceDocId": "ntrs-20240015307-p1",
+    "sourceTitle": "Zayac et al. (2024). Flammability of Materials on the Moon, p. 1",
+    "url": "https://ntrs.nasa.gov/citations/20240015307",
+    "year": 2024,
+    "investigations": [],
+    "tags": {
+      "topic": "partial-gravity",
+      "gravity": [
+        "lunar"
+      ]
+    }
+  },
+  {
+    "id": "eclss-materials-flammable-above-30-o2",
+    "claim": "NASA has limited flammability data above 30% O2 and many common ISS materials are flammable above it, so 70% of the assessed subsystems need material changes at 8.2 psia/34% O2 (21% at 10.2 psia/26.5% O2).",
+    "quote": "NASA has data for many materials in a 30% O2 environment, but limited material flammability data above this O2 limit. Further, many commonly used ISS materials are flammable above 30% O2. This results in a required change of materials in 21% of the assessed sub-systems for the 10.2 psia/26.5% O2 environment and 70% of the assessed subsystems for the 8.2 psia/34% O2 environment.",
+    "sourceDocId": "ntrs-20260003925-p13",
+    "sourceTitle": "Abney et al. (2026). Impacts of Reduced Pressure Atmospheres on Environmental Control and Life Support Systems (ECLSS) Architectures, p. 13",
+    "url": "https://ntrs.nasa.gov/citations/20260003925",
+    "year": 2026,
+    "investigations": [],
+    "tags": {
+      "topic": "atmosphere",
+      "o2Range": [
+        26.5,
+        34
+      ]
+    }
+  },
+  {
+    "id": "eclss-new-materials-needed-at-34-o2",
+    "claim": "For most of the assessed subsystems at 8.2 psia/34% O2, alternative materials will need to be developed.",
+    "quote": "However, in the majority of cases for the 8.2 psia/ 34% O2 environment, alternate materials will need to be developed.",
+    "sourceDocId": "ntrs-20260003925-p13",
+    "sourceTitle": "Abney et al. (2026). Impacts of Reduced Pressure Atmospheres on Environmental Control and Life Support Systems (ECLSS) Architectures, p. 13",
+    "url": "https://ntrs.nasa.gov/citations/20260003925",
+    "year": 2026,
+    "investigations": [],
+    "tags": {
+      "topic": "atmosphere",
+      "o2Range": [
+        34,
+        34
+      ]
+    }
+  }
+]
