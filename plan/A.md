@@ -66,7 +66,7 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
   Commit: `Add gap chart`.
 - [x] **Coverage grid** (`app/lab/coverage-grid.tsx`). Rows = material families, columns = starting-O2 bands <15, 15–17, 17–19, 19–21, 21–23, 23–30, 30–36 (lower-inclusive). Each cell shows the run count; zero cells are visibly empty and styled as gaps. Clicking a cell sets the scenario's material and the band's midpoint O2 (<15 uses 12.5, the chart's 10–15 range). Caption: "Microgravity only. No partial-gravity runs exist in PSI."
   Commit: `Add coverage grid`.
-- [x] **Dataset download.** "Download cleaned dataset (CSV)" and "(JSON)", client-side, all runs with every field. CSV: flags and events joined by "; ", first line a `#` comment with the PSI-25 source URL. JSON: `{ note, sourceUrl, runs }` with `runs` as `Run[]`.
+- [x] **Dataset download.** "Download cleaned dataset (CSV)" and "(JSON)", client-side, all runs with every field. CSV: flags and events joined by "; ", first line a `#` comment with the PSI-25 source URL. JSON: `{ note, sourceUrls, runs }` with `runs` as `Run[]` (including `flowDirection` and `observations`).
   Commit: `Add dataset download`.
 - [x] **Matching runs table.** Reuse `app/lab/runs-table.tsx`; filter to `matchingRunIds` when a scenario is set, with a toggle "show all 129". Flags badge stays. Runs with no event keyword display "outcome not recorded", never a dash or anything implying the sample kept burning (applies from Stage 1 on).
   Commit: `Filter runs table by scenario`.

@@ -2,8 +2,9 @@
 import type { Run } from "@/lib/schema";
 
 const NOTE =
-  "PSI-25 (BASS-II) experiment table, imported by Firebreak. One row per run. " +
-  "Values are as recorded in the source; doubtful values are null and listed in flags, never corrected.";
+  "NASA PSI experiment tables, imported by Firebreak. One row per run. " +
+  "Values are as recorded in the source; doubtful values are null and listed in flags, never corrected. " +
+  "Observations are copied verbatim.";
 
 const COLUMNS: [string, (r: Run) => string | number | null | undefined][] = [
   ["id", (r) => r.id],
@@ -21,6 +22,7 @@ const COLUMNS: [string, (r: Run) => string | number | null | undefined][] = [
   ["flow_min_cm_s", (r) => r.flowCmS.min],
   ["flow_max_cm_s", (r) => r.flowCmS.max],
   ["flow_raw", (r) => r.flowCmS.raw],
+  ["flow_direction", (r) => r.flowDirection],
   ["events", (r) => r.events.join("; ")],
   ["co2_initial_pct", (r) => r.co2.initialPct],
   ["co2_final_pct", (r) => r.co2.finalPct],
@@ -28,6 +30,7 @@ const COLUMNS: [string, (r: Run) => string | number | null | undefined][] = [
   ["co_final_ppm", (r) => r.co.finalPpm],
   ["co_raw", (r) => r.co.raw],
   ["flags", (r) => r.flags.join("; ")],
+  ["observations", (r) => (r.observations ?? []).map((o) => `${o.label}: ${o.value}`).join(" | ")],
   ["source_url", (r) => r.sourceUrl],
 ];
 
@@ -39,17 +42,17 @@ const cell = (v: string | number | null | undefined) => {
 
 const sourceUrls = (runs: Run[]) => [...new Set(runs.map((r) => r.sourceUrl))];
 
-/** CSV with a leading `#` comment naming the source. Empty cell = null. */
+/** CSV with a leading `#` comment naming every PSI source. Empty cell = null. */
 export function runsToCsv(runs: Run[]): string {
   const lines = [
-    `# ${NOTE} Source: ${sourceUrls(runs).join(", ")}`,
+    `# ${NOTE} Sources: ${sourceUrls(runs).join(", ")}`,
     COLUMNS.map(([name]) => name).join(","),
     ...runs.map((r) => COLUMNS.map(([, get]) => cell(get(r))).join(",")),
   ];
   return lines.join("\r\n") + "\r\n";
 }
 
-/** JSON keeps the Run[] shape from lib/schema.ts, wrapped with the source note. */
+/** JSON keeps the Run[] shape from lib/schema.ts (flowDirection and observations included), wrapped with the source note. */
 export function runsToJson(runs: Run[]): string {
-  return JSON.stringify({ note: NOTE, sourceUrl: sourceUrls(runs).join(", "), runs }, null, 2) + "\n";
+  return JSON.stringify({ note: NOTE, sourceUrls: sourceUrls(runs), runs }, null, 2) + "\n";
 }

@@ -20,16 +20,30 @@ const FLOW_ZERO = 5;
 
 const r1 = (n: number) => Math.round(n * 10) / 10;
 
-/** "test T17" or "test B1 and 16 others", with flags when a single run is cited. */
+/** "PSI-25 test T17" or "PSI-25 test B1 and 13 others", with flags when one run is cited. */
 function cite(runs: Run[]): string {
+  const name = (r: Run) => `${r.investigationId} test ${r.testId}`;
   if (runs.length === 1) {
     const [run] = runs;
-    return run.flags.length
-      ? `test ${run.testId}, flagged: ${run.flags.join("; ")}`
-      : `test ${run.testId}`;
+    return run.flags.length ? `${name(run)}, flagged: ${run.flags.join("; ")}` : name(run);
   }
   const others = runs.length - 1;
-  return `test ${runs[0].testId} and ${others} other${others === 1 ? "" : "s"}`;
+  return `${name(runs[0])} and ${others} other${others === 1 ? "" : "s"}`;
+}
+
+/**
+ * Who a sentence speaks about, with the counts that scope it: only runs that
+ * record the value count, e.g. "run with a recorded starting oxygen (140 of 263)".
+ */
+function scope(
+  what: string,
+  pool: Run[],
+  all: Run[],
+  family: string | undefined,
+): string {
+  if (!family) return `run with a recorded ${what} (${pool.length} of ${all.length})`;
+  const familyTotal = all.filter((r) => r.material.family === family).length;
+  return `${family} run with a recorded ${what} (${pool.length} of ${familyTotal} ${family} runs)`;
 }
 
 function o2Lines(s: number, runs: Run[], family: string | undefined, out: GapReport) {
@@ -42,19 +56,19 @@ function o2Lines(s: number, runs: Run[], family: string | undefined, out: GapRep
   // Gap sentence: no run (of the chosen family, when it has runs) within closeness range.
   const pool = family ? withO2.filter((r) => r.material.family === family) : withO2;
   if (pool.length && pool.every((r) => Math.abs(r.o2InitialPct! - s) >= O2_ZERO)) {
-    const who = family ? `${family} run` : "run";
+    const who = scope("starting oxygen", pool, runs, family);
     const pMax = Math.max(...pool.map((r) => r.o2InitialPct!));
     const pMin = Math.min(...pool.map((r) => r.o2InitialPct!));
     out.gaps.push(
       s > pMax
-        ? `No ${who} started above ${pMax}% oxygen; your scenario is ${s}%.`
+        ? `No ${who} started above ${pMax}%; your scenario is ${s}%.`
         : s < pMin
-          ? `No ${who} started below ${pMin}% oxygen; your scenario is ${s}%.`
-          : `No ${who} started within ${O2_ZERO} points of ${s}% oxygen.`,
+          ? `No ${who} started below ${pMin}%; your scenario is ${s}%.`
+          : `No ${who} started within ${O2_ZERO} points of ${s}%.`,
     );
   }
 
-  // Nearest evidence across all runs.
+  // Nearest evidence across all runs that record a starting oxygen.
   if (s > max) {
     const at = withO2.filter((r) => r.o2InitialPct === max);
     out.nearest.push(
@@ -84,19 +98,19 @@ function flowLines(s: number, runs: Run[], family: string | undefined, out: GapR
 
   const pool = family ? withFlow.filter((r) => r.material.family === family) : withFlow;
   if (pool.length && pool.every((r) => dist(r) >= FLOW_ZERO)) {
-    const who = family ? `${family} run` : "run";
+    const who = scope("airflow", pool, runs, family);
     const pMax = Math.max(...pool.map((r) => r.flowCmS.max!));
     out.gaps.push(
       s > pMax
-        ? `No ${who} recorded airflow above ${pMax} cm/s; your scenario is ${s} cm/s.`
-        : `No ${who} recorded airflow within ${FLOW_ZERO} cm/s of ${s} cm/s.`,
+        ? `No ${who} went above ${pMax} cm/s; your scenario is ${s} cm/s.`
+        : `No ${who} came within ${FLOW_ZERO} cm/s of ${s} cm/s.`,
     );
   }
 
   const covering = withFlow.filter((r) => dist(r) === 0);
   if (covering.length) {
     out.nearest.push(
-      `${covering.length} of ${runs.length} runs recorded airflow ranges that include ${s} cm/s.`,
+      `${covering.length} of the ${withFlow.length} runs with a recorded airflow (of ${runs.length}) had airflow ranges that include ${s} cm/s.`,
     );
   } else if (s > max) {
     const at = withFlow.filter((r) => r.flowCmS.max === max);

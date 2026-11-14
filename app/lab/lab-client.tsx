@@ -18,6 +18,7 @@ import { RankedList } from "./ranked-list";
 import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
+import { SpaceVsEarth } from "./space-vs-earth";
 import { Summary } from "./summary";
 
 export function LabClient({
@@ -34,6 +35,7 @@ export function LabClient({
   const scenario = useMemo(() => parseScenario(params), [params]);
   const scored = hasScoredDimension(scenario);
   const presetList = useMemo(() => presets(runs), [runs]);
+  const withRuns = useMemo(() => new Set(runs.map((r) => r.investigationId)), [runs]);
   const matches = useMemo(
     () => matchInvestigations(scenario, investigations, runs),
     [scenario, investigations, runs],
@@ -95,7 +97,7 @@ export function LabClient({
         </h2>
         {scored ? (
           <>
-            <Summary matches={matches} />
+            <Summary matches={matches} withRuns={withRuns} />
             <GapsPanel report={gaps} />
             <div>
               <AskLink scenario={scenario} matches={matches} />
@@ -115,8 +117,14 @@ export function LabClient({
         </h2>
         <CoverageGrid
           runs={runs}
+          investigations={investigations}
           scenario={scenario}
-          onPick={(materialFamily, o2Pct) => setScenario({ ...scenario, materialFamily, o2Pct })}
+          onPick={(materialFamily, o2Pct) => {
+            const next: Scenario = { ...scenario, materialFamily };
+            if (o2Pct === undefined) delete next.o2Pct;
+            else next.o2Pct = o2Pct;
+            setScenario(next);
+          }}
         />
       </section>
 
@@ -127,12 +135,19 @@ export function LabClient({
         <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} />
       </section>
 
+      <section aria-labelledby="space-earth-heading" className="flex flex-col gap-3">
+        <h2 id="space-earth-heading" className="text-lg font-semibold">
+          Space vs Earth (Saffire-II)
+        </h2>
+        <SpaceVsEarth runs={runs} />
+      </section>
+
       {scored && (
         <section className="flex flex-col gap-3" aria-labelledby="ranked-heading">
           <h2 id="ranked-heading" className="text-lg font-semibold">
             Ranked investigations
           </h2>
-          <RankedList matches={matches} pendingIds={pendingIds} />
+          <RankedList matches={matches} pendingIds={pendingIds} withRuns={withRuns} />
         </section>
       )}
 

@@ -104,7 +104,7 @@ export function ScenarioForm({ scenario, presets, onChange }: Props) {
             step={0.1}
             value={scenario.pressurePsi}
             onChange={(v) => set("pressurePsi", v)}
-            description="Pressure is context only; the BASS-II table does not record it."
+            description="Pressure is context only; none of the imported PSI tables records it."
           />
         </FieldGroup>
       </FieldSet>

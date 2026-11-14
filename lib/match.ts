@@ -67,7 +67,8 @@ export function runBreakdown(
     b.materialFamily = materialCloseness(scenario.materialFamily, run);
   if (scenario.o2Pct !== undefined) b.o2Pct = o2Closeness(scenario.o2Pct, run);
   if (scenario.flowCmS !== undefined) b.flowCmS = flowCloseness(scenario.flowCmS, run);
-  // Every imported run (BASS-II) was performed on the ISS, in microgravity.
+  // Every imported run comes from a microgravity investigation (platform per
+  // data/investigations.json: the ISS or a Cygnus spacecraft).
   if (scenario.gravity !== undefined) b.gravity = scenario.gravity === "micro" ? 1 : 0;
   return b;
 }

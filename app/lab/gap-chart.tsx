@@ -1,5 +1,5 @@
 "use client";
-// Person A — where the BASS-II runs sit in airflow × starting O2, and where the
+// Person A — where the imported runs sit in airflow × starting O2, and where the
 // scenario falls relative to them. One point per run; nothing is extrapolated.
 import { useMemo } from "react";
 import {
@@ -15,7 +15,7 @@ import {
   YAxis,
 } from "recharts";
 import type { MaterialFamily, Run, Scenario } from "@/lib/schema";
-import { familyLabel } from "./coverage-grid";
+import { familyLabel, OXYGEN_NOT_RECORDED } from "./coverage-grid";
 import { materialLabel } from "./material-label";
 import { MATERIAL_FAMILIES } from "./scenario";
 
@@ -153,6 +153,33 @@ function PointTooltip({ active, payload }: { active?: boolean; payload?: { paylo
   );
 }
 
+const AIRFLOW_NOT_RECORDED = "airflow not recorded in this table";
+const AIRFLOW_NOT_NUMERIC = "airflow not numeric in source";
+
+/** Why each unplotted run is missing a coordinate, grouped by reason and investigation. */
+export function unplottedReasons(unplotted: Run[]) {
+  const groups = new Map<string, { reason: string; investigationId: string; runs: Run[] }>();
+  for (const r of unplotted) {
+    const parts: string[] = [];
+    if (r.o2InitialPct === null)
+      parts.push(r.flags.includes(OXYGEN_NOT_RECORDED) ? "oxygen not recorded in its table" : "starting oxygen missing");
+    if (r.flowCmS.max === null && r.flowCmS.min === null)
+      parts.push(
+        r.flags.includes(AIRFLOW_NOT_RECORDED)
+          ? "airflow not recorded in its table"
+          : r.flags.includes(AIRFLOW_NOT_NUMERIC)
+            ? "airflow not numeric in source"
+            : "airflow missing",
+      );
+    const reason = parts.join(" and ");
+    const key = `${r.investigationId}|${reason}`;
+    const g = groups.get(key) ?? { reason, investigationId: r.investigationId, runs: [] };
+    g.runs.push(r);
+    groups.set(key, g);
+  }
+  return [...groups.values()].sort((a, b) => b.runs.length - a.runs.length);
+}
+
 export function GapChart({
   runs,
   scenario,
@@ -177,8 +204,8 @@ export function GapChart({
       groups.set(key, [...(groups.get(key) ?? []), point]);
     }
     // Legend order: the three coloured families in slot order, then the rest
-    // in schema order. Only families present in the data are listed.
-    const present = new Set(runs.map((r) => r.material.family));
+    // in schema order. Only families with plotted runs are listed.
+    const present = new Set(groups.keys());
     const families = [
       ...COLOURED.map((c) => c.family),
       ...MATERIAL_FAMILIES.filter((f) => !COLOURED.some((c) => c.family === f)),
@@ -187,8 +214,9 @@ export function GapChart({
   }, [runs, matchingRunIds]);
 
   const { o2Pct: o2, flowCmS: flow } = scenario;
-  const noFlow = unplotted.filter((r) => r.flowCmS.max === null && r.flowCmS.min === null);
   const plotted = runs.length - unplotted.length;
+  const plottedRuns = [...groups.values()].flat().map((p) => p.run);
+  const reasons = unplottedReasons(unplotted);
 
   return (
     <figure className="gap-chart flex flex-col gap-3">
@@ -201,7 +229,7 @@ export function GapChart({
         {families.map((f) => (
           <li key={f} className="flex items-center gap-1.5">
             <LegendMark family={f} />
-            {familyLabel(f, runs)}
+            {familyLabel(f, plottedRuns)}
           </li>
         ))}
         {matchingRunIds && <li>Faded marks: runs that do not match the scenario</li>}
@@ -210,7 +238,7 @@ export function GapChart({
       <div
         className="h-96 w-full"
         role="img"
-        aria-label={`Scatter of ${plotted} BASS-II runs by airflow and starting oxygen.${
+        aria-label={`Scatter of ${plotted} runs by airflow and starting oxygen.${
           o2 !== undefined ? ` Scenario oxygen ${o2}%.` : ""
         }${flow !== undefined ? ` Scenario airflow ${flow} cm/s.` : ""} The table below lists every run.`}
       >
@@ -298,15 +326,26 @@ export function GapChart({
         </ResponsiveContainer>
       </div>
 
-      <figcaption className="text-xs text-muted-foreground">
-        {plotted} of {runs.length} runs plotted.{" "}
-        {unplotted.length > 0 &&
-          `${unplotted.length} not plotted: ${
-            noFlow.length === unplotted.length
-              ? "airflow not numeric in source"
-              : "starting O2 or airflow missing in source"
-          } (${unplotted.map((r) => r.testId).join(", ")}). `}
-        X is the highest airflow recorded in a run, because crews stepped the flow during a test.
+      <figcaption className="flex flex-col gap-1 text-xs text-muted-foreground">
+        <span>
+          {plotted} of {runs.length} runs plotted: only runs that record both a starting oxygen
+          and an airflow. X is the highest airflow recorded in a run, because crews stepped the
+          flow during some tests.
+        </span>
+        {reasons.length > 0 && (
+          <span>
+            Not plotted:{" "}
+            {reasons
+              .map(
+                (g) =>
+                  `${g.runs.length} ${g.investigationId} run${g.runs.length === 1 ? "" : "s"}${
+                    g.runs.length <= 10 ? ` (${g.runs.map((r) => r.testId).join(", ")})` : ""
+                  }: ${g.reason}`,
+              )
+              .join("; ")}
+            .
+          </span>
+        )}
       </figcaption>
     </figure>
   );

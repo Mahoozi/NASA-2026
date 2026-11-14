@@ -12,7 +12,17 @@ export const COVERAGE_LABEL: Record<InvestigationMatch["coverage"], string> = {
 
 export const NO_COVERAGE = "No imported investigation covers this scenario.";
 
-export function Summary({ matches }: { matches: InvestigationMatch[] }) {
+/**
+ * An investigation has test-level data when runs exist for its id in
+ * data/runs.json, whatever its `hasRunData` field says.
+ */
+export function Summary({
+  matches,
+  withRuns,
+}: {
+  matches: InvestigationMatch[];
+  withRuns: Set<string>;
+}) {
   const top = matches.find((m) => m.score > 0);
   if (!top) return <p className="text-base font-medium">{NO_COVERAGE}</p>;
   const runs = top.matchingRunIds.length;
@@ -23,7 +33,7 @@ export function Summary({ matches }: { matches: InvestigationMatch[] }) {
         <span className="text-muted-foreground"> ({top.investigation.name})</span>
       )}
       , {COVERAGE_LABEL[top.coverage]}, closeness {top.score.toFixed(2)},{" "}
-      {top.investigation.hasRunData || runs
+      {withRuns.has(top.investigation.id)
         ? `${runs} matching run${runs === 1 ? "" : "s"}`
         : "no test-level data imported"}
       .

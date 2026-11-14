@@ -63,9 +63,13 @@ export function hasScoredDimension(s: Scenario): boolean {
     .some((k) => s[k] !== undefined);
 }
 
-/** Initial O2 range of the runs done in (near-)ISS cabin air, from the data. */
+/** The ISS preset is sourced from BASS-II, the investigation run in ISS cabin air. */
+export const ISS_SOURCE_INVESTIGATION = "PSI-25";
+
+/** Starting-O2 range of the PSI-25 runs done in (near-)ISS cabin air, from the data. */
 export function issAirO2Range(runs: Run[], threshold = 20.5) {
   const o2 = runs
+    .filter((r) => r.investigationId === ISS_SOURCE_INVESTIGATION)
     .map((r) => r.o2InitialPct)
     .filter((v): v is number => v !== null && v >= threshold);
   return o2.length ? { min: Math.min(...o2), max: Math.max(...o2), n: o2.length } : null;
@@ -81,8 +85,8 @@ export function presets(runs: Run[]): Preset[] {
       label: "ISS cabin air",
       scenario: { o2Pct: 21, gravity: "micro" },
       source: iss
-        ? `BASS-II runs started at ${iss.min}–${iss.max}% O2 in ISS air`
-        : "No BASS-II run started at 20.5% O2 or more",
+        ? `BASS-II runs started at ${iss.min}–${iss.max}% O2 in ISS air (computed from PSI-25 runs only)`
+        : "No BASS-II (PSI-25) run started at 20.5% O2 or more",
     },
     {
       id: "moon",

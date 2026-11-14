@@ -1,6 +1,6 @@
 "use client";
-// Person A — run counts by material family × starting-O2 band. Empty cells are the gaps.
-import type { MaterialFamily, Run, Scenario } from "@/lib/schema";
+// Person A — run counts by material × starting-O2 band. Empty cells are the gaps.
+import type { Investigation, MaterialFamily, Run, Scenario } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import {
   Table,
@@ -25,18 +25,63 @@ export const O2_BANDS = [
   { label: "30–36", lo: 30, hi: 36, mid: 33 },
 ] as const;
 
-export function coverageCounts(runs: Run[]) {
-  const counts = new Map<MaterialFamily, number[]>(
-    MATERIAL_FAMILIES.map((f) => [f, O2_BANDS.map(() => 0)]),
-  );
+/** The importers' flag for a table with no oxygen column (pipeline/psi_shared.ts). */
+export const OXYGEN_NOT_RECORDED = "oxygen not recorded in this table";
+
+export type GridRow = {
+  label: string;
+  family: MaterialFamily;
+  /** Runs per O2 band, in O2_BANDS order. */
+  bands: number[];
+  /** Runs with no starting oxygen value. */
+  notRecorded: number;
+};
+
+/**
+ * One row per material label (see material-label.ts), ordered by family.
+ * Only labels with runs appear: an all-empty row for a material that is not in
+ * the data would claim a gap we cannot show.
+ */
+export function coverageRows(runs: Run[]): { rows: GridRow[]; outside: Run[] } {
+  const rows = new Map<string, GridRow>();
   const outside: Run[] = [];
   for (const r of runs) {
+    const label = materialLabel(r);
+    const row =
+      rows.get(label) ??
+      { label, family: r.material.family, bands: O2_BANDS.map(() => 0), notRecorded: 0 };
+    rows.set(label, row);
     const v = r.o2InitialPct;
-    const b = v === null ? -1 : O2_BANDS.findIndex((band) => v >= band.lo && v < band.hi);
+    if (v === null) {
+      row.notRecorded++;
+      continue;
+    }
+    const b = O2_BANDS.findIndex((band) => v >= band.lo && v < band.hi);
     if (b < 0) outside.push(r);
-    else counts.get(r.material.family)![b]++;
+    else row.bands[b]++;
   }
-  return { counts, outside };
+  const order = (f: MaterialFamily) => MATERIAL_FAMILIES.indexOf(f);
+  return {
+    rows: [...rows.values()].sort(
+      (a, b) => order(a.family) - order(b.family) || a.label.localeCompare(b.label),
+    ),
+    outside,
+  };
+}
+
+/** "121 BASS runs and 2 SAFFIRE-III runs", from the not-recorded flag. */
+export function noOxygenTables(runs: Run[], investigations: Investigation[]): string | null {
+  const byInv = new Map<string, number>();
+  for (const r of runs)
+    if (r.flags.includes(OXYGEN_NOT_RECORDED))
+      byInv.set(r.investigationId, (byInv.get(r.investigationId) ?? 0) + 1);
+  if (!byInv.size) return null;
+  const parts = [...byInv].map(([id, n]) => {
+    const inv = investigations.find((i) => i.id === id);
+    return `${n} ${inv?.acronym || id} run${n === 1 ? "" : "s"}`;
+  });
+  const list = parts.length === 1 ? parts[0] : `${parts.slice(0, -1).join(", ")} and ${parts.at(-1)}`;
+  return `${list} record no oxygen value in their PSI tables.`;
 }
 
 /**
@@ -53,80 +98,104 @@ export function familyLabel(family: MaterialFamily, runs: Run[]): string {
 
 export function CoverageGrid({
   runs,
+  investigations,
   scenario,
   onPick,
 }: {
   runs: Run[];
+  investigations: Investigation[];
   scenario: Scenario;
-  onPick: (family: MaterialFamily, o2Pct: number) => void;
+  /** o2Pct undefined = the "O2 not recorded" column: set material only. */
+  onPick: (family: MaterialFamily, o2Pct: number | undefined) => void;
 }) {
-  const { counts, outside } = coverageCounts(runs);
-  // Only families with at least one run: an all-empty row for a family that is
-  // not in the data would claim a gap we cannot show.
-  const families = MATERIAL_FAMILIES.filter((f) => counts.get(f)!.some((n) => n > 0));
+  const { rows, outside } = coverageRows(runs);
   const activeBand =
     scenario.o2Pct === undefined
       ? -1
       : O2_BANDS.findIndex((b) => scenario.o2Pct! >= b.lo && scenario.o2Pct! < b.hi);
+  const withO2 = runs.filter((r) => r.o2InitialPct !== null);
+  const atOrAbove = (pct: number) => withO2.filter((r) => r.o2InitialPct! >= pct).length;
+  const noOxygen = noOxygenTables(runs, investigations);
 
-  const atOrAbove = (pct: number) =>
-    runs.filter((r) => r.o2InitialPct !== null && r.o2InitialPct >= pct).length;
+  const cellClass = (n: number, active: boolean) =>
+    cn(
+      "flex h-9 w-full min-w-12 items-center justify-center rounded-md text-sm tabular-nums outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+      n === 0
+        ? "border border-dashed border-border bg-[repeating-linear-gradient(135deg,transparent_0_6px,var(--muted)_6px_7px)] text-transparent hover:border-muted-foreground"
+        : "bg-muted hover:bg-accent",
+      active && "ring-2 ring-foreground",
+    );
+  const runsText = (n: number) => (n === 0 ? "no runs" : `${n} run${n === 1 ? "" : "s"}`);
 
   return (
     <div className="flex flex-col gap-3">
-    <Table>
-      <TableCaption className="text-left">
-        Microgravity only. No partial-gravity runs exist in PSI. Counts are BASS-II runs by
-        starting oxygen; empty cells have no run. Select a cell to set the scenario.
-        {outside.length > 0 &&
-          ` ${outside.length} run${outside.length === 1 ? "" : "s"} with no starting O2 or outside 10–36% not counted.`}
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead scope="col">Material</TableHead>
-          {O2_BANDS.map((b) => (
-            <TableHead key={b.label} scope="col" className="text-center tabular-nums">
-              {b.label}% O₂
+      <Table>
+        <TableCaption className="text-left">
+          <span className="block">
+            Microgravity only. No partial-gravity runs exist in PSI. Counts are runs by starting
+            oxygen; empty cells have no run. Select a cell to set the scenario.
+            {outside.length > 0 &&
+              ` ${outside.length} run${outside.length === 1 ? "" : "s"} outside 10–36% not counted.`}
+          </span>
+          {noOxygen && <span className="block">{noOxygen}</span>}
+        </TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead scope="col">Material</TableHead>
+            {O2_BANDS.map((b) => (
+              <TableHead key={b.label} scope="col" className="text-center tabular-nums">
+                {b.label}% O₂
+              </TableHead>
+            ))}
+            <TableHead scope="col" className="text-center">
+              O₂ not recorded
             </TableHead>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {families.map((family) => (
-          <TableRow key={family} className="hover:bg-transparent">
-            <TableHead scope="row" className="font-normal">
-              {familyLabel(family, runs)}
-            </TableHead>
-            {counts.get(family)!.map((n, i) => {
-              const band = O2_BANDS[i];
-              const active = scenario.materialFamily === family && activeBand === i;
-              return (
-                <TableCell key={band.label} className="p-1">
-                  <button
-                    type="button"
-                    onClick={() => onPick(family, band.mid)}
-                    aria-label={`${familyLabel(family, runs)}, ${band.label}% O2: ${n === 0 ? "no runs" : `${n} run${n === 1 ? "" : "s"}`}. Set scenario to ${family} at ${band.mid}% O2.`}
-                    aria-pressed={active}
-                    className={cn(
-                      "flex h-9 w-full min-w-12 items-center justify-center rounded-md text-sm tabular-nums outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
-                      n === 0
-                        ? "border border-dashed border-border bg-[repeating-linear-gradient(135deg,transparent_0_6px,var(--muted)_6px_7px)] text-transparent hover:border-muted-foreground"
-                        : "bg-muted hover:bg-accent",
-                      active && "ring-2 ring-foreground",
-                    )}
-                  >
-                    {n === 0 ? "" : n}
-                  </button>
-                </TableCell>
-              );
-            })}
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.label} className="hover:bg-transparent">
+              <TableHead scope="row" className="font-normal">
+                {row.label}
+              </TableHead>
+              {row.bands.map((n, i) => {
+                const band = O2_BANDS[i];
+                const active = scenario.materialFamily === row.family && activeBand === i;
+                return (
+                  <TableCell key={band.label} className="p-1">
+                    <button
+                      type="button"
+                      onClick={() => onPick(row.family, band.mid)}
+                      aria-label={`${row.label}, ${band.label}% O2: ${runsText(n)}. Set scenario to ${row.family} at ${band.mid}% O2.`}
+                      aria-pressed={active}
+                      className={cellClass(n, active)}
+                    >
+                      {n === 0 ? "" : n}
+                    </button>
+                  </TableCell>
+                );
+              })}
+              <TableCell className="p-1">
+                <button
+                  type="button"
+                  onClick={() => onPick(row.family, undefined)}
+                  aria-label={`${row.label}, starting O2 not recorded: ${runsText(row.notRecorded)}. Set scenario to ${row.family} with no oxygen value.`}
+                  aria-pressed={scenario.materialFamily === row.family && scenario.o2Pct === undefined}
+                  className={cellClass(
+                    row.notRecorded,
+                    scenario.materialFamily === row.family && scenario.o2Pct === undefined,
+                  )}
+                >
+                  {row.notRecorded === 0 ? "" : row.notRecorded}
+                </button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
       <p className="text-sm">
-        {atOrAbove(21)} of {runs.length} runs started at or above 21% oxygen; {atOrAbove(23)} started
-        at or above 23%.
+        {atOrAbove(21)} of the {withO2.length} runs with a recorded starting oxygen (of{" "}
+        {runs.length}) started at or above 21% oxygen; {atOrAbove(23)} started at or above 23%.
       </p>
     </div>
   );

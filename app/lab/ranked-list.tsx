@@ -33,9 +33,12 @@ const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 export function RankedList({
   matches,
   pendingIds,
+  withRuns,
 }: {
   matches: InvestigationMatch[];
   pendingIds: string[];
+  /** Investigation ids with runs in data/runs.json (not the `hasRunData` field). */
+  withRuns: Set<string>;
 }) {
   const listed = matches.filter((m) => m.score > 0);
   const hidden = matches.length - listed.length;
@@ -100,7 +103,7 @@ export function RankedList({
                       </Badge>
                     ))}
                     <span className="text-sm text-muted-foreground">
-                      {m.investigation.hasRunData
+                      {withRuns.has(m.investigation.id)
                         ? `${runs} matching run${runs === 1 ? "" : "s"}`
                         : "no test-level data imported"}
                     </span>
