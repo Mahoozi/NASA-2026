@@ -8470,7 +8470,8 @@
     },
     "flags": [
       "oxygen given as a range in source (raw: 21.5 - 21.7)",
-      "thickness unit inconsistent between Saffire tables; not corrected"
+      "thickness unit inconsistent between Saffire tables; not corrected",
+      "length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide"
     ],
     "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
     "flowDirection": "concurrent",
@@ -8532,7 +8533,8 @@
     },
     "flags": [
       "oxygen approximate in source (raw: ~ 21.5)",
-      "thickness unit inconsistent between Saffire tables; not corrected"
+      "thickness unit inconsistent between Saffire tables; not corrected",
+      "length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide"
     ],
     "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
     "flowDirection": "opposed",
@@ -9342,7 +9344,8 @@
       "raw": ""
     },
     "flags": [
-      "oxygen not recorded in this table"
+      "oxygen not recorded in this table",
+      "airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s"
     ],
     "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
     "flowDirection": "concurrent",
@@ -9391,7 +9394,8 @@
       "raw": ""
     },
     "flags": [
-      "oxygen not recorded in this table"
+      "oxygen not recorded in this table",
+      "airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s"
     ],
     "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
     "flowDirection": "opposed",

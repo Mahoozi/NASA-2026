@@ -35,7 +35,7 @@ export const DIMENSIONS: Dimension[] = [
 const FLAG_ROW: Record<string, RegExp | null> = {
   material: /material inferred|shape|spherical sample|material blank/i,
   thickness: /thickness/i,
-  width: null,
+  width: /length and width/i,
   diameter: null,
   o2: /oxygen/i,
   flow: /airflow|\bfan\b/i,

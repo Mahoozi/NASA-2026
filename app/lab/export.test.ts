@@ -13,6 +13,20 @@ describe("CSV export and data dictionary", () => {
     for (const c of CSV_COLUMNS) expect(c.description.length).toBeGreaterThan(0);
   });
 
+  it("puts both Saffire source flags in the CSV and in the dictionary's flag list", () => {
+    const csv = runsToCsv(runs);
+    const swapped =
+      "length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide";
+    const airflow = "airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s";
+    const rowsOf = (id: string) => csv.split("\r\n").filter((l) => l.startsWith(`${id}:`));
+    expect(rowsOf("PSI-98")).toHaveLength(2);
+    for (const l of rowsOf("PSI-98")) expect(l).toContain(swapped);
+    for (const l of rowsOf("PSI-100")) expect(l).toContain(airflow);
+    const groups = flagTypes(runs);
+    expect(groups.find((g) => g.field === "Sample size")?.types.map(([t]) => t)).toEqual([swapped]);
+    expect(groups.find((g) => g.field === "Airflow")?.types.map(([t]) => t)).toContain(airflow);
+  });
+
   it("lists every flag present in the runs under exactly one field", () => {
     const listed = flagTypes(runs).flatMap((g) => g.types.map(([t]) => t));
     expect(new Set(listed).size).toBe(listed.length);

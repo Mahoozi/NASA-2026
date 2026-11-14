@@ -7,6 +7,7 @@ const FLAG_FIELDS: { field: string; columns: string; test: RegExp }[] = [
   { field: "Airflow", columns: "flow_min_cm_s, flow_max_cm_s, flow_direction", test: /airflow|\bfan\b|flow direction/i },
   { field: "Carbon monoxide", columns: "co_initial_ppm, co_final_ppm", test: /\bCO\b/ },
   { field: "Date", columns: "date", test: /\bdate\b/i },
+  { field: "Sample size", columns: "width_cm", test: /length and width/i },
   { field: "Material", columns: "material_family, thickness_mm", test: /material|PMMA|shape|spherical|thickness/i },
 ];
 const OTHER = { field: "Other", columns: "" };

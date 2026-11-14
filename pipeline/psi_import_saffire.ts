@@ -29,6 +29,20 @@ export const SAFFIRE_FLAG = {
   o2Range: (raw: string) => `oxygen given as a range in source (raw: ${raw})`,
   thicknessAmbiguous: (raw: string) => `thickness ambiguous in source (raw: ${raw})`,
   thicknessUnit: "thickness unit inconsistent between Saffire tables; not corrected",
+  /**
+   * PSI-98's table gives Sample Length 40.6 cm and Sample Width 94 cm. PSI-100's
+   * table gives Length 94 cm, Width 40.6 cm, and the NTRS 20170008805 abstract
+   * (https://ntrs.nasa.gov/citations/20170008805, fetched 2026-11-14) says "flame
+   * spread over a 94 x 40.6 cm thin charring solid". Values kept as recorded.
+   */
+  lengthWidthSwapped:
+    "length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide",
+  /**
+   * PSI-100's table gives Air Flow 30 cm/s. NTRS 20180005168 (fetched 2026-11-14)
+   * labels it "Saffire-III (25 cm/s)" (p. 16) and lists III-1 and III-2 at
+   * "25 cm/s" (p. 30). Value kept as recorded.
+   */
+  saffire3Airflow: "airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s",
 } as const;
 
 /** The tables have no date column. */
@@ -48,6 +62,8 @@ type FileSpec = {
   headerUnit: Partial<Record<Key, string>>;
   /** Source notes attached to a whole column through its header, e.g. "Percent O2 (Note 1)". */
   headerNotes?: Partial<Record<Key, number>>;
+  /** Flags for every row: discrepancies with other sources. Values are never changed. */
+  sourceFlags?: string[];
 };
 
 export const SAFFIRE_FILES: FileSpec[] = [
@@ -61,6 +77,7 @@ export const SAFFIRE_FILES: FileSpec[] = [
       burnTime: "Burn Time (s)", direction: "Flow Direction", camera1: "Camera 1", camera2: "Camera 2",
     },
     headerUnit: { thickness: "cm", length: "cm", width: "cm", airflow: "cm/s", ignitionPower: "W", ignitionTime: "s", burnTime: "s" },
+    sourceFlags: [SAFFIRE_FLAG.lengthWidthSwapped],
   },
   {
     psiId: "PSI-99",
@@ -87,6 +104,7 @@ export const SAFFIRE_FILES: FileSpec[] = [
       direction: "Direction", camera1: "Camera 1", camera2: "Camera 2",
     },
     headerUnit: {},
+    sourceFlags: [SAFFIRE_FLAG.saffire3Airflow],
   },
 ];
 
@@ -225,6 +243,9 @@ export function importSaffireFile(spec: FileSpec): { runs: Run[]; skipped: Skipp
     const airRaw = cell(cells, "airflow")!;
     const air = parseNumberWithUnit(airRaw, "cm/s", spec.headerUnit.airflow, `${spec.psiId} airflow`);
 
+    // Discrepancies with other sources: flagged, never corrected.
+    flags.push(...(spec.sourceFlags ?? []));
+
     // Everything else, verbatim.
     for (const [k, label] of OBSERVED) {
       const v = cell(cells, k);
@@ -298,6 +319,12 @@ export function saffireAcceptance(runs: Run[]) {
     `PSI-99 2-9 should be "other" (PMMA, shape not stated), taken from the row above, thicknessMm 10`);
   c.check(runs.every((r) => r.o2InitialPct === null || r.o2InitialPct <= 22.2), "a Saffire run has starting oxygen above 22.2");
   c.check(runs.every((r) => r.events.length === 0), "Saffire runs must not carry derived events");
+  c.check(of("PSI-98").every((r) => r.flags.includes(SAFFIRE_FLAG.lengthWidthSwapped) && r.material.widthCm === 94),
+    "PSI-98 runs should keep width 94 cm as recorded and carry the length/width flag");
+  c.check(of("PSI-100").every((r) => r.flags.includes(SAFFIRE_FLAG.saffire3Airflow) && r.flowCmS.min === 30 && r.flowCmS.max === 30),
+    "PSI-100 runs should keep airflow 30 cm/s as recorded and carry the NTRS airflow flag");
+  c.check(of("PSI-99").every((r) => !r.flags.includes(SAFFIRE_FLAG.lengthWidthSwapped) && !r.flags.includes(SAFFIRE_FLAG.saffire3Airflow)),
+    "PSI-99 runs must not carry the PSI-98 or PSI-100 source flags");
   c.done();
 }
 

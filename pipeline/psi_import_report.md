@@ -380,12 +380,13 @@ A run can have more than one event. "No event recorded" means the table records 
 | Flag | Runs |
 |---|---:|
 | thickness unit inconsistent between Saffire tables; not corrected | 2 |
+| length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide | 2 |
 | oxygen given as a range in source (raw: …) | 1 |
 | oxygen approximate in source (raw: …) | 1 |
 
 ### Flags by test
 
-Every run in this table carries: *thickness unit inconsistent between Saffire tables; not corrected*. Listed below: the other flags.
+Every run in this table carries: *thickness unit inconsistent between Saffire tables; not corrected*; *length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide*. Listed below: the other flags.
 
 | Test | Run id | Flags |
 |---|---|---|
@@ -516,9 +517,10 @@ A run can have more than one event. "No event recorded" means the table records 
 | Flag | Runs |
 |---|---:|
 | oxygen not recorded in this table | 2 |
+| airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s | 2 |
 
 ### Flags by test
 
-Every run in this table carries: *oxygen not recorded in this table*. Listed below: the other flags.
+Every run in this table carries: *oxygen not recorded in this table*; *airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s*. Listed below: the other flags.
 
 No other flags.

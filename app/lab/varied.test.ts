@@ -34,6 +34,15 @@ describe("what varied and what was held fixed", () => {
     expect(flow).toMatchObject({ status: "held fixed", text: `held fixed: ${values[0]} cm/s`, runs: rs.length });
   });
 
+  it("carries the Saffire source-discrepancy flags on the rows they concern", () => {
+    expect(col("PSI-98").cells.width).toMatchObject({ text: "held fixed: 94 cm", flagged: 2 });
+    expect(col("PSI-98").cells.width.flagTypes[0]).toMatch(/^length and width may be swapped in this table/);
+    expect(col("PSI-100").cells.flow).toMatchObject({ text: "held fixed: 30 cm/s", flagged: 2 });
+    expect(col("PSI-100").cells.flow.flagTypes).toContain(
+      "airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s",
+    );
+  });
+
   it("never says varied when every recorded value is equal, or fixed when they differ", () => {
     for (const c of table) {
       const rs = runs.filter((r) => r.investigationId === c.id);
