@@ -44,7 +44,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 2 — Show it (hour 10–22)
 
-- [ ] **`/ask` page.** Skills: `shadcn`, `frontend-design` (one pass), `design:ux-copy` for the `insufficient_evidence` text. Textarea + submit; render each sentence followed by its citations as links (title → url), verified ones marked, unverified never shown. `insufficient_evidence` renders as a plain statement, not an error. Read `?scenario=` and `?investigations=` from the URL (A's handoff) and pass them as `context`.
+- [x] **`/ask` page.** Skills: `shadcn`, `frontend-design` (one pass), `design:ux-copy` for the `insufficient_evidence` text. Textarea + submit; render each sentence followed by its citations as links (title → url), verified ones marked, unverified never shown. `insufficient_evidence` renders as a plain statement, not an error. Read `?scenario=` and `?investigations=` from the URL (A's handoff) and pass them as `context`.
   Commit: `Build ask page`.
 - [x] **`/investigations` cards + `/investigations/[id]`.** Skills: `shadcn`, `frontend-design`. Cards: acronym, name, safety areas, fuel phases, platform, "has run data" badge. Detail: objectives, approach, hypothesis, Earth benefits, link to PSI page, corpus docs listed. Cards with `hasRunData` link to `/lab?investigation=<id>`.
   Commit: `Build investigations pages`.
