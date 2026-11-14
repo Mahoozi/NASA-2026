@@ -53,7 +53,19 @@ describe("recorded flammability limits (PSI-25)", () => {
     const moon: Scenario = { o2Pct: 30, pressurePsi: 10.2, gravity: "lunar" };
     const view = limitsForScenario(moon, runs);
     expect(view.kind).toBe("refusal");
-    if (view.kind === "refusal") expect(view.text).toBe(REFUSAL);
+    if (view.kind === "refusal") {
+      expect(view.text).toBe(REFUSAL);
+      expect(view.reasons).toEqual([
+        "Oxygen 30% is above every recorded starting oxygen for any material (max 22.2%).",
+        "Every recorded limit is from microgravity on the ISS; your scenario is set to lunar gravity.",
+      ]);
+    }
+    // With a material set, the oxygen reason names it and its own maximum.
+    const rod = limitsForScenario({ ...moon, materialFamily: "PMMA rod" }, runs);
+    expect(rod.kind === "refusal" && rod.reasons).toEqual([
+      "Oxygen 30% is above every recorded starting oxygen for PMMA rod (max 22.2%).",
+      "Every recorded limit is from microgravity on the ISS; your scenario is set to lunar gravity.",
+    ]);
     expect(REFUSAL).toBe(
       "No recorded limit near this scenario. Firebreak does not extrapolate beyond tested conditions.",
     );

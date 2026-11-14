@@ -122,6 +122,14 @@ export function testedEnvelope(runs: Run[], family: MaterialFamily): Envelope {
   };
 }
 
+/** Starting-oxygen range over every run in the limits table. */
+function allO2Range(runs: Run[]): [number, number] | null {
+  const o2 = runs.flatMap((r) =>
+    r.investigationId === LIMITS_INVESTIGATION && r.o2InitialPct !== null ? [r.o2InitialPct] : [],
+  );
+  return o2.length ? [Math.min(...o2), Math.max(...o2)] : null;
+}
+
 export const REFUSAL =
   "No recorded limit near this scenario. Firebreak does not extrapolate beyond tested conditions.";
 
@@ -160,21 +168,27 @@ export function limitsForScenario(s: Scenario, runs: Run[], max = 3): LimitsView
     reasons.push(
       `Every recorded limit is from microgravity on the ISS; your scenario is set to ${s.gravity === "1g" ? "Earth gravity" : `${s.gravity} gravity`}.`,
     );
-  if (family === undefined) {
-    if (reasons.length) return { kind: "refusal", text: REFUSAL, reasons };
+  // Oxygen against the material's recorded starting oxygen, or every material's
+  // when none is set. Checked whether or not other reasons already apply.
+  const env = family === undefined ? null : testedEnvelope(runs, family);
+  const o2Range = env ? env.o2 : allO2Range(runs);
+  const whose = family ?? "any material";
+  if (s.o2Pct !== undefined && o2Range) {
+    if (s.o2Pct > o2Range[1])
+      reasons.unshift(`Oxygen ${s.o2Pct}% is above every recorded starting oxygen for ${whose} (max ${o2Range[1]}%).`);
+    else if (s.o2Pct < o2Range[0])
+      reasons.unshift(`Oxygen ${s.o2Pct}% is below every recorded starting oxygen for ${whose} (min ${o2Range[0]}%).`);
+  }
+  const mine = family === undefined ? [] : points.filter((p) => p.family === family);
+  if (env && !mine.length)
+    reasons.push(`No ${LIMITS_INVESTIGATION} run of ${family} has a usable recorded limit (${env.runs} runs of it in the table).`);
+
+  if (reasons.length) return { kind: "refusal", text: REFUSAL, reasons };
+  if (!env)
     return {
       kind: "needs-material",
       text: "Pick a material to compare the scenario with that material's recorded limits.",
     };
-  }
-
-  const env = testedEnvelope(runs, family);
-  const mine = points.filter((p) => p.family === family);
-  if (!mine.length)
-    reasons.push(`No ${LIMITS_INVESTIGATION} run of ${family} has a usable recorded limit (${env.runs} runs of it in the table).`);
-  if (s.o2Pct !== undefined && env.o2 && (s.o2Pct < env.o2[0] || s.o2Pct > env.o2[1]))
-    reasons.push(`Your scenario's oxygen, ${s.o2Pct}%, is outside the range recorded for ${family} (${range(env.o2, "%")}).`);
-  if (reasons.length) return { kind: "refusal", text: REFUSAL, reasons };
 
   const dist = (p: LimitPoint) =>
     (s.o2Pct === undefined ? 0 : Math.abs(p.o2Pct - s.o2Pct)) +

@@ -15,7 +15,7 @@ export const SPACE_VS_EARTH_ID = "space-vs-earth";
 export const PARTIAL_GRAVITY_SOURCES = {
   gollner: {
     ntrs: "20210022402",
-    label: "Gollner et al. 2021, NASA white paper",
+    label: "Gollner et al., 2021 white paper",
     url: "https://ntrs.nasa.gov/api/citations/20210022402/downloads/217-_GollnerMichaelJ.pdf",
     quote:
       "a “sweet spot” for expanded flammability regimes with enhanced propensity for flame spread close to Lunar gravity conditions",
@@ -28,6 +28,9 @@ export const PARTIAL_GRAVITY_SOURCES = {
       "Lunar gravity has been found to increase the limits of flammability for some materials compared to Earth gravity",
   },
 } as const;
+
+/** A quote inside our quote marks: its own double quotes become single ones. */
+export const nested = (quote: string) => quote.replace(/“/g, "‘").replace(/”/g, "’").replace(/"/g, "'");
 
 const linkClass = "underline underline-offset-4 hover:text-foreground";
 
@@ -66,10 +69,10 @@ export function GravityBoundsNote({
         )}
       </p>
       <p>
-        Caveat: published tests suggest flammability may peak near lunar gravity. A{" "}
-        <Ext href={gollner.url}>2021 NASA white paper</Ext> (NTRS {gollner.ntrs}) reports “
-        {gollner.quote}”, and the <Ext href={fm2.url}>FM2 team</Ext> (NTRS {fm2.ntrs}) writes
-        that “{fm2.quote}”. If so, microgravity and normal-gravity results may not bound lunar
+        Caveat: published tests suggest flammability may peak near lunar gravity.{" "}
+        <Ext href={gollner.url}>Gollner et al.</Ext> (2021 white paper, NTRS {gollner.ntrs})
+        report “{nested(gollner.quote)}”, and the <Ext href={fm2.url}>FM2 team</Ext> (NTRS{" "}
+        {fm2.ntrs}) writes that “{nested(fm2.quote)}”. If so, microgravity and normal-gravity results may not bound lunar
         gravity. FM2, a combustion chamber to be sent to the surface of the Moon, and LUCI are
         the experiments the challenge brief expects to add partial-gravity data.
       </p>
