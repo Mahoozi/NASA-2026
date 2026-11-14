@@ -131,7 +131,13 @@ export function RunsTable({ runs }: { runs: Run[] }) {
             <TableCell className="text-right tabular-nums">{r.material.thicknessMm ?? dash}</TableCell>
             <TableCell className="text-right tabular-nums">{r.o2InitialPct ?? dash}</TableCell>
             <TableCell className="text-right tabular-nums" title={r.flowCmS.raw}>{flow(r)}</TableCell>
-            <TableCell>{r.events.length ? r.events.join(", ") : dash}</TableCell>
+            <TableCell>
+              {r.events.length ? (
+                r.events.join(", ")
+              ) : (
+                <span className="text-muted-foreground">outcome not recorded</span>
+              )}
+            </TableCell>
             <TableCell className="text-right">
               <FlagsBadge flags={r.flags} />
             </TableCell>
