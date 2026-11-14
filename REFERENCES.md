@@ -40,6 +40,15 @@ Saved unmodified on 2026-11-14 as `data/raw/nasa-web-<slug>-2026-11-14.html`; si
 - [Apollo 13: Mission Details](https://www.nasa.gov/missions/apollo/apollo-13-mission-details/), corpus doc `nasa-web-apollo-13`
 - [25 Years Ago: Fire Aboard Space Station Mir](https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/), corpus doc `nasa-web-mir-fire`
 
+## Linked from the landing page
+Cited on the home page ("Why it matters"), not part of the corpus:
+- [Apollo 1](https://sma.nasa.gov/sma-disciplines/accllp/apollo-1) (NASA Office of Safety and Mission Assurance)
+- [Apollo 13](https://sma.nasa.gov/sma-disciplines/accllp/apollo-13) (NASA Office of Safety and Mission Assurance)
+- Mir: the "25 Years Ago: Fire Aboard Space Station Mir" page listed under NASA web pages above
+
+## Challenge
+- [Flame in Freefall](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/), 2026 NASA Space Apps Challenge
+
 ## Libraries
 - Next.js 16.4.6
 - React 19.3.0
