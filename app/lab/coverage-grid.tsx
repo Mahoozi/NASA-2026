@@ -70,7 +70,11 @@ export function CoverageGrid({
       ? -1
       : O2_BANDS.findIndex((b) => scenario.o2Pct! >= b.lo && scenario.o2Pct! < b.hi);
 
+  const atOrAbove = (pct: number) =>
+    runs.filter((r) => r.o2InitialPct !== null && r.o2InitialPct >= pct).length;
+
   return (
+    <div className="flex flex-col gap-3">
     <Table>
       <TableCaption className="text-left">
         Microgravity only. No partial-gravity runs exist in PSI. Counts are BASS-II runs by
@@ -121,5 +125,10 @@ export function CoverageGrid({
         ))}
       </TableBody>
     </Table>
+      <p className="text-sm">
+        {atOrAbove(21)} of {runs.length} runs started at or above 21% oxygen; {atOrAbove(23)} started
+        at or above 23%.
+      </p>
+    </div>
   );
 }
