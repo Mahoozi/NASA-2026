@@ -11,6 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { materialLabel } from "./material-label";
 import { MATERIAL_FAMILIES } from "./scenario";
 
 /** Lower-inclusive bands. "<15" spans the chart's 10–15 range for its midpoint. */
@@ -38,18 +39,16 @@ export function coverageCounts(runs: Run[]) {
   return { counts, outside };
 }
 
-const SPHERICAL_FLAG = "spherical sample: material not stated in table";
-
 /**
- * Display name for a family. "other" is only renamed while every run in it is a
- * spherical section (the importer's flag), so the label can't outlive the data.
+ * Display name for a family: the family itself, or for "other" the distinct
+ * material labels of the runs in it (see material-label.ts).
  */
 export function familyLabel(family: MaterialFamily, runs: Run[]): string {
   if (family !== "other") return family;
-  const other = runs.filter((r) => r.material.family === "other");
-  return other.length && other.every((r) => r.flags.includes(SPHERICAL_FLAG))
-    ? "Spherical section (material not stated)"
-    : "other";
+  const labels = [
+    ...new Set(runs.filter((r) => r.material.family === "other").map(materialLabel)),
+  ];
+  return labels.length ? labels.join(", ") : "other";
 }
 
 export function CoverageGrid({

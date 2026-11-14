@@ -16,6 +16,7 @@ import {
 } from "recharts";
 import type { MaterialFamily, Run, Scenario } from "@/lib/schema";
 import { familyLabel } from "./coverage-grid";
+import { materialLabel } from "./material-label";
 import { MATERIAL_FAMILIES } from "./scenario";
 
 // Scatter puts every pair on screen, so the dataviz palette caps colour at its
@@ -138,7 +139,7 @@ function PointTooltip({ active, payload }: { active?: boolean; payload?: { paylo
   return (
     <div className="flex max-w-64 flex-col gap-0.5 rounded-md border border-border bg-popover px-2.5 py-2 text-xs text-popover-foreground shadow-md">
       <span className="font-medium">Test {r.testId}</span>
-      <span>{r.material.family} — {r.material.raw}</span>
+      <span>{materialLabel(r)} — {r.material.raw}</span>
       <span>Starting O₂ {r.o2InitialPct}% · airflow {flow} cm/s</span>
       <span className="text-muted-foreground">
         {r.events.length ? r.events.join(", ") : "outcome not recorded"}

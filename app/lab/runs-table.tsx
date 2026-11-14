@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import type { Run } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { materialLabel } from "./material-label";
 import {
   Table,
   TableBody,
@@ -33,7 +34,7 @@ function sortValue(r: Run, key: SortKey): string | number | null {
   switch (key) {
     case "test": return r.testId;
     case "pi": return r.pi;
-    case "family": return r.material.family;
+    case "family": return materialLabel(r);
     case "thickness": return r.material.thicknessMm ?? null;
     case "o2": return r.o2InitialPct;
     case "flow": return r.flowCmS.max;
@@ -158,7 +159,7 @@ export function RunsTable({
           <TableRow key={r.id}>
             <TableCell className="font-medium">{r.testId}</TableCell>
             <TableCell>{r.pi}</TableCell>
-            <TableCell title={r.material.raw}>{r.material.family}</TableCell>
+            <TableCell title={r.material.raw}>{materialLabel(r)}</TableCell>
             <TableCell className="text-right tabular-nums">{r.material.thicknessMm ?? dash}</TableCell>
             <TableCell className="text-right tabular-nums">{r.o2InitialPct ?? dash}</TableCell>
             <TableCell className="text-right tabular-nums" title={r.flowCmS.raw}>{flow(r)}</TableCell>
