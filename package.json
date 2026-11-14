@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "import:psi": "tsx pipeline/psi_import_bass2.ts",
+    "fetch:psi": "tsx pipeline/corpus_fetch_psi.ts",
+    "build:corpus": "tsx pipeline/corpus_build.ts",
     "test": "vitest run"
   },
   "dependencies": {

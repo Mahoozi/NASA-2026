@@ -14,15 +14,17 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 0 — Contracts (hour 0–1)
 
-- [ ] **`data/investigations.json` v0.** One entry per PSI combustion investigation, real values only, taken from the PSI pages: `id` (`"PSI-25"`), `acronym`, `name`, `url`, `safetyArea`, `fuelPhase`, `facility`, `platform`, `hasRunData` (true only for PSI-25 for now). `objectives` and `approach` as `""` until Stage 1.
+- [x] **`data/investigations.json` v0.** One entry per PSI combustion investigation, real values only, taken from the PSI pages: `id` (`"PSI-25"`), `acronym`, `name`, `url`, `safetyArea`, `fuelPhase`, `facility`, `platform`, `hasRunData` (true only for PSI-25 for now). `objectives` and `approach` as `""` until Stage 1.
   Done when: file parses as `Investigation[]` and includes PSI-25.
   Commit: `Add investigations.json v0`.
-- [ ] `data/corpus.json` = `[]`, `data/golden.json` = `[]`. Commit: `Add empty corpus and golden set`.
+- [x] `data/corpus.json` = `[]`, `data/golden.json` = `[]`. Commit: `Add empty corpus and golden set`.
+  Note: `data/corpus.json` already holds the 120 PSI section docs (see `pipeline/corpus_report.md`), not `[]`.
 - [ ] `.env.local` with `OPENAI_API_KEY=` (never committed).
 
 ## Stage 1 — Core (hour 1–10)
 
 - [ ] **`pipeline/corpus_build.ts`** (`npm run build:corpus`). Skills: `anthropic-skills:pdf` for the guide PDF text extraction; `rag-implementation` §chunking for how to split pages into docs (one doc per PSI section / PDF page is enough — no embeddings). Reads the raw PSI pages and the guide PDF, writes `data/corpus.json` as `CorpusDoc[]` and fills `objectives`, `approach`, `hypothesis`, `earthBenefits`, `doi` in `investigations.json`.
+  Progress: PSI part done (24 investigations, 120 docs, all text fields filled, report written). Guide PDF and NASA web pages still to add. No `doi` in the PSI API, so it is omitted.
   - Doc id scheme: `psi-<n>-<section>` (`psi-25-objectives`, `psi-25-approach`, …), `guide-p<page>` one doc per PDF page, `nasa-web-<slug>`, `ntrs-<id>`.
   - `text` is the verbatim extracted text, whitespace collapsed. No summarising in the pipeline.
   - Assert: every investigation has ≥1 corpus doc; no doc has empty text; every `url` is on `psi.nasa.gov` or `nasa.gov` / `ntrs.nasa.gov`.

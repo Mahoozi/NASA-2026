@@ -1,6 +1,7 @@
 # References
 
 ## NASA data
+- NASA Physical Sciences Informatics (PSI), the 24 investigations in the Combustion Science research area. Fetched 2026-11-14 from https://psi.nasa.gov/geode-py/ws/repo/search (raw snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`). Investigation pages: https://psi.nasa.gov/physci/repo/data/investigations/<PSI-id>
 
 ## NASA documents
 
