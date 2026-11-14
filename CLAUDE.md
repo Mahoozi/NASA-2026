@@ -17,7 +17,12 @@ LLM calls go through the Vercel AI SDK (OpenAI, server-side only, key in OPENAI_
 - Do not push; the human pushes.
 
 ## Ownership
-- Person A (Yousef): app/lab, lib/match.ts, data/runs.json, pipeline/psi_*
+- Person A (Yousef): app/lab, lib/match.ts, data/runs.json, pipeline/psi_*, pipeline/match*
 - Person B: app/ask, app/investigations, app/evals, app/api/ask,
-  lib/retrieve.ts, data/investigations.json, data/corpus.json, data/golden.json
+  lib/retrieve.ts, data/investigations.json, data/corpus.json, data/golden.json,
+  pipeline/corpus_*, pipeline/retrieve*, pipeline/evals*
 - Only touch the files of the person you are working for.
+
+## Plan
+- Start of every session: read plan/PLAN.md, then plan/A.md or plan/B.md for the
+  person you work for, then plan/REQUESTS.md. Tick items there in the same commit as the work.
