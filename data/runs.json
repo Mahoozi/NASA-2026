@@ -1,0 +1,4275 @@
+[
+  {
+    "id": "PSI-25:B1",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B1",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "100 micron PMMA film 2 cm wide",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 22.2,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 62 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 0.44
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 6,
+      "raw": "0 → 6"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B2",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B2",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "200 micron PMMA film 2 cm wide",
+      "thicknessMm": 0.2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 62 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": 6,
+      "finalPpm": null,
+      "raw": "6 → "
+    },
+    "flags": [
+      "final O2 implausible in source (raw: 1.6)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B3",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B3",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "100 micron film 2 cm wide",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.8,
+    "flowCmS": {
+      "min": 2,
+      "max": 2,
+      "raw": "fan: 47 | air: 2"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.43,
+      "finalPct": 0.49
+    },
+    "co": {
+      "initialPpm": 12,
+      "finalPpm": 19,
+      "raw": "12 → 19"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B4",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B4",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "300 micron PMMA film 2 cm wide",
+      "thicknessMm": 0.3,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 22.2,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 61 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 0.51
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 10,
+      "raw": "-1 → 10"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B5",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B5",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "200 micron 2 cm wide",
+      "thicknessMm": 0.2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.9,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 59 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.43,
+      "finalPct": 0.43
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 12,
+      "raw": "0 → 12"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B6",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B6",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 0.1 mm PMMA film",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.9,
+    "flowCmS": {
+      "min": 3,
+      "max": 10,
+      "raw": "fan: 0.9 1.3 2.75 | air: 3 5 approaching 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.41
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 0.3,
+      "raw": "0 → 0.3"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B7",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B7",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "400 micron film 2 cm wide",
+      "thicknessMm": 0.4,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 22.1,
+    "flowCmS": {
+      "min": 2,
+      "max": 2,
+      "raw": "fan: 47 | air: 2"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.45,
+      "finalPct": 0.51
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 17,
+      "raw": "1 → 17"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B8",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B8",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 0.2 mm PMMA film",
+      "thicknessMm": 0.2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.5,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 1.4 incr to 10.0 | air: 10 max"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.58
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 131,
+      "raw": "0 → 131"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B9",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B9",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 0.1 mm PMMA film",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.9,
+    "flowCmS": {
+      "min": 1,
+      "max": 2,
+      "raw": "fan: 0.6 0.35 | air: 2 <1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.35
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 10,
+      "raw": "0 → 10"
+    },
+    "flags": [
+      "airflow below 1 cm/s at some point"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B10",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B10",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "1 cm 0.2 mm PMMA film",
+      "thicknessMm": 0.2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.8,
+    "flowCmS": {
+      "min": 1,
+      "max": 5,
+      "raw": "fan: 1.7 (52) 1.25 0.9 0.6 0.4 0.35 | air: 5 4 3 2 1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.44
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 23,
+      "raw": "0 → 23"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B11",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B11",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 0.2 mm PMMA film",
+      "thicknessMm": 0.2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.7,
+    "flowCmS": {
+      "min": 1,
+      "max": 5,
+      "raw": "fan: 2.5 (59) 1.3 0.7 0.5 0.35 | air: 5 3 1 <1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.47
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 46,
+      "raw": "0 → 46"
+    },
+    "flags": [
+      "airflow below 1 cm/s at some point"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B12",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B12",
+    "date": "2014-02-19",
+    "material": {
+      "family": "PMMA film",
+      "raw": "300 micron film 2 cm wide",
+      "thicknessMm": 0.3,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 22.1,
+    "flowCmS": {
+      "min": 2,
+      "max": 2,
+      "raw": "fan: 46.5 | air: 2"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.51,
+      "finalPct": 0.56
+    },
+    "co": {
+      "initialPpm": 17,
+      "finalPpm": 33,
+      "raw": "17 → 33"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B13",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B13",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 0.4 mm thick film",
+      "thicknessMm": 0.4,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.5,
+    "flowCmS": {
+      "min": 1,
+      "max": 10,
+      "raw": "fan: 3.5 (68) 1.7 1.25 0.9 0.6 0.4 0.35 | air: 10 5 4 3 2 1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.65
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 61,
+      "raw": "0 → 61"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B14",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B14",
+    "date": "2014-07-02",
+    "material": {
+      "family": "PMMA film",
+      "raw": "1 cm wide 200 micron thick PMMA",
+      "thicknessMm": 0.2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 15,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 2,
+      "max": 5,
+      "raw": "fan: pot 0.9 0.5 and down | air: 5 3 2 ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": 0.2,
+      "finalPpm": null,
+      "raw": "0.2 → none"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B15",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B15",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 0.1 mm PMMA film",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20.8,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 1.4 (50) incr to 10.0 pot | air: 10 max"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 0.43
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 22,
+      "raw": "0 → 22"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B16",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B16",
+    "date": "2014-07-02",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 100 micron thick PMMA",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.3,
+    "o2FinalPct": 17.2,
+    "flowCmS": {
+      "min": 3,
+      "max": 3,
+      "raw": "fan: 44 (pot 0.68) | air: 3 0.5 pot 0.4 pot"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.47,
+      "finalPct": 0.51
+    },
+    "co": {
+      "initialPpm": 103,
+      "finalPpm": 119,
+      "raw": "103 → 119"
+    },
+    "flags": [
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B17",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B17",
+    "date": "2014-07-02",
+    "material": {
+      "family": "PMMA film",
+      "raw": "1 cm wide 200 micron thick PMMA",
+      "thicknessMm": 0.2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 17.5,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: pot 1.2 (48) 0.9 0.4 | air: 5 3 pot 0.4"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.2,
+      "finalPct": 0.34
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 47,
+      "raw": "0 → 47"
+    },
+    "flags": [
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B18",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B18",
+    "date": "2014-07-02",
+    "material": {
+      "family": "PMMA film",
+      "raw": "1 cm wide 200 micron thick PMMA",
+      "thicknessMm": 0.2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 17.4,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: pot 1.02 (47) incr to 7.0 | air: 10 blowoff"
+    },
+    "events": [
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 0.34,
+      "finalPct": 0.42
+    },
+    "co": {
+      "initialPpm": 47,
+      "finalPpm": 78,
+      "raw": "47 → 78"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B19",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B19",
+    "date": "2014-07-02",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 100 micron thick PMMA",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.3,
+    "o2FinalPct": 17.2,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 47 (pot 1.05) incr to pot 6.0 | air: 10 blowoff"
+    },
+    "events": [
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 0.51,
+      "finalPct": 0.57
+    },
+    "co": {
+      "initialPpm": 119,
+      "finalPpm": 131,
+      "raw": "119 → 131"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B20",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B20",
+    "date": "2014-07-02",
+    "material": {
+      "family": "PMMA film",
+      "raw": "2 cm 100 micron thick PMMA",
+      "thicknessMm": 0.1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.4,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 48 pot 0.9 0.5 | air: 5 3 pot 0.5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.42,
+      "finalPct": 0.47
+    },
+    "co": {
+      "initialPpm": 78,
+      "finalPpm": 103,
+      "raw": "78 → 103"
+    },
+    "flags": [
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B21",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B21",
+    "date": "2014-08-04",
+    "material": {
+      "family": "PMMA film",
+      "raw": "1 cm wide 200 micron thick PMMA",
+      "thicknessMm": 0.2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.8,
+    "o2FinalPct": 20.6,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 53 and down | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 0.44
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 18,
+      "raw": "-1 → 18"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:B22",
+    "investigationId": "PSI-25",
+    "pi": "Bhattacharjee",
+    "testId": "B22",
+    "date": "2014-08-04",
+    "material": {
+      "family": "PMMA film",
+      "raw": "1 cm wide 200 micron thick PMMA",
+      "thicknessMm": 0.2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.7,
+    "o2FinalPct": 20.5,
+    "flowCmS": {
+      "min": 0,
+      "max": 5,
+      "raw": "fan: 53 42 41 40.5 | air: 5 2 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.41,
+      "finalPct": 0.47
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 10,
+      "raw": "-1 → 10"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:F1",
+    "investigationId": "PSI-25",
+    "pi": "Ferkul",
+    "testId": "F1",
+    "date": "2014-02-19",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex natural (nomex III)"
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 22.2,
+    "flowCmS": {
+      "min": 9.5,
+      "max": 9.5,
+      "raw": "fan: 82 | air: 9.5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.46,
+      "finalPct": 0.45
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 2,
+      "raw": "0 → 2"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:F2",
+    "investigationId": "PSI-25",
+    "pi": "Ferkul",
+    "testId": "F2",
+    "date": "2014-07-28",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex natural (nomex III)"
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 21,
+    "flowCmS": {
+      "min": 15,
+      "max": 15,
+      "raw": "fan: 92 | air: 15"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.37,
+      "finalPct": 0.39
+    },
+    "co": {
+      "initialPpm": 105,
+      "finalPpm": 82,
+      "raw": "105 → 82"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:F3",
+    "investigationId": "PSI-25",
+    "pi": "Ferkul",
+    "testId": "F3",
+    "date": "2014-08-01",
+    "material": {
+      "family": "Nomex",
+      "raw": "Nomex natural (nomex III)"
+    },
+    "o2InitialPct": 21.7,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 8,
+      "max": 8,
+      "raw": "fan: 61 | air: 8"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": null,
+      "raw": "2 → none"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:F4",
+    "investigationId": "PSI-25",
+    "pi": "Ferkul",
+    "testId": "F4",
+    "date": "2014-06-24",
+    "material": {
+      "family": "wax",
+      "raw": "Japan Wax candle"
+    },
+    "o2InitialPct": 17.4,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 3,
+      "max": 3,
+      "raw": "fan: see notes | air: 3 ign"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.38,
+      "finalPct": 0.48
+    },
+    "co": {
+      "initialPpm": 22,
+      "finalPpm": 56,
+      "raw": "22 → 56"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M1",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M1",
+    "date": "2014-02-20",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 mm thick PMMA 1 sided 2 cm",
+      "thicknessMm": 1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.9,
+    "flowCmS": {
+      "min": 8,
+      "max": 10,
+      "raw": "fan: 58 54 | air: 10 8"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.45,
+      "finalPct": 0.61
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 60,
+      "raw": "0 → 60"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M2",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M2",
+    "date": "2014-02-20",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "3 mm thick PMMA 1 sided 2 cm wide",
+      "thicknessMm": 3,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.2,
+    "flowCmS": {
+      "min": 13,
+      "max": 20,
+      "raw": "fan: 116 (pot 9.3) 89 80 84 | air: 20 15 13 14"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.46,
+      "finalPct": 1.33
+    },
+    "co": {
+      "initialPpm": 12,
+      "finalPpm": 325,
+      "raw": "12 → 325"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M3",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M3",
+    "date": "2014-07-11",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "2 cm wide 5 mm thick 1 sided PMMA",
+      "thicknessMm": 5,
+      "widthCm": 2
+    },
+    "o2InitialPct": 20.8,
+    "o2FinalPct": 19.7,
+    "flowCmS": {
+      "min": 10,
+      "max": 20,
+      "raw": "fan: 3.0 3.1 3.2 6.4 5.5 5.4 | air: 10 20 18"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.33,
+      "finalPct": 1.18
+    },
+    "co": {
+      "initialPpm": 11,
+      "finalPpm": 300,
+      "raw": "11 → 300"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M4",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M4",
+    "date": "2014-07-31",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "5 mm thick PMMA 2 cm wide",
+      "thicknessMm": 5,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21.8,
+    "o2FinalPct": 19.8,
+    "flowCmS": {
+      "min": 3,
+      "max": 5,
+      "raw": "fan: 52 47 43 | air: 5 4 3"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.42,
+      "finalPct": 2.15
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 561,
+      "raw": "2 → 561"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M5",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M5",
+    "date": "2014-02-20",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "3 mm thick PMMA 2 sided 2 cm thick",
+      "thicknessMm": 3,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 19,
+    "flowCmS": {
+      "min": 5,
+      "max": 20,
+      "raw": "fan: | air: 20 13 10 8 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 3.22
+    },
+    "co": {
+      "initialPpm": 9,
+      "finalPpm": null,
+      "raw": "9 → >500"
+    },
+    "flags": [
+      "CO over range in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M6",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M6",
+    "date": "2014-07-31",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 mm thick PMMA 2 cm wide",
+      "thicknessMm": 1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21.8,
+    "o2FinalPct": 20.7,
+    "flowCmS": {
+      "min": 0,
+      "max": 10,
+      "raw": "fan: 68 52 47 43 42 41 | air: 10 5 3 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.38,
+      "finalPct": 1.27
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 345,
+      "raw": "1 → 345"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M7",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M7",
+    "date": "2014-07-11",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 cm wide PMMA 1 mm thick",
+      "thicknessMm": 1,
+      "widthCm": 1
+    },
+    "o2InitialPct": 18.9,
+    "o2FinalPct": 18.4,
+    "flowCmS": {
+      "min": 3,
+      "max": 10,
+      "raw": "fan: 2.6 1.3 0.8 0.7 0.6 0.5; 60 49 45 44 43 42 | air: 10 6 5 4.5 4 3"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.42,
+      "finalPct": 1.84
+    },
+    "co": {
+      "initialPpm": 398,
+      "finalPpm": 612,
+      "raw": "398 → 612"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M8",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M8",
+    "date": "2014-07-11",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 cm wide PMMA 2 mm thick",
+      "thicknessMm": 2,
+      "widthCm": 1
+    },
+    "o2InitialPct": 19.1,
+    "o2FinalPct": 18.2,
+    "flowCmS": {
+      "min": 5,
+      "max": 10,
+      "raw": "fan: 3.3 1.6 1.0 decr | air: 10 5>7 5 decr"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 1.28
+    },
+    "co": {
+      "initialPpm": 52,
+      "finalPpm": 467,
+      "raw": "52 → 467"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M9",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M9",
+    "date": "2014-07-11",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 cm wide PMMA 3 mm thick",
+      "thicknessMm": 3,
+      "widthCm": 1
+    },
+    "o2InitialPct": 18,
+    "o2FinalPct": 17.6,
+    "flowCmS": {
+      "min": 10,
+      "max": 14,
+      "raw": "fan: 3.3 4.8;66 79 | air: 10 14"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.26,
+      "finalPct": 0.54
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 191,
+      "raw": "0 → 191"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M10",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M10",
+    "date": "2014-07-23",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "4 mm thick 1 cm wide PMMA slab",
+      "thicknessMm": 4,
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.1,
+    "o2FinalPct": 18.6,
+    "flowCmS": {
+      "min": 8,
+      "max": 17,
+      "raw": "fan: 75 105 94/91 72/69 63/61 (4.4 8.0 6.6/6.3 4.0/3.7 3/0/2.7) | air: 10 17 14 10 8"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 1.59
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 536,
+      "raw": "-1 → 536"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M11",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M11",
+    "date": "2014-07-11",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 cm wide PMMA 5 mm thick",
+      "thicknessMm": 5,
+      "widthCm": 1
+    },
+    "o2InitialPct": 20,
+    "o2FinalPct": 18.5,
+    "flowCmS": {
+      "min": 10,
+      "max": 20,
+      "raw": "fan: 3.9 6.5 4.6 3.3 2.9 2.8; 62.5 93 77 66 63 62 | air: 10 20 15 12"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.58,
+      "finalPct": 1.68
+    },
+    "co": {
+      "initialPpm": 46,
+      "finalPpm": 577,
+      "raw": "46 → 577"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M12",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M12",
+    "date": "2014-07-31",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "2 mm thick PMMA 2 cm wide",
+      "thicknessMm": 2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21.7,
+    "o2FinalPct": 20.4,
+    "flowCmS": {
+      "min": 1,
+      "max": 1,
+      "raw": "fan: 41 42 41 | air: <1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.42,
+      "finalPct": 1.42
+    },
+    "co": {
+      "initialPpm": 15,
+      "finalPpm": 443,
+      "raw": "15 → 443"
+    },
+    "flags": [
+      "airflow below 1 cm/s at some point"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M13",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M13",
+    "date": "2014-07-31",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "4 mm thick PMMA 2 cm wide",
+      "thicknessMm": 4,
+      "widthCm": 2
+    },
+    "o2InitialPct": 20.8,
+    "o2FinalPct": 19,
+    "flowCmS": {
+      "min": 4,
+      "max": 6,
+      "raw": "fan: 52 47 43 | air: 6 5 4"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 1.75
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 487,
+      "raw": "0 → 487"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M14",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M14",
+    "date": "2014-02-20",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "2mm thick PMMA 1 sided 2 cm wide",
+      "thicknessMm": 2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.6,
+    "flowCmS": {
+      "min": 8,
+      "max": 10,
+      "raw": "fan: pot 2.4 1.87 (54) | air: 10 ~8"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.45,
+      "finalPct": 0.98
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 198,
+      "raw": "0 → 198"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M15",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M15",
+    "date": "2014-07-07",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "2 cm 4 mm 1 sided PMMA slab",
+      "thicknessMm": 4,
+      "widthCm": 2
+    },
+    "o2InitialPct": 21,
+    "o2FinalPct": 20,
+    "flowCmS": {
+      "min": 7,
+      "max": 20,
+      "raw": "fan: ignited 10 adjusted down then up to 20 down in incrments to 15 | air: 10 8 7 8 10 20 18 16 15"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.37,
+      "finalPct": 1.1
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 220,
+      "raw": "1 → 220"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M16",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M16",
+    "date": "2014-07-23",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "1 mm thick PMMA 2 cm wide",
+      "thicknessMm": 1,
+      "widthCm": 2
+    },
+    "o2InitialPct": 19.2,
+    "o2FinalPct": 18.7,
+    "flowCmS": {
+      "min": 1,
+      "max": 10,
+      "raw": "fan: 73 57 59 48 45 43 75 (4.2 2.2 2.4 1.2 0.8 0.5 4.4) | air: 10 6 3 2 1 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.95,
+      "finalPct": 1.75
+    },
+    "co": {
+      "initialPpm": 118,
+      "finalPpm": 421,
+      "raw": "118 → 421"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M17",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M17",
+    "date": "2014-07-15",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "2 cm wide PMMA 2 mm thick",
+      "thicknessMm": 2,
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.8,
+    "o2FinalPct": 17.1,
+    "flowCmS": {
+      "min": 0,
+      "max": 10,
+      "raw": "fan: Fan pot 3.7 1.7 1.5 1.3 0.8 0.6 0.5 0.3ext | air: 10 5 3 0ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.35,
+      "finalPct": 1.7
+    },
+    "co": {
+      "initialPpm": 4,
+      "finalPpm": 485,
+      "raw": "4 → 485"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M18",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M18",
+    "date": "2014-07-15",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "2 cm wide PMMA 3 mm thick",
+      "thicknessMm": 3,
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.9,
+    "o2FinalPct": 16.8,
+    "flowCmS": {
+      "min": 8,
+      "max": 15,
+      "raw": "fan: Fan pot 3.5 5 (brief) 3 5 2.2 | air: 10 15 (brief) 10 8"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.32,
+      "finalPct": 1.31
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 335,
+      "raw": "0 → 335"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M19",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M19",
+    "date": "2014-07-23",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "4 mm thick 2 cm 2ide PMMA slab",
+      "thicknessMm": 4,
+      "widthCm": 2
+    },
+    "o2InitialPct": 19,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 5,
+      "max": 17,
+      "raw": "fan: 75 105 94 75 77 79 59 61 57 55 53 (4.4 8.0 6.6 4.4 4.6 4.8 2.5 2.7 2.2 2.0 1.8) | air: 10 17 14 10 7 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.35,
+      "finalPct": 1.6
+    },
+    "co": {
+      "initialPpm": 3,
+      "finalPpm": 357,
+      "raw": "3 → 357"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:M20",
+    "investigationId": "PSI-25",
+    "pi": "Miller",
+    "testId": "M20",
+    "date": "2014-08-01",
+    "material": {
+      "family": "PMMA slab",
+      "raw": "5 mm thick PMMA 2 cm wide",
+      "thicknessMm": 5,
+      "widthCm": 2
+    },
+    "o2InitialPct": 18,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 8,
+      "max": 10,
+      "raw": "fan: 67 58 | air: 10 8"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.3,
+      "finalPct": 0.75
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 157,
+      "raw": "0 → 157"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O1",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O1",
+    "date": "2014-02-18",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.7,
+    "flowCmS": {
+      "min": 1,
+      "max": 20,
+      "raw": "fan: 89 62 50 41 | air: 20 10 5 2 1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 0.85
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 51,
+      "raw": "-1 → 51"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O2",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O2",
+    "date": "2014-02-18",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 22.2,
+    "o2FinalPct": 21.9,
+    "flowCmS": {
+      "min": 0,
+      "max": 0,
+      "raw": "fan: .54 pot 0.45 pot | air: 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 0.59
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 23,
+      "raw": "-1 → 23"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O3a",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O3a",
+    "date": "2014-06-13",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 18,
+    "o2FinalPct": 18,
+    "flowCmS": {
+      "min": 3,
+      "max": 5,
+      "raw": "fan: | air: 5 3"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.25,
+      "finalPct": 0.28
+    },
+    "co": {
+      "initialPpm": 16,
+      "finalPpm": 22,
+      "raw": "16 → 22"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O3b",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O3b",
+    "date": "2014-06-13",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 18,
+    "o2FinalPct": 17.7,
+    "flowCmS": {
+      "min": 1,
+      "max": 5,
+      "raw": "fan: | air: 5 3 2 1 low"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.28,
+      "finalPct": 0.53
+    },
+    "co": {
+      "initialPpm": 22,
+      "finalPpm": 116,
+      "raw": "22 → 116"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O4",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O4",
+    "date": "2014-07-08",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\"clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 14.8,
+    "o2FinalPct": 13.6,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 5 0.7 0.5 0.4 0.36 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.72,
+      "finalPct": 1.72
+    },
+    "co": {
+      "initialPpm": 290,
+      "finalPpm": null,
+      "raw": "290 → OR"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "CO over range in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O5a",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O5a",
+    "date": "2014-07-21",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/2\" clear PMMA rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 15.1,
+    "o2FinalPct": 14.2,
+    "flowCmS": {
+      "min": 0,
+      "max": 10,
+      "raw": "fan: 1.3 2.7 1.3 0.7 0.45. 4.0 | air: 5 10 5 2 0 (49 62 49 44 42)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.25,
+      "finalPct": 1.05
+    },
+    "co": {
+      "initialPpm": -2,
+      "finalPpm": 496,
+      "raw": "-2 → 496"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O5b",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O5b",
+    "date": "2014-07-21",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/2\" clear PMMA rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 14.2,
+    "o2FinalPct": 14.1,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 1.3 | air: 49 5 cm/s"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.05,
+      "finalPct": 1.14
+    },
+    "co": {
+      "initialPpm": 496,
+      "finalPpm": 590,
+      "raw": "496 → 590"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O6",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O6",
+    "date": "2014-06-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.7,
+    "o2FinalPct": 16,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "fan: 5 .36 .32 .31 .305 out .275 | air: see fan"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.32,
+      "finalPct": 0.74
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 232,
+      "raw": "1 → 232"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow not numeric in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O7",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O7",
+    "date": "2014-06-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16,
+    "o2FinalPct": 15.5,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "fan: 5 .36 .32 ..305 blowoff fan max 10 | air:"
+    },
+    "events": [
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 0.74,
+      "finalPct": 1.27
+    },
+    "co": {
+      "initialPpm": 232,
+      "finalPpm": 512,
+      "raw": "232 → 512"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow not numeric in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O8a",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O8a",
+    "date": "2014-06-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15.7,
+    "o2FinalPct": 15.3,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "fan: 5 .36 .32 .31 extinguished | air:"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 1.23,
+      "finalPct": 1.44
+    },
+    "co": {
+      "initialPpm": 436,
+      "finalPpm": 536,
+      "raw": "436 → 536"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow not numeric in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O8b",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O8b",
+    "date": "2014-06-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15.5,
+    "o2FinalPct": 15.2,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "fan: 5 .36 .32 .31 blowoff fan pot 6.0 | air:"
+    },
+    "events": [
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 1.44,
+      "finalPct": 1.74
+    },
+    "co": {
+      "initialPpm": 536,
+      "finalPpm": 660,
+      "raw": "536 → 660"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow not numeric in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O9",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O9",
+    "date": "2014-06-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15,
+    "o2FinalPct": 14.8,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "fan: 5 .36 .32 blowoff pt 4.0 | air:"
+    },
+    "events": [
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 1.74,
+      "finalPct": 1.96
+    },
+    "co": {
+      "initialPpm": 660,
+      "finalPpm": 794,
+      "raw": "660 → 794"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow not numeric in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O10",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O10",
+    "date": "2014-07-22",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.7,
+    "o2FinalPct": 16.1,
+    "flowCmS": {
+      "min": 0,
+      "max": 5,
+      "raw": "fan: 49 44 41 122 (1.3 0.7 0.4 0.36 0.32 10) | air: 5 2 0 max"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.61,
+      "finalPct": 2.1
+    },
+    "co": {
+      "initialPpm": 94,
+      "finalPpm": 287,
+      "raw": "94 → 287"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "date and GMT day disagree in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O11",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O11",
+    "date": "2014-07-08",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15.4,
+    "o2FinalPct": 14.8,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: ign 5 0.36 0.32 0.31 0.305 blowoff 6.0 | air: 5 down then blowoff"
+    },
+    "events": [
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 0.27,
+      "finalPct": 0.72
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 290,
+      "raw": "2 → 290"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O12",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O12",
+    "date": "2014-07-08",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 13.6,
+    "o2FinalPct": 13.5,
+    "flowCmS": {
+      "min": null,
+      "max": null,
+      "raw": "fan: pots 1.4 3 0.9 0.7 | air: no ign at any flow"
+    },
+    "events": [
+      "no-ignition"
+    ],
+    "co2": {
+      "initialPct": 1.72,
+      "finalPct": 1.71
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": null,
+      "raw": "OR → OR"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow not numeric in source",
+      "CO over range in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O13a",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O13a",
+    "date": "2014-07-21",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/2\" clear PMMA rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 15.9,
+    "o2FinalPct": 14.6,
+    "flowCmS": {
+      "min": 0,
+      "max": 5,
+      "raw": "fan: 1.3 0.7 0.45 0.36 0.32 0.31 | air: 49 44 42 41 41 40.5 (5 2 0)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.91,
+      "finalPct": 1.85
+    },
+    "co": {
+      "initialPpm": 389,
+      "finalPpm": 950,
+      "raw": "389 → 950"
+    },
+    "flags": [
+      "fan and airflow values appear swapped in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O13b",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O13b",
+    "date": "2014-07-21",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/2\" clear PMMA rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 14.6,
+    "o2FinalPct": 14.4,
+    "flowCmS": {
+      "min": 4,
+      "max": 7,
+      "raw": "fan: 1.3 0.9 | air: 7 4? (49 ?)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.85,
+      "finalPct": 2.09
+    },
+    "co": {
+      "initialPpm": 950,
+      "finalPpm": null,
+      "raw": "950 → over"
+    },
+    "flags": [
+      "CO over range in source"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O14",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O14",
+    "date": "2014-08-01",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.3,
+    "o2FinalPct": 15.3,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 52 and down | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.29,
+      "finalPct": 0.86
+    },
+    "co": {
+      "initialPpm": 4,
+      "finalPpm": 352,
+      "raw": "4 → 352"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O15a",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O15a",
+    "date": "2014-07-28",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 17.1,
+    "o2FinalPct": 16.7,
+    "flowCmS": {
+      "min": 0,
+      "max": 5,
+      "raw": "fan: 57.5 47 42 41 (2.3 1.0 0.5 0.35 0.32) | air: 5 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.27,
+      "finalPct": 0.62
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 176,
+      "raw": "0 → 176"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O15b",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O15b",
+    "date": "2014-07-28",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 16.7,
+    "o2FinalPct": 15.6,
+    "flowCmS": {
+      "min": 0,
+      "max": 5,
+      "raw": "fan: 57.5 42 41 40 (2.3 0.5 0.35 0.34 0.33 0.32 0.31 0.30 0.29 0.28 0.27) | air: 5 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.62,
+      "finalPct": 1.63
+    },
+    "co": {
+      "initialPpm": 176,
+      "finalPpm": 751,
+      "raw": "176 → 751"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O16",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O16",
+    "date": "2014-07-29",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\"clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 14.5,
+    "o2FinalPct": 14.5,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 60 (2.6) | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.27,
+      "finalPct": 0.32
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 33,
+      "raw": "2 → 33"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O17",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O17",
+    "date": "2014-07-22",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15.1,
+    "o2FinalPct": 14.3,
+    "flowCmS": {
+      "min": 0,
+      "max": 11,
+      "raw": "fan: 49 46.5 44 42 41 72 decr (1.3 1.0 0.7 0.5 0.4 4.0 decr ) | air: 3 0 11"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.31,
+      "finalPct": 0.9
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 377,
+      "raw": "2 → 377"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O18",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O18",
+    "date": "2014-07-28",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15.2,
+    "o2FinalPct": 14.5,
+    "flowCmS": {
+      "min": 0,
+      "max": 11,
+      "raw": "fan: 57 51 47 72 51 72 51 47 (2.3 1.5 1.0 4.0 1.5 4.0 1.5 1.0) | air: 5 2 0 11 2 11 2 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.45,
+      "finalPct": 1.94
+    },
+    "co": {
+      "initialPpm": 523,
+      "finalPpm": 816,
+      "raw": "523 → 816"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O19",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O19",
+    "date": "2014-08-01",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 15.3,
+    "o2FinalPct": 14.6,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 52 and down | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.86,
+      "finalPct": 1.51
+    },
+    "co": {
+      "initialPpm": 352,
+      "finalPpm": 686,
+      "raw": "352 → 686"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O20",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O20",
+    "date": "2016-02-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.5,
+    "o2FinalPct": 15.9,
+    "flowCmS": {
+      "min": 5,
+      "max": 38.5,
+      "raw": "fan: 49 (1.3 pot) pots 7 8 9 10 | air: 5 8 incr to max 38.5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.2,
+      "finalPct": 0.57
+    },
+    "co": {
+      "initialPpm": -3,
+      "finalPpm": 57,
+      "raw": "-3 → 57"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O21",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O21",
+    "date": "2016-02-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 15.9,
+    "o2FinalPct": 15.4,
+    "flowCmS": {
+      "min": 28,
+      "max": 28,
+      "raw": "fan: 46 (pot 0.8) pot 7 10 | air: incr to 28"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.53,
+      "finalPct": 0.95
+    },
+    "co": {
+      "initialPpm": 52,
+      "finalPpm": 187,
+      "raw": "52 → 187"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:O22",
+    "investigationId": "PSI-25",
+    "pi": "Olson",
+    "testId": "O22",
+    "date": "2016-02-26",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/2\" clear rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 15.4,
+    "o2FinalPct": 14.9,
+    "flowCmS": {
+      "min": 4,
+      "max": 26.5,
+      "raw": "fan: 49 (pot 1.1) blowoff pot 5 out at fan 87 | air: 4 incr to 26.5"
+    },
+    "events": [
+      "extinction",
+      "blowoff"
+    ],
+    "co2": {
+      "initialPct": 0.92,
+      "finalPct": 1.33
+    },
+    "co": {
+      "initialPpm": 185,
+      "finalPpm": 322,
+      "raw": "185 → 322"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P1",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P1",
+    "date": "2014-06-16",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 17.7,
+    "o2FinalPct": 17.5,
+    "flowCmS": {
+      "min": 2,
+      "max": 5,
+      "raw": "fan: | air: 5 2 slow decr to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.27,
+      "finalPct": 0.44
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 14,
+      "raw": "1 → 14"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P2",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P2",
+    "date": "2014-06-16",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 17.4,
+    "o2FinalPct": 17.2,
+    "flowCmS": {
+      "min": 2,
+      "max": 5,
+      "raw": "fan: | air: 5 2.5 2 (pot .9 .5 .35. .33)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 0.66
+    },
+    "co": {
+      "initialPpm": 14,
+      "finalPpm": 26,
+      "raw": "14 → 26"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P3a",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P3a",
+    "date": "2014-06-16",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 17.7,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 2.5,
+      "max": 5,
+      "raw": "fan: | air: 5 2.5 (1.15 .5 .35 .33. .32 .315 .31 .3)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.27,
+      "finalPct": 0.51
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 33,
+      "raw": "2 → 33"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P3b",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P3b",
+    "date": "2014-06-16",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4 clear rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 17.4,
+    "o2FinalPct": 16.8,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: | air: 5 very low (0.85 0.32 0.31 0.305 0.30 0.295)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.51,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": 33,
+      "finalPpm": 79,
+      "raw": "33 → 79"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P4",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P4",
+    "date": "2014-07-03",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 18.5,
+    "o2FinalPct": 17.1,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 48 41 | air: 5 pots 0.4 0.36 0.32 0.308 .3 off"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.62,
+      "finalPct": 1.8
+    },
+    "co": {
+      "initialPpm": 64,
+      "finalPpm": 493,
+      "raw": "64 → 493"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P5",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P5",
+    "date": "2014-07-14",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "0.5\" black rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 19.3,
+    "o2FinalPct": 17.6,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: Fan pot 1.5 (5cm/s) 0.9 0.4 0.36 0.32 0.308 0.3 0.29 0.28 0 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.32,
+      "finalPct": 1.67
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 525,
+      "raw": "0 → 525"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P6",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P6",
+    "date": "2014-07-03",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 18.9,
+    "o2FinalPct": 18.5,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 48 41 | air: 5 pots 0.4 0.36 0.32 0.31 off"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.3,
+      "finalPct": 0.62
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 64,
+      "raw": "0 → 64"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P8",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P8",
+    "date": "2014-07-03",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 16.4,
+    "o2FinalPct": 16.3,
+    "flowCmS": {
+      "min": 5,
+      "max": 15,
+      "raw": "fan: 48 62 75 | air: 5 would not stay lit 10 15 ibid"
+    },
+    "events": [
+      "no-ignition"
+    ],
+    "co2": {
+      "initialPct": 0.72,
+      "finalPct": 0.81
+    },
+    "co": {
+      "initialPpm": 44,
+      "finalPpm": 69,
+      "raw": "44 → 69"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P9",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P9",
+    "date": "2014-07-14",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "0.5\" black rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 17.6,
+    "o2FinalPct": 17.1,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: Fan pot 1.5 (5cm/s) 0.9 0.4 0.36 0.32 0.3 0.28 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 1.67,
+      "finalPct": 2.1
+    },
+    "co": {
+      "initialPpm": 525,
+      "finalPpm": 535,
+      "raw": "525 → 535"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P10",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P10",
+    "date": "2014-07-03",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 17,
+    "o2FinalPct": 16.4,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 48 41 | air: 5 pots 0.4 0.36 0.32 0.31 0.30 extinguished"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.29,
+      "finalPct": 0.72
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 44,
+      "raw": "2 → 44"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "airflow partly recorded as fan pot setting; minimum uncertain"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P12",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P12",
+    "date": "2014-07-29",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 17.5,
+    "o2FinalPct": 16.8,
+    "flowCmS": {
+      "min": 0.5,
+      "max": 5,
+      "raw": "fan: 60 52 48 44.5 42 41.5 41 (2.6 1.6 1.2 .75 .5 .4 .36 0.34) | air: 5 3 2 1 0.5 lower"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.29,
+      "finalPct": 0.95
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 57,
+      "raw": "2 → 57"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P13a",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P13a",
+    "date": "2014-07-14",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "0.5\" black rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 20.7,
+    "o2FinalPct": 19.1,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: Fan pot 1.1 (5cm/s) 0.4 0.36 0.32 0.3 0.28 0.26 0 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 1.63
+    },
+    "co": {
+      "initialPpm": 38,
+      "finalPpm": 450,
+      "raw": "38 → 450"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P13b",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P13b",
+    "date": "2014-07-14",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "0.5\" black rod",
+      "diameterIn": 0.5
+    },
+    "o2InitialPct": 20.6,
+    "o2FinalPct": 20.2,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: Fan pot 1.3 (5cm/s) 0.4 0.36 0.32 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.41,
+      "finalPct": 0.62
+    },
+    "co": {
+      "initialPpm": 5,
+      "finalPpm": 72,
+      "raw": "5 → 72"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P14",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P14",
+    "date": "2014-06-23",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4 blac rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 18.4,
+    "o2FinalPct": 18,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 46 41 | air: 5 low (.85 .4 .32)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.34,
+      "finalPct": 0.62
+    },
+    "co": {
+      "initialPpm": 3,
+      "finalPpm": 90,
+      "raw": "3 → 90"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P15",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P15",
+    "date": "2014-06-23",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4 black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 18,
+    "o2FinalPct": 17.5,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 46 41 | air: 5 (0.36)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.62,
+      "finalPct": 1.11
+    },
+    "co": {
+      "initialPpm": 90,
+      "finalPpm": 108,
+      "raw": "90 → 108"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P16",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P16",
+    "date": "2014-07-22",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 18.2,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 2,
+      "max": 8,
+      "raw": "fan: 49 62 44 41.5 41 (pots 1.3 2.8 0.7 0.4 0.36 0.32) | air: 5 8 2 low"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.3,
+      "finalPct": 0.92
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 56,
+      "raw": "0 → 56"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P17",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P17",
+    "date": "2014-07-29",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.8,
+    "o2FinalPct": 16.5,
+    "flowCmS": {
+      "min": 2,
+      "max": 22,
+      "raw": "fan: 60 52 48 233 48 41 (2.6 1.6 1.2 10 1.2 0.36 0.34) | air: 5 3 2 22 2 low"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.95,
+      "finalPct": 1.34
+    },
+    "co": {
+      "initialPpm": 57,
+      "finalPpm": 68,
+      "raw": "57 → 68"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P18",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P18",
+    "date": "2014-07-30",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 20,
+    "o2FinalPct": 19,
+    "flowCmS": {
+      "min": 0,
+      "max": 2,
+      "raw": "fan: 55 47 etc (pot 1 2 1 2 etc) | air: 2 0 2 0 etc"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.34,
+      "finalPct": 1.2
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 26,
+      "raw": "1 → 26"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P19",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P19",
+    "date": "2014-07-22",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 17.5,
+    "o2FinalPct": 16.7,
+    "flowCmS": {
+      "min": 0,
+      "max": 8,
+      "raw": "fan: 49 62 44 41.5 122 41 (pots 1.3 2.8 0.7 0.4 0.36 10. 0.32) | air: 5 8 2 max 0"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.9,
+      "finalPct": 1.61
+    },
+    "co": {
+      "initialPpm": 54,
+      "finalPpm": 94,
+      "raw": "54 → 94"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P20",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P20",
+    "date": "2014-07-30",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 19,
+    "o2FinalPct": 18.2,
+    "flowCmS": {
+      "min": 0,
+      "max": 2,
+      "raw": "fan: 55 47 etc (pot 1 2 1 2 etc) | air: 2 0 2 0 etc"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.34,
+      "finalPct": 1.05
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 78,
+      "raw": "2 → 78"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P21a",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P21a",
+    "date": "2014-06-23",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4 black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.3,
+    "o2FinalPct": 16.3,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 46 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.96,
+      "finalPct": 1
+    },
+    "co": {
+      "initialPpm": 86,
+      "finalPpm": 94,
+      "raw": "86 → 94"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P21b",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P21b",
+    "date": "2014-06-23",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "1/4\" black rod",
+      "diameterIn": 0.25
+    },
+    "o2InitialPct": 16.3,
+    "o2FinalPct": 16.3,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 46 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1,
+      "finalPct": 1.03
+    },
+    "co": {
+      "initialPpm": 94,
+      "finalPpm": 98,
+      "raw": "94 → 98"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P22a",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P22a",
+    "date": "2014-07-08",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 20.8,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 5 0.36 0.32 ext after some time | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.32,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": 4,
+      "finalPpm": null,
+      "raw": "4 → none"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "final O2 implausible in source (raw: 0.6)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P22b",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P22b",
+    "date": "2014-07-08",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 20,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 5 p.36 0.34 0.33 0.32 0.31 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": null,
+      "finalPct": 1.09
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": 239,
+      "raw": "none → 239"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows",
+      "final O2 implausible in source (raw: 39.1)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P23",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P23",
+    "date": "2014-07-30",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 18.2,
+    "o2FinalPct": 17,
+    "flowCmS": {
+      "min": 0,
+      "max": 2,
+      "raw": "fan: 55 47 etc (pot 1 2 1 2 etc) | air: 2 0 2 0 etc"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.05,
+      "finalPct": 2.08
+    },
+    "co": {
+      "initialPpm": 78,
+      "finalPpm": 159,
+      "raw": "78 → 159"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P24",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P24",
+    "date": "2014-07-30",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" black rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 19,
+    "o2FinalPct": 17.5,
+    "flowCmS": {
+      "min": 0,
+      "max": 2,
+      "raw": "fan: 55 47 etc (pot 1 2 1 2 etc) | air: 2 0 2 0 etc"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 1.2,
+      "finalPct": 2.24
+    },
+    "co": {
+      "initialPpm": 26,
+      "finalPpm": 260,
+      "raw": "26 → 260"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:P25",
+    "investigationId": "PSI-25",
+    "pi": "Fernandez-Pello",
+    "testId": "P25",
+    "date": "2014-07-08",
+    "material": {
+      "family": "PMMA rod",
+      "raw": "3/8\" clear rod",
+      "diameterIn": 0.375
+    },
+    "o2InitialPct": 20.9,
+    "o2FinalPct": 20.2,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 5 p.36 0.34 0.33 0.32 0.31 ext | air: 5 down to ext"
+    },
+    "events": [
+      "extinction"
+    ],
+    "co2": {
+      "initialPct": 0.38,
+      "finalPct": 1
+    },
+    "co": {
+      "initialPpm": 43,
+      "finalPpm": 205,
+      "raw": "43 → 205"
+    },
+    "flags": [
+      "material inferred as PMMA from sibling rows"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T1",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T1",
+    "date": "2014-02-14",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.5,
+    "o2FinalPct": 18.5,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 80 | air: 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.35,
+      "finalPct": 0.41
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 40,
+      "raw": "0 → 40"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T2",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T2",
+    "date": "2014-02-14",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.5,
+    "o2FinalPct": 18.5,
+    "flowCmS": {
+      "min": 4,
+      "max": 9,
+      "raw": "fan: 80 59 55 | air: 9 5 4"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.41,
+      "finalPct": 0.45
+    },
+    "co": {
+      "initialPpm": 40,
+      "finalPpm": 78,
+      "raw": "40 → 78"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T3",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T3",
+    "date": "2014-06-27",
+    "material": {
+      "family": "other",
+      "raw": "4 cm spherical section",
+      "widthCm": 4
+    },
+    "o2InitialPct": 17.2,
+    "o2FinalPct": 16.8,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 63 | air: 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.42,
+      "finalPct": 0.7
+    },
+    "co": {
+      "initialPpm": 45,
+      "finalPpm": 113,
+      "raw": "45 → 113"
+    },
+    "flags": [
+      "spherical sample: material not stated in table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T4",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T4",
+    "date": "2014-02-14",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.7,
+    "o2FinalPct": 18.7,
+    "flowCmS": {
+      "min": 1,
+      "max": 9,
+      "raw": "fan: 80 46 | air: 9 1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.44,
+      "finalPct": 0.45
+    },
+    "co": {
+      "initialPpm": 59,
+      "finalPpm": 72,
+      "raw": "59 → 72"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T5",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T5",
+    "date": "2014-04-10",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.8,
+    "o2FinalPct": 18.9,
+    "flowCmS": {
+      "min": 1,
+      "max": 10,
+      "raw": "fan: 2.72 0.50 0.42 | air: 10 2 1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.2,
+      "finalPct": 0.25
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 41,
+      "raw": "2 → 41"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T6",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T6",
+    "date": "2014-04-10",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.8,
+    "o2FinalPct": 18.8,
+    "flowCmS": {
+      "min": 1,
+      "max": 5,
+      "raw": "fan: | air: 5 2 1 <1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.24,
+      "finalPct": 0.28
+    },
+    "co": {
+      "initialPpm": 39,
+      "finalPpm": 77,
+      "raw": "39 → 77"
+    },
+    "flags": [
+      "airflow below 1 cm/s at some point"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T7",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T7",
+    "date": "2014-07-09",
+    "material": {
+      "family": "other",
+      "raw": "4 cm spherical section",
+      "widthCm": 4
+    },
+    "o2InitialPct": 17.3,
+    "o2FinalPct": 17.1,
+    "flowCmS": {
+      "min": 1,
+      "max": 10,
+      "raw": "fan: 3.4 67 | air: 10 5 3 1 decr"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.32,
+      "finalPct": 0.59
+    },
+    "co": {
+      "initialPpm": 49,
+      "finalPpm": 140,
+      "raw": "49 → 140"
+    },
+    "flags": [
+      "spherical sample: material not stated in table"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T9",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T9",
+    "date": "2018-06-24",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 16.4,
+    "o2FinalPct": 16.4,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: pot 2.5 | air: 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.3,
+      "finalPct": 0.31
+    },
+    "co": {
+      "initialPpm": 0,
+      "finalPpm": 9,
+      "raw": "0 → 9"
+    },
+    "flags": [
+      "date year inconsistent with sibling rows (year appears nowhere else in table)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T10",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T10",
+    "date": "2014-06-24",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 16.4,
+    "o2FinalPct": 16.5,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: pot 1.1 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.31,
+      "finalPct": 0.33
+    },
+    "co": {
+      "initialPpm": 9,
+      "finalPpm": 14,
+      "raw": "9 → 14"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T11",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T11",
+    "date": "2014-06-27",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.1,
+    "o2FinalPct": 17,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 48 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.35,
+      "finalPct": 0.39
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 45,
+      "raw": "1 → 45"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T12",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T12",
+    "date": "2014-06-27",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 16.8,
+    "o2FinalPct": 16.9,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: pot 1.1 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.7,
+      "finalPct": 0.7
+    },
+    "co": {
+      "initialPpm": 113,
+      "finalPpm": 117,
+      "raw": "113 → 117"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T13",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T13",
+    "date": "2014-04-10",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.5,
+    "o2FinalPct": 17.6,
+    "flowCmS": {
+      "min": 1,
+      "max": 5,
+      "raw": "fan: | air: 5 1"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.19,
+      "finalPct": 0.2
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 12,
+      "raw": "2 → 12"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T14",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T14",
+    "date": "2014-06-27",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 16.9,
+    "o2FinalPct": 16.9,
+    "flowCmS": {
+      "min": 3,
+      "max": 5,
+      "raw": "fan: | air: 5 3"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.7,
+      "finalPct": 0.72
+    },
+    "co": {
+      "initialPpm": 117,
+      "finalPpm": 152,
+      "raw": "117 → 152"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T15",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T15",
+    "date": "2014-02-14",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 18.7,
+    "o2FinalPct": 18.7,
+    "flowCmS": {
+      "min": 9,
+      "max": 29,
+      "raw": "fan: 80122 | air: 9 29"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.45,
+      "finalPct": 0.51
+    },
+    "co": {
+      "initialPpm": 72,
+      "finalPpm": 102,
+      "raw": "72 → 102"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T16",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T16",
+    "date": "2014-04-10",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.6,
+    "o2FinalPct": 17.5,
+    "flowCmS": {
+      "min": 3,
+      "max": 5,
+      "raw": "fan: | air: 5 3"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.21,
+      "finalPct": 0.21
+    },
+    "co": {
+      "initialPpm": 17,
+      "finalPpm": 41,
+      "raw": "17 → 41"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T17",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T17",
+    "date": "2014-06-27",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 16.9,
+    "o2FinalPct": 16.9,
+    "flowCmS": {
+      "min": 6,
+      "max": 53,
+      "raw": "fan: | air: 6 53"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.72,
+      "finalPct": 0.75
+    },
+    "co": {
+      "initialPpm": 152,
+      "finalPpm": 190,
+      "raw": "152 → 190"
+    },
+    "flags": [
+      "airflow above the 40 cm/s tunnel maximum stated by PSI"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T18",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T18",
+    "date": "2018-06-24",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.4,
+    "o2FinalPct": 17.4,
+    "flowCmS": {
+      "min": 2,
+      "max": 5,
+      "raw": "fan: | air: 5 2"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 0.38
+    },
+    "co": {
+      "initialPpm": 2,
+      "finalPpm": 22,
+      "raw": "2 → 22"
+    },
+    "flags": [
+      "date year inconsistent with sibling rows (year appears nowhere else in table)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T19",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T19",
+    "date": "2014-07-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 17.2,
+    "o2FinalPct": 17.2,
+    "flowCmS": {
+      "min": 11,
+      "max": 11,
+      "raw": "fan: 68.5 pot 3.6 | air: 11"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.29,
+      "finalPct": 0.31
+    },
+    "co": {
+      "initialPpm": 1,
+      "finalPpm": 20,
+      "raw": "1 → 20"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T20",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T20",
+    "date": "2014-07-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 17.2,
+    "o2FinalPct": 17.2,
+    "flowCmS": {
+      "min": 3,
+      "max": 11,
+      "raw": "fan: 3.6 0.9 | air: 11 3"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.31,
+      "finalPct": 0.31
+    },
+    "co": {
+      "initialPpm": 20,
+      "finalPpm": 34,
+      "raw": "20 → 34"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T21",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T21",
+    "date": "2014-07-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 17.2,
+    "o2FinalPct": 17.2,
+    "flowCmS": {
+      "min": 11,
+      "max": 11,
+      "raw": "fan: 1.6 pot 52 | air: 11 max(47)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.31,
+      "finalPct": 0.32
+    },
+    "co": {
+      "initialPpm": 34,
+      "finalPpm": 45,
+      "raw": "34 → 45"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T22",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T22",
+    "date": "2014-07-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 17.1,
+    "o2FinalPct": 17,
+    "flowCmS": {
+      "min": 5,
+      "max": 10,
+      "raw": "fan: 3.4 1.7 | air: 10 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.59,
+      "finalPct": 0.62
+    },
+    "co": {
+      "initialPpm": 140,
+      "finalPpm": 162,
+      "raw": "140 → 162"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T23",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T23",
+    "date": "2014-07-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm Sibal moved igniter",
+      "widthCm": 2
+    },
+    "o2InitialPct": 17.2,
+    "o2FinalPct": 17.3,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 3.3 66 | air: 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.32,
+      "finalPct": 0.32
+    },
+    "co": {
+      "initialPpm": 45,
+      "finalPpm": 49,
+      "raw": "45 → 49"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T24",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T24",
+    "date": "2014-07-09",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL top side ign",
+      "widthCm": 1
+    },
+    "o2InitialPct": 18.2,
+    "o2FinalPct": 18.2,
+    "flowCmS": {
+      "min": 10,
+      "max": 10,
+      "raw": "fan: 3.3 66 | air: 10"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.51,
+      "finalPct": 0.53
+    },
+    "co": {
+      "initialPpm": 85,
+      "finalPpm": 107,
+      "raw": "85 → 107"
+    },
+    "flags": [],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T25",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T25",
+    "date": "2014-08-04",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 20.8,
+    "o2FinalPct": 20.7,
+    "flowCmS": {
+      "min": 2.5,
+      "max": 5,
+      "raw": "fan: 53 45 | air: 5 2.5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 0.39
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 17,
+      "raw": "-1 → 17"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T26",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T26",
+    "date": "2014-08-04",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "2 cm SIBAL",
+      "widthCm": 2
+    },
+    "o2InitialPct": 20.8,
+    "o2FinalPct": 20.7,
+    "flowCmS": {
+      "min": 2.5,
+      "max": 5,
+      "raw": "fan: 53 45 | air: 5 2.5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.36,
+      "finalPct": 0.43
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 24,
+      "raw": "-1 → 24"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T27",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T27",
+    "date": "2014-08-04",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.7,
+    "o2FinalPct": 20.6,
+    "flowCmS": {
+      "min": 2,
+      "max": 5,
+      "raw": "fan: 53 45 | air: 5 2"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.41,
+      "finalPct": 0.42
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 9,
+      "raw": "-1 → 9"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T28a",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T28a",
+    "date": "2014-08-04",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.7,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 53 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.41,
+      "finalPct": null
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": null,
+      "raw": "-1 → none"
+    },
+    "flags": [
+      "final O2 implausible in source (raw: 0.9)",
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T28b",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T28b",
+    "date": "2014-08-04",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.7,
+    "o2FinalPct": null,
+    "flowCmS": {
+      "min": 5,
+      "max": 5,
+      "raw": "fan: 53 | air: 5"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": null,
+      "finalPct": 0.42
+    },
+    "co": {
+      "initialPpm": null,
+      "finalPpm": 2,
+      "raw": "none → 2"
+    },
+    "flags": [
+      "final O2 implausible in source (raw: 40.4)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  },
+  {
+    "id": "PSI-25:T29",
+    "investigationId": "PSI-25",
+    "pi": "T'ien",
+    "testId": "T29",
+    "date": "2014-08-04",
+    "material": {
+      "family": "SIBAL fabric",
+      "raw": "1 cm SIBAL",
+      "widthCm": 1
+    },
+    "o2InitialPct": 20.7,
+    "o2FinalPct": 20.5,
+    "flowCmS": {
+      "min": 2,
+      "max": 5,
+      "raw": "fan: 53 43 | air: 5 2(?)"
+    },
+    "events": [],
+    "co2": {
+      "initialPct": 0.41,
+      "finalPct": 0.44
+    },
+    "co": {
+      "initialPpm": -1,
+      "finalPpm": 10,
+      "raw": "-1 → 10"
+    },
+    "flags": [
+      "negative CO reading (sensor offset)"
+    ],
+    "sourceUrl": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  }
+]

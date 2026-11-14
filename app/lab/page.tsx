@@ -1,47 +1,21 @@
-// Person A will build this page.
-import runs from "@/data/runs.sample.json";
+// Person A
+import runs from "@/data/runs.json";
 import type { Run } from "@/lib/schema";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-const sampleRuns = runs as Run[];
-
-const fmt = (n: number | null) => (n === null ? "—" : String(n));
+import { RunsTable } from "./runs-table";
 
 export default function LabPage() {
+  const data = runs as Run[];
+  const flagged = data.filter((r) => r.flags.length).length;
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">Scenario Lab</h1>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Run</TableHead>
-            <TableHead>Investigation</TableHead>
-            <TableHead>Material</TableHead>
-            <TableHead>O₂ initial %</TableHead>
-            <TableHead>Flow (cm/s)</TableHead>
-            <TableHead>Events</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {sampleRuns.map((r) => (
-            <TableRow key={r.id}>
-              <TableCell>{r.id}</TableCell>
-              <TableCell>{r.investigationId}</TableCell>
-              <TableCell>{r.material.raw}</TableCell>
-              <TableCell>{fmt(r.o2InitialPct)}</TableCell>
-              <TableCell>{r.flowCmS.raw}</TableCell>
-              <TableCell>{r.events.join(", ") || "—"}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <div className="space-y-1">
+        <h1 className="text-2xl font-semibold">Scenario Lab</h1>
+        <p className="text-sm text-muted-foreground">
+          PSI-25 (BASS-II): {data.length} runs, {flagged} with data-quality flags.
+          Values are as recorded in the source table; flagged values were not corrected.
+        </p>
+      </div>
+      <RunsTable runs={data} />
     </div>
   );
 }
