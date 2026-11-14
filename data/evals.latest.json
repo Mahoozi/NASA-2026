@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-11-14T00:00:00.000Z",
+  "model": "placeholder — not a real eval run",
+  "totals": {
+    "questions": 0,
+    "statusMatches": 0,
+    "answeredExpected": 0,
+    "answeredCorrect": 0,
+    "refusalsExpected": 0,
+    "refusalsCorrect": 0,
+    "wronglyRefused": 0,
+    "retrievalHits": 0,
+    "citations": 0,
+    "citationsVerified": 0,
+    "citationsExpected": 0
+  },
+  "items": []
+}
