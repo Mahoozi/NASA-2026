@@ -2,10 +2,10 @@
 // into data/demo-cache.json, the fallback served when the LLM call fails live.
 // Calls OpenAI with .env.local. Only answered responses whose citations are
 // all verified are kept; nothing is written by hand.
-import { existsSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { answer } from "../app/api/ask/ask";
-import type { DemoCacheEntry } from "../app/api/ask/cache";
+import { cacheKey, type DemoCacheEntry } from "../app/api/ask/cache";
 import { demoRequests } from "../app/api/ask/demo";
 import type { AskResponse } from "../lib/schema";
 
@@ -26,8 +26,23 @@ async function main() {
 
   const requests = demoRequests();
 
+  // By default keep every entry already recorded for a current demo request and
+  // only call the model for new requests. `--refresh` re-records all of them.
+  const refresh = process.argv.includes("--refresh");
+  const existing = new Map<string, DemoCacheEntry>(
+    !refresh && existsSync(OUT)
+      ? (JSON.parse(readFileSync(OUT, "utf8")) as DemoCacheEntry[]).map((e) => [cacheKey(e), e] as const)
+      : [],
+  );
+
   const entries: DemoCacheEntry[] = [];
   for (const req of requests) {
+    const kept = existing.get(cacheKey(req));
+    if (kept) {
+      console.log(`kept (already cached): ${req.question}`);
+      entries.push(kept);
+      continue;
+    }
     const response = await answer(req);
     const keep = allVerified(response);
     console.log(`${keep ? "kept" : "skip"} ${response.status}: ${req.question}`);

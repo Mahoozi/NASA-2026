@@ -282,5 +282,77 @@
     },
     "model": "gpt-5.4-mini",
     "generatedAt": "2026-11-14T19:57:26.121Z"
+  },
+  {
+    "question": "What Earth benefits does FLEX research have?",
+    "context": null,
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "FLEX research may improve fire safety on Earth in confined and reduced-gravity environments and support more efficient, less harmful fire suppression systems.",
+          "citations": [
+            {
+              "docId": "psi-69-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+              "title": "FLEX: Research Impacts / Earth Benefits (PSI-69)",
+              "quote": "On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments",
+              "verified": true
+            },
+            {
+              "docId": "psi-69-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+              "title": "FLEX: Research Impacts / Earth Benefits (PSI-69)",
+              "quote": "the development of more efficient and less harmful fire suppression systems",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "The mission's findings on cool flames and low-temperature combustion can inform advanced combustion engines, improving fuel efficiency and reducing emissions in automotive and industrial applications.",
+          "citations": [
+            {
+              "docId": "psi-69-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+              "title": "FLEX: Research Impacts / Earth Benefits (PSI-69)",
+              "quote": "the study of ''cool flames'' and low-temperature combustion processes observed in microgravity can inform the design of advanced combustion engines",
+              "verified": true
+            },
+            {
+              "docId": "psi-69-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+              "title": "FLEX: Research Impacts / Earth Benefits (PSI-69)",
+              "quote": "leading to improved fuel efficiency and reduced emissions in automotive and industrial applications",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "Related combustion studies also aim to support cleaner combustion technologies that reduce pollution and greenhouse gas emissions and improve future combustor designs.",
+          "citations": [
+            {
+              "docId": "psi-68-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+              "title": "FLEX-2: Research Impacts / Earth Benefits (PSI-68)",
+              "quote": "Insights gained from these studies can lead to more efficient and cleaner combustion technologies which are crucial for reducing pollution and greenhouse gas emissions",
+              "verified": true
+            },
+            {
+              "docId": "psi-68-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+              "title": "FLEX-2: Research Impacts / Earth Benefits (PSI-68)",
+              "quote": "Future combustor designs with minimal carbon footprint, maximum fuel efficiency and less pollutant emissions",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": [
+        "PSI-69",
+        "PSI-68"
+      ]
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T20:37:39.864Z"
   }
 ]

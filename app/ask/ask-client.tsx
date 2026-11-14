@@ -11,6 +11,7 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { parseAskContext, scenarioSummary, shownAnswer } from "./context";
+import { EXAMPLE_QUESTIONS } from "./examples";
 
 type State =
   | { kind: "idle" }
@@ -32,8 +33,8 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
   const [state, setState] = useState<State>({ kind: "idle" });
   const loading = state.kind === "loading";
 
-  async function ask() {
-    const q = question.trim();
+  async function ask(override?: string) {
+    const q = (override ?? question).trim();
     if (loading) return;
     if (!q) {
       setState({ kind: "error", question: q, message: "Type a question first, then ask." });
@@ -98,6 +99,25 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
             <Button type="submit" disabled={loading}>
               {loading ? "Asking…" : "Ask"}
             </Button>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            <span className="text-muted-foreground">Try an example:</span>
+            {EXAMPLE_QUESTIONS.map((ex) => (
+              <Button
+                key={ex.question}
+                type="button"
+                variant="outline"
+                size="sm"
+                className="h-auto min-h-7 py-1 text-left whitespace-normal"
+                disabled={loading}
+                onClick={() => {
+                  setQuestion(ex.question);
+                  void ask(ex.question);
+                }}
+              >
+                <span className="text-muted-foreground">{ex.label}:</span> {ex.question}
+              </Button>
+            ))}
           </div>
         </FieldGroup>
       </form>

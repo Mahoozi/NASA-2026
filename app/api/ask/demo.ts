@@ -4,6 +4,7 @@ import goldenJson from "../../../data/golden.json";
 import investigationsJson from "../../../data/investigations.json";
 import runsJson from "../../../data/runs.json";
 import { parseAskContext } from "../../ask/context";
+import { EXAMPLE_QUESTIONS } from "../../ask/examples";
 import { askHref } from "../../lab/ask-link";
 import { matchInvestigations } from "../../../lib/match";
 import type { AskRequest, Investigation, Run, Scenario } from "../../../lib/schema";
@@ -45,5 +46,10 @@ export function demoHandoffRequest(): AskRequest {
 }
 
 export function demoRequests(): AskRequest[] {
-  return [demoHandoffRequest(), ...PLAIN_QUESTION_IDS.map((id) => ({ question: questionFor(id) }))];
+  return [
+    demoHandoffRequest(),
+    ...PLAIN_QUESTION_IDS.map((id) => ({ question: questionFor(id) })),
+    // The clickable example questions on /ask (asked with no context).
+    ...EXAMPLE_QUESTIONS.map((ex) => ({ question: ex.question })),
+  ];
 }
