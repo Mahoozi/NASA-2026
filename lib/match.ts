@@ -14,13 +14,16 @@ import type {
  * closeness of evidence, 0..1. They are never a risk or safety judgement.
  *
  * Dimensions (only those the scenario specifies are scored):
- *   run-level:   materialFamily, o2Pct, flowCmS  (scored per run, as a set)
- *   investigation-level: gravity, safetyArea
+ *   run-level: materialFamily, o2Pct, flowCmS, gravity — scored per run, as a
+ *     set, and only for investigations that have runs. An investigation with
+ *     no imported runs has no test-level evidence to compare.
+ *   investigation-level: safetyArea
  * Pressure is context only: no run records it, so it is never scored.
  */
 
-export type RunDimension = "materialFamily" | "o2Pct" | "flowCmS";
-export type Dimension = RunDimension | "gravity" | "safetyArea";
+export type RunDimension = "materialFamily" | "o2Pct" | "flowCmS" | "gravity";
+export type Dimension = RunDimension | "safetyArea";
+export const RUN_DIMENSIONS: RunDimension[] = ["materialFamily", "o2Pct", "flowCmS", "gravity"];
 
 /** Closeness thresholds, in scenario units. */
 const O2_FULL = 1; // ±1 % O2 → 1
@@ -64,6 +67,8 @@ export function runBreakdown(
     b.materialFamily = materialCloseness(scenario.materialFamily, run);
   if (scenario.o2Pct !== undefined) b.o2Pct = o2Closeness(scenario.o2Pct, run);
   if (scenario.flowCmS !== undefined) b.flowCmS = flowCloseness(scenario.flowCmS, run);
+  // Every imported run (BASS-II) was performed on the ISS, in microgravity.
+  if (scenario.gravity !== undefined) b.gravity = scenario.gravity === "micro" ? 1 : 0;
   return b;
 }
 
@@ -80,8 +85,7 @@ export function matchInvestigations(
   investigations: Investigation[],
   runs: Run[],
 ): InvestigationMatch[] {
-  const runDims: RunDimension[] = (["materialFamily", "o2Pct", "flowCmS"] as const)
-    .filter((d) => scenario[d] !== undefined);
+  const runDims = RUN_DIMENSIONS.filter((d) => scenario[d] !== undefined);
 
   const runsByInvestigation = new Map<string, Run[]>();
   for (const r of runs)
@@ -93,7 +97,7 @@ export function matchInvestigations(
       const breakdown: Record<string, number> = {};
       let matchingRunIds: string[] = [];
 
-      if (runDims.length) {
+      if (runDims.length && own.length) {
         // Score each run as a set and keep the single best run's values.
         let best: Partial<Record<RunDimension, number>> | null = null;
         let bestMean = -1;
@@ -105,7 +109,6 @@ export function matchInvestigations(
             bestMean = m;
           }
         }
-        // No runs → no run evidence → 0 on every run-level dimension.
         for (const d of runDims) breakdown[d] = best?.[d] ?? 0;
 
         matchingRunIds = own
@@ -116,10 +119,6 @@ export function matchInvestigations(
           .map((run) => run.id);
       }
 
-      // Every PSI combustion investigation ran in microgravity; there is no
-      // lunar, martian or 1 g data in the table.
-      if (scenario.gravity !== undefined)
-        breakdown.gravity = scenario.gravity === "micro" ? 1 : 0;
       if (scenario.safetyArea !== undefined)
         breakdown.safetyArea = investigation.safetyArea.includes(scenario.safetyArea) ? 1 : 0;
 

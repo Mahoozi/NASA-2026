@@ -100,6 +100,8 @@ describe("closeness per dimension", () => {
 
   it("gravity is 1 for microgravity and 0 for anything there is no data for", () => {
     expect(match({ gravity: "micro" }).psi25.breakdown).toEqual({ gravity: 1 });
+    // every BASS-II run was on the ISS, so all 129 match a microgravity-only scenario
+    expect(match({ gravity: "micro" }).psi25.matchingRunIds).toHaveLength(129);
     for (const g of ["lunar", "martian", "1g"] as const) {
       const { psi25, noRuns } = match({ gravity: g });
       expect(psi25.score).toBe(0);
@@ -116,18 +118,19 @@ describe("closeness per dimension", () => {
 });
 
 describe("investigations without runs", () => {
-  it("can reach at most partial coverage, even with a perfect score", () => {
+  it("are scored on safety area alone, and reach at most partial coverage", () => {
     const { noRuns } = match({ gravity: "micro", safetyArea: "suppression" });
+    expect(noRuns.breakdown).toEqual({ safetyArea: 1 });
     expect(noRuns.score).toBe(1);
     expect(noRuns.coverage).toBe("partial");
     expect(noRuns.matchingRunIds).toEqual([]);
   });
 
-  it("score 0 on run-level dimensions (no run evidence)", () => {
+  it("are not scored on material, O2, flow or gravity at all", () => {
     const { noRuns } = match({ materialFamily: "PMMA rod", o2Pct: 17, flowCmS: 5, gravity: "micro" });
-    expect(noRuns.breakdown).toEqual({ materialFamily: 0, o2Pct: 0, flowCmS: 0, gravity: 1 });
-    expect(noRuns.score).toBe(0.25);
-    expect(noRuns.coverage).toBe("none");
+    expect(noRuns).toMatchObject({ breakdown: {}, score: 0, coverage: "none", matchingRunIds: [] });
+    // microgravity alone used to lift every investigation to "partial"
+    expect(match({ gravity: "micro" }).noRuns).toMatchObject({ score: 0, coverage: "none" });
   });
 });
 
@@ -148,6 +151,6 @@ describe("contract", () => {
   });
 
   it("does not list matching runs when no run-level dimension is specified", () => {
-    expect(match({ gravity: "micro" }).psi25.matchingRunIds).toEqual([]);
+    expect(match({ safetyArea: "fundamental" }).psi25.matchingRunIds).toEqual([]);
   });
 });

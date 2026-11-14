@@ -78,7 +78,7 @@ export function RankedList({
                   <span className="text-sm text-muted-foreground">
                     {m.investigation.hasRunData
                       ? `${runs} matching run${runs === 1 ? "" : "s"}`
-                      : "no run data"}
+                      : "no test-level data imported"}
                   </span>
                 </div>
               </CardContent>
