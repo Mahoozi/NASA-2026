@@ -77,7 +77,7 @@ export function RankedList({
                       href={m.investigation.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-xs font-normal text-muted-foreground underline-offset-4 hover:underline"
+                      className="text-sm font-normal text-muted-foreground underline-offset-4 hover:underline"
                     >
                       PSI page <span aria-hidden>↗</span><span className="sr-only"> (opens in a new tab)</span>
                     </a>

@@ -87,7 +87,7 @@ function FlagsBadge({ flags }: { flags: string[] }) {
       </button>
       <span
         role="tooltip"
-        className="pointer-events-none invisible absolute right-0 top-full z-20 mt-1 w-72 rounded-md border border-border bg-popover p-2 text-xs text-popover-foreground opacity-0 shadow-md transition-opacity motion-reduce:transition-none group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
+        className="pointer-events-none invisible absolute right-0 top-full z-20 mt-1 w-72 rounded-md border border-border bg-popover p-2 text-sm text-popover-foreground opacity-0 shadow-md transition-opacity motion-reduce:transition-none group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
       >
         <ul className="list-disc space-y-1 pl-4 text-left whitespace-normal">
           {flags.map((f) => <li key={f}>{f}</li>)}
@@ -221,7 +221,7 @@ export function RunsTable({
                 <TableRow id={panelId} className="hover:bg-transparent">
                   <TableCell />
                   <TableCell colSpan={columns.length} className="whitespace-normal">
-                    <dl className="grid gap-x-6 gap-y-1 py-1 text-xs sm:grid-cols-[max-content_1fr]">
+                    <dl className="grid gap-x-6 gap-y-1 py-1 text-sm sm:grid-cols-[max-content_1fr]">
                       {r.observations.map((o, i) => (
                         <Fragment key={`${o.label}-${i}`}>
                           <dt className="text-muted-foreground">{o.label}</dt>
@@ -229,7 +229,7 @@ export function RunsTable({
                         </Fragment>
                       ))}
                     </dl>
-                    <p className="pt-1 text-xs text-muted-foreground">Copied verbatim from the source table.</p>
+                    <p className="pt-1 text-sm text-muted-foreground">Copied verbatim from the source table.</p>
                   </TableCell>
                 </TableRow>
               )}
