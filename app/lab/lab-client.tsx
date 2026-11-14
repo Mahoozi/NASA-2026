@@ -14,6 +14,7 @@ import { DownloadDataset } from "./download-dataset";
 import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
+import { LimitsPanel } from "./limits-panel";
 import { SPACE_VS_EARTH_ID } from "./gravity-bounds-note";
 import { RankedList } from "./ranked-list";
 import { RunsTable } from "./runs-table";
@@ -147,6 +148,13 @@ export function LabClient({
           Gap chart: airflow and starting oxygen of every run
         </h2>
         <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} />
+      </section>
+
+      <section aria-labelledby="limits-heading" className="flex flex-col gap-3">
+        <h2 id="limits-heading" className="text-lg font-semibold">
+          Recorded flammability limits
+        </h2>
+        <LimitsPanel runs={runs} scenario={scenario} />
       </section>
 
       <section
