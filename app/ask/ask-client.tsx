@@ -34,7 +34,11 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
 
   async function ask() {
     const q = question.trim();
-    if (!q || loading) return;
+    if (loading) return;
+    if (!q) {
+      setState({ kind: "error", question: q, message: "Type a question first, then ask." });
+      return;
+    }
     setState({ kind: "loading", question: q });
     const body: AskRequest = context ? { question: q, context } : { question: q };
     try {
@@ -73,6 +77,7 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
             <Textarea
               id="question"
               name="question"
+              autoComplete="off"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={(e) => {
@@ -81,16 +86,16 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
                   void ask();
                 }
               }}
-              placeholder="What did BASS-II find about flame spread over PMMA at low flow speeds?"
+              placeholder="What did BASS-II find about flame spread over PMMA at low flow speeds?…"
               rows={3}
             />
             <FieldDescription>
-              Answers quote the PSI investigation pages and the PSI guide. Press Ctrl or ⌘ + Enter
+              Answers quote the PSI investigation pages and the PSI guide. Press Ctrl + Enter or ⌘ + Enter
               to ask.
             </FieldDescription>
           </Field>
           <div>
-            <Button type="submit" disabled={loading || !question.trim()}>
+            <Button type="submit" disabled={loading}>
               {loading ? "Asking…" : "Ask"}
             </Button>
           </div>
@@ -136,7 +141,7 @@ function ContextLine({
           {ids.map((id, i) => (
             <span key={id}>
               {i > 0 && ", "}
-              <Link href={`/investigations/${id}`} className="underline underline-offset-4">
+              <Link href={`/investigations/${id}`} className="underline underline-offset-4 hover:decoration-2">
                 {acronyms[id] ? `${acronyms[id]} (${id})` : id}
               </Link>
             </span>
@@ -162,10 +167,10 @@ function Answer({
   const sentences = shownAnswer(res);
   return (
     <article className="flex flex-col gap-5">
-      <h2 className="text-lg font-medium">{question}</h2>
+      <h2 className="text-lg font-medium text-pretty">{question}</h2>
       {sentences.length === 0 ? (
         <p className="max-w-prose">
-          The sources in this app don&apos;t answer that question. That says nothing either way
+          The sources in this app don’t answer that question. That says nothing either way
           about how a material or setup would behave; it only means none of the PSI pages or the
           PSI guide covers it.
         </p>
@@ -183,7 +188,7 @@ function Answer({
                           href={c.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1 underline underline-offset-4"
+                          className="inline-flex items-center gap-1 underline underline-offset-4 hover:decoration-2"
                         >
                           {c.title}
                           <ExternalLinkIcon aria-hidden className="size-3.5" />
@@ -211,7 +216,7 @@ function Answer({
                 {res.investigationsMentioned.map((id, i) => (
                   <span key={id}>
                     {i > 0 && ", "}
-                    <Link href={`/investigations/${id}`} className="underline underline-offset-4">
+                    <Link href={`/investigations/${id}`} className="underline underline-offset-4 hover:decoration-2">
                       {acronyms[id] ? `${acronyms[id]} (${id})` : id}
                     </Link>
                   </span>
