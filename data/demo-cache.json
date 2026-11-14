@@ -1,0 +1,286 @@
+[
+  {
+    "question": "For a PMMA rod in slow airflow at reduced oxygen in microgravity, which investigation varied flow speed, oxygen concentration and sample geometry such as rods?",
+    "context": {
+      "scenario": {
+        "materialFamily": "PMMA rod",
+        "o2Pct": 17,
+        "flowCmS": 5,
+        "gravity": "micro"
+      },
+      "investigationIds": [
+        "PSI-25",
+        "PSI-26",
+        "PSI-98"
+      ]
+    },
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "The investigation was BASS-II, whose objectives included studying flame behavior in microgravity and examining practical fuels in several geometries including rods.",
+          "citations": [
+            {
+              "docId": "psi-25-objectives",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Objectives (PSI-25)",
+              "quote": "Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.",
+              "verified": true
+            },
+            {
+              "docId": "psi-25-objectives",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Objectives (PSI-25)",
+              "quote": "Sample geometry (rods, spherical section, slabs, films, and fabric sheets",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "Its approach varied the main variables of airflow speed and oxygen concentration, with oxygen reduced below 21% by adding nitrogen.",
+          "citations": [
+            {
+              "docId": "psi-25-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Approach (PSI-25)",
+              "quote": "Main variables are airflow speed and oxygen concentration (oxygen varied below 21% by adding nitrogen).",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "The tests were performed aboard the International Space Station in a small wind tunnel that could impose airflow speeds up to 40 cm/s.",
+          "citations": [
+            {
+              "docId": "psi-25-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Approach (PSI-25)",
+              "quote": "microgravity combustion tests were performed aboard the International Space Station.",
+              "verified": true
+            },
+            {
+              "docId": "psi-25-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Approach (PSI-25)",
+              "quote": "Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds up to 40 cm/s.",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "The guide also says the work aimed to characterize ignition and flammability of solid spacecraft materials in practical geometries and realistic atmospheric conditions.",
+          "citations": [
+            {
+              "docId": "guide-p22",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 22",
+              "quote": "study and characterize ignition and flammability of solid spacecraft materials in practical geometries and realistic atmospheric conditions.",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": [
+        "PSI-25"
+      ]
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T19:57:19.131Z"
+  },
+  {
+    "question": "What was the highest airflow speed the BASS-II wind tunnel could impose, and how was the oxygen concentration varied?",
+    "context": null,
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "The BASS-II wind tunnel could impose airflow speeds up to 40 cm/s.",
+          "citations": [
+            {
+              "docId": "psi-25-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Approach (PSI-25)",
+              "quote": "could impose airflow speeds up to 40 cm/s",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "The oxygen concentration was varied below 21% by adding nitrogen.",
+          "citations": [
+            {
+              "docId": "psi-25-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+              "title": "BASS-II: Approach (PSI-25)",
+              "quote": "oxygen varied below 21% by adding nitrogen",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": [
+        "PSI-25"
+      ]
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T19:57:20.292Z"
+  },
+  {
+    "question": "What misconceptions about fires on spacecraft does the combustion researcher's guide list?",
+    "context": null,
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "The guide says earlier spacecraft fire-safety thinking included the mistaken belief that a steady fire cannot exist in a quiescent microgravity environment.",
+          "citations": [
+            {
+              "docId": "guide-p35",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 35",
+              "quote": "A steady fire cannot exist in a quiescent microgravity environment.",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "It also lists the misconception that a fire will self-extinguish if ventilation is shut off.",
+          "citations": [
+            {
+              "docId": "guide-p35",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 35",
+              "quote": "A fire will self-extinguish if ventilation is shut off.",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "A third misconception was that the reduced-gravity environment is inherently safer and that terrestrial fire standards and tests are therefore very conservative.",
+          "citations": [
+            {
+              "docId": "guide-p35",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 35",
+              "quote": "the reduced-gravity environment is inherently safer, terrestrial fire standards and tests represent a very conservative approach to fire safety.",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": []
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T19:57:22.020Z"
+  },
+  {
+    "question": "What kind of portable fire extinguisher was sent to the ISS to replace the CO2 units?",
+    "context": null,
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "The documents say that non-toxic water-mist portable fire extinguishers were designed for spaceflight, and the first two were sent to the ISS in December 2015 to replace CO2 units that were already onboard.",
+          "citations": [
+            {
+              "docId": "guide-p26",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 26",
+              "quote": "non-toxic water-mist portable fire extinguishers were designed, tested, fabricated and certified for spaceflight",
+              "verified": true
+            },
+            {
+              "docId": "guide-p26",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 26",
+              "quote": "The first two of the planned nine water-mist portable fire extinguishers were sent to the ISS in December 2015 to replace CO2 units that are currently onboard.",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": []
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T19:57:23.592Z"
+  },
+  {
+    "question": "Which gaseous fire suppressants does FLEX measure the effectiveness of?",
+    "context": null,
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "FLEX measures the effectiveness of inert-gas suppressants including CO2, He, and SF6.",
+          "citations": [
+            {
+              "docId": "psi-69-objectives",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+              "title": "FLEX: Objectives (PSI-69)",
+              "quote": "measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6",
+              "verified": true
+            },
+            {
+              "docId": "psi-69-earth-benefits",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+              "title": "FLEX: Research Impacts / Earth Benefits (PSI-69)",
+              "quote": "the effectiveness of various fire suppressants, including CO2, He, and SF6, in microgravity",
+              "verified": true
+            }
+          ]
+        },
+        {
+          "sentence": "The guide also says FLEX studies heptane and methanol droplets in oxygen and nitrogen diluted with a second inert gas, specifically nitrogen, carbon dioxide, helium or xenon.",
+          "citations": [
+            {
+              "docId": "guide-p12",
+              "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+              "title": "A Researcher’s Guide to: Combustion Science, p. 12",
+              "quote": "study heptane and methanol droplets in ambient mixtures of oxygen and nitrogen diluted with a second inert gas (nitrogen, carbon dioxide, helium or xenon)",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": [
+        "PSI-69"
+      ]
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T19:57:24.823Z"
+  },
+  {
+    "question": "How did the airflow velocity in Saffire-III differ from Saffire-I?",
+    "context": null,
+    "response": {
+      "status": "answered",
+      "answer": [
+        {
+          "sentence": "Saffire-III was conducted at a flow velocity of 30 cm/s, while Saffire-I was conducted at 20 cm/s, so Saffire-III used a higher airflow velocity.",
+          "citations": [
+            {
+              "docId": "psi-100-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+              "title": "SAFFIRE-III: Approach (PSI-100)",
+              "quote": "the experiments were conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I",
+              "verified": true
+            },
+            {
+              "docId": "psi-98-approach",
+              "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+              "title": "SAFFIRE-I: Approach (PSI-98)",
+              "quote": "Saffire-I was conducted at an air flow velocity of 20 cm/s.",
+              "verified": true
+            }
+          ]
+        }
+      ],
+      "investigationsMentioned": [
+        "PSI-100",
+        "PSI-98"
+      ]
+    },
+    "model": "gpt-5.4-mini",
+    "generatedAt": "2026-11-14T19:57:26.121Z"
+  }
+]

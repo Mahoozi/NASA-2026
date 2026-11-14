@@ -11,7 +11,8 @@
     "fetch:psi": "tsx pipeline/corpus_fetch_psi.ts",
     "build:corpus": "tsx pipeline/corpus_build.ts",
     "test": "vitest run",
-    "evals": "tsx pipeline/evals.ts"
+    "evals": "tsx pipeline/evals.ts",
+    "cache:demo": "tsx pipeline/retrieve_cache_demo.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.118",
