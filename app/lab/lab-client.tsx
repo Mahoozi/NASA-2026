@@ -4,8 +4,9 @@
 // → ranked investigations → runs table → download.
 import { useCallback, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { matchInvestigations } from "@/lib/match";
+import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
+import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
 import { RankedList } from "./ranked-list";
@@ -34,6 +35,14 @@ export function LabClient({
   const gaps = useMemo(
     () => evidenceGaps(scenario, runs, investigations),
     [scenario, runs, investigations],
+  );
+  // Runs that match every run-level dimension set; null when none is set.
+  const matchingRunIds = useMemo(
+    () =>
+      RUN_DIMENSIONS.some((d) => scenario[d] !== undefined)
+        ? new Set(matches.flatMap((m) => m.matchingRunIds))
+        : null,
+    [scenario, matches],
   );
 
   // Native History API: Next keeps useSearchParams in sync, no server round trip.
@@ -64,6 +73,13 @@ export function LabClient({
             Pressure alone is not scored.
           </p>
         )}
+      </section>
+
+      <section aria-labelledby="chart-heading" className="flex flex-col gap-3">
+        <h2 id="chart-heading" className="text-lg font-semibold">
+          Gap chart: airflow and starting oxygen of every run
+        </h2>
+        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} />
       </section>
 
       {scored && (
