@@ -42,7 +42,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   - `breakdown` keys are the dimension names above.
   Done when: `pipeline/match.test.ts` (vitest) covers each dimension with real PSI-25 runs (B14, O5b, P8, T17, M5) and a `hasRunData: false` investigation, and `npm test` passes.
   Commit: `Add investigation matching`.
-- [ ] **Lab scenario form** (`app/lab/scenario-form.tsx`, client). Skills: `shadcn` (add Select via `npx shadcn@latest add select`, commit alone), `vercel-react-best-practices`. Fields: material family (select from `MaterialFamily`), O2 % (number), flow cm/s (number), gravity (select), safety area (select). All optional. State in URL search params (`?material=PMMA%20rod&o2=17&flow=5&gravity=micro`) so a scenario is a link.
+- [x] **Lab scenario form** (`app/lab/scenario-form.tsx`, client). Skills: `shadcn` (add Select via `npx shadcn@latest add select`, commit alone), `vercel-react-best-practices`. Fields: material family (select from `MaterialFamily`), O2 % (number), flow cm/s (number), gravity (select), safety area (select). All optional. State in URL search params (`?material=PMMA%20rod&o2=17&flow=5&gravity=micro`) so a scenario is a link.
   Two preset buttons, each with a visible source line under it:
   - **ISS cabin air** → `o2=21`, `gravity=micro`. Source line computed from `data/runs.json`: "BASS-II runs started at <min>–<max>% O2 in ISS air", min/max over runs with `o2InitialPct ≥ 20.5`.
   - **Moon Base (planned)** → `o2=30`, `pressure=10.2`, `gravity=lunar`. Source line: "NASA Space Apps challenge brief: likely 30% oxygen or more at 10.2 psi or less."
