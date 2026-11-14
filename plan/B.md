@@ -19,8 +19,8 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
   Commit: `Add investigations.json v0`.
 - [x] `data/corpus.json` = `[]`, `data/golden.json` = `[]`. Commit: `Add empty corpus and golden set`.
   Note: `data/corpus.json` already holds the 120 PSI section docs (see `pipeline/corpus_report.md`), not `[]`.
-- [ ] `.env.local` with `OPENAI_API_KEY=` (never committed).
-- [ ] **Vercel deploy of `main` (human runs it).** Skills: `deploy-to-vercel`, `vercel-cli-with-tokens`. Set `OPENAI_API_KEY` and `OPENAI_MODEL` in the Vercel project, never in the repo. Done when: the production URL serves `/` and every later push gets a preview URL.
+- [x] `.env.local` with `OPENAI_API_KEY=` (never committed).
+- [x] **Vercel deploy of `main` (human runs it).** Skills: `deploy-to-vercel`, `vercel-cli-with-tokens`. Set `OPENAI_API_KEY` and `OPENAI_MODEL` in the Vercel project, never in the repo. Done when: the production URL serves `/` and every later push gets a preview URL.
 
 ## Stage 1 — Core (hour 1–10)
 
@@ -64,7 +64,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 4 — Freeze (hour 32–48)
 
-- [ ] `REFERENCES.md`: every PSI page URL, guide PDF title, NTRS ids used. Skill: `writing-guidelines`; `engineering:documentation` for the README "how it works" section.
+- [x] `REFERENCES.md`: every PSI page URL, guide PDF title, NTRS ids used. Skill: `writing-guidelines`; `engineering:documentation` for the README "how it works" section.
 - [ ] Rehearse `/ask` with the demo scenario; make sure the golden set includes it.
 - [ ] Bug-only commits.
 
