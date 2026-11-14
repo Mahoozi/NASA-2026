@@ -24,8 +24,9 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 
 ## Stage 1 — Core (hour 1–10)
 
-- [ ] **`pipeline/corpus_build.ts`** (`npm run build:corpus`). Skills: `anthropic-skills:pdf` for the guide PDF text extraction; `rag-implementation` §chunking for how to split pages into docs (one doc per PSI section / PDF page is enough — no embeddings). Reads the raw PSI pages and the guide PDF, writes `data/corpus.json` as `CorpusDoc[]` and fills `objectives`, `approach`, `hypothesis`, `earthBenefits`, `doi` in `investigations.json`.
+- [x] **`pipeline/corpus_build.ts`** (`npm run build:corpus`). Skills: `anthropic-skills:pdf` for the guide PDF text extraction; `rag-implementation` §chunking for how to split pages into docs (one doc per PSI section / PDF page is enough — no embeddings). Reads the raw PSI pages and the guide PDF, writes `data/corpus.json` as `CorpusDoc[]` and fills `objectives`, `approach`, `hypothesis`, `earthBenefits`, `doi` in `investigations.json`.
   Progress: PSI part done (24 investigations, 120 docs, all text fields filled, report written). Guide PDF and NASA web pages still to add. No `doi` in the PSI API, so it is omitted.
+  Guide PDF added: 55 `guide-p<page>` docs from `data/guide-pages.json` (p. 4 has only its page number, skipped). NASA web pages still to add.
   - Doc id scheme: `psi-<n>-<section>` (`psi-25-objectives`, `psi-25-approach`, …), `guide-p<page>` one doc per PDF page, `nasa-web-<slug>`, `ntrs-<id>`.
   - `text` is the verbatim extracted text, whitespace collapsed. No summarising in the pipeline.
   - Assert: every investigation has ≥1 corpus doc; no doc has empty text; every `url` is on `psi.nasa.gov` or `nasa.gov` / `ntrs.nasa.gov`.
