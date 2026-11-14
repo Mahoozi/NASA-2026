@@ -2,6 +2,7 @@
 import { Suspense } from "react";
 import { InvestigationBrowser, InvestigationList } from "./investigation-list";
 import { investigations } from "./data";
+import { CompareTable } from "./compare-table";
 
 export default function InvestigationsPage() {
   return (
@@ -14,10 +15,22 @@ export default function InvestigationsPage() {
           to the source.
         </p>
       </div>
-      {/* The fallback is the unfiltered list, so the static HTML has every card. */}
-      <Suspense fallback={<InvestigationList investigations={investigations} area={null} />}>
-        <InvestigationBrowser investigations={investigations} />
-      </Suspense>
+      <section aria-labelledby="compare-heading" className="flex flex-col gap-3">
+        <h2 id="compare-heading" className="text-lg font-semibold">
+          Compare investigations
+        </h2>
+        <CompareTable investigations={investigations} />
+      </section>
+
+      <section aria-labelledby="all-heading" className="flex flex-col gap-3">
+        <h2 id="all-heading" className="text-lg font-semibold">
+          All investigations
+        </h2>
+        {/* The fallback is the unfiltered list, so the static HTML has every card. */}
+        <Suspense fallback={<InvestigationList investigations={investigations} area={null} />}>
+          <InvestigationBrowser investigations={investigations} />
+        </Suspense>
+      </section>
     </div>
   );
 }
