@@ -15,10 +15,13 @@ import {
   YAxis,
 } from "recharts";
 import type { MaterialFamily, Run, Scenario } from "@/lib/schema";
+import { familyLabel } from "./coverage-grid";
+import { MATERIAL_FAMILIES } from "./scenario";
 
 // Scatter puts every pair on screen, so the dataviz palette caps colour at its
 // first three slots (validated all-pairs, light and dark). The three largest
-// families get them in fixed order; every other family folds into a neutral.
+// families get them in fixed order; every other family is neutral gray and is
+// identified by its marker shape (see SHAPE below).
 const COLOURED: { family: MaterialFamily; slot: string }[] = [
   { family: "PMMA rod", slot: "--gc-s1" },
   { family: "SIBAL fabric", slot: "--gc-s2" },
@@ -37,23 +40,92 @@ type Point = {
 
 const slotFor = (f: MaterialFamily) => COLOURED.find((c) => c.family === f)?.slot ?? OTHER_SLOT;
 
-function Dot(props: { cx?: number; cy?: number; payload?: Point; fill?: string }) {
+// Every family also gets its own marker shape, so identity never rests on
+// colour alone (the four gray families are told apart by shape only).
+type Shape = "circle" | "square" | "triangle" | "diamond" | "plus" | "triangleDown" | "ring" | "squareRing";
+const SHAPE: Record<MaterialFamily, Shape> = {
+  "PMMA rod": "circle",
+  "SIBAL fabric": "square",
+  "PMMA film": "triangle",
+  "PMMA slab": "diamond",
+  Nomex: "plus",
+  wax: "triangleDown",
+  other: "ring",
+  "PMMA sphere": "squareRing",
+};
+
+/** One marker, ~9–12px, centred on (cx, cy), with the 2px surface ring. */
+function Marker({
+  shape,
+  cx,
+  cy,
+  colour,
+  opacity = 1,
+}: {
+  shape: Shape;
+  cx: number;
+  cy: number;
+  colour: string;
+  opacity?: number;
+}) {
+  const solid = {
+    fill: colour,
+    fillOpacity: opacity,
+    stroke: "var(--background)",
+    strokeWidth: 2,
+    paintOrder: "stroke" as const,
+  };
+  const hollow = { fill: "none", stroke: colour, strokeOpacity: opacity, strokeWidth: 2 };
+  const pts = (p: [number, number][]) => p.map(([x, y]) => `${cx + x},${cy + y}`).join(" ");
+  switch (shape) {
+    case "circle":
+      return <circle cx={cx} cy={cy} r={4.5} {...solid} />;
+    case "square":
+      return <rect x={cx - 4} y={cy - 4} width={8} height={8} {...solid} />;
+    case "triangle":
+      return <polygon points={pts([[0, -5.5], [5, 3.5], [-5, 3.5]])} {...solid} />;
+    case "triangleDown":
+      return <polygon points={pts([[0, 5.5], [5, -3.5], [-5, -3.5]])} {...solid} />;
+    case "diamond":
+      return <polygon points={pts([[0, -6], [6, 0], [0, 6], [-6, 0]])} {...solid} />;
+    case "plus":
+      return (
+        <polygon
+          points={pts([[-1.75, -5.5], [1.75, -5.5], [1.75, -1.75], [5.5, -1.75], [5.5, 1.75], [1.75, 1.75], [1.75, 5.5], [-1.75, 5.5], [-1.75, 1.75], [-5.5, 1.75], [-5.5, -1.75], [-1.75, -1.75]])}
+          {...solid}
+        />
+      );
+    case "ring":
+      return <circle cx={cx} cy={cy} r={4} {...hollow} />;
+    case "squareRing":
+      return <rect x={cx - 4} y={cy - 4} width={8} height={8} {...hollow} />;
+  }
+}
+
+function Dot(props: { cx?: number; cy?: number; payload?: Point }) {
   const { cx, cy, payload } = props;
   if (cx === undefined || cy === undefined || !payload) return <g />;
+  const family = payload.run.material.family;
   return (
     <g>
-      {/* 24px transparent hit target around an 8px mark */}
+      {/* 24px transparent hit target around a ~10px mark */}
       <circle cx={cx} cy={cy} r={12} fill="transparent" />
-      <circle
+      <Marker
+        shape={SHAPE[family]}
         cx={cx}
         cy={cy}
-        r={4}
-        fill={`var(${slotFor(payload.run.material.family)})`}
-        fillOpacity={payload.match ? 1 : 0.25}
-        stroke="var(--background)"
-        strokeWidth={2}
+        colour={`var(${slotFor(family)})`}
+        opacity={payload.match ? 1 : 0.25}
       />
     </g>
+  );
+}
+
+function LegendMark({ family }: { family: MaterialFamily }) {
+  return (
+    <svg width={14} height={14} viewBox="0 0 14 14" aria-hidden className="shrink-0">
+      <Marker shape={SHAPE[family]} cx={7} cy={7} colour={`var(${slotFor(family)})`} />
+    </svg>
   );
 }
 
@@ -90,8 +162,8 @@ export function GapChart({
   /** null = no run-level dimension set, so every run is shown at full strength. */
   matchingRunIds: Set<string> | null;
 }) {
-  const { groups, unplotted, otherFamilies } = useMemo(() => {
-    const groups = new Map<string, Point[]>();
+  const { groups, unplotted, families } = useMemo(() => {
+    const groups = new Map<MaterialFamily, Point[]>();
     const unplotted: Run[] = [];
     for (const run of runs) {
       const x = run.flowCmS.max ?? run.flowCmS.min;
@@ -99,16 +171,18 @@ export function GapChart({
         unplotted.push(run);
         continue;
       }
-      const key = COLOURED.some((c) => c.family === run.material.family)
-        ? run.material.family
-        : "other";
+      const key = run.material.family;
       const point = { x, y: run.o2InitialPct, run, match: matchingRunIds?.has(run.id) ?? true };
       groups.set(key, [...(groups.get(key) ?? []), point]);
     }
-    const otherFamilies = [...new Set(runs.map((r) => r.material.family))].filter(
-      (f) => !COLOURED.some((c) => c.family === f),
-    );
-    return { groups, unplotted, otherFamilies };
+    // Legend order: the three coloured families in slot order, then the rest
+    // in schema order. Only families present in the data are listed.
+    const present = new Set(runs.map((r) => r.material.family));
+    const families = [
+      ...COLOURED.map((c) => c.family),
+      ...MATERIAL_FAMILIES.filter((f) => !COLOURED.some((c) => c.family === f)),
+    ].filter((f) => present.has(f));
+    return { groups, unplotted, families };
   }, [runs, matchingRunIds]);
 
   const { o2Pct: o2, flowCmS: flow } = scenario;
@@ -123,17 +197,13 @@ export function GapChart({
       `}</style>
 
       <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted-foreground" aria-label="Legend">
-        {COLOURED.map((c) => (
-          <li key={c.family} className="flex items-center gap-1.5">
-            <span className="size-2 rounded-full" style={{ background: `var(${c.slot})` }} />
-            {c.family}
+        {families.map((f) => (
+          <li key={f} className="flex items-center gap-1.5">
+            <LegendMark family={f} />
+            {familyLabel(f, runs)}
           </li>
         ))}
-        <li className="flex items-center gap-1.5">
-          <span className="size-2 rounded-full" style={{ background: `var(${OTHER_SLOT})` }} />
-          Other families ({otherFamilies.join(", ")})
-        </li>
-        {matchingRunIds && <li>Faded points: runs that do not match the scenario</li>}
+        {matchingRunIds && <li>Faded marks: runs that do not match the scenario</li>}
       </ul>
 
       <div
