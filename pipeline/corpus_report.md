@@ -22,16 +22,16 @@ Raw PSI snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`
 | PSI-22 | ACME E-FIELD Flames | fundamental | gas | International Space Station (ISS) | no | 5 |
 | PSI-23 | ACME s-Flame | fundamental | gas | International Space Station (ISS) | no | 5 |
 | PSI-25 | BASS-II | prevention | solid | International Space Station (ISS) | yes | 5 |
-| PSI-26 | BASS | prevention | solid | International Space Station (ISS) | no | 5 |
+| PSI-26 | BASS | prevention | solid | International Space Station (ISS) | yes | 5 |
 | PSI-39 | CFI | fundamental | liquid droplet | International Space Station (ISS) | no | 5 |
 | PSI-47 | DAFT / DAFT-2 | detection | — | International Space Station (ISS) | no | 5 |
 | PSI-60 | — | fundamental | gas | Ground | no | 5 |
 | PSI-62 | — | fundamental | solid | Ground | no | 5 |
 | PSI-68 | FLEX-2 | fundamental | liquid droplet | International Space Station (ISS) | no | 5 |
 | PSI-69 | FLEX | suppression | liquid droplet | International Space Station (ISS) | no | 5 |
-| PSI-98 | SAFFIRE-I | prevention | solid | International Space Station (ISS) | no | 5 |
-| PSI-99 | SAFFIRE-II | prevention | solid | Cygnus Spacecraft | no | 5 |
-| PSI-100 | SAFFIRE-III | prevention | solid | International Space Station (ISS) | no | 5 |
+| PSI-98 | SAFFIRE-I | prevention | solid | International Space Station (ISS) | yes | 5 |
+| PSI-99 | SAFFIRE-II | prevention | solid | Cygnus Spacecraft | yes | 5 |
+| PSI-100 | SAFFIRE-III | prevention | solid | International Space Station (ISS) | yes | 5 |
 | PSI-101 | SAME-R | detection | — | International Space Station (ISS) | no | 5 |
 | PSI-102 | SAME | detection | — | International Space Station (ISS) | no | 5 |
 | PSI-106 | SLICE | fundamental | gas | International Space Station (ISS) | no | 5 |
