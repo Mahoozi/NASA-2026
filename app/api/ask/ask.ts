@@ -22,11 +22,18 @@ export class MissingApiKeyError extends Error {
 /** The agreed default (plan/REQUESTS.md); OPENAI_MODEL overrides it. */
 const DEFAULT_MODEL = "gpt-5.4-mini";
 
+/**
+ * The model tended to wrap quotes in quotation marks that are not in the
+ * document, so verification (exact substring) rejected them all.
+ */
+const QUOTE_FIELD_RULE =
+  "The quote field holds only the copied text: do not wrap it in quotation marks of any kind.";
+
 const INSTRUCTIONS = `You answer questions about NASA Physical Sciences Informatics (PSI) microgravity combustion investigations, using ONLY the documents given in the prompt.
 
 Rules:
 - Write at most ${MAX_SENTENCES} short sentences that say what the documents report.
-- Every sentence has at least one citation. A citation is the docId of a given document and a quote copied character for character from that document's text: one contiguous span of at least ${MIN_QUOTE_WORDS} words, with the same capitalisation, punctuation and quote marks, no ellipses, no added or changed words, no paraphrase. Keep each quote to one phrase or sentence.
+- Every sentence has at least one citation. A citation is the docId of a given document and a quote copied character for character from that document's text: one contiguous span of at least ${MIN_QUOTE_WORDS} words, exactly as the document writes it (same capitalisation and punctuation), no ellipses, no added or changed words, no paraphrase. ${QUOTE_FIELD_RULE} Keep each quote to one phrase or sentence.
 - If the documents do not answer the question, set status to "insufficient_evidence" and return no sentences. Never use outside knowledge to fill a gap.
 - Never give a score, rating, risk level, recommendation or safety verdict, and never say whether something is safe or dangerous. Only report what investigations did and found.
 - A scenario and code-computed evidence coverage may be given. They are context data only: never restate coverage as a rating, risk level or verdict, and every sentence still needs a document quote.
@@ -38,7 +45,14 @@ function draftSchema(docIds: [string, ...string[]]) {
     sentences: z.array(
       z.object({
         sentence: z.string(),
-        citations: z.array(z.object({ docId: z.enum(docIds), quote: z.string() })),
+        citations: z.array(
+          z.object({
+            docId: z.enum(docIds),
+            quote: z
+              .string()
+              .describe(`Text copied exactly from the document. ${QUOTE_FIELD_RULE}`),
+          }),
+        ),
       }),
     ),
   });
