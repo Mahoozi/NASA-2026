@@ -67,13 +67,13 @@ npm run evals          # rerun the scorecard (uses the API key)
 
 ## Limits, honestly
 
-- All imported runs are from orbit (ISS or Cygnus). PSI holds no partial-gravity combustion data yet; NASA Glenn lists Flammability of Materials on the Moon (FM2), a combustion experiment at lunar gravity, among its current combustion experiments, and it is not among the 24 PSI investigations we imported.
+- All imported runs are from orbit (ISS or Cygnus). PSI holds no partial-gravity combustion data yet; the [challenge brief](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/) (Details tab, "Partial-gravity data") says NASA expects to add some in future, for example from the Lunar-g Combustion Investigation (LUCI) and the Flammability of Materials on the Moon (FM2) experiment. NASA Glenn's [Combustion Science page](https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/) lists FM2 among its current combustion experiments; it is not among the 24 PSI investigations we imported.
 - Several tables don't record oxygen or airflow at all, so those runs can't be placed on the oxygen axis.
 - This is a research and exploration tool, not a flammability certification or a safety rating.
 
 ## Team
 
 - **Yousef Yousef** ([@YousefAkay](https://github.com/YousefAkay)): data pipeline, Scenario Lab, matching and gap analysis
-- **TODO name** ([@Mahoozi](https://github.com/Mahoozi)): investigation catalog, retrieval, cited Q&A, evaluation
+- **Yusuf AlMahoozi** ([@Mahoozi](https://github.com/Mahoozi)): investigation catalog, retrieval, cited Q&A, evaluation
 
 Built at the 2026 NASA Space Apps Challenge, Montréal. Uses NASA open data; not affiliated with or endorsed by NASA. MIT licensed.
