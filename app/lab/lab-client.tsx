@@ -1,12 +1,17 @@
 "use client";
 // Person A — owns the scenario state, which lives in the URL.
+// Page order: presets and form → summary + gaps → coverage grid → gap chart
+// → ranked investigations → runs table → download.
 import { useCallback, useMemo } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations } from "@/lib/match";
 import type { Investigation, Run, Scenario } from "@/lib/schema";
+import { evidenceGaps } from "./gaps";
+import { GapsPanel } from "./gaps-panel";
 import { RankedList } from "./ranked-list";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
+import { Summary } from "./summary";
 
 export function LabClient({
   runs,
@@ -20,10 +25,15 @@ export function LabClient({
   const params = useSearchParams();
   const pathname = usePathname();
   const scenario = useMemo(() => parseScenario(params), [params]);
+  const scored = hasScoredDimension(scenario);
   const presetList = useMemo(() => presets(runs), [runs]);
   const matches = useMemo(
     () => matchInvestigations(scenario, investigations, runs),
     [scenario, investigations, runs],
+  );
+  const gaps = useMemo(
+    () => evidenceGaps(scenario, runs, investigations),
+    [scenario, runs, investigations],
   );
 
   // Native History API: Next keeps useSearchParams in sync, no server round trip.
@@ -36,21 +46,34 @@ export function LabClient({
   );
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+    <div className="flex flex-col gap-10">
       <ScenarioForm scenario={scenario} presets={presetList} onChange={setScenario} />
-      <section className="flex flex-col gap-3" aria-labelledby="ranked-heading">
-        <h2 id="ranked-heading" className="text-lg font-semibold">
-          Closest evidence
+
+      <section aria-labelledby="summary-heading" className="flex flex-col gap-4">
+        <h2 id="summary-heading" className="text-lg font-semibold">
+          Summary
         </h2>
-        {hasScoredDimension(scenario) ? (
-          <RankedList matches={matches} pendingIds={pendingIds} />
+        {scored ? (
+          <>
+            <Summary matches={matches} />
+            <GapsPanel report={gaps} />
+          </>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Pick a preset or set material, oxygen, airflow, gravity or safety area
-            to rank the investigations. Pressure alone is not scored.
+            Pick a preset or set material, oxygen, airflow, gravity or safety area.
+            Pressure alone is not scored.
           </p>
         )}
       </section>
+
+      {scored && (
+        <section className="flex flex-col gap-3" aria-labelledby="ranked-heading">
+          <h2 id="ranked-heading" className="text-lg font-semibold">
+            Ranked investigations
+          </h2>
+          <RankedList matches={matches} pendingIds={pendingIds} />
+        </section>
+      )}
     </div>
   );
 }
