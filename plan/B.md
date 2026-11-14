@@ -58,7 +58,7 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [ ] `/api/ask`: when `context.scenario` is present and `investigationIds` is empty, call `matchInvestigations(scenario, investigations, runs)` from `@/lib/match` and use the top 3 ids for retrieval boosting. Mention coverage in the prompt context only as data, never as a verdict.
   Commit: `Use scenario matching in ask`.
 - [ ] **UI review.** Skills: `web-design-guidelines` on `app/ask/**` and `app/investigations/**`, then `design:accessibility-review`; fix only what they flag. Commit: `Review Ask and Investigations UI`.
-- [ ] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
+- [x] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
   Commit: `Remove sample investigations`.
 
 ## Stage 4 — Freeze (hour 32–48)
