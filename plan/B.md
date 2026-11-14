@@ -63,6 +63,25 @@ Read `plan/PLAN.md` first. Tick items here in the same commit as the work.
 - [x] Delete `data/investigations.sample.json` and tell A (in `plan/REQUESTS.md`) to drop the fallback.
   Commit: `Remove sample investigations`.
 
+## Stage 3b — Evidence depth (Sat 16:00–22:00, hard cut 22:00)
+
+Rules: see `plan/PLAN.md` Stage 3b. Anything unfinished at 22:00 is cut.
+
+- [ ] **B3b.1 Papers into the corpus (≈2 h).** Fetch each source, extract text, chunk like existing docs, add to `data/corpus.json` with title, url, year, authors and a "published paper" type so `/ask` labels them separately from PSI pages. Never paraphrase into the corpus. Skip any source that can't be fetched or whose terms don't allow reuse; note it in `pipeline/corpus_report.md`. Sources:
+  - NTRS 20160000593 BASS-II results: https://ntrs.nasa.gov/api/citations/20160000593/downloads/20160000593.pdf
+  - Olson, ICES-2019, Flammability Limits from BASS-II vs normal gravity: https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e
+  - Link et al. 2018, Scientific Reports (open access): https://link.springer.com/10.1038/s41598-017-18398-4
+  - NTRS 20150008962 BASS/BASS-II fabric quenching: https://ntrs.nasa.gov/api/citations/20150008962/downloads/20150008962.pdf
+  - NTRS 20170008805 Saffire large-scale results: https://ntrs.nasa.gov/citations/20170008805
+  - NTRS 20180005168 Saffire overview: https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf
+  - NTRS 20210022402 partial-gravity flammability: https://ntrs.nasa.gov/api/citations/20210022402/downloads/217-_GollnerMichaelJ.pdf
+  - NTRS 20240015307 FM2: https://ntrs.nasa.gov/citations/20240015307
+  - NTRS 20260003925 reduced-pressure ECLSS (material flammability at 8.2 psia/34–40% O2): https://ntrs.nasa.gov/citations/20260003925
+- [ ] **B3b.2 `data/findings.json` (≈45 min), 6–10 `Finding` entries.** Must cover, if the fetched text supports them: microgravity burning at lower O2 than normal gravity (BASS-II); the 1-g NASA test may need re-evaluation (BASS-II hypothesis); the Saffire concurrent flame reaches a steady limiting length, unlike 1-g; partial-gravity flammability may peak near lunar gravity; FM2 lunar flammability limits; material flammability as the main hurdle at 8.2 psia/34–40% O2. Add a test: every quote is an exact substring of its `sourceDocId` text; the build fails otherwise.
+  Commit: `Add published findings`. Push as soon as it passes; A is waiting on it.
+- [ ] **B3b.3 Golden set (≈1 h).** Write 4 new golden questions BEFORE seeing any answers (3 answerable from the papers, 1 unanswerable), then rerun evals and record the results. Do not tune the prompt to the golden set. If any existing question regresses, stop and tell A.
+- [ ] **B3b.4 Test on the live site at 21:00.** `/ask` cites papers with the "published paper" label; `/evals` totals.
+
 ## Stage 4 — Freeze (Sun 11:30–21:00: judging 15:00, final submission by 21:00)
 
 - [x] `REFERENCES.md`: every PSI page URL, guide PDF title, NTRS ids used. Skill: `writing-guidelines`; `engineering:documentation` for the README "how it works" section.

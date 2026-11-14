@@ -84,6 +84,25 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
   Commit: `Link Lab rows to investigations`.
 - [x] Remove the `investigations.sample.json` fallback once B has deleted the file.
 
+## Stage 3b — Evidence depth (Sat 16:00–22:00, hard cut 22:00)
+
+Rules: see `plan/PLAN.md` Stage 3b. Anything unfinished at 22:00 is cut.
+
+- [ ] **A3b.1 Bounds caveat (15 min).** Where the Saffire-II "bounds" sentence appears, add: published tests suggest flammability may peak near lunar gravity, so normal-gravity and microgravity results may not bound it; this is what LUCI and FM2 are meant to test. Cite NTRS 20210022402 (https://ntrs.nasa.gov/api/citations/20210022402/downloads/217-_GollnerMichaelJ.pdf) and NTRS 20240015307 (https://ntrs.nasa.gov/citations/20240015307). Quote only text fetched from those URLs.
+  Commit: `Add partial-gravity caveat to bounds note`.
+- [ ] **A3b.2 Recorded flammability limits model (≈3 h).** `lib/limits.ts` + Lab panel "Recorded flammability limits".
+  - Limit points from PSI-25 runs with events: extinction (expect 18), blowoff (7), no-ignition (2). Extinction flow = the last flow step before "ext" (`flowCmS.min`), blowoff flow = the step where blowoff occurred (`flowCmS.max`); oxygen = `o2InitialPct` as recorded (show `o2FinalPct` if present). Keep `testId` and flags on every point. If the raw flow text is ambiguous, exclude the point with a written reason.
+  - Verify every point against `data/raw` (not `runs.json` alone); write `pipeline/limits_report.md` listing each point, its raw text, and any exclusions.
+  - Chart: O2 (y) vs airflow (x, log), extinction ▼, blowoff ▲, no-ignition ×, all other runs grey labelled "outcome not recorded", shaded tested envelope per material, scenario marker.
+  - Output text: nearest recorded limits for the scenario's material (test id, O2, flow, event, flags) and whether the scenario is inside the tested envelope on each dimension.
+  - Refusal (must show on Moon Base and Pressurized rover presets): "No recorded limit near this scenario. Firebreak does not extrapolate beyond tested conditions." Triggered when O2 is outside the recorded range for that material, gravity ≠ micro, or the material has no limit points.
+  - Optional dashed line between adjacent extinction points of the same material, labelled "line between recorded points, not a fit". No regression or ML.
+  - Tests: B14 → extinction, 15%, 2 cm/s; B18 → blowoff, 17.4%, 10 cm/s; point counts match the report; Moon Base → refusal; a banned-words test (safe, unsafe, risk, rating, probability, likely) over the panel text.
+  Commit: `Add recorded flammability limits`.
+- [ ] **A3b.3 Published findings panel (≈45 min, after B pushes `findings.json`).** In the Lab, show up to 3 findings whose tags overlap the scenario (material, O2, flow, gravity, or topic `partial-gravity` when gravity is lunar/mars). Each shows claim, verbatim quote, source link, and label "Published finding; quote verified against source". Empty state if none match.
+  Commit: `Show published findings in Lab`.
+- [ ] **A3b.4 Optional, only if started before 21:00.** "NASA Exploration Atmosphere" preset (8.2 psia, 34% O2) cited to NTRS 20220011152 (https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf); quote only fetched text.
+
 ## Stage 4 — Freeze (Sun 11:30–21:00: judging 15:00, final submission by 21:00)
 
 - [ ] `README.md`: screenshots, "how it works" (3 bullets), link to `pipeline/psi_bass2_columns.md`. Skill: `writing-guidelines`.

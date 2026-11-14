@@ -72,6 +72,16 @@ Times are America/Toronto, weekend of Sat 15 – Sun 16 Nov 2026. "Due" is when 
 
 Each person's "done when" checks are in their own file.
 
+## Stage 3b — Evidence depth (Sat 16:00–22:00)
+
+**Hard cut at 22:00 Saturday:** anything unfinished is cut, not finished on Sunday. Items: `plan/A.md` (A3b.1–A3b.4) and `plan/B.md` (B3b.1–B3b.4). The shared contract is the `Finding` type in `lib/schema.ts`; `data/findings.json` starts as `[]`.
+
+Product rules for 3b:
+
+- The model never says safe/unsafe, never gives a probability or rating, never extrapolates. It reports recorded limits and whether a scenario is inside the tested envelope.
+- Runs with no event keyword are "outcome not recorded"; they are never treated as "burned" or "flammable".
+- Every published finding is a verbatim quote verified against corpus text, with its URL.
+
 ## 4. Parallel-work rules
 
 1. **Ownership is strict.** A Claude session says which person it works for and touches only that person's files (list in `CLAUDE.md`). If a task needs the other person's file, write a line in `plan/REQUESTS.md` and carry on with the v0 shape.
@@ -150,4 +160,4 @@ Want another skill? `npx skills find <query>`, prefer 1K+ installs from a known 
 3. Lab → Ask handoff (keep a plain link)
 4. Gravity dimension in matching (state "all runs are ISS microgravity" as text)
 
-Never cut: citation verification, flags in the UI, the `insufficient_evidence` path, the `/evals` scorecard.
+Never cut: citation verification, flags in the UI, the `insufficient_evidence` path, the `/evals` scorecard, /evals stays at 6/6 declined and 100% citations verified.
