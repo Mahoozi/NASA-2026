@@ -10,6 +10,7 @@ Raw PSI snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`
 |---|---|
 | psi | 120 |
 | guide | 55 |
+| nasa-web | 4 |
 
 ## Investigations
 
@@ -52,6 +53,17 @@ Raw PSI snapshot: `data/raw/psi-combustion-investigations-2026-11-14.json`
 - Pages: 56; docs: 55 (`guide-p<page>`, page = PDF page number)
 - Skipped pages (no text beyond the page number):
   - p. 4: "444"
+
+## NASA web pages
+
+Saved unmodified in `data/raw/` on 2026-11-14. Title is the page's `<h1>`; text is the article body (`.entry-content`) with scripts removed and whitespace collapsed.
+
+| Doc id | Title | URL | Raw file | Bytes | sha256 | Text chars |
+|---|---|---|---|---|---|---|
+| nasa-web-glenn-combustion-science | Combustion Science | https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/ | `nasa-web-glenn-combustion-science-2026-11-14.html` | 334306 | `fa8865f29d7dfda09536a3256548c2f4e21c593e79484143cd2446e7fd1fbcfa` | 10147 |
+| nasa-web-apollo-1 | 55 Years Ago: The Apollo 1 Fire and its Aftermath | https://www.nasa.gov/history/55-years-ago-the-apollo-1-fire-and-its-aftermath/ | `nasa-web-apollo-1-2026-11-14.html` | 304349 | `12838d04cd0378ecd7f7f6ca879997ae9019ede5abf9deb6619b880390c69cfd` | 16956 |
+| nasa-web-apollo-13 | Apollo 13: Mission Details | https://www.nasa.gov/missions/apollo/apollo-13-mission-details/ | `nasa-web-apollo-13-2026-11-14.html` | 306017 | `07e184e3efcbbd636d80fcc00f45da59394660893516899ad74abf8f7fddf16a` | 14986 |
+| nasa-web-mir-fire | 25 Years Ago: Fire Aboard Space Station Mir | https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/ | `nasa-web-mir-fire-2026-11-14.html` | 271842 | `ba947c2cd1a11b478381b66d0251622fca2459ccb4aa13a2ea3bd764a59606d3` | 5633 |
 
 ## How labels were set
 
