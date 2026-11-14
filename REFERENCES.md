@@ -33,6 +33,13 @@
   - Page text, extracted unedited: `data/guide-pages.json`
   - Corpus docs: `guide-p<page>`, one per PDF page
 
+## NASA web pages
+Saved unmodified on 2026-11-14 as `data/raw/nasa-web-<slug>-2026-11-14.html`; sizes and sha256 hashes are in `pipeline/corpus_report.md`. Pages used:
+- [Combustion Science](https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/) (NASA Glenn Research Center), corpus doc `nasa-web-glenn-combustion-science`
+- [55 Years Ago: The Apollo 1 Fire and its Aftermath](https://www.nasa.gov/history/55-years-ago-the-apollo-1-fire-and-its-aftermath/), corpus doc `nasa-web-apollo-1`
+- [Apollo 13: Mission Details](https://www.nasa.gov/missions/apollo/apollo-13-mission-details/), corpus doc `nasa-web-apollo-13`
+- [25 Years Ago: Fire Aboard Space Station Mir](https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/), corpus doc `nasa-web-mir-fire`
+
 ## Libraries
 - Next.js 16.4.6
 - React 19.3.0
@@ -47,6 +54,7 @@
 - Zod 4.6.7
 - MiniSearch 7.2.0
 - unpdf 2.1.0 (PDF text extraction in `pipeline/corpus_extract_guide.ts`)
+- node-html-parser 9.0.6 (article text extraction from NASA web pages in `pipeline/corpus_build.ts`)
 - ESLint 9.39.5
 
 ## Images

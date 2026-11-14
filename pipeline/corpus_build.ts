@@ -10,11 +10,14 @@
  * Writes data/investigations.json, data/corpus.json, pipeline/corpus_report.md
  *
  * Text is copied verbatim from PSI and the guide. Nothing is summarised or filled in.
- * TODO(B): add NASA web pages (nasa-web-<slug>) once their raw files are in data/raw/.
+ * NASA web pages (nasa-web-<slug>) are read from the HTML saved in data/raw/:
+ * title = the page's <h1>, text = the article body (.entry-content), verbatim.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { createHash } from "node:crypto";
+import { parse } from "node-html-parser";
 import type { CorpusDoc, Investigation, Run, SafetyArea } from "../lib/schema";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -34,6 +37,24 @@ export const GUIDE = {
   sha256: "5fe046efe4e35e506023e27a9784d041e893026f19c9987591483614aea5d6b6",
 };
 export const GUIDE_PAGES = "data/guide-pages.json";
+
+// NASA web pages saved unmodified on 2026-11-14. bytes and sha256 identify the exact files.
+export const NASA_WEB = [
+  { slug: "glenn-combustion-science", url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/", file: "nasa-web-glenn-combustion-science-2026-11-14.html", bytes: 334306, sha256: "fa8865f29d7dfda09536a3256548c2f4e21c593e79484143cd2446e7fd1fbcfa" },
+  { slug: "apollo-1", url: "https://www.nasa.gov/history/55-years-ago-the-apollo-1-fire-and-its-aftermath/", file: "nasa-web-apollo-1-2026-11-14.html", bytes: 304349, sha256: "12838d04cd0378ecd7f7f6ca879997ae9019ede5abf9deb6619b880390c69cfd" },
+  { slug: "apollo-13", url: "https://www.nasa.gov/missions/apollo/apollo-13-mission-details/", file: "nasa-web-apollo-13-2026-11-14.html", bytes: 306017, sha256: "07e184e3efcbbd636d80fcc00f45da59394660893516899ad74abf8f7fddf16a" },
+  { slug: "mir-fire", url: "https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/", file: "nasa-web-mir-fire-2026-11-14.html", bytes: 271842, sha256: "ba947c2cd1a11b478381b66d0251622fca2459ccb4aa13a2ea3bd764a59606d3" },
+];
+export type WebPage = { slug: string; url: string; title: string; text: string };
+
+/** Title (<h1>) and article body text of a nasa.gov page, verbatim. */
+export function extractArticle(html: string): { title: string; text: string } {
+  const root = parse(html);
+  const body = root.querySelector(".entry-content");
+  if (!body) return { title: "", text: "" };
+  for (const el of body.querySelectorAll("script, style, noscript, iframe")) el.remove();
+  return { title: collapse(root.querySelector("h1")?.text), text: collapse(body.structuredText) };
+}
 
 type FuelPhase = Investigation["fuelPhase"][number];
 type PsiRecord = Record<string, unknown> & { Accession: string };
@@ -100,7 +121,7 @@ const num = (id: string) => Number(id.replace(/^PSI-/, ""));
 
 export type GuidePage = { page: number; text: string };
 
-export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[], guidePages: GuidePage[]) {
+export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[], guidePages: GuidePage[], webPages: WebPage[] = []) {
   const errors: string[] = [];
   const notes: string[] = [];
   const investigations: Investigation[] = [];
@@ -200,6 +221,11 @@ export function build(records: PsiRecord[], runs: Pick<Run, "investigationId">[]
   }
   if (!guidePages.length) errors.push(`guide: no pages in ${GUIDE_PAGES}`);
 
+  for (const w of webPages) {
+    if (!w.title) errors.push(`nasa-web-${w.slug}: no <h1> title`);
+    corpus.push({ id: `nasa-web-${w.slug}`, source: "nasa-web", title: w.title, url: w.url, text: w.text });
+  }
+
   // Asserts (plan/B.md Stage 1)
   for (const id of new Set([...Object.keys(SAFETY), ...Object.keys(FUEL)])) {
     if (!records.some((r) => r.Accession === id)) errors.push(`${id}: in curation tables but not in raw data`);
@@ -270,6 +296,17 @@ function report(
       ? skippedGuidePages.map((p) => `  - p. ${p.page}: ${p.text ? `"${p.text}"` : "no text"}`)
       : ["  - none"]),
     "",
+    "## NASA web pages",
+    "",
+    "Saved unmodified in `data/raw/` on 2026-11-14. Title is the page's `<h1>`; text is the article body (`.entry-content`) with scripts removed and whitespace collapsed.",
+    "",
+    "| Doc id | Title | URL | Raw file | Bytes | sha256 | Text chars |",
+    "|---|---|---|---|---|---|---|",
+    ...NASA_WEB.map((w) => {
+      const d = corpus.find((c) => c.id === `nasa-web-${w.slug}`);
+      return `| nasa-web-${w.slug} | ${d?.title ?? "—"} | ${w.url} | \`${w.file}\` | ${w.bytes} | \`${w.sha256}\` | ${d?.text.length ?? 0} |`;
+    }),
+    "",
     "## How labels were set",
     "",
     "- `safetyArea`: from the challenge text as recorded in the team handoff (BASS, BASS-II, Saffire, ACME BRE = prevention; SAME, SAME-R, DAFT = detection; FLEX = suppression; all others = fundamental).",
@@ -294,7 +331,14 @@ function main() {
   const runs = JSON.parse(readFileSync(join(ROOT, "data", "runs.json"), "utf8")) as Run[];
   const guidePages = JSON.parse(readFileSync(join(ROOT, GUIDE_PAGES), "utf8")) as GuidePage[];
 
-  const { investigations, corpus, errors, notes, skippedGuidePages, guidePageCount } = build(records, runs, guidePages);
+  const webPages: WebPage[] = NASA_WEB.map((w) => {
+    const bytes = readFileSync(join(ROOT, "data", "raw", w.file));
+    const sha = createHash("sha256").update(bytes).digest("hex");
+    if (bytes.length !== w.bytes || sha !== w.sha256) throw new Error(`data/raw/${w.file} is not the recorded file`);
+    return { slug: w.slug, url: w.url, ...extractArticle(bytes.toString("utf8")) };
+  });
+
+  const { investigations, corpus, errors, notes, skippedGuidePages, guidePageCount } = build(records, runs, guidePages, webPages);
   if (errors.length) throw new Error(`Build failed:\n${errors.join("\n")}`);
 
   writeFileSync(join(ROOT, "data", "investigations.json"), JSON.stringify(investigations, null, 2) + "\n");

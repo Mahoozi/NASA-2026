@@ -38,9 +38,13 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
 
       <header className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <p className="text-sm text-muted-foreground">{inv.id}</p>
-          <h1 className="text-2xl font-semibold">{shortName(inv)}</h1>
-          <p className="max-w-prose text-lg text-muted-foreground">{inv.name}</p>
+          <p translate="no" className="text-sm text-muted-foreground">
+            {inv.id}
+          </p>
+          <h1 translate="no" className="text-2xl font-semibold text-balance">
+            {shortName(inv)}
+          </h1>
+          <p className="max-w-prose text-lg text-pretty text-muted-foreground">{inv.name}</p>
         </div>
 
         <dl className="grid max-w-2xl grid-cols-[auto_1fr] items-baseline gap-x-6 gap-y-2 text-sm">
@@ -81,16 +85,16 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
       <div className="flex flex-col gap-8">
         {sections.map(([heading, text]) => (
           <section key={heading} className="flex max-w-prose flex-col gap-2">
-            <h2 className="text-lg font-semibold">{heading}</h2>
+            <h2 className="text-lg font-semibold text-balance">{heading}</h2>
             {text ? (
-              <p className="text-sm leading-relaxed whitespace-pre-line">{text}</p>
+              <p className="text-sm leading-relaxed break-words whitespace-pre-line">{text}</p>
             ) : (
               <p className="text-sm text-muted-foreground italic">Not given in the PSI record.</p>
             )}
           </section>
         ))}
         <p className="max-w-prose text-xs text-muted-foreground">
-          Text above is copied from the investigation&apos;s PSI record without editing.
+          Text above is copied from the investigation’s PSI record without editing.
         </p>
       </div>
 
@@ -98,7 +102,7 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
 
       <section className="flex flex-col gap-3">
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold">Sources in the corpus</h2>
+          <h2 className="text-lg font-semibold text-balance">Sources in the corpus</h2>
           <p className="text-sm text-muted-foreground">
             The documents the Ask page can cite for this investigation.
           </p>
