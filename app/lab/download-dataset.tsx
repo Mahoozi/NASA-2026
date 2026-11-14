@@ -19,14 +19,14 @@ export function DownloadDataset({ runs }: { runs: Run[] }) {
     <div className="flex flex-wrap items-center gap-3">
       <Button
         variant="outline"
-        onClick={() => save(runsToCsv(runs), "psi-25-bass2-runs.csv", "text/csv;charset=utf-8")}
+        onClick={() => save(runsToCsv(runs), "firebreak-psi-runs.csv", "text/csv;charset=utf-8")}
       >
         <DownloadIcon data-icon="inline-start" />
         Download cleaned dataset (CSV)
       </Button>
       <Button
         variant="outline"
-        onClick={() => save(runsToJson(runs), "psi-25-bass2-runs.json", "application/json")}
+        onClick={() => save(runsToJson(runs), "firebreak-psi-runs.json", "application/json")}
       >
         <DownloadIcon data-icon="inline-start" />
         Download cleaned dataset (JSON)

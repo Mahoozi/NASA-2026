@@ -187,6 +187,8 @@ function NumberField({
       <FieldLabel htmlFor={id}>{label}</FieldLabel>
       <Input
         id={id}
+        name={id}
+        autoComplete="off"
         type="number"
         inputMode="decimal"
         step={step}

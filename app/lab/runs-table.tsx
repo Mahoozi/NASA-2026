@@ -87,7 +87,7 @@ function FlagsBadge({ flags }: { flags: string[] }) {
       </button>
       <span
         role="tooltip"
-        className="pointer-events-none invisible absolute right-0 top-full z-20 mt-1 w-72 rounded-md border border-border bg-popover p-2 text-xs text-popover-foreground opacity-0 shadow-md transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
+        className="pointer-events-none invisible absolute right-0 top-full z-20 mt-1 w-72 rounded-md border border-border bg-popover p-2 text-xs text-popover-foreground opacity-0 shadow-md transition-opacity motion-reduce:transition-none group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
       >
         <ul className="list-disc space-y-1 pl-4 text-left whitespace-normal">
           {flags.map((f) => <li key={f}>{f}</li>)}
@@ -192,7 +192,7 @@ export function RunsTable({
                       aria-label={`${open ? "Hide" : "Show"} ${r.observations.length} observation${r.observations.length === 1 ? "" : "s"} for ${r.investigationId} test ${r.testId}`}
                       className="flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring"
                     >
-                      <ChevronRightIcon className={cn("size-4 transition-transform", open && "rotate-90")} />
+                      <ChevronRightIcon className={cn("size-4 transition-transform motion-reduce:transition-none", open && "rotate-90")} />
                     </button>
                   ) : null}
                 </TableCell>
