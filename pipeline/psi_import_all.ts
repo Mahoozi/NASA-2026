@@ -6,7 +6,7 @@
  * Runs the BASS-II (PSI-25), BASS (PSI-26) and Saffire (PSI-98, PSI-99,
  * PSI-100) importers, each with its own acceptance checks, then the combined
  * checks below. Nothing is written unless every check passes.
- * Writes data/runs.json and pipeline/psi_import_report.md.
+ * Writes data/runs.json, pipeline/psi_import_report.md and pipeline/source_discrepancies.md.
  */
 import { writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
@@ -16,6 +16,7 @@ import { bassAcceptance, BASS_ID, importBass } from "./psi_import_bass";
 import { acceptanceFailures, findCsv, importRuns, loadRawRows } from "./psi_import_bass2";
 import { importSaffire, SAFFIRE_FILES, saffireAcceptance } from "./psi_import_saffire";
 import { buildCombinedReport, type ReportGroup } from "./psi_report";
+import { writeDiscrepancyReport } from "./source_discrepancies";
 import { checker, findRawCsv, psiUrl, ROOT } from "./psi_shared";
 
 export function combinedAcceptance(runs: Run[]) {
@@ -70,6 +71,11 @@ function main() {
   const { runs, groups } = result;
   writeFileSync(join(ROOT, "data", "runs.json"), JSON.stringify(runs, null, 2) + "\n");
   writeFileSync(join(ROOT, "pipeline", "psi_import_report.md"), buildCombinedReport(groups));
+  const missing = writeDiscrepancyReport(runs);
+  if (missing.length) {
+    console.error(`\n✗ ${missing.join("\n  ")}`);
+    process.exit(1);
+  }
   for (const g of groups)
     console.log(`  ${g.psiId.padEnd(8)} ${String(g.runs.length).padStart(4)} runs, ${String(g.runs.filter((r) => r.flags.length).length).padStart(4)} flagged, ${g.skipped.length} skipped`);
   console.log(`✓ ${runs.length} runs → data/runs.json; report → pipeline/psi_import_report.md`);

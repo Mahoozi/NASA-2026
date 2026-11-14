@@ -71,6 +71,10 @@ npm run evals          # rerun the scorecard (uses the API key)
 - Several tables don't record oxygen or airflow at all, so those runs can't be placed on the oxygen axis.
 - This is a research and exploration tool, not a flammability certification or a safety rating.
 
+## Source discrepancies we found
+
+Where a PSI table disagrees with NASA's own published papers, Firebreak keeps the PSI value and flags the difference. We found 6 such discrepancies in the Saffire tables; see [pipeline/source_discrepancies.md](pipeline/source_discrepancies.md).
+
 ## Team
 
 - **Yousef Yousef** ([@YousefAkay](https://github.com/YousefAkay)): data pipeline, Scenario Lab, matching and gap analysis

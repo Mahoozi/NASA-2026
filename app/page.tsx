@@ -76,6 +76,9 @@ function landingFacts() {
     maxO2: Math.max(...withO2.map((r) => r.o2InitialPct!)),
     // Runs carry no gravity field; a run counts as lunar or Martian only if its
     // investigation's platform says so in data/investigations.json.
+    // Distinct flags that cite an NTRS paper: places where a PSI table disagrees
+    // with NASA's published papers (pipeline/source_discrepancies.ts).
+    sourceDiscrepancies: new Set(runs.flatMap((r) => r.flags.filter((f) => /\bNTRS \d{11}\b/.test(f)))).size,
     partialGravityRuns: runs.filter((r) => /moon|lunar|mars|martian/i.test(platformOf(r.investigationId))).length,
   };
 }
@@ -170,7 +173,17 @@ export default function Home() {
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground">
                 {f.totalRuns} runs imported from {f.tables} PSI experiment tables; values the
-                source can&apos;t support are flagged, never corrected.
+                source can&apos;t support are flagged, never corrected.{" "}
+                <a
+                  href={`${REPO}/blob/main/pipeline/source_discrepancies.md`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline underline-offset-4 hover:text-foreground"
+                >
+                  {f.sourceDiscrepancies} places where a PSI table disagrees with a NASA paper
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+                , flagged rather than silently fixed.
               </CardContent>
             </Card>
           </li>

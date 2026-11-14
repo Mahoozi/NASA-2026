@@ -381,12 +381,13 @@ A run can have more than one event. "No event recorded" means the table records 
 |---|---:|
 | thickness unit inconsistent between Saffire tables; not corrected | 2 |
 | length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide | 2 |
+| thickness 0.37 cm in this table; NTRS 20180005168 lists 0.37 mm | 2 |
 | oxygen given as a range in source (raw: …) | 1 |
 | oxygen approximate in source (raw: …) | 1 |
 
 ### Flags by test
 
-Every run in this table carries: *thickness unit inconsistent between Saffire tables; not corrected*; *length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide*. Listed below: the other flags.
+Every run in this table carries: *thickness unit inconsistent between Saffire tables; not corrected*; *length and width may be swapped in this table: Saffire-III's table and NTRS 20170008805 give 94 cm long × 40.6 cm wide*; *thickness 0.37 cm in this table; NTRS 20180005168 lists 0.37 mm*. Listed below: the other flags.
 
 | Test | Run id | Flags |
 |---|---|---|
@@ -452,6 +453,7 @@ A run can have more than one event. "No event recorded" means the table records 
 | thickness ambiguous in source (raw: …) | 3 |
 | material blank in source; taken from the row above | 2 |
 | PMMA, shape not stated | 2 |
+| airflow 20 cm/s in this table; NTRS 20180005168 lists II-6 at 25 cm/s | 1 |
 
 ### Flags by test
 
@@ -462,7 +464,7 @@ A run can have more than one event. "No event recorded" means the table records 
 | 2-3 | PSI-99:2-3 | oxygen approximate in source (raw: ~ 22.1) |
 | 2-4 | PSI-99:2-4 | oxygen approximate in source (raw: ~ 22.1); thickness ambiguous in source (raw: 037 mm) |
 | 2-5 | PSI-99:2-5 | oxygen approximate in source (raw: ~ 22.1); thickness ambiguous in source (raw: 037 mm) |
-| 2-6 | PSI-99:2-6 | material blank in source; taken from the row above; oxygen approximate in source (raw: ~ 22.1); thickness ambiguous in source (raw: 037 mm) |
+| 2-6 | PSI-99:2-6 | material blank in source; taken from the row above; oxygen approximate in source (raw: ~ 22.1); thickness ambiguous in source (raw: 037 mm); airflow 20 cm/s in this table; NTRS 20180005168 lists II-6 at 25 cm/s |
 | 2-7 | PSI-99:2-7 | oxygen approximate in source (raw: ~ 22.1) |
 | 2-8 | PSI-99:2-8 | PMMA, shape not stated |
 | 2-9 | PSI-99:2-9 | PMMA, shape not stated; material blank in source; taken from the row above |
@@ -518,9 +520,11 @@ A run can have more than one event. "No event recorded" means the table records 
 |---|---:|
 | oxygen not recorded in this table | 2 |
 | airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s | 2 |
+| thickness .33 cm in this table; NTRS 20180005168 lists 0.37 mm | 2 |
+| oxygen not recorded in this table; NTRS 20180005168 reports 21.2 to 21.0% | 2 |
 
 ### Flags by test
 
-Every run in this table carries: *oxygen not recorded in this table*; *airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s*. Listed below: the other flags.
+Every run in this table carries: *oxygen not recorded in this table*; *airflow 30 cm/s in this table; NTRS 20180005168 labels Saffire-III at 25 cm/s*; *thickness .33 cm in this table; NTRS 20180005168 lists 0.37 mm*; *oxygen not recorded in this table; NTRS 20180005168 reports 21.2 to 21.0%*. Listed below: the other flags.
 
 No other flags.
