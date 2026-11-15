@@ -40,6 +40,13 @@ Saved unmodified on 2026-11-14 as `data/raw/nasa-web-<slug>-2026-11-14.html`; si
 - [Apollo 13: Mission Details](https://www.nasa.gov/missions/apollo/apollo-13-mission-details/), corpus doc `nasa-web-apollo-13`
 - [25 Years Ago: Fire Aboard Space Station Mir](https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/), corpus doc `nasa-web-mir-fire`
 
+## NASA Spinoff pages (Earth applications page)
+- [Fire Detector](https://spinoff.nasa.gov/node/9407), NASA Spinoff
+- [Fireman's Air Tanks](https://spinoff.nasa.gov/node/9582), NASA Spinoff
+- [New Technology for the Fire Attire](https://spinoff.nasa.gov/node/9918), NASA Spinoff
+
+These are linked from /earth and labelled "NASA Spinoff (not PSI data)". They were provided in the challenge resources; Firebreak makes no claim that a specific PSI test led to any of them.
+
 ## Sources used in Scenario Lab
 
 The first six sources supply the nine published findings. The Saffire sources also support the [source-discrepancy audit](pipeline/source_discrepancies.md). Recorded limits come from the PSI-25 table listed above; the [limits report](pipeline/limits_report.md) records each inclusion and exclusion. Import mappings: [BASS-II](pipeline/psi_bass2_columns.md), [BASS](pipeline/psi_bass_columns.md), [Saffire](pipeline/psi_saffire_columns.md).

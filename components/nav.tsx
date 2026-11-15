@@ -4,6 +4,7 @@ const links = [
   { href: "/lab", label: "Lab" },
   { href: "/ask", label: "Ask" },
   { href: "/investigations", label: "Investigations" },
+  { href: "/earth", label: "Earth" },
   { href: "/evals", label: "Evals" },
 ];
 
@@ -14,7 +15,7 @@ export function Nav() {
         <Link href="/" className="font-semibold tracking-tight">
           Firebreak
         </Link>
-        <div className="flex gap-4 text-sm text-muted-foreground">
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="hover:text-foreground">
               {l.label}
