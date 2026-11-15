@@ -92,7 +92,8 @@ const FRAG = /* glsl */ `
     // A bright core with a soft halo, so points glow without a post-processing pass.
     float a = smoothstep(0.5, 0.0, d);
     a = a * a * 0.55 + smoothstep(0.16, 0.0, d) * 0.6;
-    gl_FragColor = vec4(vColor * a * vAlpha, 1.0);
+    // Alpha follows brightness, so over the page a point adds light and never a dark box.
+    gl_FragColor = vec4(vColor * a * vAlpha, a * vAlpha);
   }
 `;
 
@@ -102,9 +103,20 @@ const SPARK_FRAG = /* glsl */ `
     float d = length(gl_PointCoord - 0.5);
     float a = smoothstep(0.5, 0.0, d);
     vec3 col = vec3(1.0, 0.5, 0.16) * pow(a, 3.0) * 1.4 + vec3(1.0, 0.9, 0.75) * smoothstep(0.07, 0.0, d);
-    gl_FragColor = vec4(col * uGlow, 1.0);
+    gl_FragColor = vec4(col * uGlow, min(1.0, a * uGlow));
   }
 `;
+
+/** Additive light with premultiplied output: colour and alpha both simply add up. */
+const ADDITIVE = {
+  blending: THREE.CustomBlending,
+  blendEquation: THREE.AddEquation,
+  blendSrc: THREE.OneFactor,
+  blendDst: THREE.OneFactor,
+  transparent: true,
+  depthTest: false,
+  depthWrite: false,
+} as const;
 
 export type IntroEngine = {
   state: IntroState;
@@ -157,7 +169,7 @@ export function createEngine(canvas: HTMLCanvasElement, count: number): IntroEng
   };
   const material = new THREE.ShaderMaterial({
     uniforms, vertexShader: VERT, fragmentShader: FRAG,
-    blending: THREE.AdditiveBlending, transparent: true, depthTest: false, depthWrite: false,
+    ...ADDITIVE,
   });
   const points = new THREE.Points(geometry, material);
   scene.add(points);
@@ -169,7 +181,7 @@ export function createEngine(canvas: HTMLCanvasElement, count: number): IntroEng
     uniforms: { uGlow: { value: 0 }, uSize: { value: 1 } },
     vertexShader: "uniform float uSize; void main(){ gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); gl_PointSize = uSize; }",
     fragmentShader: SPARK_FRAG,
-    blending: THREE.AdditiveBlending, transparent: true, depthTest: false, depthWrite: false,
+    ...ADDITIVE,
   });
   scene.add(new THREE.Points(sparkGeo, sparkMat));
 
