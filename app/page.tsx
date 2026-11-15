@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { HigherOxygenNote } from "./lab/higher-oxygen-note";
 import { presets, scenarioToQuery } from "./lab/scenario";
+import { EvidenceAtlas } from "./atlas/evidence-atlas";
 import { ARTEMIS_ATTRIBUTION, ARTEMIS_QUOTE } from "./brief/brief-text";
 import { maxStartingO2, partialGravityRunCount } from "./brief/run-facts";
 
@@ -131,6 +132,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <EvidenceAtlas runs={runsJson as Run[]} investigations={investigationsJson as Investigation[]} />
 
       <section aria-labelledby="why-heading" className="flex flex-col gap-4">
         <h2 id="why-heading" className="text-xl font-semibold">

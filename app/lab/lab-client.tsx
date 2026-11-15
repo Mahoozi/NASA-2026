@@ -5,7 +5,7 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
+import { matchInvestigations } from "@/lib/match";
 import type { Finding, Investigation, Run, Scenario } from "@/lib/schema";
 import { FindingsPanel } from "./findings-panel";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
 import { LimitsPanel } from "./limits-panel";
+import { matchingRunIdSet } from "./matching-runs";
 import { SPACE_VS_EARTH_ID } from "./gravity-bounds-note";
 import { RankedList } from "./ranked-list";
 import { createHashScroller } from "./scroll-to-hash";
@@ -53,13 +54,7 @@ export function LabClient({
     [scenario, runs, investigations],
   );
   // Runs that match every run-level dimension set; null when none is set.
-  const matchingRunIds = useMemo(
-    () =>
-      RUN_DIMENSIONS.some((d) => scenario[d] !== undefined)
-        ? new Set(matches.flatMap((m) => m.matchingRunIds))
-        : null,
-    [scenario, matches],
-  );
+  const matchingRunIds = useMemo(() => matchingRunIdSet(scenario, matches), [scenario, matches]);
 
   // Investigations with runs whose coverage for the scenario is direct or partial.
   const matchedCoverage = useMemo(

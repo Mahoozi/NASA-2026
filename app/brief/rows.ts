@@ -90,10 +90,13 @@ export function briefRows(f: BriefFacts): BriefRow[] {
     },
     {
       quote: "Identify investigations most relevant to the fire safety needs of habitable crew environments",
-      links: presetList.map((p) => ({
-        label: `Lab preset: ${p.label}`,
-        href: labHref(scenarioToQuery(p.scenario)),
-      })),
+      links: [
+        ...presetList.map((p) => ({
+          label: `Lab preset: ${p.label}`,
+          href: labHref(scenarioToQuery(p.scenario)),
+        })),
+        { label: "Landing page: evidence gap atlas", href: "/#atlas-heading" },
+      ],
       seen: `${presetList.length} presets set a scenario in one click (${presetList.map((p) => p.label).join(", ")}), and the Lab ranks the investigations against it.`,
     },
     {
