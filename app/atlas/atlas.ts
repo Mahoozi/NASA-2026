@@ -5,6 +5,7 @@ import { matchInvestigations } from "../../lib/match";
 import type { Investigation, MaterialFamily, Run, Scenario } from "../../lib/schema";
 import { scenarioSummary } from "../ask/context";
 import { matchingRunIdSet } from "../lab/matching-runs";
+import { maxStartingO2 } from "../brief/run-facts";
 import { MATERIAL_FAMILIES, presets, scenarioToQuery } from "../lab/scenario";
 
 export type AtlasColumn = { family: MaterialFamily; highestO2: number };
@@ -17,10 +18,20 @@ export type AtlasCell = {
   href: string;
   highestO2: number;
 };
-export type AtlasRow = { id: string; label: string; summary: string; scenario: Scenario; cells: AtlasCell[] };
+export type AtlasRow = {
+  id: string;
+  label: string;
+  summary: string;
+  scenario: Scenario;
+  cells: AtlasCell[];
+  /** Preset oxygen minus the highest recorded starting oxygen of any solid run. */
+  o2Vs: { delta: number | null; text: string };
+};
 export type Atlas = {
   columns: AtlasColumn[];
   rows: AtlasRow[];
+  /** The landing headline's maximum: highest starting oxygen in any imported solid run. */
+  maxSolidO2: number;
   covered: number;
   total: number;
   /** Preset labels with at least one matching run, in the Lab's order. */
@@ -40,13 +51,52 @@ export function atlasColumns(runs: Run[]): AtlasColumn[] {
   });
 }
 
+/** One decimal, as the Lab writes oxygen gaps. */
+const round1 = (n: number) => Math.round(n * 10) / 10;
+
+export function o2VsText(delta: number | null): string {
+  if (delta === null) return "oxygen not set";
+  return delta > 0 ? `+${delta.toFixed(1)} points` : "within tested range";
+}
+
+export type ColumnGroup = { label: string; columns: AtlasColumn[]; subLabels: string[] | null };
+
+/**
+ * Header groups: consecutive "PMMA …" families share one "PMMA" header over
+ * sub-headers (film / slab / rod); every other family is its own header.
+ */
+export function columnGroups(columns: AtlasColumn[]): ColumnGroup[] {
+  const groups: ColumnGroup[] = [];
+  for (const c of columns) {
+    const sub = /^PMMA (.+)$/.exec(c.family)?.[1];
+    const last = groups.at(-1);
+    if (sub !== undefined && last?.subLabels) {
+      last.columns.push(c);
+      last.subLabels.push(sub);
+    } else if (sub !== undefined) groups.push({ label: "PMMA", columns: [c], subLabels: [sub] });
+    else groups.push({ label: c.family, columns: [c], subLabels: null });
+  }
+  return groups;
+}
+
+/** A second header row is needed only when some group has sub-headers. */
+export const hasSubHeaders = (groups: ColumnGroup[]) => groups.some((g) => g.subLabels !== null);
+
+/** Rows the header spans: single columns reach down through the sub-header row. */
+export const headerRows = (groups: ColumnGroup[]) => (hasSubHeaders(groups) ? 2 : 1);
+
 export function buildAtlas(runs: Run[], investigations: Investigation[]): Atlas {
   const columns = atlasColumns(runs);
+  const maxSolidO2 = maxStartingO2(runs);
   const rows = presets(runs).map((p): AtlasRow => ({
     id: p.id,
     label: p.label,
     summary: scenarioSummary(p.scenario),
     scenario: p.scenario,
+    o2Vs: (() => {
+      const delta = p.scenario.o2Pct === undefined ? null : round1(p.scenario.o2Pct - maxSolidO2);
+      return { delta, text: o2VsText(delta) };
+    })(),
     cells: columns.map(({ family, highestO2 }) => {
       const scenario: Scenario = { ...p.scenario, materialFamily: family };
       const matches = matchInvestigations(scenario, investigations, runs);
@@ -63,6 +113,7 @@ export function buildAtlas(runs: Run[], investigations: Investigation[]): Atlas 
   return {
     columns,
     rows,
+    maxSolidO2,
     covered: cells.filter((c) => c.n > 0).length,
     total: cells.length,
     coveredPresets: rows.filter((r) => r.cells.some((c) => c.n > 0)).map((r) => r.label),
@@ -79,8 +130,18 @@ export function atlasSentence(a: Atlas): string {
   return a.covered > 0 ? `${head}; every match is in ${listOf(a.coveredPresets)}.` : `${head}.`;
 }
 
-export const cellText = (n: number) => (n > 0 ? `${n} matching run${n === 1 ? "" : "s"}` : "No matching run");
+/** A cell's two lines: a large lead and a small line beneath. */
+export function cellParts(n: number): { big: string; small: string } {
+  return n > 0 ? { big: String(n), small: n === 1 ? "matching run" : "matching runs" } : { big: "No", small: "matching run" };
+}
+export const cellText = (n: number) => {
+  const { big, small } = cellParts(n);
+  return `${big} ${small}`;
+};
+
+export const ATLAS_O2_COLUMN = "Oxygen vs highest tested solid run";
+export const ATLAS_BOTTOM_LABEL = "Highest tested starting O2 (this material)";
 
 export const ATLAS_LEGEND = "Filled cell: at least one matching run. Hatched cell: no matching run.";
 export const ATLAS_FOOTNOTE =
-  "Matching uses the same rules as the Scenario Lab. A gap means no recorded run matches; it is not a statement about how a material would behave.";
+  "Matching uses the same rules as the Scenario Lab. A gap means no recorded run matches; it is not a statement about how a material would behave. The Lab treats PMMA film, slab and rod as close materials, so their counts can match.";
