@@ -2,7 +2,7 @@
 // Person A — "Recorded flammability limits": BASS-II limit points (lib/limits.ts)
 // on O2 × airflow (log), the tested range of the selected material, and the
 // scenario. Reports recorded limits only; never fits or extrapolates.
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   CartesianGrid,
   ReferenceArea,
@@ -43,7 +43,7 @@ function yAxis(o2: number | undefined): { domain: [number, number]; ticks: numbe
 const x = (flow: number) => (flow <= 0 ? ZERO_AT : flow);
 
 type Kind = "extinctionAt" | "extinctionBelow" | "blowoff" | "noIgnition" | "notRecorded";
-type Datum = { x: number; y: number; kind: Kind; dim: boolean; label: string };
+type Datum = { x: number; y: number; kind: Kind; dim: boolean; label: string; spot?: boolean };
 
 const COLOUR: Record<Kind, string> = {
   extinctionAt: "var(--lc-ext)",
@@ -55,34 +55,47 @@ const COLOUR: Record<Kind, string> = {
 
 function Mark({ kind, cx, cy, dim }: { kind: Kind; cx: number; cy: number; dim?: boolean }) {
   const c = COLOUR[kind];
-  const o = dim ? 0.3 : 1;
+  const o = dim ? 0.22 : 1;
   const pts = (p: [number, number][]) => p.map(([a, b]) => `${cx + a},${cy + b}`).join(" ");
   const solid = { fill: c, fillOpacity: o, stroke: "var(--background)", strokeWidth: 1.5, paintOrder: "stroke" as const };
   switch (kind) {
     case "extinctionAt":
-      return <polygon points={pts([[0, 6], [6, -4], [-6, -4]])} {...solid} />;
+      return <polygon points={pts([[0, 7], [7, -4.5], [-7, -4.5]])} {...solid} strokeLinejoin="round" />;
     case "extinctionBelow":
-      return <polygon points={pts([[0, 6], [6, -4], [-6, -4]])} fill="none" stroke={c} strokeOpacity={o} strokeWidth={2} />;
+      return (
+        <polygon
+          points={pts([[0, 7], [7, -4.5], [-7, -4.5]])}
+          fill={c}
+          fillOpacity={0.15 * o}
+          stroke={c}
+          strokeOpacity={o}
+          strokeWidth={2}
+          strokeLinejoin="round"
+        />
+      );
     case "blowoff":
-      return <polygon points={pts([[0, -6], [6, 4], [-6, 4]])} {...solid} />;
+      return <polygon points={pts([[0, -7], [7, 4.5], [-7, 4.5]])} {...solid} strokeLinejoin="round" />;
     case "noIgnition":
       return (
-        <g stroke={c} strokeOpacity={o} strokeWidth={2.5} strokeLinecap="round">
-          <line x1={cx - 5} y1={cy - 5} x2={cx + 5} y2={cy + 5} />
-          <line x1={cx - 5} y1={cy + 5} x2={cx + 5} y2={cy - 5} />
+        <g stroke={c} strokeOpacity={o} strokeWidth={3} strokeLinecap="round">
+          <line x1={cx - 5.5} y1={cy - 5.5} x2={cx + 5.5} y2={cy + 5.5} />
+          <line x1={cx - 5.5} y1={cy + 5.5} x2={cx + 5.5} y2={cy - 5.5} />
         </g>
       );
     case "notRecorded":
-      return <circle cx={cx} cy={cy} r={3} fill={c} fillOpacity={0.35} />;
+      return <circle cx={cx} cy={cy} r={3} fill={c} fillOpacity={0.4 * (dim ? 0.6 : 1)} />;
   }
 }
 
 function Dot(props: { cx?: number; cy?: number; payload?: Datum }) {
   const { cx, cy, payload } = props;
   if (cx === undefined || cy === undefined || !payload) return <g />;
+  const live = payload.kind !== "notRecorded" && !payload.dim;
   return (
-    <g>
-      <circle cx={cx} cy={cy} r={10} fill="transparent" />
+    <g className={payload.spot ? "lc-pt lc-spot" : "lc-pt"} style={{ transformOrigin: `${cx}px ${cy}px` }}>
+      <circle cx={cx} cy={cy} r={12} fill="transparent" />
+      {/* A soft halo behind recorded limits, brighter on hover. */}
+      {live && <circle className="lc-halo" cx={cx} cy={cy} r={11} fill={COLOUR[payload.kind]} />}
       <Mark kind={payload.kind} cx={cx} cy={cy} dim={payload.dim} />
     </g>
   );
@@ -100,8 +113,8 @@ function Tip({ active, payload }: { active?: boolean; payload?: { payload: Datum
 
 function LegendMark({ kind }: { kind: Kind }) {
   return (
-    <svg width={14} height={14} viewBox="0 0 14 14" aria-hidden className="shrink-0">
-      <Mark kind={kind} cx={7} cy={7} />
+    <svg width={18} height={18} viewBox="0 0 18 18" aria-hidden className="shrink-0">
+      <Mark kind={kind} cx={9} cy={9} />
     </svg>
   );
 }
@@ -119,6 +132,16 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
   const { points, excluded } = useMemo(() => limitPoints(runs), [runs]);
   const view = useMemo(() => limitsForScenario(scenario, runs), [scenario, runs]);
   const family = scenario.materialFamily;
+  // Legend chips: hovering or focusing one spotlights that outcome; pressing it hides it.
+  const [spot, setSpot] = useState<Kind | null>(null);
+  const [hidden, setHidden] = useState<Set<Kind>>(new Set());
+  const toggle = (k: Kind) =>
+    setHidden((h) => {
+      const next = new Set(h);
+      if (next.has(k)) next.delete(k);
+      else next.add(k);
+      return next;
+    });
   const env = useMemo(() => (family ? testedEnvelope(runs, family) : null), [runs, family]);
 
   const data = useMemo(() => {
@@ -152,12 +175,26 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
   const { o2Pct: o2, flowCmS: flow } = scenario;
   const y = yAxis(o2);
   const legend: Kind[] = ["extinctionAt", "extinctionBelow", "blowoff", "noIgnition", "notRecorded"];
+  // Counted as tests, not marks: a no-ignition range is drawn at both of its ends.
+  const count = (k: Kind) => (k === "notRecorded" ? data.grey.length : points.filter((p) => kindOf(p) === k).length);
+  const shown = (d: Datum[]) =>
+    d
+      .filter((p) => !hidden.has(p.kind))
+      // The spotlit outcome shows at full strength, even for other materials; the rest fade.
+      .map((p) => (!spot ? p : p.kind === spot ? { ...p, dim: false, spot: true } : { ...p, dim: true }));
+  const crosshair = o2 !== undefined && flow !== undefined;
 
   return (
     <div className="limits-chart flex flex-col gap-4 rounded-lg border bg-card/60 p-4 backdrop-blur-sm">
       <style>{`
-        .limits-chart { --lc-ext:#2a78d6; --lc-blow:#eb6834; --lc-noign:#1baf7a; }
-        .dark .limits-chart { --lc-ext:#3987e5; --lc-blow:#d95926; --lc-noign:#199e70; }
+        /* Outcome colours stay clear of red, amber and green, which would read as verdicts. */
+        .limits-chart { --lc-ext:#7dd3fc; --lc-blow:#c4b5fd; --lc-noign:#f0abfc; }
+        .limits-chart .lc-pt { transition: transform 150ms ease-out; }
+        .limits-chart .lc-pt:hover { transform: scale(1.45); }
+        .limits-chart .lc-halo { opacity: 0.16; transition: opacity 150ms ease-out; }
+        .limits-chart .lc-pt:hover .lc-halo, .limits-chart .lc-spot .lc-halo { opacity: 0.5; }
+        .limits-chart .lc-spot { transform: scale(1.35); }
+        @media (prefers-reduced-motion: reduce) { .limits-chart .lc-pt, .limits-chart .lc-halo { transition: none; } }
       `}</style>
       <p className="max-w-3xl text-sm text-muted-foreground">{T.intro}</p>
 
@@ -193,20 +230,47 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
         )}
       </div>
 
-      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-muted-foreground" aria-label="Legend">
-        {legend.map((k) => (
-          <li key={k} className="flex items-center gap-1.5">
-            <LegendMark kind={k} />
-            {T.legend[k]}
-          </li>
-        ))}
-        {env?.o2 && env.flow && (
-          <li className="flex items-center gap-1.5">
-            <span aria-hidden className="inline-block size-3.5 rounded-sm bg-foreground/10 ring-1 ring-foreground/30" />
-            {T.legend.envelope} ({env.family})
-          </li>
-        )}
-      </ul>
+      <div className="flex flex-col gap-2">
+        <p className="text-sm text-muted-foreground">
+          Point at an outcome to pick out its tests on the chart; press it to hide or show them.
+        </p>
+        <ul className="flex flex-wrap gap-2" aria-label="Legend">
+          {legend.map((k) => {
+            const off = hidden.has(k);
+            return (
+              <li key={k}>
+                <button
+                  type="button"
+                  aria-pressed={!off}
+                  onClick={() => toggle(k)}
+                  onPointerEnter={() => setSpot(k)}
+                  onPointerLeave={() => setSpot(null)}
+                  onFocus={() => setSpot(k)}
+                  onBlur={() => setSpot(null)}
+                  style={{ ["--chip" as string]: COLOUR[k] }}
+                  className={`group flex min-h-10 items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition-[background-color,border-color,opacity] duration-150 motion-reduce:transition-none ${
+                    off
+                      ? "border-dashed border-border text-muted-foreground opacity-60 hover:opacity-90"
+                      : "border-[color-mix(in_oklab,var(--chip)_45%,transparent)] bg-[color-mix(in_oklab,var(--chip)_10%,transparent)] text-foreground hover:bg-[color-mix(in_oklab,var(--chip)_20%,transparent)]"
+                  }`}
+                >
+                  <LegendMark kind={k} />
+                  <span className={off ? "line-through decoration-1" : undefined}>{T.legend[k]}</span>
+                  <span className="rounded-full bg-background/60 px-1.5 text-sm tabular-nums text-muted-foreground">
+                    {count(k)}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+          {env?.o2 && env.flow && (
+            <li className="flex min-h-10 items-center gap-2 px-1 text-sm text-muted-foreground">
+              <span aria-hidden className="inline-block size-3.5 rounded-sm bg-foreground/10 ring-1 ring-foreground/30" />
+              {T.legend.envelope} ({env.family})
+            </li>
+          )}
+        </ul>
+      </div>
 
       <div
         className="h-96 w-full"
@@ -215,7 +279,7 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
       >
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart margin={{ top: 12, right: 24, bottom: 32, left: 4 }}>
-            <CartesianGrid stroke="var(--border)" vertical={false} />
+            <CartesianGrid stroke="var(--border)" />
             {env?.o2 && env.flow && (
               <ReferenceArea
                 x1={x(env.flow[0])}
@@ -258,17 +322,19 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
               width={56}
             />
             <Tooltip content={<Tip />} cursor={false} isAnimationActive={false} />
-            <Scatter data={data.grey} shape={Dot} isAnimationActive={false} />
-            <Scatter data={data.limitData} shape={Dot} isAnimationActive={false} />
-            {o2 !== undefined && flow !== undefined && (
+            <Scatter data={shown(data.grey)} shape={Dot} isAnimationActive={false} />
+            <Scatter data={shown(data.limitData)} shape={Dot} isAnimationActive={false} />
+            {crosshair && <ReferenceLine y={o2} ifOverflow="hidden" stroke="var(--primary)" strokeWidth={1.5} strokeDasharray="6 5" />}
+            {crosshair && <ReferenceLine x={x(flow)} stroke="var(--primary)" strokeWidth={1.5} strokeDasharray="6 5" />}
+            {crosshair && (
               <ReferenceDot
                 x={x(flow)}
                 y={o2}
-                r={7}
+                r={9}
                 ifOverflow="hidden"
-                fill="var(--background)"
-                stroke="var(--foreground)"
-                strokeWidth={2}
+                fill="none"
+                stroke="var(--primary)"
+                strokeWidth={2.5}
                 label={{ value: "Your scenario", position: "top", offset: 10, fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
@@ -276,16 +342,18 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
               <ReferenceLine
                 y={o2}
                 ifOverflow="hidden"
-                stroke="var(--foreground)"
+                stroke="var(--primary)"
                 strokeWidth={2}
+                strokeDasharray="6 5"
                 label={{ value: `Your scenario: ${o2}% O2`, position: "insideBottomRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
             {flow !== undefined && o2 === undefined && (
               <ReferenceLine
                 x={x(flow)}
-                stroke="var(--foreground)"
+                stroke="var(--primary)"
                 strokeWidth={2}
+                strokeDasharray="6 5"
                 label={{ value: `Your scenario: ${flow} cm/s`, position: "insideTopRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
