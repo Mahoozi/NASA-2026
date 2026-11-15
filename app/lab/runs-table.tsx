@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { materialLabel } from "./material-label";
 import { compare, DEFAULT_SORT, flowText, outcomeText, runRowId, type Dir, type SortKey } from "./run-order";
+import { RevealControls, useReveal } from "@/components/ui/reveal";
 import {
   Table,
   TableBody,
@@ -106,6 +107,10 @@ export function RunsTable({
     row.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
   }, [highlight, rows]);
 
+  // Ten rows at first. A run picked on a chart is always revealed, wherever it sorts.
+  const highlightIndex = highlight ? rows.findIndex((r) => r.id === highlight.id) : -1;
+  const [reveal, listRef] = useReveal(rows.length, 10, 25, highlightIndex + 1);
+
   const toggle = (key: SortKey) =>
     setSort((s) => (s.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "asc" }));
 
@@ -155,14 +160,16 @@ export function RunsTable({
           })}
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {rows.map((r) => {
+      <TableBody ref={listRef}>
+        {rows.map((r, index) => {
           const open = expanded.has(r.id);
           const panelId = `obs-${r.id.replace(/[^a-zA-Z0-9-]/g, "-")}`;
           return (
             <Fragment key={r.id}>
               <TableRow
                 id={runRowId(r.id)}
+                data-reveal-item
+                hidden={reveal.isHidden(index)}
                 data-highlighted={highlight?.id === r.id ? "true" : undefined}
                 className={cn(highlight?.id === r.id && "bg-accent outline-2 -outline-offset-2 outline-foreground")}
               >
@@ -196,7 +203,7 @@ export function RunsTable({
                 </TableCell>
               </TableRow>
               {open && r.observations && (
-                <TableRow id={panelId} className="hover:bg-transparent">
+                <TableRow id={panelId} hidden={reveal.isHidden(index)} className="hover:bg-transparent">
                   <TableCell />
                   <TableCell colSpan={columns.length} className="whitespace-normal">
                     <dl className="grid gap-x-6 gap-y-1 py-1 text-sm sm:grid-cols-[max-content_1fr]">
@@ -217,6 +224,7 @@ export function RunsTable({
       </TableBody>
     </Table>
       )}
+      {!(filtering && matchCount === 0) && <RevealControls reveal={reveal} moreLabel="Show 25 more" />}
     </div>
   );
 }

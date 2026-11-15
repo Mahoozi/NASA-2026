@@ -8,15 +8,17 @@ import { Button } from "@/components/ui/button";
 /**
  * Tracks how many of `total` items are visible. After "more" it moves keyboard focus
  * to the first newly shown item, so the reader continues from where they were.
+ * `atLeast` forces that many items visible, for when something else (a link, a chart
+ * click) points at an item further down the list.
  */
-export function useReveal(total: number, initial: number, step: number) {
+export function useReveal(total: number, initial: number, step: number, atLeast = 0) {
   const [limit, setLimit] = useState(initial);
   const list = useRef<HTMLElement | null>(null);
   const listRef = useCallback((el: HTMLElement | null) => {
     list.current = el;
   }, []);
   const focusFrom = useRef<number | null>(null);
-  const shown = Math.min(limit, total);
+  const shown = Math.min(Math.max(limit, atLeast), total);
 
   useEffect(() => {
     if (focusFrom.current === null) return;
@@ -31,8 +33,8 @@ export function useReveal(total: number, initial: number, step: number) {
   };
   const state = {
     shown,
-    isHidden: (index: number) => index >= limit,
-    more: () => grow(limit + step),
+    isHidden: (index: number) => index >= shown,
+    more: () => grow(shown + step),
     all: () => grow(total),
     fewer: () => setLimit(initial),
     initial,

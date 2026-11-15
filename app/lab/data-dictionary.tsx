@@ -1,6 +1,7 @@
 // Person A — data dictionary for the CSV download. Columns come from
 // CSV_COLUMNS in export.ts (the code that writes the file); flag types come
 // from the flags present in the runs (flag-types.ts), so nothing is typed twice.
+import { ChevronRightIcon } from "lucide-react";
 import type { Run } from "@/lib/schema";
 import {
   Table,
@@ -24,6 +25,13 @@ export function DataDictionary({ runs }: { runs: Run[] }) {
         One row per run, {CSV_COLUMNS.length} columns. An empty cell (null in the JSON) means:{" "}
         {NULL_MEANING.charAt(0).toLowerCase() + NULL_MEANING.slice(1)}
       </p>
+      {/* Closed by default: the columns and flag types are reference material. */}
+      <details className="group flex flex-col">
+        <summary className="flex w-fit cursor-pointer items-center gap-1.5 rounded-md border border-input bg-card/70 px-3 py-2 text-sm font-medium hover:border-primary/70 [&::-webkit-details-marker]:hidden">
+          <ChevronRightIcon aria-hidden className="size-4 transition-transform group-open:rotate-90 motion-reduce:transition-none" />
+          Columns and flag types
+        </summary>
+        <div className="flex flex-col gap-4 pt-4">
       <Table aria-labelledby="dictionary-heading">
         <TableHeader>
           <TableRow>
@@ -72,6 +80,8 @@ export function DataDictionary({ runs }: { runs: Run[] }) {
           </div>
         ))}
       </dl>
+        </div>
+      </details>
     </div>
   );
 }
