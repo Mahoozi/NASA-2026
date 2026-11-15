@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -84,47 +84,93 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  /* Outer-space theme. Blue is the only interface accent; data marks stay neutral. */
+  --background: #05070d; /* Void */
+  --foreground: #f2f5fa; /* Starlight */
+  --card: #0c1220; /* Hull */
+  --card-foreground: #f2f5fa;
+  --popover: #0e1526;
+  --popover-foreground: #f2f5fa;
+  --primary: #5b9dff; /* Flame blue */
+  --primary-foreground: #05070d;
+  --secondary: #18223a;
+  --secondary-foreground: #f2f5fa;
+  --muted: #121a2c;
+  --muted-foreground: #a9b4c8; /* Haze */
+  --accent: #18223a;
+  --accent-foreground: #f2f5fa;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: #24304a; /* Seam */
+  --input: #2c3a58;
+  --ring: #5b9dff;
+  --chart-1: #f2f5fa;
+  --chart-2: #c3ccdb;
+  --chart-3: #94a0b8;
+  --chart-4: #6b7892;
+  --chart-5: #47536c;
+  --radius: 0.375rem;
+  --ember: #ff8a3d; /* brand spark and intro only, never on data */
+  --sidebar: #0c1220;
+  --sidebar-foreground: #f2f5fa;
+  --sidebar-primary: #5b9dff;
+  --sidebar-primary-foreground: #05070d;
+  --sidebar-accent: #18223a;
+  --sidebar-accent-foreground: #f2f5fa;
+  --sidebar-border: #24304a;
+  --sidebar-ring: #5b9dff;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    background-color: var(--background);
+    color-scheme: dark;
+  }
+  /* The sky: Earth's limb glowing along the top edge, over three depths of stars.
+     Static CSS only, so it costs nothing to draw and never moves under the text. */
+  body {
+    @apply text-foreground;
+    background-color: var(--background);
+    background-image:
+      radial-gradient(110% 560px at 50% -260px, rgb(140 190 255 / 0.55) 44%, rgb(91 157 255 / 0.2) 52%, rgb(60 110 220 / 0.07) 70%, transparent 100%),
+      radial-gradient(circle at 83px 61px, rgb(255 255 255 / 0.95) 0 0.7px, transparent 1.6px),
+      radial-gradient(circle at 611px 402px, rgb(190 214 255 / 0.9) 0 0.8px, transparent 1.9px),
+      radial-gradient(circle at 947px 173px, rgb(255 236 214 / 0.85) 0 0.7px, transparent 1.7px),
+      radial-gradient(circle at 41px 233px, rgb(255 255 255 / 0.6) 0 0.5px, transparent 1.2px),
+      radial-gradient(circle at 317px 97px, rgb(255 255 255 / 0.5) 0 0.5px, transparent 1.1px),
+      radial-gradient(circle at 503px 349px, rgb(214 228 255 / 0.55) 0 0.5px, transparent 1.2px),
+      radial-gradient(circle at 229px 521px, rgb(255 255 255 / 0.45) 0 0.5px, transparent 1.1px),
+      radial-gradient(circle at 27px 19px, rgb(255 255 255 / 0.32) 0 0.4px, transparent 0.9px),
+      radial-gradient(circle at 139px 151px, rgb(255 255 255 / 0.26) 0 0.4px, transparent 0.9px),
+      radial-gradient(circle at 211px 67px, rgb(255 255 255 / 0.3) 0 0.4px, transparent 0.9px),
+      radial-gradient(circle at 71px 263px, rgb(255 255 255 / 0.22) 0 0.4px, transparent 0.9px),
+      radial-gradient(circle at 283px 229px, rgb(255 255 255 / 0.28) 0 0.4px, transparent 0.9px);
+    background-size:
+      100% 100%,
+      1109px 743px, 1109px 743px, 1109px 743px,
+      641px 577px, 641px 577px, 641px 577px, 641px 577px,
+      331px 307px, 331px 307px, 331px 307px, 331px 307px, 331px 307px;
+    background-repeat: no-repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat;
+    background-attachment: fixed;
+  }
+  /* Headings: Archivo set narrow, like a technical report title. */
+  h1,
+  h2,
+  h3 {
+    font-stretch: 84%;
+    letter-spacing: -0.005em;
+  }
+  h1 {
+    font-stretch: 78%;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: rgb(91 157 255 / 0.35);
   }
 }
