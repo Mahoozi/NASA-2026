@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-11-14T19:55:24.205Z",
+  "generatedAt": "2026-11-15T03:16:58.496Z",
   "model": "gpt-5.4-mini",
   "totals": {
-    "questions": 24,
-    "statusMatches": 24,
-    "answeredExpected": 18,
-    "answeredCorrect": 18,
-    "refusalsExpected": 6,
+    "questions": 28,
+    "statusMatches": 27,
+    "answeredExpected": 21,
+    "answeredCorrect": 21,
+    "refusalsExpected": 7,
     "refusalsCorrect": 6,
     "wronglyRefused": 0,
-    "retrievalHits": 17,
-    "citations": 64,
-    "citationsVerified": 64,
-    "citationsExpected": 55
+    "retrievalHits": 18,
+    "citations": 90,
+    "citationsVerified": 90,
+    "citationsExpected": 48
   },
   "items": [
     {
@@ -23,14 +23,14 @@
         "psi-25-objectives"
       ],
       "retrievedDocIds": [
+        "ntrs-20150008962-p1",
         "psi-25-objectives",
+        "ntrs-20150008962-p8",
+        "ntrs-20160000593-p2",
+        "ntrs-20150008962-p2",
+        "ntrs-20150008962-p3",
         "psi-25-project",
-        "nasa-web-glenn-combustion-science",
-        "guide-p24",
-        "guide-p31",
-        "psi-25-hypothesis",
-        "psi-25-earth-benefits",
-        "psi-26-project"
+        "ntrs-20150008962-p5"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -42,24 +42,29 @@
           "expected": true
         },
         {
-          "docId": "psi-25-project",
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "psi-25-objectives",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "ntrs-20150008962-p2",
           "verified": true,
           "expected": false
         },
         {
-          "docId": "psi-25-objectives",
+          "docId": "ntrs-20150008962-p1",
           "verified": true,
-          "expected": true
+          "expected": false
         },
         {
-          "docId": "psi-25-objectives",
+          "docId": "ntrs-20150008962-p1",
           "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-25-objectives",
-          "verified": true,
-          "expected": true
+          "expected": false
         }
       ]
     },
@@ -73,15 +78,15 @@
       ],
       "retrievedDocIds": [
         "psi-25-hypothesis",
+        "ntrs-20160000593-p6",
         "psi-26-hypothesis",
+        "ntrs-20160000593-p4",
         "psi-25-objectives",
-        "psi-62-approach",
-        "guide-p21",
-        "nasa-web-apollo-13",
-        "psi-26-objectives",
-        "psi-26-earth-benefits"
+        "ntrs-20160000593-p18",
+        "ntrs-20160000593-p2",
+        "ntrs-20160000593-p5"
       ],
-      "retrievalHit": true,
+      "retrievalHit": false,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
@@ -89,6 +94,16 @@
           "docId": "psi-25-hypothesis",
           "verified": true,
           "expected": true
+        },
+        {
+          "docId": "ntrs-20160000593-p6",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-26-hypothesis",
+          "verified": true,
+          "expected": false
         }
       ]
     },
@@ -101,13 +116,13 @@
       ],
       "retrievedDocIds": [
         "psi-25-approach",
+        "ntrs-20160000593-p3",
+        "ntrs-20160000593-p7",
+        "ntrs-20150008962-p3",
+        "ntrs-20160000593-p18",
         "psi-25-objectives",
         "nasa-web-apollo-13",
-        "psi-25-hypothesis",
-        "guide-p22",
-        "guide-p31",
-        "guide-p18",
-        "guide-p24"
+        "ntrs-20150008962-p1"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -122,6 +137,11 @@
           "docId": "psi-25-approach",
           "verified": true,
           "expected": true
+        },
+        {
+          "docId": "ntrs-20160000593-p3",
+          "verified": true,
+          "expected": false
         }
       ]
     },
@@ -134,18 +154,23 @@
       ],
       "retrievedDocIds": [
         "nasa-web-apollo-1",
+        "ntrs-20240015307-p1",
         "nasa-web-apollo-13",
         "psi-98-approach",
-        "psi-99-approach",
-        "psi-100-approach",
         "nasa-web-mir-fire",
-        "guide-p19",
-        "nasa-web-glenn-combustion-science"
+        "nasa-web-glenn-combustion-science",
+        "psi-99-approach",
+        "psi-100-approach"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
+        {
+          "docId": "psi-98-approach",
+          "verified": true,
+          "expected": true
+        },
         {
           "docId": "psi-98-approach",
           "verified": true,
@@ -163,12 +188,12 @@
       "retrievedDocIds": [
         "psi-99-approach",
         "psi-100-approach",
-        "psi-98-approach",
+        "ntrs-20240015307-p1",
+        "ntrs-20180005168-p30",
         "psi-99-objectives",
         "psi-99-earth-benefits",
-        "psi-99-hypothesis",
-        "psi-99-project",
-        "psi-100-earth-benefits"
+        "psi-98-approach",
+        "ntrs-20150008962-p2"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -195,8 +220,8 @@
         "psi-69-hypothesis",
         "psi-69-approach",
         "guide-p15",
-        "guide-p43",
-        "guide-p12"
+        "guide-p12",
+        "guide-p43"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -206,6 +231,16 @@
           "docId": "psi-69-objectives",
           "verified": true,
           "expected": true
+        },
+        {
+          "docId": "psi-69-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "guide-p12",
+          "verified": true,
+          "expected": false
         },
         {
           "docId": "guide-p12",
@@ -225,11 +260,11 @@
         "psi-20-objectives",
         "psi-20-approach",
         "psi-20-earth-benefits",
-        "guide-p21",
         "guide-p44",
-        "guide-p17",
-        "nasa-web-apollo-1",
-        "psi-20-project"
+        "guide-p21",
+        "psi-20-project",
+        "ntrs-20260003925-p17",
+        "guide-p17"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -239,6 +274,11 @@
           "docId": "psi-20-objectives",
           "verified": true,
           "expected": true
+        },
+        {
+          "docId": "psi-20-project",
+          "verified": true,
+          "expected": false
         }
       ]
     },
@@ -257,7 +297,7 @@
         "psi-47-approach",
         "nasa-web-apollo-1",
         "nasa-web-apollo-13",
-        "guide-p37"
+        "ntrs-20260003925-p92"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -269,12 +309,37 @@
           "expected": true
         },
         {
+          "docId": "psi-47-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-47-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
           "docId": "psi-47-objectives",
           "verified": true,
           "expected": true
         },
         {
           "docId": "psi-47-hypothesis",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-47-approach",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-47-approach",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-47-approach",
           "verified": true,
           "expected": false
         }
@@ -295,12 +360,17 @@
         "nasa-web-apollo-1",
         "guide-p8",
         "psi-101-objectives",
-        "nasa-web-mir-fire"
+        "ntrs-20260003925-p68"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
+        {
+          "docId": "psi-102-approach",
+          "verified": true,
+          "expected": true
+        },
         {
           "docId": "psi-102-approach",
           "verified": true,
@@ -325,10 +395,10 @@
         "guide-p13",
         "nasa-web-mir-fire",
         "psi-106-objectives",
-        "guide-p12",
         "psi-60-objectives",
-        "nasa-web-glenn-combustion-science",
-        "psi-107-approach"
+        "guide-p12",
+        "psi-107-approach",
+        "nasa-web-glenn-combustion-science"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -355,23 +425,18 @@
       ],
       "retrievedDocIds": [
         "nasa-web-apollo-1",
-        "nasa-web-apollo-13",
         "guide-p35",
+        "nasa-web-apollo-13",
         "nasa-web-glenn-combustion-science",
         "guide-p26",
         "guide-p30",
         "guide-p31",
-        "guide-p48"
+        "guide-p34"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
-        {
-          "docId": "guide-p35",
-          "verified": true,
-          "expected": true
-        },
         {
           "docId": "guide-p35",
           "verified": true,
@@ -403,13 +468,13 @@
       ],
       "retrievedDocIds": [
         "guide-p26",
+        "ntrs-20260003925-p90",
+        "ntrs-20260003925-p73",
         "nasa-web-mir-fire",
-        "nasa-web-apollo-1",
+        "ntrs-20260003925-p93",
         "nasa-web-apollo-13",
-        "psi-99-approach",
-        "guide-p22",
-        "nasa-web-glenn-combustion-science",
-        "psi-100-approach"
+        "ntrs-20240015307-p1",
+        "ntrs-20260003925-p43"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -436,51 +501,36 @@
         "psi-25-approach"
       ],
       "retrievedDocIds": [
+        "ntrs-20150008962-p1",
+        "ntrs-20150008962-p3",
+        "ntrs-20150008962-p5",
+        "ntrs-20160000593-p18",
+        "ntrs-20150008962-p2",
+        "ntrs-20160000593-p2",
         "guide-p18",
-        "psi-25-objectives",
-        "guide-p31",
-        "psi-25-approach",
-        "guide-p22",
-        "psi-62-approach",
-        "guide-p19",
-        "guide-p24"
+        "ntrs-20160000593-p19"
       ],
-      "retrievalHit": true,
+      "retrievalHit": false,
       "gotStatus": "answered",
       "statusMatch": true,
       "citations": [
         {
-          "docId": "psi-25-objectives",
+          "docId": "ntrs-20160000593-p2",
           "verified": true,
-          "expected": true
+          "expected": false
         },
         {
-          "docId": "psi-25-objectives",
+          "docId": "ntrs-20160000593-p2",
           "verified": true,
-          "expected": true
+          "expected": false
         },
         {
-          "docId": "psi-25-objectives",
+          "docId": "ntrs-20160000593-p18",
           "verified": true,
-          "expected": true
+          "expected": false
         },
         {
-          "docId": "psi-25-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-25-approach",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-25-approach",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-62-approach",
+          "docId": "ntrs-20160000593-p19",
           "verified": true,
           "expected": false
         }
@@ -496,13 +546,13 @@
       ],
       "retrievedDocIds": [
         "psi-100-approach",
+        "ntrs-20180005168-p16",
         "psi-99-approach",
         "psi-100-project",
-        "psi-98-approach",
         "psi-100-hypothesis",
-        "psi-100-earth-benefits",
+        "psi-98-approach",
         "nasa-web-glenn-combustion-science",
-        "psi-99-project"
+        "psi-100-earth-benefits"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -517,6 +567,11 @@
           "docId": "psi-98-approach",
           "verified": true,
           "expected": true
+        },
+        {
+          "docId": "ntrs-20180005168-p16",
+          "verified": true,
+          "expected": false
         }
       ]
     },
@@ -532,11 +587,11 @@
         "psi-25-objectives",
         "psi-26-objectives",
         "psi-62-objectives",
-        "psi-25-project",
-        "psi-25-approach",
-        "psi-25-hypothesis",
-        "psi-25-earth-benefits",
-        "psi-106-objectives"
+        "ntrs-20160000593-p12",
+        "ntrs-20160000593-p18",
+        "ntrs-20160000593-p16",
+        "ntrs-20160000593-p14",
+        "psi-25-project"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -548,16 +603,6 @@
           "expected": true
         },
         {
-          "docId": "psi-26-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-25-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
           "docId": "psi-25-objectives",
           "verified": true,
           "expected": true
@@ -568,12 +613,17 @@
           "expected": true
         },
         {
-          "docId": "psi-25-objectives",
+          "docId": "psi-26-objectives",
           "verified": true,
           "expected": true
         },
         {
-          "docId": "psi-25-earth-benefits",
+          "docId": "psi-25-project",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-25-project",
           "verified": true,
           "expected": false
         }
@@ -588,14 +638,14 @@
         "psi-98-approach"
       ],
       "retrievedDocIds": [
+        "ntrs-20150008962-p2",
         "psi-98-approach",
         "nasa-web-glenn-combustion-science",
+        "ntrs-20150008962-p1",
+        "ntrs-20150008962-p3",
         "psi-26-approach",
-        "psi-100-approach",
-        "psi-99-approach",
-        "psi-25-objectives",
-        "nasa-web-apollo-13",
-        "psi-98-hypothesis"
+        "ntrs-20150008962-p8",
+        "ntrs-20160000593-p20"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -607,12 +657,12 @@
           "expected": true
         },
         {
-          "docId": "psi-98-approach",
+          "docId": "ntrs-20150008962-p1",
           "verified": true,
-          "expected": true
+          "expected": false
         },
         {
-          "docId": "psi-26-approach",
+          "docId": "psi-98-approach",
           "verified": true,
           "expected": true
         },
@@ -648,8 +698,8 @@
         "psi-69-objectives",
         "psi-68-project",
         "guide-p12",
-        "guide-p24",
-        "psi-68-approach"
+        "psi-68-approach",
+        "guide-p24"
       ],
       "retrievalHit": true,
       "gotStatus": "answered",
@@ -676,17 +726,17 @@
           "expected": true
         },
         {
-          "docId": "psi-68-objectives",
+          "docId": "guide-p12",
           "verified": true,
-          "expected": true
+          "expected": false
+        },
+        {
+          "docId": "guide-p12",
+          "verified": true,
+          "expected": false
         },
         {
           "docId": "psi-68-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-69-objectives",
           "verified": true,
           "expected": true
         },
@@ -730,27 +780,12 @@
           "expected": true
         },
         {
-          "docId": "psi-101-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
-          "docId": "psi-101-objectives",
-          "verified": true,
-          "expected": true
-        },
-        {
           "docId": "psi-102-hypothesis",
           "verified": true,
           "expected": false
         },
         {
-          "docId": "psi-101-hypothesis",
-          "verified": true,
-          "expected": false
-        },
-        {
-          "docId": "psi-101-hypothesis",
+          "docId": "psi-101-project",
           "verified": true,
           "expected": false
         }
@@ -762,14 +797,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "ntrs-20150008962-p1",
+        "ntrs-20150008962-p2",
+        "ntrs-20240015307-p1",
         "psi-62-approach",
-        "psi-62-objectives",
-        "nasa-web-apollo-1",
-        "nasa-web-glenn-combustion-science",
-        "guide-p18",
-        "guide-p11",
-        "guide-p23",
-        "guide-p33"
+        "ntrs-20150008962-p5",
+        "ntrs-20150008962-p4",
+        "ntrs-20150008962-p8",
+        "ntrs-20150008962-p3"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -782,14 +817,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "ntrs-20150008962-p1",
         "psi-62-approach",
+        "ntrs-20150008962-p5",
         "guide-p24",
+        "ntrs-20150008962-p3",
         "guide-p31",
         "guide-p23",
-        "psi-62-project",
-        "psi-62-objectives",
-        "psi-62-hypothesis",
-        "guide-p33"
+        "ntrs-20150008962-p7"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -802,14 +837,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "ntrs-20150008962-p4",
+        "ntrs-20150008962-p1",
+        "ntrs-20150008962-p2",
+        "ntrs-20150008962-p3",
+        "ntrs-20150008962-p8",
+        "ntrs-20150008962-p7",
         "psi-62-objectives",
-        "psi-62-project",
-        "nasa-web-apollo-1",
-        "psi-62-earth-benefits",
-        "nasa-web-glenn-combustion-science",
-        "psi-62-hypothesis",
-        "psi-62-approach",
-        "guide-p22"
+        "ntrs-20150008962-p5"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -822,14 +857,14 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "ntrs-20260003925-p70",
+        "ntrs-20260003925-p90",
         "nasa-web-apollo-13",
         "guide-p35",
-        "psi-62-objectives",
+        "ntrs-20150008962-p8",
+        "ntrs-20150008962-p9",
         "psi-22-approach",
-        "guide-p16",
-        "nasa-web-mir-fire",
-        "nasa-web-apollo-1",
-        "psi-62-project"
+        "ntrs-20160000593-p4"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -844,12 +879,12 @@
       "retrievedDocIds": [
         "nasa-web-apollo-1",
         "nasa-web-apollo-13",
-        "nasa-web-glenn-combustion-science",
-        "nasa-web-mir-fire",
-        "psi-26-project",
-        "psi-101-project",
-        "psi-142-approach",
-        "psi-21-hypothesis"
+        "ntrs-20240015307-p1",
+        "ntrs-20260003925-p109",
+        "ntrs-20260003925-p17",
+        "ntrs-20260003925-p92",
+        "ntrs-20260003925-p93",
+        "ntrs-20260003925-p96"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
@@ -862,19 +897,205 @@
       "expectStatus": "insufficient_evidence",
       "expectDocIds": [],
       "retrievedDocIds": [
+        "ntrs-20170008805-p26",
         "nasa-web-apollo-1",
         "nasa-web-apollo-13",
         "nasa-web-glenn-combustion-science",
-        "guide-p45",
-        "psi-98-hypothesis",
-        "psi-99-hypothesis",
-        "psi-100-hypothesis",
-        "psi-102-earth-benefits"
+        "ntrs-20260003925-p111",
+        "ntrs-20260003925-p79",
+        "ntrs-20260003925-p55",
+        "ntrs-20260003925-p39"
       ],
       "retrievalHit": false,
       "gotStatus": "insufficient_evidence",
       "statusMatch": true,
       "citations": []
+    },
+    {
+      "id": "paper-sibal-quenching-speed",
+      "question": "In the BASS and BASS-II concurrent-flow tests on SIBAL cotton-fiberglass fabric, at what flow speeds did quenching extinction occur, and how did the quenching speed change with oxygen concentration?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "ntrs-20150008962-p1",
+        "ntrs-20150008962-p7"
+      ],
+      "retrievedDocIds": [
+        "ntrs-20150008962-p1",
+        "ntrs-20150008962-p2",
+        "ntrs-20150008962-p8",
+        "ntrs-20150008962-p3",
+        "ntrs-20150008962-p7",
+        "ntrs-20150008962-p5",
+        "ntrs-20150008962-p9",
+        "ntrs-20160000593-p20"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "ntrs-20150008962-p1",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "ntrs-20150008962-p7",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "ntrs-20150008962-p9",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "ntrs-20150008962-p9",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "ntrs-20150008962-p9",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "ntrs-20150008962-p9",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "ntrs-20150008962-p9",
+          "verified": true,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "paper-saffire2-silicone-flame",
+      "question": "What happened to the flame on the Saffire-II silicone samples after the igniter was powered off, and why was that surprising?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "ntrs-20170008805-p12"
+      ],
+      "retrievedDocIds": [
+        "ntrs-20170008805-p12",
+        "psi-99-approach",
+        "ntrs-20150008962-p3",
+        "psi-100-approach",
+        "ntrs-20150008962-p2",
+        "ntrs-20150008962-p5",
+        "ntrs-20150008962-p9",
+        "ntrs-20160000593-p20"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "ntrs-20170008805-p12",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "ntrs-20170008805-p12",
+          "verified": true,
+          "expected": true
+        }
+      ]
+    },
+    {
+      "id": "paper-bass2-pmma-rod-diameter",
+      "question": "In the BASS-II Material Ignition and Suppression Test on PMMA rods, how did flame spread rate change with sample diameter, and how did the normal-gravity spread rates compare with the microgravity ones?",
+      "expectStatus": "answered",
+      "expectDocIds": [
+        "ntrs-20160000593-p15"
+      ],
+      "retrievedDocIds": [
+        "ntrs-20150008962-p1",
+        "ntrs-20160000593-p15",
+        "psi-62-approach",
+        "ntrs-20160000593-p14",
+        "ntrs-20150008962-p3",
+        "ntrs-20150008962-p8",
+        "psi-25-objectives",
+        "ntrs-20150008962-p2"
+      ],
+      "retrievalHit": true,
+      "gotStatus": "answered",
+      "statusMatch": true,
+      "citations": [
+        {
+          "docId": "ntrs-20160000593-p15",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "ntrs-20160000593-p15",
+          "verified": true,
+          "expected": true
+        },
+        {
+          "docId": "ntrs-20160000593-p14",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "ntrs-20160000593-p14",
+          "verified": true,
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "none-saffire4-6-results",
+      "question": "What fire growth measurements did Saffire-IV, V and VI report for high-oxygen, low-pressure atmospheres?",
+      "expectStatus": "insufficient_evidence",
+      "expectDocIds": [],
+      "retrievedDocIds": [
+        "ntrs-20180005168-p19",
+        "nasa-web-apollo-1",
+        "nasa-web-apollo-13",
+        "ntrs-20150008962-p3",
+        "ntrs-20150008962-p1",
+        "psi-98-earth-benefits",
+        "psi-99-earth-benefits",
+        "psi-100-earth-benefits"
+      ],
+      "retrievalHit": false,
+      "gotStatus": "answered",
+      "statusMatch": false,
+      "citations": [
+        {
+          "docId": "ntrs-20180005168-p19",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "ntrs-20180005168-p19",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-98-earth-benefits",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-98-earth-benefits",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-99-earth-benefits",
+          "verified": true,
+          "expected": false
+        },
+        {
+          "docId": "psi-99-earth-benefits",
+          "verified": true,
+          "expected": false
+        }
+      ]
     }
   ]
 }
