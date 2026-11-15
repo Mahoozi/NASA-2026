@@ -1,6 +1,6 @@
 // Person A
-import investigationsJson from "@/data/investigations.json";
-import type { Investigation, Run } from "@/lib/schema";
+import investigationsJson from "../../data/investigations.json";
+import type { Investigation, Run } from "../../lib/schema";
 
 /**
  * Investigations to rank in the Lab: Person B's data/investigations.json.

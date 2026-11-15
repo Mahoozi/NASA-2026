@@ -12,8 +12,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { ClaimChecks } from "./claim-checks";
+import { runClaims } from "./claims";
 
 const report = reportJson as EvalReport;
+/** When this build computed the claim checks; evaluated once, not per render. */
+const BUILT_AT = new Date().toISOString();
 
 const STATUS_LABEL: Record<EvalItem["gotStatus"], string> = {
   answered: "Answered",
@@ -122,6 +126,8 @@ export default function EvalsPage() {
           />
         </div>
       </section>
+
+      <ClaimChecks results={runClaims()} checkedAt={BUILT_AT} />
 
       <section aria-labelledby="questions" className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
