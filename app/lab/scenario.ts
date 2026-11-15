@@ -13,6 +13,9 @@ export const GRAVITY_LABEL: Record<(typeof GRAVITIES)[number], string> = {
   martian: "Martian gravity",
   "1g": "Earth gravity (1 g)",
 };
+/** Shown under the pressure field and in the printable report. */
+export const PRESSURE_CONTEXT_NOTE = "Pressure is context only; none of the imported PSI tables records it.";
+
 export const SAFETY_AREAS: SafetyArea[] = ["prevention", "detection", "suppression", "fundamental"];
 
 /** URL keys, in the order they are written. */

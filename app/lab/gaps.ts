@@ -7,6 +7,9 @@ const GRAVITY_PHRASE = {
   "1g": "Earth gravity (1 g)",
 } as const;
 
+/** Shown when no dimension of the scenario falls outside the imported evidence. */
+export const NO_GAPS_TEXT = "Every dimension you set has at least one run or investigation within range.";
+
 export type GapReport = {
   /** One sentence per scenario dimension that no run / investigation comes close to. */
   gaps: string[];

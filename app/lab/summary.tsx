@@ -10,6 +10,14 @@ export const COVERAGE_LABEL: Record<InvestigationMatch["coverage"], string> = {
   none: "no close evidence",
 };
 
+export const DIMENSION_LABEL: Record<string, string> = {
+  materialFamily: "Material",
+  o2Pct: "O₂",
+  flowCmS: "Flow",
+  gravity: "Gravity",
+  safetyArea: "Safety area",
+};
+
 export const NO_COVERAGE = "No imported investigation covers this scenario.";
 
 /**

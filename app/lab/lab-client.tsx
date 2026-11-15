@@ -8,7 +8,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations } from "@/lib/match";
 import type { Finding, Investigation, Run, Scenario } from "@/lib/schema";
 import { FindingsPanel } from "./findings-panel";
-import { Button } from "@/components/ui/button";
+import { PrinterIcon } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { AskLink } from "./ask-link";
 import { CoverageGrid } from "./coverage-grid";
 import { DownloadDataset } from "./download-dataset";
@@ -19,6 +20,7 @@ import { LimitsPanel } from "./limits-panel";
 import { matchingRunIdSet } from "./matching-runs";
 import { SPACE_VS_EARTH_ID } from "./gravity-bounds-note";
 import { RankedList } from "./ranked-list";
+import { reportHref } from "./report/report";
 import { createHashScroller } from "./scroll-to-hash";
 import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
@@ -265,7 +267,15 @@ export function LabClient({
         <h2 id="download-heading" className="text-lg font-semibold">
           Download
         </h2>
-        <DownloadDataset runs={runs} />
+        <DownloadDataset
+          runs={runs}
+          extra={
+            <Link href={reportHref(scenario)} className={buttonVariants({ variant: "outline" })}>
+              <PrinterIcon data-icon="inline-start" />
+              Print or save as PDF
+            </Link>
+          }
+        />
       </section>
     </div>
   );

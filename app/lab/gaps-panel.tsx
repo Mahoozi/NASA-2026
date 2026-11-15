@@ -1,5 +1,5 @@
 // Person A
-import type { GapReport } from "./gaps";
+import { NO_GAPS_TEXT, type GapReport } from "./gaps";
 import { GravityBoundsNote } from "./gravity-bounds-note";
 import { HigherOxygenNote } from "./higher-oxygen-note";
 
@@ -17,7 +17,7 @@ export function GapsPanel({ report }: { report: GapReport }) {
         </ul>
       ) : (
         <p className="text-sm text-muted-foreground">
-          Every dimension you set has at least one run or investigation within range.
+          {NO_GAPS_TEXT}
         </p>
       )}
       {report.aboveSolidO2 !== undefined && (

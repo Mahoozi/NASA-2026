@@ -24,6 +24,7 @@ import {
   GRAVITIES,
   GRAVITY_LABEL,
   MATERIAL_FAMILIES,
+  PRESSURE_CONTEXT_NOTE,
   SAFETY_AREAS,
   type Preset,
 } from "./scenario";
@@ -126,7 +127,7 @@ export function ScenarioForm({ scenario, presets, onChange, onPreset }: Props) {
             step={0.1}
             value={scenario.pressurePsi}
             onChange={(v) => set("pressurePsi", v)}
-            description="Pressure is context only; none of the imported PSI tables records it."
+            description={PRESSURE_CONTEXT_NOTE}
           />
         </FieldGroup>
       </FieldSet>

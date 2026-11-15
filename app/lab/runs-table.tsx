@@ -7,6 +7,7 @@ import type { Run } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { materialLabel } from "./material-label";
+import { compare, DEFAULT_SORT, flowText, hasRecordedResult, type Dir, type SortKey } from "./run-order";
 import {
   Table,
   TableBody,
@@ -15,10 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-type SortKey =
-  | "test" | "investigation" | "pi" | "family" | "thickness" | "o2" | "flow" | "direction" | "events" | "flags";
-type Dir = "asc" | "desc";
 
 const columns: { key: SortKey; label: string; numeric?: boolean }[] = [
   { key: "test", label: "Test" },
@@ -33,46 +30,9 @@ const columns: { key: SortKey; label: string; numeric?: boolean }[] = [
   { key: "flags", label: "Flags", numeric: true },
 ];
 
-const collator = new Intl.Collator("en", { numeric: true, sensitivity: "base" });
-
-function sortValue(r: Run, key: SortKey): string | number | null {
-  switch (key) {
-    case "test": return r.testId;
-    case "investigation": return r.investigationId;
-    case "pi": return r.pi;
-    case "family": return materialLabel(r);
-    case "thickness": return r.material.thicknessMm ?? null;
-    case "o2": return r.o2InitialPct;
-    case "flow": return r.flowCmS.max;
-    case "direction": return r.flowDirection ?? null;
-    case "events": return r.events.join(", ") || (hasRecordedResult(r) ? "see observations" : null);
-    case "flags": return r.flags.length;
-  }
-}
-
-function compare(a: Run, b: Run, key: SortKey, dir: Dir): number {
-  const va = sortValue(a, key);
-  const vb = sortValue(b, key);
-  // Missing values always sort last, whatever the direction.
-  if (va === null && vb === null) return collator.compare(a.testId, b.testId);
-  if (va === null) return 1;
-  if (vb === null) return -1;
-  const c = typeof va === "number" && typeof vb === "number"
-    ? va - vb
-    : collator.compare(String(va), String(vb));
-  return (dir === "asc" ? c : -c) || collator.compare(a.testId, b.testId);
-}
-
 const dash = <span className="text-muted-foreground">—</span>;
 
-/** Saffire results (burn time, burn length, spread) live in observations, not events. */
-const hasRecordedResult = (r: Run) => !!r.observations?.some((o) => /burn|spread/i.test(o.label));
-
-function flow(r: Run) {
-  const { min, max } = r.flowCmS;
-  if (min === null || max === null) return dash;
-  return min === max ? String(min) : `${min}–${max}`;
-}
+const flow = (r: Run) => flowText(r) ?? dash;
 
 function FlagsBadge({ flags }: { flags: string[] }) {
   if (!flags.length) return <Badge variant="outline">0</Badge>;
@@ -105,7 +65,7 @@ export function RunsTable({
   /** Runs matching the scenario; null when no run-level dimension is set (no filter). */
   matchingRunIds?: Set<string> | null;
 }) {
-  const [sort, setSort] = useState<{ key: SortKey; dir: Dir }>({ key: "investigation", dir: "asc" });
+  const [sort, setSort] = useState<{ key: SortKey; dir: Dir }>(DEFAULT_SORT);
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
   const toggleRow = (id: string) =>
     setExpanded((prev) => {

@@ -15,7 +15,7 @@ function save(text: string, filename: string, type: string) {
   setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
-export function DownloadDataset({ runs }: { runs: Run[] }) {
+export function DownloadDataset({ runs, extra }: { runs: Run[]; extra?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center gap-3">
@@ -37,6 +37,7 @@ export function DownloadDataset({ runs }: { runs: Run[] }) {
           <DownloadIcon data-icon="inline-start" />
           Download cleaned dataset (JSON)
         </Button>
+        {extra}
         <p className="text-sm text-muted-foreground">
           All {runs.length} runs, every field, with data-quality flags.
         </p>

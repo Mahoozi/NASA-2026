@@ -1,0 +1,53 @@
+/* Person A — print stylesheet for /lab/report. Scoped to pages that contain .report. */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  html:has(.report),
+  body:has(.report) {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  /* Site chrome: the nav is the only header directly under body. */
+  body:has(.report) > header {
+    display: none !important;
+  }
+  body:has(.report) > main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .report {
+    --background: #fff;
+    --foreground: #000;
+    --muted-foreground: #333;
+    --border: #777;
+    --popover: #fff;
+    --popover-foreground: #000;
+    max-width: none;
+    font-size: 10pt;
+    line-height: 1.3;
+    color: #000;
+    gap: 8pt;
+  }
+  .report h1 { font-size: 16pt; }
+  .report h2 { font-size: 12pt; }
+  .report h3 { font-size: 10.5pt; }
+  .report section { gap: 3pt; }
+  .report ul, .report ol { gap: 1pt; }
+  .report dl { row-gap: 1pt; column-gap: 12pt; }
+  .report table :is(td, th) { padding-top: 2pt; padding-bottom: 2pt; }
+  .report .report-screen-only { display: none !important; }
+  .report .report-table-scroll { overflow: visible; }
+  .report table { min-width: 0 !important; }
+  .report a { color: inherit; text-decoration: underline; }
+  /* A link's address follows its text, so the printed page can be followed. */
+  .report a[href]:not(.no-url)::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    overflow-wrap: anywhere;
+  }
+  .report .keep-heading > h2 { break-after: avoid; }
+  .report tr, .report li, .report blockquote, .report .keep, .report thead { break-inside: avoid; }
+  .report table { break-inside: auto; }
+  .report thead { display: table-header-group; }
+}

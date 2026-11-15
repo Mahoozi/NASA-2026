@@ -12,20 +12,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress, ProgressLabel } from "@/components/ui/progress";
-import { COVERAGE_LABEL, investigationLabel, NO_COVERAGE } from "./summary";
+import { COVERAGE_LABEL, DIMENSION_LABEL, investigationLabel, NO_COVERAGE } from "./summary";
 
 const COVERAGE_VARIANT: Record<InvestigationMatch["coverage"], "default" | "secondary" | "outline"> = {
   direct: "default",
   partial: "secondary",
   none: "outline",
-};
-
-const DIMENSION_LABEL: Record<string, string> = {
-  materialFamily: "Material",
-  o2Pct: "O₂",
-  flowCmS: "Flow",
-  gravity: "Gravity",
-  safetyArea: "Safety area",
 };
 
 const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
