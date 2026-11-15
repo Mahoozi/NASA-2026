@@ -4,36 +4,15 @@
 import investigationsJson from "../../data/investigations.json";
 import runsJson from "../../data/runs.json";
 import type { Investigation, Run } from "../../lib/schema";
+import { BRIEF_FLEX_SENTENCE } from "../brief/brief-text";
+
+export { BRIEF_FLEX_SENTENCE, BRIEF_SENTENCE, BRIEF_TEXT, displayBriefQuote } from "../brief/brief-text";
 
 export const EARTH_INTRO =
   "NASA's microgravity fire research also feeds fire safety on Earth. Each section separates what the challenge brief says, what the PSI records say, and NASA Spinoff pages. Firebreak does not claim that any specific PSI test led to a specific Earth product.";
 
-/**
- * Two sentences of the challenge brief, verbatim. Fetched 2026-11-14 from
- * https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/ (the FLEX
- * sentence is in the paragraph that begins "Fire detection was tested in
- * microgravity", the other in the paragraph that begins "Your dashboard could also
- * address"). Every brief quote on the page must be an exact substring of BRIEF_TEXT.
- */
-export const BRIEF_FLEX_SENTENCE =
-  "Suppression was studied in the Flame Extinguishment Experiment (FLEX) through dilution of the chamber atmosphere with carbon dioxide and helium, both of which suppress fire.";
-export const BRIEF_SENTENCE =
-  "Fine-water-mist extinguishers developed for use on the ISS have practical applications here on Earth, and NASA technology has similarly led to improvements in terrestrial smoke detection and firefighter gear, including protective clothing and air tanks.";
-export const BRIEF_TEXT = `${BRIEF_FLEX_SENTENCE} ${BRIEF_SENTENCE}`;
-
 /** Shown under the two suppression quotes, exact text. */
 export const SUPPRESSION_NOTE = "The brief does not link these two; Firebreak does not either.";
-
-/** A brief quote as displayed: "…" only where the quote is cut out of a longer sentence. */
-export function displayBriefQuote(quote: string): string {
-  const at = BRIEF_TEXT.indexOf(quote);
-  if (at < 0) throw new Error(`Not in the brief text: ${quote}`);
-  const before = BRIEF_TEXT.slice(0, at);
-  const after = BRIEF_TEXT.slice(at + quote.length);
-  const cutStart = before !== "" && !/[.!?]\s$/.test(before);
-  const cutEnd = !/^[.!?]?(\s|$)/.test(after);
-  return `${cutStart ? "…" : ""}${quote}${cutEnd ? "…" : ""}`;
-}
 
 export const NO_SPINOFF = "No spinoff page was provided in the challenge resources.";
 export const SPINOFF_LABEL = "NASA Spinoff (not PSI data)";

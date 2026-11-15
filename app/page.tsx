@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/card";
 import { HigherOxygenNote } from "./lab/higher-oxygen-note";
 import { presets, scenarioToQuery } from "./lab/scenario";
+import { ARTEMIS_ATTRIBUTION, ARTEMIS_QUOTE } from "./brief/brief-text";
+import { maxStartingO2, partialGravityRunCount } from "./brief/run-facts";
 
 const REPO = "https://github.com/Mahoozi/NASA-2026";
 
@@ -64,7 +66,6 @@ function landingFacts() {
   const runs = runsJson as Run[];
   const investigations = investigationsJson as Investigation[];
   const withO2 = runs.filter((r) => r.o2InitialPct !== null);
-  const platformOf = (id: string) => investigations.find((i) => i.id === id)?.platform ?? "";
   return {
     totalRuns: runs.length,
     tables: new Set(runs.map((r) => r.investigationId)).size,
@@ -73,13 +74,13 @@ function landingFacts() {
     o2Investigations: [...new Set(withO2.map((r) => r.investigationId))].map(
       (id) => investigations.find((i) => i.id === id)?.acronym || id,
     ),
-    maxO2: Math.max(...withO2.map((r) => r.o2InitialPct!)),
+    maxO2: maxStartingO2(runs),
     // Runs carry no gravity field; a run counts as lunar or Martian only if its
     // investigation's platform says so in data/investigations.json.
     // Distinct flags that cite an NTRS paper: places where a PSI table disagrees
     // with NASA's published papers (pipeline/source_discrepancies.ts).
     sourceDiscrepancies: new Set(runs.flatMap((r) => r.flags.filter((f) => /\bNTRS \d{11}\b/.test(f)))).size,
-    partialGravityRuns: runs.filter((r) => /moon|lunar|mars|martian/i.test(platformOf(r.investigationId))).length,
+    partialGravityRuns: partialGravityRunCount(runs, investigations),
   };
 }
 
@@ -135,6 +136,12 @@ export default function Home() {
         <h2 id="why-heading" className="text-xl font-semibold">
           Why it matters
         </h2>
+        <figure className="flex max-w-3xl flex-col gap-2">
+          <blockquote className="border-l-2 pl-4 text-xl leading-snug font-medium text-balance">
+            “{ARTEMIS_QUOTE}”
+          </blockquote>
+          <figcaption className="text-sm text-muted-foreground">{ARTEMIS_ATTRIBUTION}</figcaption>
+        </figure>
         <ul className="grid gap-4 sm:grid-cols-3">
           {INCIDENTS.map((i) => (
             <li key={i.title} className="flex">
@@ -217,6 +224,13 @@ export default function Home() {
             </li>
           )}
         </ul>
+        <p className="text-sm text-muted-foreground">
+          Row by row:{" "}
+          <Link href="/brief" className="underline underline-offset-4 hover:text-foreground">
+            How Firebreak answers the challenge
+          </Link>
+          .
+        </p>
       </section>
 
       <footer className="flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted-foreground">
