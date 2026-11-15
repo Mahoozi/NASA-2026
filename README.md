@@ -11,14 +11,20 @@ Firebreak makes that kind of gap visible. Pick a habitat scenario, and it ranks 
 
 ## What it does
 
-- **Scenario Lab** (`/lab`): set material, oxygen, airflow and gravity, or use a preset ("ISS cabin air", "Moon Base (planned)", "Pressurized rover (planned)", "NASA Exploration Atmosphere"). Investigations are ranked with a per-dimension breakdown, and the matching runs light up on a chart. Pressure is context only; the imported run tables do not record it.
+- **Scenario Lab** (`/lab`): set material, oxygen, airflow and gravity, or use a preset ("ISS cabin air", "Moon Base (planned)", "Pressurized rover (planned)", "NASA Exploration Atmosphere", "Spacesuit (EVA)"). Investigations are ranked with a per-dimension breakdown, and the matching runs light up on a chart. Pressure is context only; the imported run tables do not record it.
 - **Coverage grid**: material × oxygen band, every cell a count of real tests. The empty cells are the story. A separate column shows runs whose source tables never recorded oxygen at all.
 - **Where the evidence runs out**: plain sentences computed from the data, like "No solid-material run with a recorded starting oxygen (140 of 263) started above 22.2%; your scenario is 30%." No risk scores, no verdicts.
 - **Recorded flammability limits**: BASS-II extinction, blowoff and no-ignition records, with nearest limits and the material's tested ranges. Of 27 event candidates, 17 are included and 10 excluded with reasons in the [limits report](pipeline/limits_report.md). Bounds such as "below 5 cm/s" stay bounds; nothing is fitted or extrapolated.
 - **Published findings**: up to three findings selected from nine entries across six NTRS papers. Each quote is checked as an exact substring of its corpus source, then shown with its source link and overlapping tags. Any tag can match, so a fabric finding can appear for a PMMA scenario through oxygen, airflow or gravity overlap.
 - **What varied and what was held fixed**: dimensions computed from the imported runs, with missing values and flags visible. **Space vs Earth** shows Saffire-II's recorded microgravity and 1-g burn lengths with a partial-gravity caveat.
 - **Ask the evidence** (`/ask`): questions are answered only from NASA text. Every quote is checked word for word against its source before it's shown. If the sources don't cover it, the app says so (status `insufficient_evidence`) instead of answering.
-- **Scorecard** (`/evals`): saved results from a fixed question set, failures included. The committed report predates the paper corpus expansion; a new evaluation is still pending.
+- **Scorecard** (`/evals`): saved results from a fixed set of 28 golden questions, failures included. In the latest run, 27 of 28 questions got the expected result, 90 of 90 citations were verified word for word, and 6 of 7 unanswerable questions were declined. The one miss (`none-saffire4-6-results`, which should have been declined but was answered) is shown on the page, not tuned away.
+- **Claim checks** (`/evals`): the numbers we state in the pitch and on the site, recomputed from the shipped data when the site is built, each shown with its expected value, actual value and "matches" or "does not match".
+- **Evidence Gap Atlas** (landing page): every Lab preset against every material family that has a recorded starting oxygen, using the Lab's own matching. 6 of 35 combinations have at least one matching imported flight run; every cell links to the Lab with that scenario.
+- **Hardware watchlist** (`/watchlist`): ISS hardware that NASA's NESC report ([NTRS 20260003925](https://ntrs.nasa.gov/citations/20260003925)) assesses for higher-oxygen cabins, each with a verbatim quote from the report beside the imported PSI runs for its material.
+- **Earth applications** (`/earth`): how microgravity fire research relates to fire safety on Earth, using quoted brief text, PSI records and NASA Spinoff pages only.
+- **Challenge mapping** (`/brief`): the challenge brief's own words, matched to where Firebreak addresses each one.
+- **Printable report** (`/lab/report`): the current Lab scenario as a print-ready page you can save as a PDF.
 - **Investigations** (`/investigations`): all 24 PSI combustion investigations, filterable by safety area (prevention, detection, suppression, fundamental).
 - **Download** the cleaned dataset as CSV or JSON, with every data-quality flag attached.
 
@@ -42,7 +48,7 @@ Raw NASA files live unmodified in `data/raw/`. The importers never correct a val
 
 ## Screenshots
 
-Captured from the deployed Lab on 14 November 2026 with headless Chrome (1440 × 1900).
+Captured from the deployed site on 15 November 2026 with headless Chrome at 1280 px wide.
 
 <details>
 <summary>PMMA rod demo: recorded limits and published findings</summary>
@@ -59,6 +65,33 @@ Captured from the deployed Lab on 14 November 2026 with headless Chrome (1440 ×
 [Open this scenario](https://nasa-2026-nine.vercel.app/lab?o2=30&pressure=10.2&gravity=lunar#limits-heading)
 
 ![Moon Base showing oxygen and gravity refusal reasons, plus FM2 and atmosphere findings](docs/screenshots/lab-moon-base.png)
+
+</details>
+
+<details>
+<summary>Evidence Gap Atlas: every preset against every material</summary>
+
+[Open the atlas](https://nasa-2026-nine.vercel.app/#atlas-heading)
+
+![Evidence Gap Atlas: 6 of 35 atmosphere and material combinations have a matching imported flight run](docs/screenshots/atlas.png)
+
+</details>
+
+<details>
+<summary>Hardware watchlist: ISS hardware assessed in the NESC report</summary>
+
+[Open the watchlist](https://nasa-2026-nine.vercel.app/watchlist)
+
+![Hardware watchlist with verbatim NESC report quotes beside PSI flight evidence](docs/screenshots/watchlist.png)
+
+</details>
+
+<details>
+<summary>Claim checks and scorecard</summary>
+
+[Open the scorecard](https://nasa-2026-nine.vercel.app/evals#claim-checks)
+
+![Claim checks table, all 11 matching, above the scorecard questions](docs/screenshots/evals.png)
 
 </details>
 
