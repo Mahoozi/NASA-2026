@@ -11,6 +11,7 @@ import { Nav } from "../../components/nav";
 import { limitPoints } from "../../lib/limits";
 import type { CorpusDoc, Finding, Investigation, Run } from "../../lib/schema";
 import { EARTH_SECTIONS } from "../earth/content";
+import { groupInvestigations } from "../investigations/hardware";
 import { CSV_COLUMNS } from "../lab/export";
 import { MAX_FINDINGS, verifiedFindings } from "../lab/findings";
 import { DIMENSIONS, whatVaried } from "../lab/varied";
@@ -32,7 +33,7 @@ const ownText = text(strip(strip(html, "data-quoted"), "data-exempt"));
 const ROOT = join(__dirname, "..", "..");
 
 describe("/brief page", () => {
-  it("has the ten rows in order, with the brief's own words", () => {
+  it("has the eleven rows in order, with the brief's own words", () => {
     expect(rows.map((r) => r.quote)).toEqual([
       "summarizes, ranks, and interprets combustion science investigations",
       "Identify investigations most relevant to the fire safety needs of habitable crew environments",
@@ -44,6 +45,7 @@ describe("/brief page", () => {
       "there is currently no partial-gravity combustion data available in PSI",
       "Microgravity and normal-gravity results could bound what occurs at intermediate gravity levels.",
       "The intermediate oxygen concentration used on the Moon will likely be 30% or greater",
+      "The six experiments in the ACME project featured flames of gaseous fuels and were all conducted with the same modular set of ACME hardware in the Combustion Integrated Rack (CIR).",
     ]);
   });
 
@@ -109,6 +111,10 @@ describe("/brief page", () => {
     expect(maxStartingO2(runs)).toBe(Math.max(...o2));
     expect(seen(9)).toContain(`Of ${o2.length} solid-material runs with a recorded starting oxygen, the highest started at ${Math.max(...o2)}%`);
     expect(seen(9)).toContain("sets 30% oxygen at 10.2 psi");
+    const grouped = groupInvestigations(investigations);
+    expect(seen(10)).toContain("Investigations grouped by the brief's three hardware families (ACME, MDCA, MSG flow duct), with the rest listed separately.");
+    expect(seen(10)).toContain(`${grouped.groups[0].members.length} in ACME, ${grouped.groups[1].members.length} in MDCA, ${grouped.groups[2].members.length} in the MSG group; ${grouped.rest.length} listed separately.`);
+    expect(rows[10].links).toEqual([{ label: "Investigations: hardware groups", href: "/investigations#hardware-heading" }]);
   });
 
   it("types no numbers into the rows or the page component", () => {

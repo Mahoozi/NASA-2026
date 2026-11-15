@@ -15,6 +15,7 @@ import { MAX_FINDINGS, verifiedFindings } from "../lab/findings";
 import { SPACE_VS_EARTH_ID } from "../lab/gravity-bounds-note";
 import { presets, scenarioToQuery } from "../lab/scenario";
 import { DIMENSIONS, whatVaried } from "../lab/varied";
+import { groupInvestigations } from "../investigations/hardware";
 import { safetyLabel } from "../investigations/labels";
 import { maxStartingO2, partialGravityRunCount, runsWithStartingO2 } from "./run-facts";
 
@@ -68,6 +69,8 @@ export function briefRows(f: BriefFacts): BriefRow[] {
   const spinoffs = EARTH_SECTIONS.reduce((n, s) => n + s.spinoffs.length, 0);
   const psiRecords = EARTH_SECTIONS.reduce((n, s) => n + s.psiIds.length, 0);
   const withO2 = runsWithStartingO2(runs).length;
+  const hardware = groupInvestigations(investigations);
+  const [acme, mdca, msg] = hardware.groups.map((g) => g.members.length);
 
   return [
     {
@@ -149,6 +152,12 @@ export function briefRows(f: BriefFacts): BriefRow[] {
         { label: "Lab: where the evidence runs out", href: labHref(scenarioToQuery(moon.scenario), "#summary-heading") },
       ],
       seen: `The ${moon.label} preset sets ${moon.scenario.o2Pct}% oxygen at ${moon.scenario.pressurePsi} psi. Of ${withO2} solid-material runs with a recorded starting oxygen, the highest started at ${maxStartingO2(runs)}%; the Lab states the gap for your scenario.`,
+    },
+    {
+      quote:
+        "The six experiments in the ACME project featured flames of gaseous fuels and were all conducted with the same modular set of ACME hardware in the Combustion Integrated Rack (CIR).",
+      links: [{ label: "Investigations: hardware groups", href: "/investigations#hardware-heading" }],
+      seen: `Investigations grouped by the brief's three hardware families (ACME, MDCA, MSG flow duct), with the rest listed separately. ${acme} in ACME, ${mdca} in MDCA, ${msg} in the MSG group; ${hardware.rest.length} listed separately.`,
     },
   ];
 }

@@ -4,6 +4,7 @@ import { InvestigationBrowser, InvestigationList } from "./investigation-list";
 import { investigations } from "./data";
 import { CompareTable } from "./compare-table";
 import { FireSafetyStrip } from "./fire-safety-strip";
+import { HardwareGroups } from "./hardware-groups";
 
 export default function InvestigationsPage() {
   return (
@@ -29,6 +30,8 @@ export default function InvestigationsPage() {
         </h2>
         <CompareTable investigations={investigations} />
       </section>
+
+      <HardwareGroups investigations={investigations} />
 
       <section aria-labelledby="all-heading" className="flex flex-col gap-3">
         <h2 id="all-heading" className="text-lg font-semibold">
