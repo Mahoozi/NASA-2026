@@ -34,11 +34,26 @@
   - Corpus docs: `guide-p<page>`, one per PDF page
 
 ## NASA web pages
-Saved unmodified on 2026-11-14 as `data/raw/nasa-web-<slug>-2026-11-14.html`; sizes and sha256 hashes are in `pipeline/corpus_report.md`. Pages used:
+Saved unmodified on 2026-11-14 as `data/raw/nasa-web-<slug>-2026-11-14.html`; sizes and sha256 hashes are in the [corpus report](pipeline/corpus_report.md). Pages used:
 - [Combustion Science](https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/) (NASA Glenn Research Center), corpus doc `nasa-web-glenn-combustion-science`
 - [55 Years Ago: The Apollo 1 Fire and its Aftermath](https://www.nasa.gov/history/55-years-ago-the-apollo-1-fire-and-its-aftermath/), corpus doc `nasa-web-apollo-1`
 - [Apollo 13: Mission Details](https://www.nasa.gov/missions/apollo/apollo-13-mission-details/), corpus doc `nasa-web-apollo-13`
 - [25 Years Ago: Fire Aboard Space Station Mir](https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/), corpus doc `nasa-web-mir-fire`
+
+## Sources used in Scenario Lab
+
+The first six sources supply the nine published findings. The Saffire sources also support the [source-discrepancy audit](pipeline/source_discrepancies.md). Recorded limits come from the PSI-25 table listed above; the [limits report](pipeline/limits_report.md) records each inclusion and exclusion. Import mappings: [BASS-II](pipeline/psi_bass2_columns.md), [BASS](pipeline/psi_bass_columns.md), [Saffire](pipeline/psi_saffire_columns.md).
+
+| Source | Use in A's features |
+|---|---|
+| [Combustion of Solids in Microgravity: Results from the BASS-II Experiment](https://ntrs.nasa.gov/citations/20160000593), NTRS 20160000593 | PMMA rod results (p. 18) and BASS-II hypothesis (p. 6) |
+| [Concurrent Flame Growth, Spread and Extinction over Composite Fabric Samples in Low Speed Purely Forced Flow in Microgravity](https://ntrs.nasa.gov/citations/20150008962), NTRS 20150008962 | Fabric quenching finding (p. 1) |
+| [Results of Large-Scale Spacecraft Flammability Tests](https://ntrs.nasa.gov/citations/20170008805), NTRS 20170008805 | Saffire flame-length finding (p. 21); dimensions audit (abstract) |
+| [Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-Manned Spacecraft](https://ntrs.nasa.gov/citations/20180005168), NTRS 20180005168 | Steady flame-spread finding (p. 18); audit comparisons (pp. 16, 30) |
+| [Flammability of Materials on the Moon](https://ntrs.nasa.gov/citations/20240015307), NTRS 20240015307 | Prospective FM2 finding and partial-gravity caveat; poster reports laboratory/simulated-gravity evidence, no completed lunar-surface results |
+| [Impacts of Reduced Pressure Atmospheres on Environmental Control and Life Support Systems (ECLSS) Architectures](https://ntrs.nasa.gov/api/citations/20260003925/downloads/20260003925.pdf), NTRS 20260003925 | Atmosphere findings (PDF p. 13) |
+| [Topical: Solid Fuel Combustion in Partial and Micro-Gravity](https://ntrs.nasa.gov/api/citations/20210022402/downloads/217-_GollnerMichaelJ.pdf), NTRS 20210022402 | Gollner et al., university-led white paper; short external quote in the bounds caveat (PDF p. 3), not imported into the corpus |
+| [Open Atmospheres Forum: Exploration Atmospheres Validation Study](https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf), NTRS 20220011152 | Exploration Atmosphere preset: 8.2 psi / 34% O2 (p. 10); preset leaves gravity unset |
 
 ## Linked from the landing page
 Cited on the home page ("Why it matters"), not part of the corpus:
@@ -62,8 +77,10 @@ Cited on the home page ("Why it matters"), not part of the corpus:
 - @ai-sdk/openai 4.0.118
 - Zod 4.6.7
 - MiniSearch 7.2.0
-- unpdf 2.1.0 (PDF text extraction in `pipeline/corpus_extract_guide.ts`)
-- node-html-parser 9.0.6 (article text extraction from NASA web pages in `pipeline/corpus_build.ts`)
+- unpdf 2.1.0 (PDF text extraction in [pipeline/corpus_extract_guide.ts](pipeline/corpus_extract_guide.ts))
+- node-html-parser 9.0.6 (article text extraction from NASA web pages in [pipeline/corpus_build.ts](pipeline/corpus_build.ts))
 - ESLint 9.39.5
 
 ## Images
+
+- [PMMA rod demo](docs/screenshots/lab-demo.png) and [Moon Base](docs/screenshots/lab-moon-base.png): screenshots of Firebreak's deployed Scenario Lab, captured on 2026-11-14 with headless Chrome at 1440 × 1900. Exact scenario links are in the [README](README.md#screenshots); no NASA photographs are included in these screenshots.
