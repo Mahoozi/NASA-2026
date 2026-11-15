@@ -1,25 +1,22 @@
 import { describe, expect, it } from "vitest";
-import { INTRO_BOOT_SCRIPT, INTRO_SEEN_KEY, shouldPlayIntro } from "./should-play";
+import { INTRO_BOOT_SCRIPT, shouldPlayIntro } from "./should-play";
 
-const base = { pathname: "/", seen: false, reducedMotion: false, saveData: false, forced: false };
+const base = { pathname: "/", hash: "", reducedMotion: false, saveData: false };
 
 describe("shouldPlayIntro", () => {
-  it("plays on the first visit to the home page", () => {
+  it("plays on the home page", () => {
     expect(shouldPlayIntro(base)).toBe(true);
-  });
-  it("does not replay within a session", () => {
-    expect(shouldPlayIntro({ ...base, seen: true })).toBe(false);
-  });
-  it("replays on demand with ?intro=1", () => {
-    expect(shouldPlayIntro({ ...base, seen: true, forced: true })).toBe(true);
   });
   it("never plays off the home page", () => {
     for (const pathname of ["/lab", "/ask", "/investigations/PSI-25"])
-      expect(shouldPlayIntro({ ...base, pathname, forced: true })).toBe(false);
+      expect(shouldPlayIntro({ ...base, pathname })).toBe(false);
   });
-  it("never plays under reduced motion or data saver, even when forced", () => {
-    expect(shouldPlayIntro({ ...base, reducedMotion: true, forced: true })).toBe(false);
-    expect(shouldPlayIntro({ ...base, saveData: true, forced: true })).toBe(false);
+  it("steps aside for a link to a section of the home page", () => {
+    expect(shouldPlayIntro({ ...base, hash: "#atlas-heading" })).toBe(false);
+  });
+  it("never plays under reduced motion or data saver", () => {
+    expect(shouldPlayIntro({ ...base, reducedMotion: true })).toBe(false);
+    expect(shouldPlayIntro({ ...base, saveData: true })).toBe(false);
   });
 });
 
@@ -29,10 +26,9 @@ describe("INTRO_BOOT_SCRIPT", () => {
     const dataset: Record<string, string> = {};
     const env = {
       document: { documentElement: { dataset } },
-      location: { pathname: c.pathname, search: c.forced ? "?intro=1" : "" },
+      location: { pathname: c.pathname, hash: c.hash, search: "" },
       matchMedia: () => ({ matches: c.reducedMotion }),
       navigator: { connection: { saveData: c.saveData } },
-      sessionStorage: { getItem: (k: string) => (k === INTRO_SEEN_KEY && c.seen ? "1" : null) },
     };
     new Function(...Object.keys(env), INTRO_BOOT_SCRIPT)(...Object.values(env));
     return dataset.intro === "play";
@@ -40,12 +36,11 @@ describe("INTRO_BOOT_SCRIPT", () => {
 
   it("agrees with shouldPlayIntro for every combination", () => {
     for (const pathname of ["/", "/lab"])
-      for (const seen of [false, true])
+      for (const hash of ["", "#atlas-heading"])
         for (const reducedMotion of [false, true])
-          for (const saveData of [false, true])
-            for (const forced of [false, true]) {
-              const c = { pathname, seen, reducedMotion, saveData, forced };
-              expect(boot(c), JSON.stringify(c)).toBe(shouldPlayIntro(c));
-            }
+          for (const saveData of [false, true]) {
+            const c = { pathname, hash, reducedMotion, saveData };
+            expect(boot(c), JSON.stringify(c)).toBe(shouldPlayIntro(c));
+          }
   });
 });

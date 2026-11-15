@@ -192,30 +192,17 @@
   }
 }
 
-/* The home-page intro (components/intro). The inline boot script marks <html
-   data-intro="play"> before first paint; "enter" is the hand-over; "done" removes it. */
-.intro-cover {
+/* The home page's scroll-driven opening scene (components/intro). The inline boot
+   script marks <html data-intro="play"> before first paint; without it neither the
+   cover nor its scroll runway exists. */
+.intro-cover,
+.intro-runway {
   display: none;
 }
-html[data-intro="play"] .intro-cover,
-html[data-intro="enter"] .intro-cover {
+html[data-intro="play"] .intro-cover {
   display: block;
 }
-html[data-intro="play"],
-html[data-intro="enter"] {
-  overflow: hidden;
+html[data-intro="play"] .intro-runway {
+  display: block;
+  height: 320vh;
 }
-/* The page rises in behind the departing particles, one section after another. */
-@keyframes intro-rise {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-}
-html[data-intro="enter"] :is(header, main section, main footer),
-html[data-intro="done"] :is(header, main section, main footer) {
-  animation: intro-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-}
-html[data-intro] main section:nth-of-type(1) { animation-delay: 0.1s; }
-html[data-intro] main section:nth-of-type(2) { animation-delay: 0.22s; }
-html[data-intro] main section:nth-of-type(n + 3) { animation-delay: 0.34s; }
