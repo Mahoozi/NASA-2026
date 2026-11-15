@@ -11,7 +11,7 @@ export default function AskPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold text-balance">Ask the evidence</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl text-balance">Ask the evidence</h1>
         <p className="max-w-prose text-sm text-muted-foreground">
           Ask about NASA’s microgravity combustion investigations. Every sentence in an answer
           comes with a quote from a NASA source. If the sources don’t cover your question, the

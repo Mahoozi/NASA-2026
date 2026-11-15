@@ -41,7 +41,7 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
           <p translate="no" className="text-sm text-muted-foreground">
             {inv.id}
           </p>
-          <h1 translate="no" className="text-2xl font-semibold text-balance">
+          <h1 translate="no" className="text-3xl font-bold sm:text-4xl text-balance">
             {shortName(inv)}
           </h1>
           <p className="max-w-prose text-lg text-pretty text-muted-foreground">{inv.name}</p>

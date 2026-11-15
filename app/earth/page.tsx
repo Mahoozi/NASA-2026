@@ -107,7 +107,7 @@ function Section({ section, runs }: { section: EarthSection; runs: Run[] }) {
   return (
     <section
       aria-labelledby={`${section.id}-heading`}
-      className="flex min-w-0 flex-col gap-5 rounded-lg border p-4 sm:p-5"
+      className="flex min-w-0 flex-col gap-5 rounded-lg border p-4 sm:p-5 bg-card/60 backdrop-blur-sm"
     >
       <h2 id={`${section.id}-heading`} className="text-xl font-semibold text-balance">
         {section.heading}
@@ -161,7 +161,7 @@ export default function EarthPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex max-w-prose flex-col gap-2">
-        <h1 className="text-2xl font-semibold">Earth applications</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Earth applications</h1>
         <p className="text-base text-pretty text-muted-foreground">{EARTH_INTRO}</p>
       </div>
       {EARTH_SECTIONS.map((s) => (

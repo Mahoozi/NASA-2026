@@ -170,6 +170,23 @@
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
+  /* Quotes carry a blue rule; underlined links carry a blue underline. Chrome, not data. */
+  blockquote {
+    border-color: color-mix(in oklch, var(--primary) 65%, transparent);
+  }
+  main a {
+    text-decoration-color: color-mix(in oklch, var(--primary) 80%, transparent);
+    text-decoration-thickness: 1.5px;
+  }
+  main a:hover {
+    text-decoration-color: var(--primary);
+  }
+  /* Keep #section targets clear of the sticky nav. */
+  @media (min-width: 40rem) {
+    [id] {
+      scroll-margin-top: 5rem;
+    }
+  }
   ::selection {
     background: rgb(91 157 255 / 0.35);
   }

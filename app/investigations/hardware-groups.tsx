@@ -22,7 +22,7 @@ export function HardwareGroups({ investigations }: { investigations: Investigati
   const { groups, rest } = groupInvestigations(investigations);
 
   return (
-    <section aria-labelledby="hardware-heading" className="flex scroll-mt-4 flex-col gap-4">
+    <section aria-labelledby="hardware-heading" className="flex scroll-mt-4 sm:scroll-mt-20 flex-col gap-4">
       <div className="flex max-w-prose flex-col gap-1">
         <h2 id="hardware-heading" className="text-lg font-semibold">
           Hardware groups
@@ -31,7 +31,7 @@ export function HardwareGroups({ investigations }: { investigations: Investigati
       </div>
 
       {groups.map(({ group, members }) => (
-        <div key={group.id} data-group={group.id} className="flex min-w-0 flex-col gap-3 rounded-lg border p-4">
+        <div key={group.id} data-group={group.id} className="flex min-w-0 flex-col gap-3 rounded-lg border p-4 bg-card/60 backdrop-blur-sm">
           <h3 className="text-base font-semibold text-balance">{group.name}</h3>
           <figure className="flex flex-col gap-1">
             <blockquote data-quoted="brief" className="border-l-2 pl-3 text-sm leading-relaxed italic">
@@ -65,7 +65,7 @@ export function HardwareGroups({ investigations }: { investigations: Investigati
         </div>
       ))}
 
-      <div data-group="rest" className="flex min-w-0 flex-col gap-3 rounded-lg border p-4">
+      <div data-group="rest" className="flex min-w-0 flex-col gap-3 rounded-lg border p-4 bg-card/60 backdrop-blur-sm">
         <h3 className="text-base font-semibold text-balance">Not in the brief&apos;s hardware groups</h3>
         <ul className="flex flex-col gap-2 text-sm">
           {rest.map((inv) => {

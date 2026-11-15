@@ -93,11 +93,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-16">
-      <section className="flex flex-col gap-5 pt-6">
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+      <section className="flex flex-col gap-6 pt-10 pb-4 sm:pt-20 sm:pb-10">
+        <h1 className="max-w-4xl text-5xl leading-[0.95] font-extrabold tracking-tight text-balance sm:text-7xl">
           What NASA has burned in space, and what it hasn&apos;t.
         </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground text-pretty">
+        <p className="max-w-2xl text-lg text-muted-foreground text-pretty sm:text-xl">
           Firebreak ranks NASA&apos;s microgravity combustion investigations for a habitat
           scenario, shows where the evidence runs out, and answers questions only with
           citations it can verify.
@@ -112,11 +112,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="gap-heading" className="flex flex-col gap-4">
+      <section aria-labelledby="gap-heading" className="flex flex-col gap-4 rounded-lg border border-l-2 border-l-primary bg-card/60 p-5 backdrop-blur-sm sm:p-8">
         <h2 id="gap-heading" className="text-sm font-medium text-muted-foreground">
           The gap in one line
         </h2>
-        <p className="max-w-3xl text-2xl font-medium tracking-tight text-balance">
+        <p className="max-w-3xl text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
           {f.o2Runs} solid-material flight tests ({listOf(f.o2Investigations)}) with a
           recorded starting oxygen. Highest: {f.maxO2}%. Planned Moon Base atmosphere: 30% or
           more.
@@ -136,11 +136,11 @@ export default function Home() {
       <EvidenceAtlas runs={runsJson as Run[]} investigations={investigationsJson as Investigation[]} />
 
       <section aria-labelledby="why-heading" className="flex flex-col gap-4">
-        <h2 id="why-heading" className="text-xl font-semibold">
+        <h2 id="why-heading" className="text-2xl font-bold">
           Why it matters
         </h2>
         <figure className="flex max-w-3xl flex-col gap-2">
-          <blockquote className="border-l-2 pl-4 text-xl leading-snug font-medium text-balance">
+          <blockquote className="border-l-2 pl-4 text-2xl leading-snug font-medium text-balance">
             “{ARTEMIS_QUOTE}”
           </blockquote>
           <figcaption className="text-sm text-muted-foreground">{ARTEMIS_ATTRIBUTION}</figcaption>
@@ -172,7 +172,7 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="how-heading" className="flex flex-col gap-4">
-        <h2 id="how-heading" className="text-xl font-semibold">
+        <h2 id="how-heading" className="text-2xl font-bold">
           How it works
         </h2>
         <ul className="grid gap-4 sm:grid-cols-3">

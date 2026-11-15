@@ -25,7 +25,7 @@ export default function BriefPage() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex max-w-prose flex-col gap-2">
-        <h1 className="text-2xl font-semibold">How Firebreak answers the challenge</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">How Firebreak answers the challenge</h1>
         <p className="text-base text-pretty text-muted-foreground">
           Each row takes words from the{" "}
           <a href={BRIEF_URL} target="_blank" rel="noreferrer" className={linkClass}>

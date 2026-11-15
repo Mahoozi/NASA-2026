@@ -28,14 +28,14 @@ export function EvidenceAtlas({ runs, investigations }: { runs: Run[]; investiga
   const groups = columnGroups(atlas.columns);
   const depth = headerRows(groups);
   return (
-    <section aria-labelledby="atlas-heading" className="flex scroll-mt-4 flex-col gap-3">
+    <section aria-labelledby="atlas-heading" className="flex scroll-mt-4 sm:scroll-mt-20 flex-col gap-3">
       <h2 id="atlas-heading" className="text-xl font-semibold">
         What NASA has burned, by atmosphere and material
       </h2>
       <p className="text-sm text-muted-foreground">{ATLAS_LEGEND}</p>
 
       <div
-        className="relative max-w-full overflow-x-auto rounded-lg border"
+        className="relative max-w-full overflow-x-auto rounded-lg border bg-card/60 backdrop-blur-sm"
         tabIndex={0}
         role="region"
         aria-label="Evidence gap atlas grid, scrolls sideways on narrow screens"

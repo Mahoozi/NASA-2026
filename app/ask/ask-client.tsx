@@ -160,7 +160,7 @@ function ContextLine({
 }) {
   const ids = context.investigationIds ?? [];
   return (
-    <div className="flex flex-col gap-1 rounded-lg border border-border px-4 py-3 text-sm">
+    <div className="flex flex-col gap-1 rounded-lg border border-border px-4 py-3 text-sm bg-card/60 backdrop-blur-sm">
       {context.scenario && (
         <p>
           <span className="text-muted-foreground">Scenario from the Lab: </span>

@@ -33,7 +33,7 @@ export function WatchlistView({ entries, runs, corpus }: { entries: WatchlistEnt
   return (
     <div className="flex flex-col gap-8">
       <div className="flex max-w-prose flex-col gap-3">
-        <h1 className="text-2xl font-semibold text-balance">{WATCHLIST_TITLE}</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl text-balance">{WATCHLIST_TITLE}</h1>
         <p className="text-base text-pretty text-muted-foreground">{WATCHLIST_INTRO}</p>
       </div>
 

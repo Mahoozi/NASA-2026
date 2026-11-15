@@ -130,7 +130,7 @@ export function CompareTable({ investigations }: { investigations: Investigation
         </p>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border">
+      <div className="overflow-x-auto rounded-lg border bg-card/60 backdrop-blur-sm">
         <Table>
           <TableHeader>
             <TableRow>

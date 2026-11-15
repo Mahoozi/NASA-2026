@@ -10,7 +10,7 @@ export default function InvestigationsPage() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold text-balance">Investigations</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl text-balance">Investigations</h1>
         <p className="max-w-prose text-sm text-muted-foreground">
           The {investigations.length} combustion investigations in NASA’s Physical Sciences
           Informatics (PSI) system. Each page shows the investigation’s own PSI text and links back
