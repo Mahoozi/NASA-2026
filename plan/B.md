@@ -82,7 +82,8 @@ Rules: see `plan/PLAN.md` Stage 3b. Anything unfinished at 22:00 is cut.
   Commit: `Add published findings`. Push as soon as it passes; A is waiting on it.
   Done: 9 findings from 5 NTRS papers (BASS-II 2014, BASS/BASS-II fabric 2015, Saffire 2017 x2, FM2 2024, ECLSS 2026). `pipeline/corpus_findings.test.ts` and `npm run build:corpus` both fail if a quote stops being verbatim. Claims paraphrase only their quote; tags may also use the same source page (e.g. SIBAL, BASS/BASS-II named in the fabric paper's abstract). Not covered: "partial-gravity flammability may peak near lunar gravity" — no fetched paper says it (its only listed source, NTRS 20210022402, was skipped for copyright). FM2 has no flight results yet; its finding says what FM2 will measure.
 - [x] **B3b.3 Golden set (≈1 h).** Write 4 new golden questions BEFORE seeing any answers (3 answerable from the papers, 1 unanswerable), then rerun evals and record the results. Do not tune the prompt to the golden set. If any existing question regresses, stop and tell A.
-- [ ] **B3b.4 Test on the live site at 21:00.** `/ask` cites papers with the "published paper" label; `/evals` totals.
+- [x] **B3b.4 Test on the live site at 21:00.** `/ask` cites papers with the "published paper" label; `/evals` totals.
+  Done Sat 22:30 on https://nasa-2026-nine.vercel.app: /ask answered a BASS-II oxygen-limit question citing "Ferkul et al. (2014) … p. 18" with the "Published paper" and "Quote verified" badges; /evals shows 27 of 28 expected results, 6 of 7 declined, 21 of 21 answered, 90 of 90 citations verified.
 
 ## Stage 4 — Freeze (Sun 11:30–21:00: judging 15:00, final submission by 21:00)
 
