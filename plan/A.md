@@ -88,6 +88,8 @@ Page order on `/lab`: presets and form → summary + gaps panel → coverage gri
 
 Rules: see `plan/PLAN.md` Stage 3b. Anything unfinished at 22:00 is cut.
 
+Status: Stage 3b closed at 21:00 Sat; build verified locally.
+
 - [x] **A3b.1 Bounds caveat (15 min).** Where the Saffire-II "bounds" sentence appears, add: published tests suggest flammability may peak near lunar gravity, so normal-gravity and microgravity results may not bound it; this is what LUCI and FM2 are meant to test. Cite NTRS 20210022402 (https://ntrs.nasa.gov/api/citations/20210022402/downloads/217-_GollnerMichaelJ.pdf) and NTRS 20240015307 (https://ntrs.nasa.gov/citations/20240015307). Quote only text fetched from those URLs.
   Commit: `Add partial-gravity caveat to bounds note`.
 - [x] **A3b.2 Recorded flammability limits model (≈3 h).** `lib/limits.ts` + Lab panel "Recorded flammability limits".
