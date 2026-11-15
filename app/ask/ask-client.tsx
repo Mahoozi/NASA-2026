@@ -117,14 +117,17 @@ export function AskClient({ acronyms }: { acronyms: Record<string, string> }) {
                 type="button"
                 variant="outline"
                 size="sm"
-                className="h-auto min-h-7 py-1 text-left whitespace-normal"
+                className="h-auto min-h-7 max-w-full py-1 text-left whitespace-normal"
                 disabled={loading}
                 onClick={() => {
                   setQuestion(ex.question);
                   void ask(ex.question);
                 }}
               >
-                <span className="text-muted-foreground">{ex.label}:</span> {ex.question}
+                {/* One inline span so the label and question wrap as text inside the flex button. */}
+                <span className="min-w-0">
+                  <span className="text-muted-foreground">{ex.label}:</span> {ex.question}
+                </span>
               </Button>
             ))}
           </div>

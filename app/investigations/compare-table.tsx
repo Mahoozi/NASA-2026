@@ -186,7 +186,7 @@ export function CompareTable({ investigations }: { investigations: Investigation
                     </div>
                   </TableCell>
                   <TableCell>{inv.fuelPhase.length ? inv.fuelPhase.join(", ") : <NotStated />}</TableCell>
-                  <TableCell className="max-w-64 whitespace-normal">{inv.facility || <NotStated />}</TableCell>
+                  <TableCell className="max-w-72 min-w-56 whitespace-normal">{inv.facility || <NotStated />}</TableCell>
                   <TableCell>
                     {inv.hasRunData ? (
                       <Link href={labHref(inv.id)} className="font-medium underline-offset-4 hover:underline">
