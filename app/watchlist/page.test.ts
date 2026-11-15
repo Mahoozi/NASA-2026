@@ -46,7 +46,7 @@ const ROOT = join(__dirname, "..", "..");
 
 describe("/watchlist page", () => {
   it("has the exact title, intro and footnote", () => {
-    expect(WATCHLIST_TITLE).toBe("ISS hardware NASA flagged for higher-oxygen cabins");
+    expect(WATCHLIST_TITLE).toBe("ISS hardware NASA assessed for higher-oxygen cabins");
     expect(WATCHLIST_INTRO).toBe(
       "In 2026, NASA's Engineering and Safety Center assessed ISS life-support hardware for Exploration cabin atmospheres with lower pressure and more oxygen. For each item where the report names a material, Firebreak shows NASA's own sentence and what microgravity flight evidence PSI holds for that material.",
     );
@@ -187,10 +187,10 @@ describe("/watchlist page", () => {
     expect(atm).toEqual({ o2a: "26.5", psiA: "10.2", o2b: "34", psiB: "8.2" });
     const withRuns = hardware.filter((h) => materialEvidence(h.materialKey, runs).runs > 0);
     const o2 = withRuns.map((h) => materialEvidence(h.materialKey, runs).maxO2).filter((v): v is number => v !== null);
-    const sentence = `${withRuns.length} of ${hardware.length} flagged items name a material with at least one PSI flight run. Among those runs, the highest recorded starting oxygen is ${Math.max(...o2)}%. The report assessed Exploration atmospheres of ${atm.o2a}% O2 at ${atm.psiA} psia and ${atm.o2b}% O2 at ${atm.psiB} psia.`;
+    const sentence = `${withRuns.length} of ${hardware.length} assessed items name a material with at least one PSI flight run. Among those runs, the highest recorded starting oxygen is ${Math.max(...o2)}%. The report assessed Exploration atmospheres of ${atm.o2a}% O2 at ${atm.psiA} psia and ${atm.o2b}% O2 at ${atm.psiB} psia.`;
     expect(watchlistSentence(rows, atm)).toBe(sentence);
     expect(plain(html)).toContain(sentence);
-    expect(sentence).toContain("7 of 15 flagged items");
+    expect(sentence).toContain("7 of 15 assessed items");
     expect(sentence).toContain("highest recorded starting oxygen is 22.2%");
     // No highest-oxygen sentence when no matching run records one.
     expect(watchlistSentence(rows.map((r) => ({ ...r, evidence: { ...r.evidence, runs: 1, maxO2: null } })), atm)).not.toContain("highest recorded");
@@ -248,8 +248,8 @@ describe("watchlist links and the Lab line", () => {
   });
 
   it("shows one line linking to /watchlist, and nothing when there is no item", () => {
-    expect(watchlistLineText(1)).toBe("NASA's NESC report flags 1 ISS hardware item made of this material.");
-    expect(watchlistLineText(3)).toBe("NASA's NESC report flags 3 ISS hardware items made of this material.");
+    expect(watchlistLineText(1)).toBe("NASA's NESC report assesses 1 ISS hardware item made of this material.");
+    expect(watchlistLineText(3)).toBe("NASA's NESC report assesses 3 ISS hardware items made of this material.");
     const line = renderToStaticMarkup(createElement(WatchlistLine, { count: 1 }));
     expect(line).toContain('href="/watchlist"');
     expect(plain(line)).toBe(watchlistLineText(1));

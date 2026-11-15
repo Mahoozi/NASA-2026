@@ -5,7 +5,7 @@ import { presets, scenarioToQuery } from "../lab/scenario";
 import { evidenceFamilies, evidenceFamily, materialEvidence, type MaterialEvidence } from "./evidence";
 import type { ContextEntry, HardwareEntry, WatchlistEntry } from "./types";
 
-export const WATCHLIST_TITLE = "ISS hardware NASA flagged for higher-oxygen cabins";
+export const WATCHLIST_TITLE = "ISS hardware NASA assessed for higher-oxygen cabins";
 
 export const WATCHLIST_INTRO =
   "In 2026, NASA's Engineering and Safety Center assessed ISS life-support hardware for Exploration cabin atmospheres with lower pressure and more oxygen. For each item where the report names a material, Firebreak shows NASA's own sentence and what microgravity flight evidence PSI holds for that material.";
@@ -89,7 +89,7 @@ export function atmospheresFrom(entries: WatchlistEntry[]): Atmospheres {
 export function watchlistSentence(rows: WatchlistRow[], atm: Atmospheres): string {
   const withRuns = rows.filter((r) => r.evidence.runs > 0);
   const o2 = withRuns.flatMap((r) => (r.evidence.maxO2 === null ? [] : [r.evidence.maxO2]));
-  const parts = [`${withRuns.length} of ${rows.length} flagged items name a material with at least one PSI flight run.`];
+  const parts = [`${withRuns.length} of ${rows.length} assessed items name a material with at least one PSI flight run.`];
   if (o2.length) parts.push(`Among those runs, the highest recorded starting oxygen is ${Math.max(...o2)}%.`);
   parts.push(`The report assessed Exploration atmospheres of ${atm.o2a}% O2 at ${atm.psiA} psia and ${atm.o2b}% O2 at ${atm.psiB} psia.`);
   return parts.join(" ");
@@ -107,4 +107,4 @@ export function familyWatchCounts(entries: WatchlistEntry[], runs: Run[]): Parti
 }
 
 export const watchlistLineText = (n: number) =>
-  `NASA's NESC report flags ${n} ISS hardware item${n === 1 ? "" : "s"} made of this material.`;
+  `NASA's NESC report assesses ${n} ISS hardware item${n === 1 ? "" : "s"} made of this material.`;

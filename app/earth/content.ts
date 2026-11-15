@@ -4,6 +4,7 @@
 import investigationsJson from "../../data/investigations.json";
 import runsJson from "../../data/runs.json";
 import type { Investigation, Run } from "../../lib/schema";
+import { outcomeText } from "../lab/run-order";
 import { BRIEF_FLEX_SENTENCE } from "../brief/brief-text";
 
 export { BRIEF_FLEX_SENTENCE, BRIEF_SENTENCE, BRIEF_TEXT, displayBriefQuote } from "../brief/brief-text";
@@ -94,8 +95,9 @@ const SOURCE_NOTE_LABEL = "source note 2";
 const SHOWN_OBSERVATIONS = ["microgravity burn length", "microgravity spread", "1-g burn length", "1-g spread rate", SOURCE_NOTE_LABEL];
 
 /**
- * Fields of a run exactly as stored. `events` empty is shown as the Lab's
- * "outcome not recorded" (no event keyword in the table), never as a result.
+ * Fields of a run exactly as stored. The outcome is the Lab's own wording
+ * (outcomeText): event keywords, else "see observations" when the run has recorded
+ * results, else "outcome not recorded"; never a result of our own.
  */
 export function runFields(run: Run): RunField[] {
   const fields: RunField[] = [
@@ -107,8 +109,8 @@ export function runFields(run: Run): RunField[] {
   ];
   if (run.flowDirection) fields.push({ label: "Flow direction", value: run.flowDirection });
   fields.push({
-    label: "Event keyword",
-    value: run.events.length ? run.events.join(", ") : "outcome not recorded",
+    label: "Outcome",
+    value: outcomeText(run),
   });
   for (const label of SHOWN_OBSERVATIONS) {
     const o = run.observations?.find((x) => x.label === label);

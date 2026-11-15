@@ -131,7 +131,7 @@ describe("/earth page", () => {
     expect(get("Material as recorded")).toBe(run.material.raw);
     expect(get("Starting oxygen")).toBe(`${run.o2InitialPct}%`);
     expect(get("Airflow as recorded")).toBe(run.flowCmS.raw);
-    expect(get("Event keyword")).toBe("outcome not recorded");
+    expect(get("Outcome")).toBe("see observations");
     expect(run.events).toEqual([]);
     for (const label of ["microgravity burn length", "1-g burn length"])
       expect(get(label)).toBe(run.observations!.find((o) => o.label === label)!.value);
