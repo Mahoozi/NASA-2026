@@ -19,7 +19,7 @@ export default function LabPage() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-semibold">Scenario Lab</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Scenario Lab</h1>
         <p className="text-sm text-muted-foreground">
           Describe a fire scenario and see which NASA microgravity combustion
           investigations have evidence close to it.

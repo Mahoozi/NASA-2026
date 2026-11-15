@@ -15,7 +15,7 @@ export function ClaimChecks({ results, checkedAt }: { results: ClaimResult[]; ch
   return (
     <section aria-labelledby="claim-checks" className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
-        <h2 id="claim-checks" className="text-lg font-medium">
+        <h2 id="claim-checks" className="text-xl font-bold">
           Claim checks
         </h2>
         <p className="max-w-prose text-sm text-muted-foreground">

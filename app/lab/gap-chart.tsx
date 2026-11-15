@@ -264,7 +264,7 @@ export function GapChart({
   const reasons = unplottedReasons(unplotted);
 
   return (
-    <figure className="gap-chart flex flex-col gap-3">
+    <figure className="gap-chart flex flex-col gap-3 rounded-lg border bg-card/60 p-4 backdrop-blur-sm">
       <style>{`
         .gap-chart { --gc-s1:#2a78d6; --gc-s2:#eb6834; --gc-s3:#1baf7a; --gc-other:#898781; }
         .dark .gap-chart { --gc-s1:#3987e5; --gc-s2:#d95926; --gc-s3:#199e70; --gc-other:#898781; }

@@ -144,8 +144,8 @@ export function LabClient({
         onPreset={showSummary}
       />
 
-      <section aria-labelledby="summary-heading" className="flex flex-col gap-4">
-        <h2 id="summary-heading" className="scroll-mt-4 text-lg font-semibold">
+      <section aria-labelledby="summary-heading" className="flex flex-col gap-4 rounded-lg border border-l-2 border-l-primary bg-card/60 p-4 backdrop-blur-sm sm:p-6">
+        <h2 id="summary-heading" className="scroll-mt-4 sm:scroll-mt-20 text-xl font-bold">
           Summary
         </h2>
         {scored ? (
@@ -166,7 +166,7 @@ export function LabClient({
       </section>
 
       <section aria-labelledby="grid-heading" className="flex flex-col gap-3">
-        <h2 id="grid-heading" className="text-lg font-semibold">
+        <h2 id="grid-heading" className="text-xl font-bold">
           Coverage grid: runs by material and starting oxygen
         </h2>
         <CoverageGrid
@@ -183,14 +183,14 @@ export function LabClient({
       </section>
 
       <section aria-labelledby="chart-heading" className="flex flex-col gap-3">
-        <h2 id="chart-heading" className="text-lg font-semibold">
+        <h2 id="chart-heading" className="text-xl font-bold">
           Gap chart: airflow and starting oxygen of every run
         </h2>
         <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} investigations={investigations} onSelectRun={pickRun} />
       </section>
 
       <section aria-labelledby="limits-heading" className="flex flex-col gap-3">
-        <h2 id="limits-heading" className="text-lg font-semibold">
+        <h2 id="limits-heading" className="text-xl font-bold">
           Recorded flammability limits
         </h2>
         <LimitsPanel runs={runs} scenario={scenario} />
@@ -199,7 +199,7 @@ export function LabClient({
       {/* Hidden until data/findings.json has verified entries. */}
       {scored && findings.length > 0 && (
         <section aria-labelledby="findings-heading" className="flex flex-col gap-3">
-          <h2 id="findings-heading" className="text-lg font-semibold">
+          <h2 id="findings-heading" className="text-xl font-bold">
             Published findings
           </h2>
           <FindingsPanel findings={findings} scenario={scenario} />
@@ -209,9 +209,9 @@ export function LabClient({
       <section
         id={SPACE_VS_EARTH_ID}
         aria-labelledby="space-earth-heading"
-        className="flex scroll-mt-4 flex-col gap-3"
+        className="flex scroll-mt-4 sm:scroll-mt-20 flex-col gap-3"
       >
-        <h2 id="space-earth-heading" className="text-lg font-semibold">
+        <h2 id="space-earth-heading" className="text-xl font-bold">
           Space vs Earth (Saffire-II)
         </h2>
         <SpaceVsEarth runs={runs} />
@@ -219,7 +219,7 @@ export function LabClient({
 
       {scored && (
         <section className="flex flex-col gap-3" aria-labelledby="ranked-heading">
-          <h2 id="ranked-heading" className="text-lg font-semibold">
+          <h2 id="ranked-heading" className="text-xl font-bold">
             Ranked investigations
           </h2>
           <RankedList matches={matches} pendingIds={pendingIds} withRuns={withRuns} />
@@ -227,7 +227,7 @@ export function LabClient({
       )}
 
       <section aria-labelledby="varied-heading" className="flex flex-col gap-3">
-        <h2 id="varied-heading" className="text-lg font-semibold">
+        <h2 id="varied-heading" className="text-xl font-bold">
           What varied and what was held fixed
         </h2>
         <WhatVaried runs={runs} investigations={investigations} matchedCoverage={matchedCoverage} />
@@ -235,7 +235,7 @@ export function LabClient({
 
       <section className="flex flex-col gap-3" aria-labelledby="runs-heading">
         <div className="flex flex-col gap-1">
-          <h2 id="runs-heading" className="text-lg font-semibold">
+          <h2 id="runs-heading" className="text-xl font-bold">
             Imported runs
           </h2>
           <p className="text-sm text-muted-foreground">
@@ -275,7 +275,7 @@ export function LabClient({
       </section>
 
       <section className="flex flex-col gap-3" aria-labelledby="download-heading">
-        <h2 id="download-heading" className="text-lg font-semibold">
+        <h2 id="download-heading" className="text-xl font-bold">
           Download
         </h2>
         <DownloadDataset

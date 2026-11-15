@@ -92,7 +92,7 @@ function Tip({ active, payload }: { active?: boolean; payload?: { payload: Datum
   const d = active ? payload?.[0]?.payload : undefined;
   if (!d) return null;
   return (
-    <div className="max-w-72 rounded-md border border-border bg-popover px-2.5 py-2 text-sm text-popover-foreground shadow-md">
+    <div className="max-w-72 rounded-md border border-primary/40 bg-popover/95 px-2.5 py-2 text-sm text-popover-foreground shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_10px_30px_rgb(0_0_0/0.65)] backdrop-blur-md">
       {d.label}
     </div>
   );
@@ -154,7 +154,7 @@ export function LimitsPanel({ runs, scenario }: { runs: Run[]; scenario: Scenari
   const legend: Kind[] = ["extinctionAt", "extinctionBelow", "blowoff", "noIgnition", "notRecorded"];
 
   return (
-    <div className="limits-chart flex flex-col gap-4">
+    <div className="limits-chart flex flex-col gap-4 rounded-lg border bg-card/60 p-4 backdrop-blur-sm">
       <style>{`
         .limits-chart { --lc-ext:#2a78d6; --lc-blow:#eb6834; --lc-noign:#1baf7a; }
         .dark .limits-chart { --lc-ext:#3987e5; --lc-blow:#d95926; --lc-noign:#199e70; }

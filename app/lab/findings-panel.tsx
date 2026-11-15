@@ -14,7 +14,7 @@ export function FindingsPanel({ findings, scenario }: { findings: Finding[]; sce
   return (
     <ul className="flex flex-col gap-4">
       {matched.map(({ finding: f, overlaps }) => (
-        <li key={f.id} className="flex flex-col gap-2 rounded-lg border p-4">
+        <li key={f.id} className="flex flex-col gap-2 rounded-lg border bg-card/60 p-4 backdrop-blur-sm">
           <p className="text-sm font-medium text-muted-foreground">{FINDING_LABEL}</p>
           <p>{f.claim}</p>
           <blockquote className="border-l-2 pl-3 text-sm italic">“{nested(f.quote)}”</blockquote>

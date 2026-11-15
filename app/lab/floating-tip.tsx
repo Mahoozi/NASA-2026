@@ -94,7 +94,7 @@ export function FloatingTip({
       data-tip-root={root}
       style={{ position: "fixed", left: 0, top: 0, visibility: "hidden", maxWidth: "min(20rem, calc(100vw - 16px))" }}
       className={cn(
-        "z-50 flex flex-col gap-0.5 rounded-md border border-border bg-popover px-3 py-2 text-sm text-popover-foreground shadow-md",
+        "z-50 flex flex-col gap-0.5 rounded-md border border-primary/40 bg-popover/95 px-3 py-2 text-sm text-popover-foreground shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_10px_30px_rgb(0_0_0/0.65)] backdrop-blur-md",
         !interactive && "pointer-events-none",
       )}
     >

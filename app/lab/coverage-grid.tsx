@@ -106,8 +106,8 @@ export function CoverageGrid({
     cn(
       "flex h-9 w-full min-w-12 items-center justify-center rounded-md text-sm tabular-nums outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
       n === 0
-        ? "border border-dashed border-border bg-[repeating-linear-gradient(135deg,transparent_0_6px,var(--muted)_6px_7px)] text-transparent hover:border-muted-foreground"
-        : "bg-muted hover:bg-accent",
+        ? "border border-dashed border-border bg-[repeating-linear-gradient(135deg,transparent_0_6px,color-mix(in_oklab,var(--foreground)_16%,transparent)_6px_7px)] text-transparent hover:border-muted-foreground"
+        : "border border-foreground/40 bg-foreground/15 hover:bg-foreground/25",
       active && "ring-2 ring-foreground",
     );
   const runsText = (n: number) => (n === 0 ? "no runs" : `${n} run${n === 1 ? "" : "s"}`);

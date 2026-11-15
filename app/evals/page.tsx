@@ -48,7 +48,7 @@ export default function EvalsPage() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-semibold">Scorecard</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Scorecard</h1>
         <p className="max-w-prose text-sm text-muted-foreground">
           How the Ask page does on a fixed set of golden questions: some answered by a specific
           NASA source, some comparing two investigations, and some the sources can’t answer,
@@ -75,8 +75,8 @@ export default function EvalsPage() {
         </div>
       )}
 
-      <section aria-labelledby="totals" className="flex flex-col gap-6">
-        <h2 id="totals" className="text-lg font-medium">
+      <section aria-labelledby="totals" className="flex flex-col gap-6 rounded-lg border bg-card/60 p-4 backdrop-blur-sm sm:p-6">
+        <h2 id="totals" className="text-xl font-bold">
           Totals
         </h2>
         <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
@@ -131,7 +131,7 @@ export default function EvalsPage() {
 
       <section aria-labelledby="questions" className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h2 id="questions" className="text-lg font-medium">
+          <h2 id="questions" className="text-xl font-bold">
             Questions
           </h2>
           <p className="text-sm text-muted-foreground">
