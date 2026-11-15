@@ -10,14 +10,14 @@ import watchlistJson from "../../data/hardware_watchlist.json";
 import runsJson from "../../data/runs.json";
 import { limitsForScenario } from "../../lib/limits";
 import { matchInvestigations } from "../../lib/match";
-import type { CorpusDoc, Finding, Investigation, Run, Scenario } from "../../lib/schema";
+import type { CorpusDoc, Finding, Investigation, Run } from "../../lib/schema";
 import { SOURCE_DISCREPANCIES } from "../../pipeline/source_discrepancies";
 import { buildAtlas } from "../atlas/atlas";
 import { maxStartingO2, partialGravityRunCount, runsWithStartingO2 } from "../brief/run-facts";
 import { quoteIsVerbatim, verifiedFindings } from "../lab/findings";
 import { loadInvestigations } from "../lab/load-investigations";
 import { matchingRunIdSet } from "../lab/matching-runs";
-import { presets } from "../lab/scenario";
+import { DEMO_SCENARIO, presets } from "../lab/scenario";
 import type { WatchlistEntry } from "../watchlist/types";
 
 /** The numbers and outcomes Firebreak states publicly. Change one only on purpose. */
@@ -35,7 +35,8 @@ export const PUBLIC = {
   atlasTotal: 35,
 } as const;
 
-export const DEMO_SCENARIO: Scenario = { materialFamily: "PMMA rod", o2Pct: 17, flowCmS: 5, gravity: "micro" };
+// The demo scenario lives with the Lab, which also opens on it; the claim checks it from here.
+export { DEMO_SCENARIO };
 
 export type Claim = {
   id: string;

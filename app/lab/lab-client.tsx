@@ -24,7 +24,7 @@ import { RankedList } from "./ranked-list";
 import { reportHref } from "./report/report";
 import { createHashScroller } from "./scroll-to-hash";
 import { RunsTable } from "./runs-table";
-import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
+import { DEMO_SCENARIO, GRAVITY_LABEL, hasScenarioParams, hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
 import { SpaceVsEarth } from "./space-vs-earth";
 import { WhatVaried } from "./what-varied";
@@ -92,6 +92,17 @@ export function LabClient({
     (next: Scenario) => writeUrl(scenarioToQuery(next), investigationId),
     [writeUrl, investigationId],
   );
+  // A link with no scenario opens on the demo scenario, so every panel shows real
+  // results. First load only: "Clear scenario" afterwards really clears. The hash is
+  // kept so links such as /lab#download-heading still land on their section.
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    if (hasScenarioParams(p) || p.has("investigation")) return;
+    window.history.replaceState(null, "", `${pathname}?${scenarioToQuery(DEMO_SCENARIO)}${window.location.hash}`);
+  }, [pathname]);
+  const onDemo = scenarioToQuery(scenario) === scenarioToQuery(DEMO_SCENARIO);
+  const demoRuns = matchingRunIds?.size ?? 0;
+
   // A link such as /lab#varied-heading: the sections only exist once this component
   // has rendered, after the URL scenario was applied, so scroll once, after paint.
   const scrollToHash = useRef<ReturnType<typeof createHashScroller> | null>(null);
@@ -137,6 +148,13 @@ export function LabClient({
 
   return (
     <div className="flex flex-col gap-10">
+      {onDemo && (
+        <p className="-mb-6 text-sm text-muted-foreground">
+          Example scenario: {DEMO_SCENARIO.materialFamily}, {DEMO_SCENARIO.o2Pct}% O₂,{" "}
+          {DEMO_SCENARIO.flowCmS} cm/s, {DEMO_SCENARIO.gravity && GRAVITY_LABEL[DEMO_SCENARIO.gravity].toLowerCase()}, with{" "}
+          {demoRuns} matching run{demoRuns === 1 ? "" : "s"}. Change any field or pick a preset.
+        </p>
+      )}
       <ScenarioForm
         scenario={scenario}
         presets={presetList}

@@ -61,6 +61,16 @@ export function scenarioToQuery(s: Scenario): string {
   return p.toString();
 }
 
+/**
+ * The pitch's demo scenario, and what the Lab opens on when the link carries none.
+ * The claim checks on /evals recompute its matching runs from the data.
+ */
+export const DEMO_SCENARIO: Scenario = { materialFamily: "PMMA rod", o2Pct: 17, flowCmS: 5, gravity: "micro" };
+
+/** True when the URL sets any scenario field (the Lab's own keys only). */
+export const hasScenarioParams = (params: Getter) =>
+  Object.values(KEYS).some((k) => params.get(k) !== null);
+
 /** True when the scenario sets something matching can score (pressure is context only). */
 export function hasScoredDimension(s: Scenario): boolean {
   return (["materialFamily", "o2Pct", "flowCmS", "gravity", "safetyArea"] as const)
