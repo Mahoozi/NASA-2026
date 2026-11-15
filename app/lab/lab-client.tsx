@@ -2,7 +2,7 @@
 // Person A — owns the scenario state, which lives in the URL.
 // Page order: presets and form → summary + gaps → coverage grid → gap chart
 // → ranked investigations → runs table → download.
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations } from "@/lib/match";
@@ -113,6 +113,12 @@ export function LabClient({
         ?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     });
   const clearInvestigation = () => writeUrl(scenarioToQuery(scenario), null);
+  // Clicking a gap-chart point marks that run's row in the runs table and scrolls to it.
+  const [highlight, setHighlight] = useState<{ id: string; n: number } | null>(null);
+  const pickRun = (run: Run) => {
+    if (investigationId && run.investigationId !== investigationId) clearInvestigation();
+    setHighlight((h) => ({ id: run.id, n: (h?.n ?? 0) + 1 }));
+  };
 
   const focus = investigationId
     ? investigations.find((i) => i.id === investigationId) ?? null
@@ -180,7 +186,7 @@ export function LabClient({
         <h2 id="chart-heading" className="text-lg font-semibold">
           Gap chart: airflow and starting oxygen of every run
         </h2>
-        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} />
+        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} investigations={investigations} onSelectRun={pickRun} />
       </section>
 
       <section aria-labelledby="limits-heading" className="flex flex-col gap-3">
@@ -264,7 +270,7 @@ export function LabClient({
           </div>
         )}
         {(tableRuns.length > 0 || !investigationId) && (
-          <RunsTable runs={tableRuns} matchingRunIds={matchingRunIds} />
+          <RunsTable runs={tableRuns} matchingRunIds={matchingRunIds} highlight={highlight} />
         )}
       </section>
 

@@ -1,5 +1,6 @@
 "use client";
 // Person A — run counts by material × starting-O2 band. Empty cells are the gaps.
+import { useCallback, useState } from "react";
 import type { Investigation, MaterialFamily, Run, Scenario } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import {
@@ -11,63 +12,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { type Anchor, anchorOf, CellTipBody, FloatingTip, justTouched, noteTouch, useDismiss } from "./floating-tip";
+import { O2_BANDS, OXYGEN_NOT_RECORDED, coverageRows } from "./coverage-rows";
 import { materialLabel } from "./material-label";
-import { MATERIAL_FAMILIES } from "./scenario";
 
-/** Lower-inclusive bands. "<15" spans the chart's 10–15 range for its midpoint. */
-export const O2_BANDS = [
-  { label: "<15", lo: -Infinity, hi: 15, mid: 12.5 },
-  { label: "15–17", lo: 15, hi: 17, mid: 16 },
-  { label: "17–19", lo: 17, hi: 19, mid: 18 },
-  { label: "19–21", lo: 19, hi: 21, mid: 20 },
-  { label: "21–23", lo: 21, hi: 23, mid: 22 },
-  { label: "23–30", lo: 23, hi: 30, mid: 26.5 },
-  { label: "30–36", lo: 30, hi: 36, mid: 33 },
-] as const;
-
-/** The importers' flag for a table with no oxygen column (pipeline/psi_shared.ts). */
-export const OXYGEN_NOT_RECORDED = "oxygen not recorded in this table";
-
-export type GridRow = {
-  label: string;
-  family: MaterialFamily;
-  /** Runs per O2 band, in O2_BANDS order. */
-  bands: number[];
-  /** Runs with no starting oxygen value. */
-  notRecorded: number;
-};
-
-/**
- * One row per material label (see material-label.ts), ordered by family.
- * Only labels with runs appear: an all-empty row for a material that is not in
- * the data would claim a gap we cannot show.
- */
-export function coverageRows(runs: Run[]): { rows: GridRow[]; outside: Run[] } {
-  const rows = new Map<string, GridRow>();
-  const outside: Run[] = [];
-  for (const r of runs) {
-    const label = materialLabel(r);
-    const row =
-      rows.get(label) ??
-      { label, family: r.material.family, bands: O2_BANDS.map(() => 0), notRecorded: 0 };
-    rows.set(label, row);
-    const v = r.o2InitialPct;
-    if (v === null) {
-      row.notRecorded++;
-      continue;
-    }
-    const b = O2_BANDS.findIndex((band) => v >= band.lo && v < band.hi);
-    if (b < 0) outside.push(r);
-    else row.bands[b]++;
-  }
-  const order = (f: MaterialFamily) => MATERIAL_FAMILIES.indexOf(f);
-  return {
-    rows: [...rows.values()].sort(
-      (a, b) => order(a.family) - order(b.family) || a.label.localeCompare(b.label),
-    ),
-    outside,
-  };
-}
+export { O2_BANDS, OXYGEN_NOT_RECORDED, coverageRows };
+export type { GridRow } from "./coverage-rows";
 
 /** "121 BASS runs and 2 SAFFIRE-III runs", from the not-recorded flag. */
 export function noOxygenTables(runs: Run[], investigations: Investigation[]): string | null {
@@ -109,6 +59,41 @@ export function CoverageGrid({
   onPick: (family: MaterialFamily, o2Pct: number | undefined) => void;
 }) {
   const { rows, outside } = coverageRows(runs);
+  const [tip, setTip] = useState<{ key: string; anchor: Anchor; label: string; runs: Run[]; pinned: boolean; pickLabel: string; pick: () => void } | null>(null);
+  const close = useCallback(() => setTip(null), []);
+  useDismiss(tip !== null, "grid", close);
+  // Hover and keyboard focus show the details; a tap toggles them (touch has no hover).
+  const tipHandlers = (key: string, label: string, cellRuns: Run[], pickLabel: string, pick: () => void) => {
+    const open = (el: Element, pinned: boolean) => {
+      setTip({ key, anchor: anchorOf(el), label, runs: cellRuns, pinned, pickLabel, pick });
+    };
+    // A tap-pinned tooltip holds a button, so losing focus to it must not close the tooltip.
+    const hide = () => setTip((t) => (t?.key === key && !t.pinned ? null : t));
+    return {
+      "data-tip-root": "grid",
+      "aria-describedby": tip?.key === key ? "grid-tip" : undefined,
+      onPointerEnter: (e: React.PointerEvent<HTMLButtonElement>) => {
+        if (e.pointerType !== "touch") open(e.currentTarget, false);
+      },
+      onPointerLeave: (e: React.PointerEvent<HTMLButtonElement>) => {
+        if (e.pointerType !== "touch") hide();
+      },
+      onFocus: (e: React.FocusEvent<HTMLButtonElement>) => {
+        if (e.currentTarget.matches(":focus-visible")) open(e.currentTarget, false);
+      },
+      onBlur: hide,
+      onPointerDown: (e: React.PointerEvent<HTMLButtonElement>) => {
+        if (e.pointerType === "touch") noteTouch();
+      },
+      onPointerUp: (e: React.PointerEvent<HTMLButtonElement>) => {
+        if (e.pointerType !== "touch") return;
+        const el = e.currentTarget;
+        setTip((t) =>
+          t?.key === key ? null : { key, anchor: anchorOf(el), label, runs: cellRuns, pinned: true, pickLabel, pick },
+        );
+      },
+    };
+  };
   const activeBand =
     scenario.o2Pct === undefined
       ? -1
@@ -165,7 +150,14 @@ export function CoverageGrid({
                   <TableCell key={band.label} className="p-1">
                     <button
                       type="button"
-                      onClick={() => onPick(row.family, band.mid)}
+                      onClick={() => !justTouched() && onPick(row.family, band.mid)}
+                      {...tipHandlers(
+                        `${row.label}|${band.label}`,
+                        `${row.label}, ${band.label}% O₂`,
+                        row.bandRuns[i],
+                        `Set scenario to ${row.family} at ${band.mid}% O₂`,
+                        () => onPick(row.family, band.mid),
+                      )}
                       aria-label={`${row.label}, ${band.label}% O2: ${runsText(n)}. Set scenario to ${row.family} at ${band.mid}% O2.`}
                       aria-pressed={active}
                       className={cellClass(n, active)}
@@ -178,7 +170,14 @@ export function CoverageGrid({
               <TableCell className="p-1">
                 <button
                   type="button"
-                  onClick={() => onPick(row.family, undefined)}
+                  onClick={() => !justTouched() && onPick(row.family, undefined)}
+                  {...tipHandlers(
+                    `${row.label}|none`,
+                    `${row.label}, starting O₂ not recorded`,
+                    row.notRecordedRuns,
+                    `Set scenario to ${row.family} with no oxygen value`,
+                    () => onPick(row.family, undefined),
+                  )}
                   aria-label={`${row.label}, starting O2 not recorded: ${runsText(row.notRecorded)}. Set scenario to ${row.family} with no oxygen value.`}
                   aria-pressed={scenario.materialFamily === row.family && scenario.o2Pct === undefined}
                   className={cellClass(
@@ -193,6 +192,23 @@ export function CoverageGrid({
           ))}
         </TableBody>
       </Table>
+      {tip && (
+        <FloatingTip anchor={tip.anchor} id="grid-tip" root="grid" interactive={tip.pinned}>
+          <CellTipBody label={tip.label} runs={tip.runs} investigations={investigations} />
+          {tip.pinned && (
+            <button
+              type="button"
+              onClick={() => {
+                tip.pick();
+                close();
+              }}
+              className="mt-1 min-h-9 self-start rounded-md border border-border px-2 text-left text-sm font-medium hover:bg-accent focus-visible:outline-2 focus-visible:outline-ring"
+            >
+              {tip.pickLabel}
+            </button>
+          )}
+        </FloatingTip>
+      )}
       <p className="text-sm">
         {atOrAbove(21)} of the {withO2.length} solid-material runs with a recorded starting oxygen (of{" "}
         {runs.length}) started at or above 21% oxygen; {atOrAbove(23)} started at or above 23%.

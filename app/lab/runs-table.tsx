@@ -1,13 +1,13 @@
 "use client";
 // Person A
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { ChevronRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Run } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { materialLabel } from "./material-label";
-import { compare, DEFAULT_SORT, flowText, hasRecordedResult, type Dir, type SortKey } from "./run-order";
+import { compare, DEFAULT_SORT, flowText, outcomeText, runRowId, type Dir, type SortKey } from "./run-order";
 import {
   Table,
   TableBody,
@@ -60,8 +60,11 @@ function FlagsBadge({ flags }: { flags: string[] }) {
 export function RunsTable({
   runs,
   matchingRunIds = null,
+  highlight = null,
 }: {
   runs: Run[];
+  /** A run to scroll to and mark (the gap chart sets it); `n` changes on every request. */
+  highlight?: { id: string; n: number } | null;
   /** Runs matching the scenario; null when no run-level dimension is set (no filter). */
   matchingRunIds?: Set<string> | null;
 }) {
@@ -75,6 +78,13 @@ export function RunsTable({
       return next;
     });
   const [showAll, setShowAll] = useState(false);
+  // A requested run that the scenario filter hides: show every run, once per request.
+  const [handled, setHandled] = useState(0);
+  if (highlight && highlight.n !== handled) {
+    setHandled(highlight.n);
+    const target = runs.find((r) => r.id === highlight.id);
+    if (target && matchingRunIds !== null && !matchingRunIds.has(target.id)) setShowAll(true);
+  }
   const filtering = matchingRunIds !== null && !showAll;
   // Count matches among the runs this table was given (it may be pre-filtered).
   const matchCount = matchingRunIds ? runs.filter((r) => matchingRunIds.has(r.id)).length : 0;
@@ -85,6 +95,16 @@ export function RunsTable({
         .sort((a, b) => compare(a, b, sort.key, sort.dir)),
     [runs, sort, filtering, matchingRunIds],
   );
+
+  const scrolled = useRef(0);
+  useEffect(() => {
+    if (!highlight || scrolled.current === highlight.n) return;
+    const row = document.getElementById(runRowId(highlight.id));
+    if (!row) return;
+    scrolled.current = highlight.n;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    row.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  }, [highlight, rows]);
 
   const toggle = (key: SortKey) =>
     setSort((s) => (s.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "asc" }));
@@ -141,7 +161,11 @@ export function RunsTable({
           const panelId = `obs-${r.id.replace(/[^a-zA-Z0-9-]/g, "-")}`;
           return (
             <Fragment key={r.id}>
-              <TableRow>
+              <TableRow
+                id={runRowId(r.id)}
+                data-highlighted={highlight?.id === r.id ? "true" : undefined}
+                className={cn(highlight?.id === r.id && "bg-accent outline-2 -outline-offset-2 outline-foreground")}
+              >
                 <TableCell className="p-1">
                   {r.observations?.length ? (
                     <button
@@ -165,13 +189,7 @@ export function RunsTable({
                 <TableCell className="text-right tabular-nums" title={r.flowCmS.raw}>{flow(r)}</TableCell>
                 <TableCell>{r.flowDirection ?? dash}</TableCell>
                 <TableCell className="max-w-32 whitespace-normal">
-                  {r.events.length ? (
-                    r.events.join(", ")
-                  ) : hasRecordedResult(r) ? (
-                    <span className="text-muted-foreground">see observations</span>
-                  ) : (
-                    <span className="text-muted-foreground">outcome not recorded</span>
-                  )}
+                  {r.events.length ? outcomeText(r) : <span className="text-muted-foreground">{outcomeText(r)}</span>}
                 </TableCell>
                 <TableCell className="text-right">
                   <FlagsBadge flags={r.flags} />

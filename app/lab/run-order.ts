@@ -56,6 +56,9 @@ export function compare(a: Run, b: Run, key: SortKey, dir: Dir): number {
   return (dir === "asc" ? c : -c) || collator.compare(a.testId, b.testId);
 }
 
+/** DOM id of a run's row in the runs table; the gap chart scrolls to it. */
+export const runRowId = (runId: string) => `run-row-${runId.replace(/[^a-zA-Z0-9-]/g, "-")}`;
+
 /** Runs in the table's opening order. Does not change the input. */
 export const inTableOrder = (runs: Run[]): Run[] =>
   [...runs].sort((a, b) => compare(a, b, DEFAULT_SORT.key, DEFAULT_SORT.dir));
