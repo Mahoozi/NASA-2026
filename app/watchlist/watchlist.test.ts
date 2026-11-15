@@ -19,10 +19,14 @@ const docText = (id: string) => corpus.find((d) => d.id === id)!.text;
 const table = docText(HARDWARE_TABLE_DOC);
 
 describe("hardware watchlist data", () => {
-  it("has 8–15 hardware entries and the two context entries", () => {
+  it("has 8–15 hardware entries and the three context entries", () => {
     expect(hardware.length).toBeGreaterThanOrEqual(8);
     expect(hardware.length).toBeLessThanOrEqual(15);
-    expect(context.map((c) => c.id)).toEqual(["context-limited-flammability-data", "context-33-subsystems"]);
+    expect(context.map((c) => c.id).sort()).toEqual([
+      "context-33-subsystems",
+      "context-exploration-atmospheres",
+      "context-limited-flammability-data",
+    ]);
   });
 
   it("every quote is an exact substring of its source page (the check verifiedFindings uses)", () => {
@@ -65,10 +69,11 @@ describe("hardware watchlist data", () => {
   });
 
   it("has the context sentences verbatim, with the report's own words", () => {
-    const [limited, subsystems] = context;
-    expect(limited.quote).toContain("NASA has limited material flammability data at O2 concentration higher than 30%");
-    expect(subsystems.quote).toContain("A total of 33 subsystems and/or components");
-    expect([limited.page, subsystems.page]).toEqual([29, 9]);
+    const byId = (id: string) => context.find((c) => c.id === id)!;
+    expect(byId("context-limited-flammability-data").quote).toContain("NASA has limited material flammability data at O2 concentration higher than 30%");
+    expect(byId("context-33-subsystems").quote).toContain("A total of 33 subsystems and/or components");
+    expect(byId("context-exploration-atmospheres").quote).toContain("10.2 pounds per square inch absolute (psia) with 26.5% O2, and 8.2 psia with 34% O2");
+    expect([byId("context-limited-flammability-data").page, byId("context-33-subsystems").page, byId("context-exploration-atmospheres").page]).toEqual([29, 9, 9]);
   });
 
   it("is exactly what the builder produces from the corpus", () => {
@@ -98,10 +103,8 @@ describe("flight evidence from data/runs.json", () => {
     const count = (re: RegExp) => runs.filter((r) => re.test(`${r.material.family} ${r.material.raw}`)).length;
     expect(materialEvidence("nomex", runs).runs).toBe(count(/\bnomex\b/i));
     expect(materialEvidence("silicone", runs).runs).toBe(count(/\bsilicone\b/i));
-    expect(materialEvidence("fabric", runs).runs).toBe(count(/\bfabric\b/i));
     expect(materialEvidence("nomex", runs).runs).toBeGreaterThan(0);
     expect(materialEvidence("silicone", runs).runs).toBeGreaterThan(0);
-    expect(materialEvidence("fabric", runs).runs).toBeGreaterThan(0);
   });
 
   it("returns 0 runs and a null maximum for materials no run names", () => {
@@ -110,9 +113,13 @@ describe("flight evidence from data/runs.json", () => {
     }
   });
 
-  it("'other' has no rule: not applicable, never a misleading zero", () => {
-    expect(MATERIAL_WORDS.other).toEqual([]);
-    expect(materialEvidence("other", runs)).toEqual({ matchable: false, runs: 0, withO2: 0, maxO2: null });
+  it("'other' and 'fabric' have no rule: not applicable, never a misleading zero or the SIBAL count", () => {
+    for (const key of ["other", "fabric"] as const) {
+      expect(MATERIAL_WORDS[key]).toEqual([]);
+      expect(materialEvidence(key, runs)).toEqual({ matchable: false, runs: 0, withO2: 0, maxO2: null });
+    }
+    // 45 SIBAL fabric runs exist; the report's Durette fabric is a different material.
+    expect(runs.filter((r) => r.material.family === "SIBAL fabric").length).toBe(45);
   });
 
   it("matches whole words only, ignoring case, on the family and the raw text", () => {
@@ -130,7 +137,7 @@ describe("flight evidence from data/runs.json", () => {
     expect(materialEvidence("nomex", sample)).toEqual({ matchable: true, runs: 3, withO2: 2, maxO2: 22.1 });
     expect(materialEvidence("foam", sample).runs).toBe(0);
     expect(materialEvidence("pmma", sample)).toMatchObject({ runs: 2, withO2: 2, maxO2: 22.1 });
-    expect(materialEvidence("fabric", sample).runs).toBe(1);
+    expect(materialEvidence("fabric", sample)).toEqual({ matchable: false, runs: 0, withO2: 0, maxO2: null });
     expect(materialEvidence("silicone", sample)).toEqual({ matchable: true, runs: 1, withO2: 0, maxO2: null });
   });
 });

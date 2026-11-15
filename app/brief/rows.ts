@@ -115,6 +115,7 @@ export function briefRows(f: BriefFacts): BriefRow[] {
       links: [
         { label: "Investigations: prevention, detection, suppression", href: "/investigations#fire-safety-heading" },
         { label: "Lab: published findings", href: moonHref },
+        { label: "Hardware watchlist", href: "/watchlist" },
       ],
       seen:
         `The investigations page groups the investigations by fire-safety area (${areaCounts.join(", ")}). ` +

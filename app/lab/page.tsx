@@ -3,7 +3,10 @@ import { Suspense } from "react";
 import runsJson from "@/data/runs.json";
 import findingsJson from "@/data/findings.json";
 import corpusJson from "@/data/corpus.json";
+import watchlistJson from "@/data/hardware_watchlist.json";
 import type { CorpusDoc, Finding, Run } from "@/lib/schema";
+import { familyWatchCounts } from "../watchlist/watchlist";
+import type { WatchlistEntry } from "../watchlist/types";
 import { verifiedFindings } from "./findings";
 import { LabClient } from "./lab-client";
 import { loadInvestigations } from "./load-investigations";
@@ -24,7 +27,7 @@ export default function LabPage() {
       </div>
 
       <Suspense fallback={<p className="text-sm text-muted-foreground">Loading scenario…</p>}>
-        <LabClient runs={runs} investigations={investigations} pendingIds={pendingIds} findings={findings} />
+        <LabClient runs={runs} investigations={investigations} pendingIds={pendingIds} findings={findings} watchlistCounts={familyWatchCounts(watchlistJson as WatchlistEntry[], runs)} />
       </Suspense>
     </div>
   );

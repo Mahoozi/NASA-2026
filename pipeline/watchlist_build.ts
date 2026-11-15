@@ -169,6 +169,11 @@ export const CONTEXT_INPUT: ContextInput[] = [
     sourceDocId: `${REPORT_DOC_PREFIX}33`,
   },
   {
+    id: "context-exploration-atmospheres",
+    quote: "Specifically, nominal cabin atmospheres of 10.2 pounds per square inch absolute (psia) with 26.5% O2, and 8.2 psia with 34% O2, collectively termed “Exploration Atmospheres” here to differentiate from ISS nominal atmosphere, were considered.",
+    sourceDocId: `${REPORT_DOC_PREFIX}13`,
+  },
+  {
     id: "context-33-subsystems",
     quote: "A total of 33 subsystems and/or components within the ECLSS, including emergency systems, Crew Health Care Systems (CHeCS), and Crew Habitation Systems, were evaluated using available design data and historical literature.",
     sourceDocId: `${REPORT_DOC_PREFIX}13`,

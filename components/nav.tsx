@@ -7,6 +7,7 @@ const links = [
   { href: "/earth", label: "Earth" },
   { href: "/brief", label: "Challenge" },
   { href: "/evals", label: "Evals" },
+  { href: "/watchlist", label: "Watchlist" },
 ];
 
 export function Nav() {

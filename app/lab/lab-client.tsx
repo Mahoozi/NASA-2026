@@ -6,7 +6,8 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations } from "@/lib/match";
-import type { Finding, Investigation, Run, Scenario } from "@/lib/schema";
+import type { Finding, Investigation, MaterialFamily, Run, Scenario } from "@/lib/schema";
+import { WatchlistLine } from "../watchlist/watchlist-line";
 import { FindingsPanel } from "./findings-panel";
 import { PrinterIcon } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -34,12 +35,15 @@ export function LabClient({
   investigations,
   pendingIds,
   findings,
+  watchlistCounts,
 }: {
   runs: Run[];
   investigations: Investigation[];
   pendingIds: string[];
   /** Published findings whose quotes were verified against the corpus. */
   findings: Finding[];
+  /** Per Lab material family: how many NESC-watchlist items have PSI flight evidence in it. */
+  watchlistCounts: Partial<Record<MaterialFamily, number>>;
 }) {
   const params = useSearchParams();
   const pathname = usePathname();
@@ -141,6 +145,7 @@ export function LabClient({
         {scored ? (
           <>
             <Summary matches={matches} withRuns={withRuns} />
+            <WatchlistLine count={scenario.materialFamily ? (watchlistCounts[scenario.materialFamily] ?? 0) : 0} />
             <GapsPanel report={gaps} />
             <div>
               <AskLink scenario={scenario} matches={matches} />
