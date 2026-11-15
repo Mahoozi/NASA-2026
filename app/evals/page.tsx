@@ -1,34 +1,17 @@
 // Person B — /evals scorecard. Reads data/evals.latest.json; no LLM call at render.
 import reportJson from "@/data/evals.latest.json";
-import type { EvalItem, EvalReport } from "@/pipeline/evals-result";
-import { Badge } from "@/components/ui/badge";
+import type { EvalReport } from "@/pipeline/evals-result";
 import { Progress, ProgressLabel } from "@/components/ui/progress";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { ClaimChecks } from "./claim-checks";
 import { runClaims } from "./claims";
+import { fraction } from "./format";
+import { QuestionTable } from "./question-table";
 
 const report = reportJson as EvalReport;
 /** When this build computed the claim checks; evaluated once, not per render. */
 const BUILT_AT = new Date().toISOString();
 
-const STATUS_LABEL: Record<EvalItem["gotStatus"], string> = {
-  answered: "Answered",
-  insufficient_evidence: "No answer in sources",
-  error: "Error",
-};
-
-/** "9 of 12 (75%)"; the percentage is left out when the denominator is 0. */
-function fraction(n: number, d: number): string {
-  return d > 0 ? `${n} of ${d} (${Math.round((n / d) * 100)}%)` : `${n} of ${d}`;
-}
 
 function formatRunTime(iso: string): string {
   const d = new Date(iso);
@@ -171,82 +154,5 @@ function Total({
       </Progress>
       <p className="text-sm text-muted-foreground tabular-nums">{text}</p>
     </div>
-  );
-}
-
-function QuestionTable({ items }: { items: EvalItem[] }) {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[40%]">Question</TableHead>
-          <TableHead>Expected</TableHead>
-          <TableHead>Got</TableHead>
-          <TableHead>Expected sources</TableHead>
-          <TableHead>Citations</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {items.map((i) => {
-          const retrieved = new Set(i.retrievedDocIds);
-          const verified = i.citations.filter((c) => c.verified);
-          const onTarget = verified.filter((c) => c.expected).length;
-          return (
-            <TableRow key={i.id} className={cn(!i.statusMatch && "bg-destructive/5")}>
-              <TableCell className="whitespace-normal align-top">
-                <p>{i.question}</p>
-                <p translate="no" className="font-mono text-sm text-muted-foreground">{i.id}</p>
-                {i.error && <p className="text-sm text-destructive">Error: {i.error}</p>}
-              </TableCell>
-              <TableCell className="align-top">{STATUS_LABEL[i.expectStatus]}</TableCell>
-              <TableCell className="align-top">
-                {i.statusMatch ? (
-                  STATUS_LABEL[i.gotStatus]
-                ) : (
-                  <Badge variant="destructive">{STATUS_LABEL[i.gotStatus]}</Badge>
-                )}
-              </TableCell>
-              <TableCell className="align-top">
-                {i.expectDocIds.length === 0 ? (
-                  <span className="text-muted-foreground">None</span>
-                ) : (
-                  <ul className="flex flex-col gap-1">
-                    {i.expectDocIds.map((id) => (
-                      <li key={id}>
-                        <Badge translate="no" variant={retrieved.has(id) ? "secondary" : "destructive"}>
-                          {id}
-                          <span className="sr-only">
-                            {retrieved.has(id) ? " (retrieved)" : " (not retrieved)"}
-                          </span>
-                        </Badge>
-                        {!retrieved.has(id) && (
-                          <span aria-hidden className="ml-1 text-sm text-destructive">
-                            not retrieved
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </TableCell>
-              <TableCell className="align-top text-sm tabular-nums">
-                {i.citations.length === 0 ? (
-                  <span className="text-muted-foreground">None</span>
-                ) : (
-                  <>
-                    <p>{fraction(verified.length, i.citations.length)} verified</p>
-                    {i.expectDocIds.length > 0 && (
-                      <p className="text-muted-foreground">
-                        {fraction(onTarget, verified.length)} to an expected source
-                      </p>
-                    )}
-                  </>
-                )}
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
-    </Table>
   );
 }
