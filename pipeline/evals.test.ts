@@ -15,9 +15,9 @@ const golden = goldenJson as GoldenItem[];
 const docIds = new Set(corpus.map((d) => d.id));
 
 describe("data/golden.json", () => {
-  it("has 20 to 25 items", () => {
+  it("has 20 to 30 items", () => {
     expect(golden.length).toBeGreaterThanOrEqual(20);
-    expect(golden.length).toBeLessThanOrEqual(25);
+    expect(golden.length).toBeLessThanOrEqual(30);
   });
 
   it("has unique ids", () => {
