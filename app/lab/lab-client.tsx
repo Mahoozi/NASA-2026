@@ -2,7 +2,7 @@
 // Person A — owns the scenario state, which lives in the URL.
 // Page order: presets and form → summary + gaps → coverage grid → gap chart
 // → ranked investigations → runs table → download.
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { matchInvestigations, RUN_DIMENSIONS } from "@/lib/match";
@@ -18,6 +18,7 @@ import { GapsPanel } from "./gaps-panel";
 import { LimitsPanel } from "./limits-panel";
 import { SPACE_VS_EARTH_ID } from "./gravity-bounds-note";
 import { RankedList } from "./ranked-list";
+import { createHashScroller } from "./scroll-to-hash";
 import { RunsTable } from "./runs-table";
 import { hasScoredDimension, parseScenario, presets, scenarioToQuery } from "./scenario";
 import { ScenarioForm } from "./scenario-form";
@@ -90,6 +91,18 @@ export function LabClient({
     (next: Scenario) => writeUrl(scenarioToQuery(next), investigationId),
     [writeUrl, investigationId],
   );
+  // A link such as /lab#varied-heading: the sections only exist once this component
+  // has rendered, after the URL scenario was applied, so scroll once, after paint.
+  const scrollToHash = useRef<ReturnType<typeof createHashScroller> | null>(null);
+  useEffect(() => {
+    scrollToHash.current ??= createHashScroller(document, () =>
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+    const scroller = scrollToHash.current;
+    const frame = requestAnimationFrame(() => scroller(window.location.hash));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   // After a preset, bring the summary, gaps panel and coverage grid into view.
   const showSummary = () =>
     requestAnimationFrame(() => {
