@@ -11,16 +11,17 @@ export type IntroState = {
   cool: number; // orange to blue
   form: number; // particles fly to their place in the word
   sweep: number; // a band of light crosses the word
+  dim: number; // particles fall back as the sharp lettering takes over
   out: number; // particles leave outward and fade
 };
 
-export const initialState = (): IntroState => ({ spark: 0, burst: 0, vortex: 0, cool: 0, form: 0, sweep: 0, out: 0 });
+export const initialState = (): IntroState => ({ spark: 0, burst: 0, vortex: 0, cool: 0, form: 0, sweep: 0, dim: 0, out: 0 });
 
 const VERT = /* glsl */ `
   attribute vec4 aSeed;
   attribute vec3 aDir;
   attribute vec3 aTarget;
-  uniform float uTime, uSpark, uBurst, uVortex, uCool, uForm, uSweep, uOut, uScale, uAspect;
+  uniform float uTime, uSpark, uBurst, uVortex, uCool, uForm, uSweep, uDim, uOut, uScale, uAspect;
   varying vec3 vColor;
   varying float vAlpha;
 
@@ -71,14 +72,14 @@ const VERT = /* glsl */ `
     float c = smoothstep(0.0, 1.0, clamp(uCool * 1.6 - (1.0 - aSeed.x) * 0.6, 0.0, 1.0));
     vColor = mix(hot, cold, c);
     // The light sweep: a bright band travelling left to right across the word.
-    float band = exp(-pow((aTarget.x - mix(-uAspect * 1.6, uAspect * 1.6, uSweep)) * 3.0, 2.0));
-    vColor += vec3(0.5, 0.7, 1.0) * band * uForm * step(0.001, uSweep) * (1.0 - step(0.999, uSweep));
+    float band = exp(-pow((aTarget.x - mix(-uAspect, uAspect, uSweep)) * 2.2, 2.0));
+    vColor += vec3(0.7, 0.85, 1.0) * band * 1.6 * uForm * step(0.001, uSweep) * (1.0 - step(0.999, uSweep));
 
     float shown = mix(ember * uSpark, 1.0, step(0.0001, uBurst));
     float twinkle = 0.75 + 0.25 * sin(uTime * 3.0 + aSeed.w * 80.0);
-    vAlpha = shown * twinkle * (1.0 - smoothstep(0.35, 1.0, uOut)) * mix(0.9, 0.75, fe);
+    vAlpha = shown * twinkle * (1.0 - smoothstep(0.35, 1.0, uOut)) * mix(0.9, 1.25, fe) * (1.0 - 0.65 * uDim);
 
-    float size = mix(1.0, 2.6, aSeed.z * aSeed.z) * mix(1.0, 0.62, fe);
+    float size = mix(1.0, 2.6, aSeed.z * aSeed.z) * mix(1.0, 0.8, fe);
     gl_PointSize = size * uScale / -mv.z;
   }
 `;
@@ -152,7 +153,7 @@ export function createEngine(canvas: HTMLCanvasElement, count: number): IntroEng
 
   const uniforms = {
     uTime: { value: 0 }, uSpark: { value: 0 }, uBurst: { value: 0 }, uVortex: { value: 0 }, uCool: { value: 0 },
-    uForm: { value: 0 }, uSweep: { value: 0 }, uOut: { value: 0 }, uScale: { value: 1 }, uAspect: { value: 1 },
+    uForm: { value: 0 }, uSweep: { value: 0 }, uDim: { value: 0 }, uOut: { value: 0 }, uScale: { value: 1 }, uAspect: { value: 1 },
   };
   const material = new THREE.ShaderMaterial({
     uniforms, vertexShader: VERT, fragmentShader: FRAG,
@@ -187,7 +188,7 @@ export function createEngine(canvas: HTMLCanvasElement, count: number): IntroEng
     camera.position.z = camera.aspect < 1 ? 6 / Math.max(camera.aspect, 0.45) * 0.72 : 6;
     camera.updateProjectionMatrix();
     uniforms.uScale.value = renderer.getPixelRatio() * h * 0.028;
-    uniforms.uAspect.value = frame().halfW / 1.6;
+    uniforms.uAspect.value = frame().halfW;
   };
 
   let raf = 0;
@@ -205,6 +206,7 @@ export function createEngine(canvas: HTMLCanvasElement, count: number): IntroEng
     uniforms.uCool.value = state.cool;
     uniforms.uForm.value = state.form;
     uniforms.uSweep.value = state.sweep;
+    uniforms.uDim.value = state.dim;
     uniforms.uOut.value = state.out;
     // The spark breathes until the burst, flares as it erupts, then is gone.
     const pulse = 0.75 + 0.25 * Math.sin(t * 5.2);
