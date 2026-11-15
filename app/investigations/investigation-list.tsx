@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Field, FieldLabel } from "@/components/ui/field";
+import { RevealControls, revealItemClass, useReveal } from "@/components/ui/reveal";
 import {
   Select,
   SelectContent,
@@ -80,24 +81,36 @@ export function InvestigationList({
             </SelectContent>
           </Select>
         </Field>
-        <p className="text-sm text-muted-foreground tabular-nums" aria-live="polite">
-          Showing {shown.length} of {investigations.length}
+        <p className="text-sm text-muted-foreground tabular-nums">
+          {shown.length} of {investigations.length} investigations
         </p>
       </div>
 
       {shown.length ? (
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {shown.map((inv) => (
-            <li key={inv.id} className="flex">
-              <InvestigationCard inv={inv} />
-            </li>
-          ))}
-        </ul>
+        // Keyed by the filter, so a new filter starts again from the first cards.
+        <CardGrid key={area ?? "all"} investigations={shown} />
       ) : (
         <p className="text-sm text-muted-foreground">
           No investigations in this safety area. Choose another area or show all.
         </p>
       )}
+    </div>
+  );
+}
+
+/** The cards, six at first. The rest stay in the HTML, hidden, until asked for. */
+function CardGrid({ investigations }: { investigations: Investigation[] }) {
+  const [reveal, listRef] = useReveal(investigations.length, 6, 6);
+  return (
+    <div className="flex flex-col gap-4">
+      <ul ref={listRef} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {investigations.map((inv, i) => (
+          <li key={inv.id} data-reveal-item hidden={reveal.isHidden(i)} className={`flex ${i >= reveal.initial ? revealItemClass : ""}`}>
+            <InvestigationCard inv={inv} />
+          </li>
+        ))}
+      </ul>
+      <RevealControls reveal={reveal} />
     </div>
   );
 }

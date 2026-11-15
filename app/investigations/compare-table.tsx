@@ -7,6 +7,7 @@ import Link from "next/link";
 import type { Investigation, SafetyArea } from "@/lib/schema";
 import { Badge } from "@/components/ui/badge";
 import { Field, FieldLabel } from "@/components/ui/field";
+import { RevealControls, revealItemClass, useReveal } from "@/components/ui/reveal";
 import {
   Select,
   SelectContent,
@@ -85,6 +86,9 @@ export function CompareTable({ investigations }: { investigations: Investigation
     { label: "not stated", value: "none" as FuelFilter | null },
   ];
 
+  // Ten rows at first; sorting and filtering always apply to the full set.
+  const [reveal, listRef] = useReveal(rows.length, 10, 10);
+
   const toggleSort = (key: SortKey) =>
     setSort((s) => ({ key, dir: s.key === key ? (s.dir === 1 ? -1 : 1) : 1 }));
 
@@ -156,10 +160,16 @@ export function CompareTable({ investigations }: { investigations: Investigation
               })}
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody ref={listRef}>
             {rows.length ? (
-              rows.map((inv) => (
-                <TableRow key={inv.id} data-testid="compare-row">
+              rows.map((inv, i) => (
+                <TableRow
+                  key={inv.id}
+                  data-testid="compare-row"
+                  data-reveal-item
+                  hidden={reveal.isHidden(i)}
+                  className={i >= reveal.initial ? revealItemClass : undefined}
+                >
                   <TableCell translate="no" className="font-medium">
                     <Link href={`/investigations/${inv.id}`} className="underline-offset-4 hover:underline">
                       {inv.id}
@@ -208,6 +218,7 @@ export function CompareTable({ investigations }: { investigations: Investigation
           </TableBody>
         </Table>
       </div>
+      <RevealControls reveal={reveal} moreLabel="Show 10 more" />
     </div>
   );
 }
