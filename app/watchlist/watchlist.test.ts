@@ -7,7 +7,7 @@ import watchlistJson from "../../data/hardware_watchlist.json";
 import { buildWatchlist, HARDWARE_TABLE_DOC } from "../../pipeline/watchlist_build";
 import type { CorpusDoc, Run } from "../../lib/schema";
 import { quoteIsVerbatim } from "../lab/findings";
-import { MATERIAL_WORDS, materialEvidence } from "./evidence";
+import { evidenceFamily, MATERIAL_WORDS, materialEvidence } from "./evidence";
 import { MATERIAL_KEYS, type HardwareEntry, type WatchlistEntry } from "./types";
 
 const corpus = corpusJson as CorpusDoc[];
@@ -105,6 +105,30 @@ describe("flight evidence from data/runs.json", () => {
     expect(materialEvidence("silicone", runs).runs).toBe(count(/\bsilicone\b/i));
     expect(materialEvidence("nomex", runs).runs).toBeGreaterThan(0);
     expect(materialEvidence("silicone", runs).runs).toBeGreaterThan(0);
+  });
+
+  it("ultem matches the whole word 'ultem' only, and reports its own runs", () => {
+    const expected = runs.filter((r) => /\bultem\b/i.test(`${r.material.family} ${r.material.raw}`));
+    expect(materialEvidence("ultem", runs)).toEqual({ matchable: true, runs: expected.length, withO2: 0, maxO2: null });
+    expect(expected.length).toBe(2);
+    const sample = [run("other", "ultem sheet", 21), run("other", "Ultem 1000", null), run("other", "ultemate", 30)];
+    expect(materialEvidence("ultem", sample)).toEqual({ matchable: true, runs: 2, withO2: 1, maxO2: 21 });
+  });
+
+  it("picks the Lab family holding the most runs that record an oxygen, falling back to the most runs", () => {
+    expect(evidenceFamily("pmma", runs)).toBe("PMMA rod");
+    expect(evidenceFamily("ultem", runs)).toBe("other");
+    expect(evidenceFamily("kapton", runs)).toBeNull();
+    expect(evidenceFamily("other", runs)).toBeNull();
+    const sample = [
+      run("PMMA sphere", "big", null), run("PMMA sphere", "big", null), run("PMMA sphere", "big", null),
+      run("PMMA rod", "r", 20), run("PMMA film", "f", 21), run("PMMA film", "f", 22), run("PMMA slab", "s", null),
+    ];
+    expect(evidenceFamily("pmma", sample)).toBe("PMMA film"); // two with O2 beat the sphere's three without
+    const tie = [run("PMMA rod", "a", 20), run("PMMA rod", "b", null), run("PMMA film", "c", 21)];
+    expect(evidenceFamily("pmma", tie)).toBe("PMMA rod"); // one run with O2 each: the tie goes to more runs overall
+    const none = [run("PMMA sphere", "a", null), run("PMMA sphere", "b", null), run("PMMA film", "c", null)];
+    expect(evidenceFamily("pmma", none)).toBe("PMMA sphere"); // no run records O2: the family with the most runs
   });
 
   it("returns 0 runs and a null maximum for materials no run names", () => {

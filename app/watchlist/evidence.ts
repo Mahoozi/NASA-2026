@@ -22,6 +22,7 @@ export const MATERIAL_WORDS: Record<MaterialKey, string[]> = {
   nomex: ["Nomex"],
   teflon: ["Teflon", "PTFE"],
   kapton: ["Kapton"],
+  ultem: ["Ultem"],
   polycarbonate: ["polycarbonate"],
   foam: ["foam"],
   velcro: ["Velcro"],
@@ -60,18 +61,29 @@ export function materialEvidence(key: MaterialKey, runs: Run[]): MaterialEvidenc
 }
 
 /**
- * The Lab material family that holds the most runs matching the key (ties go to the
- * Lab form's order), or null when no run matches. Computed, so a "Open in the Lab" link
- * lands on the family PSI actually tested for that material name.
+ * The Lab material family an "Open in the Lab" link should land on: the family with the most
+ * matching runs THAT RECORD A STARTING OXYGEN (ties go to the family with more matching runs
+ * overall, then to the Lab form's order). Only when no matching run records an oxygen does it
+ * fall back to the family with the most matching runs overall. Null when no run matches.
  */
 export function evidenceFamily(key: MaterialKey, runs: Run[]): MaterialFamily | null {
   const words = MATERIAL_WORDS[key];
   if (!words.length) return null;
   const re = patternFor(words);
-  const counts = new Map<MaterialFamily, number>();
-  for (const r of runs) if (re.test(materialText(r))) counts.set(r.material.family, (counts.get(r.material.family) ?? 0) + 1);
+  const counts = new Map<MaterialFamily, { all: number; withO2: number }>();
+  for (const r of runs) {
+    if (!re.test(materialText(r))) continue;
+    const c = counts.get(r.material.family) ?? { all: 0, withO2: 0 };
+    c.all += 1;
+    if (r.o2InitialPct !== null) c.withO2 += 1;
+    counts.set(r.material.family, c);
+  }
+  const anyO2 = [...counts.values()].some((c) => c.withO2 > 0);
   const best = [...counts].sort(
-    (a, b) => b[1] - a[1] || MATERIAL_FAMILIES.indexOf(a[0]) - MATERIAL_FAMILIES.indexOf(b[0]),
+    (a, b) =>
+      (anyO2 ? b[1].withO2 - a[1].withO2 : 0) ||
+      b[1].all - a[1].all ||
+      MATERIAL_FAMILIES.indexOf(a[0]) - MATERIAL_FAMILIES.indexOf(b[0]),
   )[0];
   return best ? best[0] : null;
 }

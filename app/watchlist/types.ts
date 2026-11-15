@@ -3,7 +3,7 @@
 // ours except the ids, the materialKey grouping and the choice of which items to include.
 
 export const MATERIAL_KEYS = [
-  "pmma", "silicone", "nomex", "teflon", "kapton", "polycarbonate", "foam", "velcro", "fabric", "other",
+  "pmma", "silicone", "nomex", "teflon", "kapton", "polycarbonate", "foam", "velcro", "fabric", "ultem", "other",
 ] as const;
 export type MaterialKey = (typeof MATERIAL_KEYS)[number];
 

@@ -111,7 +111,7 @@ export const HARDWARE_INPUT: HardwareInput[] = [
     hardware: "Crew Active Dosimeter (CAD)",
     subsystem: "CHeCS",
     materialAsWritten: "Ultem 1000",
-    materialKey: "other",
+    materialKey: "ultem",
     quote: "The CAD body is made of Ultem 1000, which is not flammable in 30% O2 at 10.2 psia, but flammable in 34-40% O2 at 8.2 psia.",
     sourceDocId: `${REPORT_DOC_PREFIX}64`,
   },

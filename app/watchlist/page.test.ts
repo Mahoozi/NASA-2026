@@ -7,9 +7,12 @@ import corpusJson from "../../data/corpus.json";
 import runsJson from "../../data/runs.json";
 import watchlistJson from "../../data/hardware_watchlist.json";
 import { Nav } from "../../components/nav";
-import type { CorpusDoc, Run } from "../../lib/schema";
+import type { CorpusDoc, Investigation, Run } from "../../lib/schema";
 import { quoteIsVerbatim } from "../lab/findings";
+import { evidenceGaps } from "../lab/gaps";
 import { parseScenario, presets } from "../lab/scenario";
+import investigationsJson from "../../data/investigations.json";
+import { limitsForScenario } from "../../lib/limits";
 import { evidenceFamily, materialEvidence } from "./evidence";
 import type { HardwareEntry, WatchlistEntry } from "./types";
 import {
@@ -30,6 +33,7 @@ import { WatchlistView } from "./watchlist-view";
 
 const corpus = corpusJson as CorpusDoc[];
 const runs = runsJson as Run[];
+const investigations = investigationsJson as Investigation[];
 const entries = watchlistJson as WatchlistEntry[];
 const hardware = entries.filter((e): e is HardwareEntry => e.kind === "hardware");
 const rows = watchlistRows(entries, runs, corpus);
@@ -107,7 +111,7 @@ describe("/watchlist page", () => {
     expect(by("crew-quarters-nomex-honeycomb")).toBe("10 flight runs with this material name; highest recorded starting O2: 22.2%");
   });
 
-  it("offers 'Open in the Lab' only where runs match, with the Exploration preset and the family holding most runs", () => {
+  it("offers 'Open in the Lab' only where runs match, with the Exploration preset and the family holding the most runs that record an oxygen", () => {
     const exploration = presets(runs).find((p) => p.id === "exploration")!.scenario;
     for (const r of rows) {
       const h = rowHtml(r.entry.id);
@@ -116,13 +120,28 @@ describe("/watchlist page", () => {
         expect(h, r.entry.id).not.toContain("Open in the Lab");
         continue;
       }
-      // Independent count of the family with the most matching runs.
+      // Independent count, per Lab family, of matching runs and of those recording a starting O2.
       const words = r.entry.materialKey === "pmma" ? /\b(pmma|acrylic)\b/i : new RegExp(`\\b${r.entry.materialKey}\\b`, "i");
-      const byFamily = new Map<string, number>();
-      for (const run of runs) if (words.test(`${run.material.family} ${run.material.raw}`)) byFamily.set(run.material.family, (byFamily.get(run.material.family) ?? 0) + 1);
-      const top = Math.max(...byFamily.values());
+      const byFamily = new Map<string, { all: number; withO2: number }>();
+      for (const run of runs) {
+        if (!words.test(`${run.material.family} ${run.material.raw}`)) continue;
+        const c = byFamily.get(run.material.family) ?? { all: 0, withO2: 0 };
+        c.all += 1;
+        if (run.o2InitialPct !== null) c.withO2 += 1;
+        byFamily.set(run.material.family, c);
+      }
+      const anyO2 = [...byFamily.values()].some((c) => c.withO2 > 0);
       const family = evidenceFamily(r.entry.materialKey, runs)!;
-      expect(byFamily.get(family), r.entry.id).toBe(top);
+      const chosen = byFamily.get(family)!;
+      if (anyO2) {
+        // Most runs that record an oxygen; ties go to more runs overall.
+        const topO2 = Math.max(...[...byFamily.values()].map((c) => c.withO2));
+        expect(chosen.withO2, r.entry.id).toBe(topO2);
+        expect(chosen.all, r.entry.id).toBe(Math.max(...[...byFamily.values()].filter((c) => c.withO2 === topO2).map((c) => c.all)));
+      } else {
+        // Fallback: no matching run records an oxygen, so the family with the most matching runs.
+        expect(chosen.all, r.entry.id).toBe(Math.max(...[...byFamily.values()].map((c) => c.all)));
+      }
       const scenario = parseScenario(new URL(r.labHref!, "http://x").searchParams);
       expect(scenario, r.entry.id).toEqual({ ...exploration, materialFamily: family });
       expect(scenario.o2Pct).toBe(34);
@@ -130,7 +149,37 @@ describe("/watchlist page", () => {
       expect(h, r.entry.id).toContain(`href="${r.labHref!.replace(/&/g, "&amp;")}"`);
       expect(h, r.entry.id).toContain("Open in the Lab");
     }
-    expect(rows.find((r) => r.entry.id === "minion-pmma-case")!.labScenario!.materialFamily).toBe("PMMA sphere");
+  });
+
+  it("MinION links to the PMMA family with recorded oxygen, and its Lab scenario round-trips", () => {
+    const minion = rows.find((r) => r.entry.id === "minion-pmma-case")!;
+    expect(minion.labScenario!.materialFamily).toBe("PMMA rod");
+    // That family's matching runs record a starting oxygen (PMMA sphere's 63 runs do not).
+    const inFamily = runs.filter((r) => r.material.family === "PMMA rod");
+    expect(inFamily.some((r) => r.o2InitialPct !== null)).toBe(true);
+    expect(runs.filter((r) => r.material.family === "PMMA sphere").every((r) => r.o2InitialPct === null)).toBe(true);
+    expect(parseScenario(new URL(minion.labHref!, "http://x").searchParams)).toEqual({
+      materialFamily: "PMMA rod", o2Pct: 34, pressurePsi: 8.2,
+    });
+    // The Lab's own gap and limits output for that link: the 22.2% gap and the oxygen refusal.
+    const scenario = minion.labScenario!;
+    const gaps = evidenceGaps(scenario, runs, investigations);
+    expect(gaps.nearest.join(" ")).toContain("Highest starting oxygen in any imported solid-material run: 22.2%");
+    expect(gaps.nearest.join(" ")).toContain("Your scenario: 34%, a gap of 11.8 points.");
+    const limits = limitsForScenario(scenario, runs);
+    expect(limits.kind).toBe("refusal");
+    if (limits.kind === "refusal") expect(limits.reasons).toEqual(["Oxygen 34% is above every recorded starting oxygen for PMMA rod (max 22.2%)."]);
+  });
+
+  it("shows Ultem's PSI runs: an independent count of runs whose material contains the word", () => {
+    const ultem = runs.filter((r) => /\bultem\b/i.test(`${r.material.family} ${r.material.raw}`));
+    expect(ultem).toHaveLength(2);
+    const row = rows.find((r) => r.entry.id === "cad-ultem")!;
+    expect(row.entry.materialKey).toBe("ultem");
+    expect(row.evidence).toEqual({ matchable: true, runs: ultem.length, withO2: ultem.filter((r) => r.o2InitialPct !== null).length, maxO2: null });
+    expect(row.evidenceText).toBe("2 flight runs with this material name; no starting O2 recorded");
+    expect(plain(rowHtml("cad-ultem"))).toContain(row.evidenceText);
+    expect(row.labScenario!.materialFamily).toBe("other"); // no ultem run records an oxygen: the fallback family
   });
 
   it("states the computed sentence from the data, with the atmospheres read from the report's sentence", () => {
@@ -141,7 +190,7 @@ describe("/watchlist page", () => {
     const sentence = `${withRuns.length} of ${hardware.length} flagged items name a material with at least one PSI flight run. Among those runs, the highest recorded starting oxygen is ${Math.max(...o2)}%. The report assessed Exploration atmospheres of ${atm.o2a}% O2 at ${atm.psiA} psia and ${atm.o2b}% O2 at ${atm.psiB} psia.`;
     expect(watchlistSentence(rows, atm)).toBe(sentence);
     expect(plain(html)).toContain(sentence);
-    expect(sentence).toContain("6 of 15 flagged items");
+    expect(sentence).toContain("7 of 15 flagged items");
     expect(sentence).toContain("highest recorded starting oxygen is 22.2%");
     // No highest-oxygen sentence when no matching run records one.
     expect(watchlistSentence(rows.map((r) => ({ ...r, evidence: { ...r.evidence, runs: 1, maxO2: null } })), atm)).not.toContain("highest recorded");
