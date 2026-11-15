@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`dark ${archivo.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col text-foreground">
+      <body className="min-h-full flex flex-col overflow-x-clip text-foreground">
         <Nav />
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
       </body>
