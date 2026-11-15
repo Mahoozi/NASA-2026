@@ -3,6 +3,8 @@
 // Source: NASA Space Apps 2026 challenge brief, Flame in Freefall: "Microgravity
 // and normal-gravity results could bound what occurs at intermediate gravity
 // levels." Saffire-II (PSI-99) is the only imported table with 1-g results.
+import Link from "next/link";
+import { E_FIELD_QUOTE } from "../brief/brief-text";
 import { CHALLENGE_BRIEF_URL } from "./higher-oxygen-note";
 
 /** Anchor of the Space vs Earth (Saffire-II) section in lab-client.tsx. */
@@ -75,6 +77,14 @@ export function GravityBoundsNote({
         {fm2.ntrs}) writes that “{nested(fm2.quote)}”. If so, microgravity and normal-gravity results may not bound lunar
         gravity. FM2, a combustion chamber to be sent to the surface of the Moon, and LUCI are
         the experiments the challenge brief expects to add partial-gravity data.
+      </p>
+      <p>
+        The <Ext href={CHALLENGE_BRIEF_URL}>challenge brief</Ext> adds: “{E_FIELD_QUOTE}” Firebreak has
+        no run table for E-FIELD Flames; see{" "}
+        <Link href="/investigations/PSI-22" className={linkClass}>
+          its investigation page
+        </Link>
+        .
       </p>
     </div>
   );

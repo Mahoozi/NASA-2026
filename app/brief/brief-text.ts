@@ -23,6 +23,9 @@ export const BRIEF_ELEMENTS: string[] = [
   "The six experiments in the ACME project featured flames of gaseous fuels and were all conducted with the same modular set of ACME hardware in the Combustion Integrated Rack (CIR).",
   "FLEX, FLEX-2, and the Cool Flames Investigation (CFI) each featured burning droplets of liquid fuel and were conducted with the Multi-user Droplet Combustion Apparatus (MDCA) in the CIR.",
   "BASS, BASS-II, the Smoke Point In Co-flow Experiment (SPICE), and the Structure & Liftoff In Combustion Experiment (SLICE) collectively featured both solid and gaseous fuels. Each of these investigations was conducted within the Microgravity Science Glovebox (MSG) using the modular fan-driven flow duct built for SPICE.",
+  "To enable flexibility, spacesuits are filled with 100% oxygen to only 4.3 psi (pounds per square inch), where the Earth’s pressure at sea level is 14.7 psi.",
+  "Partial gravity was mimicked in ACME’s Electric-Field Effects on Laminar Diffusion Flames (E-FIELD Flames) experiment through the effect of the electric field on the ions that naturally occur in flames.",
+  "*Fire safety involving rockets and propellants is generally beyond the scope of the research available in the PSI database. The high velocities within rocket engines render the combustion effectively independent of gravity — although a rocket’s launch is of course strongly dependent on gravity.",
 ];
 
 export const BRIEF_TEXT = BRIEF_ELEMENTS.join(" ");
@@ -38,6 +41,13 @@ export const ARTEMIS_QUOTE =
   "[If] you want to get somebody’s attention really quick, make the fire alarm go off in your spacecraft when you’re still about 80,000 miles from home.";
 export const ARTEMIS_ATTRIBUTION = "Artemis II commander, quoted in the NASA Space Apps challenge brief";
 
+/** Brief quotes used by the Lab and /brief, exact. */
+export const SPACESUIT_QUOTE = "spacesuits are filled with 100% oxygen to only 4.3 psi";
+export const E_FIELD_QUOTE =
+  "Partial gravity was mimicked in ACME’s Electric-Field Effects on Laminar Diffusion Flames (E-FIELD Flames) experiment through the effect of the electric field on the ions that naturally occur in flames.";
+export const OUT_OF_SCOPE_QUOTE =
+  "Fire safety involving rockets and propellants is generally beyond the scope of the research available in the PSI database.";
+
 /**
  * A brief quote as displayed: "…" only where the quote is cut out of a longer
  * sentence of its element.
@@ -48,7 +58,8 @@ export function displayBriefQuote(quote: string): string {
   const at = element.indexOf(quote);
   const before = element.slice(0, at);
   const after = element.slice(at + quote.length);
-  const cutStart = before !== "" && !/[.!?]\s$/.test(before);
+  // A leading "*" is the brief's footnote marker, not text before the quote.
+  const cutStart = before !== "" && before !== "*" && !/[.!?]\s$/.test(before);
   const cutEnd = !/^[.!?]?(\s|$)/.test(after);
   return `${cutStart ? "…" : ""}${quote}${cutEnd ? "…" : ""}`;
 }

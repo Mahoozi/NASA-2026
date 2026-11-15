@@ -1,5 +1,6 @@
 // Person A — scenario <-> URL, presets. Pure; safe on server and client.
 import type { MaterialFamily, Run, SafetyArea, Scenario } from "@/lib/schema";
+import { BRIEF_URL, SPACESUIT_QUOTE } from "../brief/brief-text";
 
 export const MATERIAL_FAMILIES: MaterialFamily[] = [
   "PMMA film", "PMMA slab", "PMMA rod", "PMMA sphere",
@@ -136,6 +137,13 @@ export function presets(runs: Run[]): Preset[] {
       scenario: { o2Pct: 34, pressurePsi: 8.2 },
       source: `NASA JSC, Open Atmospheres Forum 2022 (NTRS ${EXPLORATION_ATMOSPHERE.ntrs}): “${EXPLORATION_ATMOSPHERE.quote}”. Gravity not stated, so left unset.`,
       sourceUrl: EXPLORATION_ATMOSPHERE.url,
+    },
+    {
+      id: "spacesuit",
+      label: "Spacesuit (EVA)",
+      scenario: { o2Pct: 100, pressurePsi: 4.3 },
+      source: `NASA Space Apps challenge brief: “${SPACESUIT_QUOTE}”. Gravity not stated, so left unset.`,
+      sourceUrl: BRIEF_URL,
     },
   ];
 }

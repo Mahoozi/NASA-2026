@@ -16,6 +16,7 @@ import {
 } from "recharts";
 import type { MaterialFamily, Run, Scenario } from "@/lib/schema";
 import { familyLabel, OXYGEN_NOT_RECORDED } from "./coverage-grid";
+import { o2OffAxis, o2OffAxisNote, Y_DOMAIN } from "./gap-axis";
 import { materialLabel } from "./material-label";
 import { MATERIAL_FAMILIES } from "./scenario";
 
@@ -29,7 +30,6 @@ const COLOURED: { family: MaterialFamily; slot: string }[] = [
   { family: "PMMA film", slot: "--gc-s3" },
 ];
 const OTHER_SLOT = "--gc-other";
-const Y_DOMAIN: [number, number] = [10, 36];
 const MOON_O2 = 30;
 
 type Point = {
@@ -214,6 +214,8 @@ export function GapChart({
   }, [runs, matchingRunIds]);
 
   const { o2Pct: o2, flowCmS: flow } = scenario;
+  // Oxygen outside the fixed axis (for example a 100% spacesuit): no marker, said in the caption.
+  const o2Off = o2OffAxis(o2);
   const plotted = runs.length - unplotted.length;
   const plottedRuns = [...groups.values()].flat().map((p) => p.run);
   const reasons = unplottedReasons(unplotted);
@@ -292,7 +294,7 @@ export function GapChart({
               <Scatter key={key} data={points} shape={Dot} isAnimationActive={false} />
             ))}
 
-            {o2 !== undefined && flow !== undefined && (
+            {o2 !== undefined && !o2Off && flow !== undefined && (
               <ReferenceDot
                 x={flow}
                 y={o2}
@@ -304,7 +306,7 @@ export function GapChart({
                 label={{ value: "Your scenario", position: "top", offset: 10, fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
-            {o2 !== undefined && flow === undefined && (
+            {o2 !== undefined && !o2Off && flow === undefined && (
               <ReferenceLine
                 y={o2}
                 ifOverflow="extendDomain"
@@ -313,7 +315,7 @@ export function GapChart({
                 label={{ value: `Your scenario: ${o2}% O2`, position: "insideBottomRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
-            {flow !== undefined && o2 === undefined && (
+            {flow !== undefined && (o2 === undefined || o2Off) && (
               <ReferenceLine
                 x={flow}
                 ifOverflow="extendDomain"
@@ -332,6 +334,7 @@ export function GapChart({
           and an airflow. X is the highest airflow recorded in a run, because crews stepped the
           flow during some tests.
         </span>
+        {o2Off && <span>{o2OffAxisNote(o2)}</span>}
         {reasons.length > 0 && (
           <span>
             Not plotted:{" "}

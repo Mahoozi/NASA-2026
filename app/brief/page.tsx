@@ -4,7 +4,7 @@
 // them from Firebreak's own wording.
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BRIEF_URL, displayBriefQuote } from "./brief-text";
+import { BRIEF_URL, displayBriefQuote, OUT_OF_SCOPE_QUOTE } from "./brief-text";
 import { briefRows, loadBriefFacts } from "./rows";
 
 export const metadata: Metadata = { title: "How Firebreak answers the challenge · Firebreak" };
@@ -86,6 +86,15 @@ export default function BriefPage() {
             <li key={t}>{t}</li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="scope-heading" className="flex max-w-prose flex-col gap-3">
+        <h2 id="scope-heading" className="text-xl font-semibold">
+          Out of scope, per the brief:
+        </h2>
+        <blockquote data-quoted="brief" className="border-l-2 pl-3 text-base leading-relaxed italic">
+          {displayBriefQuote(OUT_OF_SCOPE_QUOTE)}
+        </blockquote>
       </section>
     </div>
   );

@@ -12,10 +12,19 @@ import { limitPoints } from "../../lib/limits";
 import type { CorpusDoc, Finding, Investigation, Run } from "../../lib/schema";
 import { EARTH_SECTIONS } from "../earth/content";
 import { groupInvestigations } from "../investigations/hardware";
+import { presets } from "../lab/scenario";
 import { CSV_COLUMNS } from "../lab/export";
 import { MAX_FINDINGS, verifiedFindings } from "../lab/findings";
 import { DIMENSIONS, whatVaried } from "../lab/varied";
-import { ARTEMIS_ATTRIBUTION, ARTEMIS_QUOTE, BRIEF_TEXT, displayBriefQuote } from "./brief-text";
+import {
+  ARTEMIS_ATTRIBUTION,
+  ARTEMIS_QUOTE,
+  BRIEF_TEXT,
+  displayBriefQuote,
+  E_FIELD_QUOTE,
+  OUT_OF_SCOPE_QUOTE,
+  SPACESUIT_QUOTE,
+} from "./brief-text";
 import BriefPage, { REFUSALS } from "./page";
 import { BOUNDS_SEEN, briefRows, loadBriefFacts } from "./rows";
 import { maxStartingO2, partialGravityRunCount } from "./run-facts";
@@ -90,7 +99,9 @@ describe("/brief page", () => {
     const pts = limitPoints(runs).points;
     expect(seen(0)).toContain(`${investigations.length} investigations`);
     if (facts.evals) expect(seen(0)).toContain(`${facts.evals.citationsVerified} of ${facts.evals.citations} citations verified`);
-    expect(seen(1)).toContain("4 presets");
+    expect(seen(1)).toContain(`${presets(runs).length} presets`);
+    expect(presets(runs)).toHaveLength(5);
+    expect(seen(1)).toContain("Spacesuit (EVA)");
     expect(seen(2)).toContain(`All ${runs.length} imported runs`);
     expect(seen(2)).toContain(`${CSV_COLUMNS.length} columns`);
     expect(seen(2)).toContain(`${pts.length} recorded limit points (${pts.filter((p) => p.event === "extinction").length} extinction, ${pts.filter((p) => p.event === "blowoff").length} blowoff, ${pts.filter((p) => p.event === "no-ignition").length} no-ignition)`);
@@ -141,6 +152,23 @@ describe("/brief page", () => {
     ]);
     for (const t of REFUSALS) expect(text(html)).toContain(t);
     expect(text(html)).toContain("What Firebreak refuses to do");
+  });
+
+  it("ends with the out-of-scope line, quoted exactly from the brief", () => {
+    expect(BRIEF_TEXT).toContain(OUT_OF_SCOPE_QUOTE);
+    expect(OUT_OF_SCOPE_QUOTE).toBe(
+      "Fire safety involving rockets and propellants is generally beyond the scope of the research available in the PSI database.",
+    );
+    expect(text(html)).toContain("Out of scope, per the brief:");
+    expect(text(html)).toContain(displayBriefQuote(OUT_OF_SCOPE_QUOTE));
+    expect(displayBriefQuote(OUT_OF_SCOPE_QUOTE)).toBe(OUT_OF_SCOPE_QUOTE); // whole sentence: no ellipsis, footnote star dropped
+    expect(html).toMatch(/<blockquote[^>]*data-quoted[^>]*>Fire safety involving rockets/);
+    // After the refusals list.
+    expect(html.indexOf("Out of scope, per the brief:")).toBeGreaterThan(html.indexOf("What Firebreak refuses to do"));
+  });
+
+  it("the Lab's new brief quotes are exact substrings of the brief text", () => {
+    for (const q of [SPACESUIT_QUOTE, E_FIELD_QUOTE, OUT_OF_SCOPE_QUOTE]) expect(BRIEF_TEXT).toContain(q);
   });
 
   it("uses no banned words in Firebreak's own text (quotes and the refusal list are exempt)", () => {
