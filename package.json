@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "import:psi": "tsx pipeline/psi_import_all.ts",
+    "build:watchlist": "tsx pipeline/watchlist_build.ts",
     "fetch:psi": "tsx pipeline/corpus_fetch_psi.ts",
     "fetch:ntrs": "tsx pipeline/corpus_fetch_ntrs.ts",
     "build:corpus": "tsx pipeline/corpus_build.ts",

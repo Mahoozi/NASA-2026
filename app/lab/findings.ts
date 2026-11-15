@@ -47,12 +47,17 @@ export function relevantFindings(
     .slice(0, limit);
 }
 
+/** True when `quote` is a non-empty, exact substring of the text of corpus doc `docId`. */
+export function quoteIsVerbatim(quote: string, docId: string, corpus: CorpusDoc[]): boolean {
+  const text = corpus.find((d) => d.id === docId)?.text;
+  return quote.length > 0 && (text?.includes(quote) ?? false);
+}
+
 /**
  * Findings whose quote is an exact substring of the text of their source
  * CorpusDoc. Anything else is dropped, so the panel's "quote verified" label is
  * only ever shown on a quote that was checked.
  */
 export function verifiedFindings(findings: Finding[], corpus: CorpusDoc[]): Finding[] {
-  const text = new Map(corpus.map((d) => [d.id, d.text]));
-  return findings.filter((f) => f.quote.length > 0 && (text.get(f.sourceDocId)?.includes(f.quote) ?? false));
+  return findings.filter((f) => quoteIsVerbatim(f.quote, f.sourceDocId, corpus));
 }
