@@ -28,11 +28,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`dark ${archivo.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-x-clip text-foreground">
+      <body className="min-h-full flex flex-col text-foreground">
         {/* Decides before first paint whether the home-page intro plays (components/intro). */}
         <script dangerouslySetInnerHTML={{ __html: INTRO_BOOT_SCRIPT }} />
-        <Nav />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+        {/* Clips the Earth where it runs past the right edge, so phones never scroll sideways. */}
+        <div className="flex flex-1 flex-col overflow-x-clip">
+          <Nav />
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+        </div>
       </body>
     </html>
   );

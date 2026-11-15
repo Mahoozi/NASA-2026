@@ -97,7 +97,7 @@ export default function Home() {
     <div className="flex flex-col gap-16">
       <Intro />
       <section className="relative isolate flex flex-col gap-6 pt-10 pb-4 sm:pt-20 sm:pb-10">
-        <HeroEarth className="pointer-events-none absolute top-1/2 -right-48 -z-10 size-[24rem] -translate-y-1/2 opacity-60 sm:-right-72 sm:size-[40rem] sm:opacity-100 lg:-right-[33rem] lg:size-[52rem]" />
+        <HeroEarth className="pointer-events-none absolute top-1/2 -right-56 -z-10 size-[24rem] -translate-y-1/2 opacity-45 sm:-right-72 sm:size-[40rem] sm:opacity-100 lg:-right-[33rem] lg:size-[52rem]" />
         <h1 className="max-w-4xl text-5xl leading-[0.95] font-extrabold tracking-tight text-balance sm:text-7xl">
           What NASA has burned in space, and what it hasn&apos;t.
         </h1>
