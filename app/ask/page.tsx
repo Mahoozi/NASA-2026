@@ -9,7 +9,7 @@ export default function AskPage() {
     (investigationsJson as Investigation[]).map((i) => [i.id, i.acronym]),
   );
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-1">
         <h1 className="text-3xl font-bold sm:text-4xl text-balance">Ask the evidence</h1>
         <p className="max-w-prose text-sm text-muted-foreground">

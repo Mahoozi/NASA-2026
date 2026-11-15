@@ -31,7 +31,7 @@ export function WatchlistView({ entries, runs, corpus }: { entries: WatchlistEnt
   const rows = watchlistRows(entries, runs, corpus);
   const context = shownContext(entries, corpus);
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-10">
       <div className="flex max-w-prose flex-col gap-3">
         <h1 className="text-3xl font-bold sm:text-4xl text-balance">{WATCHLIST_TITLE}</h1>
         <p className="text-base text-pretty text-muted-foreground">{WATCHLIST_INTRO}</p>

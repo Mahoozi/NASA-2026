@@ -29,7 +29,7 @@ export function EvidenceAtlas({ runs, investigations }: { runs: Run[]; investiga
   const depth = headerRows(groups);
   return (
     <section aria-labelledby="atlas-heading" className="flex scroll-mt-4 sm:scroll-mt-20 flex-col gap-3">
-      <h2 id="atlas-heading" className="text-xl font-semibold">
+      <h2 id="atlas-heading" className="text-xl font-bold">
         What NASA has burned, by atmosphere and material
       </h2>
       <p className="text-sm text-muted-foreground">{ATLAS_LEGEND}</p>

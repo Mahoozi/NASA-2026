@@ -78,7 +78,7 @@ export default function BriefPage() {
       </table>
 
       <section aria-labelledby="refuse-heading" className="flex max-w-prose flex-col gap-3">
-        <h2 id="refuse-heading" className="text-xl font-semibold">
+        <h2 id="refuse-heading" className="text-xl font-bold">
           What Firebreak refuses to do
         </h2>
         <ul data-exempt="refusals" className="flex list-disc flex-col gap-2 pl-5 text-base">
@@ -89,7 +89,7 @@ export default function BriefPage() {
       </section>
 
       <section aria-labelledby="scope-heading" className="flex max-w-prose flex-col gap-3">
-        <h2 id="scope-heading" className="text-xl font-semibold">
+        <h2 id="scope-heading" className="text-xl font-bold">
           Out of scope, per the brief:
         </h2>
         <blockquote data-quoted="brief" className="border-l-2 pl-3 text-base leading-relaxed italic">

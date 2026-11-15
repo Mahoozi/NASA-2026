@@ -24,7 +24,7 @@ export function HardwareGroups({ investigations }: { investigations: Investigati
   return (
     <section aria-labelledby="hardware-heading" className="flex scroll-mt-4 sm:scroll-mt-20 flex-col gap-4">
       <div className="flex max-w-prose flex-col gap-1">
-        <h2 id="hardware-heading" className="text-lg font-semibold">
+        <h2 id="hardware-heading" className="text-xl font-bold">
           Hardware groups
         </h2>
         <p className="text-sm text-muted-foreground">{HARDWARE_INTRO}</p>

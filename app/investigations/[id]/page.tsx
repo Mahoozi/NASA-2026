@@ -85,7 +85,7 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
       <div className="flex flex-col gap-8">
         {sections.map(([heading, text]) => (
           <section key={heading} className="flex max-w-prose flex-col gap-2">
-            <h2 className="text-lg font-semibold text-balance">{heading}</h2>
+            <h2 className="text-xl font-bold text-balance">{heading}</h2>
             {text ? (
               <p className="text-sm leading-relaxed break-words whitespace-pre-line">{text}</p>
             ) : (
@@ -102,7 +102,7 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
 
       <section className="flex flex-col gap-3">
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold text-balance">Sources in the corpus</h2>
+          <h2 className="text-xl font-bold text-balance">Sources in the corpus</h2>
           <p className="text-sm text-muted-foreground">
             The documents the Ask page can cite for this investigation.
           </p>
