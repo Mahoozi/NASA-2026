@@ -1,6 +1,6 @@
 "use client";
 // Person A — owns the scenario state, which lives in the URL.
-// Page order: presets and form → summary + gaps → coverage grid → gap chart
+// Page order: presets and form → summary + gaps → gap chart → coverage grid
 // → ranked investigations → runs table → download.
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
@@ -31,6 +31,7 @@ import { SpaceVsEarth } from "./space-vs-earth";
 import { WhatVaried } from "./what-varied";
 import { Summary } from "./summary";
 import { BestMatch } from "./best-match";
+import { SummaryCollapse } from "./summary-collapse";
 
 export function LabClient({
   runs,
@@ -171,6 +172,7 @@ export function LabClient({
         <h2 id="summary-heading" className="scroll-mt-4 sm:scroll-mt-20 text-xl font-bold">
           Summary
         </h2>
+        <SummaryCollapse openOnHash={["#summary-heading", "#gaps"]}>
         {scored ? (
           <>
             <BestMatch scenario={scenario} matches={matches} runs={runs} />
@@ -187,6 +189,14 @@ export function LabClient({
             Pressure alone is not scored.
           </p>
         )}
+        </SummaryCollapse>
+      </section>
+
+      <section aria-labelledby="chart-heading" className="flex flex-col gap-3">
+        <h2 id="chart-heading" className="text-xl font-bold">
+          Gap chart: airflow and starting oxygen of every run
+        </h2>
+        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} closestRunIds={closest} investigations={investigations} onSelectRun={pickRun} />
       </section>
 
       <section aria-labelledby="grid-heading" className="flex flex-col gap-3">
@@ -204,13 +214,6 @@ export function LabClient({
             setScenario(next);
           }}
         />
-      </section>
-
-      <section aria-labelledby="chart-heading" className="flex flex-col gap-3">
-        <h2 id="chart-heading" className="text-xl font-bold">
-          Gap chart: airflow and starting oxygen of every run
-        </h2>
-        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} closestRunIds={closest} investigations={investigations} onSelectRun={pickRun} />
       </section>
 
       <section aria-labelledby="limits-heading" className="flex flex-col gap-3">
