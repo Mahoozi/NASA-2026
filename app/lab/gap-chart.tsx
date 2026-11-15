@@ -32,6 +32,20 @@ const COLOURED: { family: MaterialFamily; slot: string }[] = [
 const OTHER_SLOT = "--gc-other";
 const MOON_O2 = 30;
 
+// The default view colours points by investigation, as most cabin-evidence charts do.
+// The three hues stay clear of red, amber and green, which would read as safety verdicts.
+const INVESTIGATION_COLOUR: Record<string, string> = {
+  "PSI-25": "#7dd3fc",
+  "PSI-98": "#c4b5fd",
+  "PSI-99": "#f9a8d4",
+};
+const OTHER_INVESTIGATION = "#a3a3a3";
+const colourOfInvestigation = (id: string) => INVESTIGATION_COLOUR[id] ?? OTHER_INVESTIGATION;
+type ColourBy = "investigation" | "material";
+
+/** Fixed, repeatable horizontal spread for the strip of runs placed by oxygen only. */
+const stripX = (i: number) => 0.15 + 0.7 * ((i * 0.618034) % 1);
+
 type Point = {
   x: number;
   y: number;
@@ -105,6 +119,9 @@ function Marker({
 
 type Ctl = {
   investigations: Investigation[];
+  colourBy: ColourBy;
+  /** Runs that carry the score of a top-ranked investigation; drawn with a ring. */
+  closest: Set<string>;
   show: (run: Run, el: Element) => void;
   hide: (run: Run) => void;
   /** A tap on a touch screen: toggles the pinned tooltip. */
@@ -146,13 +163,29 @@ function DotMark({ cx, cy, point }: { cx: number; cy: number; point: Point }) {
     >
       {/* 24px transparent hit target around a ~10px mark */}
       <circle className="hit" cx={cx} cy={cy} r={12} fill="transparent" />
-      <Marker
-        shape={SHAPE[family]}
-        cx={cx}
-        cy={cy}
-        colour={`var(${slotFor(family)})`}
-        opacity={point.match ? 1 : 0.25}
-      />
+      {ctl.closest.has(run.id) && (
+        <circle cx={cx} cy={cy} r={9} fill="none" stroke="var(--foreground)" strokeWidth={2} />
+      )}
+      {ctl.colourBy === "investigation" ? (
+        <circle
+          cx={cx}
+          cy={cy}
+          r={5}
+          fill={colourOfInvestigation(run.investigationId)}
+          fillOpacity={point.match ? 0.8 : 0.16}
+          stroke={colourOfInvestigation(run.investigationId)}
+          strokeOpacity={point.match ? 1 : 0.35}
+          strokeWidth={1.5}
+        />
+      ) : (
+        <Marker
+          shape={SHAPE[family]}
+          cx={cx}
+          cy={cy}
+          colour={`var(${slotFor(family)})`}
+          opacity={point.match ? 1 : 0.25}
+        />
+      )}
     </g>
   );
 }
@@ -204,6 +237,7 @@ export function GapChart({
   matchingRunIds,
   investigations = [],
   onSelectRun,
+  closestRunIds,
 }: {
   runs: Run[];
   /** For the acronym in each point's details; ids are shown when omitted. */
@@ -213,13 +247,18 @@ export function GapChart({
   scenario: Scenario;
   /** null = no run-level dimension set, so every run is shown at full strength. */
   matchingRunIds: Set<string> | null;
+  /** Best run of each top-ranked investigation (match-explain.ts); ringed on the chart. */
+  closestRunIds?: Set<string>;
 }) {
+  const [colourBy, setColourBy] = useState<ColourBy>("investigation");
   const [tip, setTip] = useState<{ run: Run; anchor: Anchor; pinned: boolean } | null>(null);
   const close = useCallback(() => setTip(null), []);
   useDismiss(tip !== null, "chart", close);
   const ctl = useMemo<Ctl>(
     () => ({
       investigations,
+      colourBy,
+      closest: closestRunIds ?? new Set(),
       show: (run, el) => setTip({ run, anchor: anchorOf(el), pinned: false }),
       // A tap-pinned tooltip holds a button, so losing focus to it must not close the tooltip.
       hide: (run) => setTip((t) => (t?.run.id === run.id && !t.pinned ? null : t)),
@@ -230,14 +269,20 @@ export function GapChart({
         onSelectRun?.(run);
       },
     }),
-    [investigations, onSelectRun],
+    [investigations, onSelectRun, colourBy, closestRunIds],
   );
 
-  const { groups, unplotted, families } = useMemo(() => {
+  const { groups, unplotted, strip, families } = useMemo(() => {
     const groups = new Map<MaterialFamily, Point[]>();
     const unplotted: Run[] = [];
+    // Runs with a starting oxygen but no numeric airflow: placed by oxygen only, in the strip.
+    const strip: Point[] = [];
     for (const run of runs) {
       const x = run.flowCmS.max ?? run.flowCmS.min;
+      if (run.o2InitialPct !== null && x === null) {
+        strip.push({ x: stripX(strip.length), y: run.o2InitialPct, run, match: matchingRunIds?.has(run.id) ?? true });
+        continue;
+      }
       if (run.o2InitialPct === null || x === null) {
         unplotted.push(run);
         continue;
@@ -253,15 +298,25 @@ export function GapChart({
       ...COLOURED.map((c) => c.family),
       ...MATERIAL_FAMILIES.filter((f) => !COLOURED.some((c) => c.family === f)),
     ].filter((f) => present.has(f));
-    return { groups, unplotted, families };
+    return { groups, unplotted, strip, families };
   }, [runs, matchingRunIds]);
 
   const { o2Pct: o2, flowCmS: flow } = scenario;
   // Oxygen outside the fixed axis (for example a 100% spacesuit): no marker, said in the caption.
   const o2Off = o2OffAxis(o2);
-  const plotted = runs.length - unplotted.length;
+  const plotted = runs.length - unplotted.length - strip.length;
   const plottedRuns = [...groups.values()].flat().map((p) => p.run);
   const reasons = unplottedReasons(unplotted);
+  // Investigation legend: every investigation with a point on the chart or in the strip.
+  const shownInvestigations = [...new Set([...plottedRuns, ...strip.map((p) => p.run)].map((r) => r.investigationId))].map(
+    (id) => ({
+      id,
+      label: investigations.find((i) => i.id === id)?.acronym || id,
+      n: [...plottedRuns, ...strip.map((p) => p.run)].filter((r) => r.investigationId === id).length,
+    }),
+  );
+  const crosshair = o2 !== undefined && !o2Off && flow !== undefined;
+  const legendItem = "flex items-center gap-1.5";
 
   return (
     <figure className="gap-chart flex flex-col gap-3 rounded-lg border bg-card/60 p-4 backdrop-blur-sm">
@@ -272,18 +327,46 @@ export function GapChart({
         .gap-chart [data-point]:focus-visible .hit { stroke: var(--foreground); stroke-width: 2; }
       `}</style>
 
-      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-muted-foreground" aria-label="Legend">
-        {families.map((f) => (
-          <li key={f} className="flex items-center gap-1.5">
-            <LegendMark family={f} />
-            {familyLabel(f, plottedRuns)}
-          </li>
-        ))}
-        {matchingRunIds && <li>Faded marks: runs that do not match the scenario</li>}
-      </ul>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-1 rounded-md border border-border p-0.5 text-sm" role="group" aria-label="Colour points by">
+          <span className="px-2 text-muted-foreground">Colour by</span>
+          {(["investigation", "material"] as const).map((c) => (
+            <button
+              key={c}
+              type="button"
+              aria-pressed={colourBy === c}
+              onClick={() => setColourBy(c)}
+              className={`rounded px-2.5 py-1 font-medium capitalize ${
+                colourBy === c ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+        <p className="text-sm text-muted-foreground">Every point is a NASA PSI run · crosshair = your scenario</p>
+      </div>
 
+      <div className="flex w-full gap-2">
+      {strip.length > 0 && (
+        <div className="flex w-14 shrink-0 flex-col items-center sm:w-24">
+          <div className="h-96 w-full rounded-md border border-border bg-muted/40" aria-label={`${strip.length} runs placed by starting oxygen only`}>
+            <ChartCtl.Provider value={ctl}>
+              <ResponsiveContainer width="100%" height="100%">
+                {/* Top and bottom margins match the main plot (32 + 30 px axis) so oxygen lines up. */}
+                <ScatterChart margin={{ top: 12, right: 8, bottom: 62, left: 8 }}>
+                  <XAxis type="number" dataKey="x" domain={[0, 1]} hide />
+                  <YAxis type="number" dataKey="y" domain={Y_DOMAIN} hide />
+                  <Scatter data={strip} shape={Dot} isAnimationActive={false} />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </ChartCtl.Provider>
+          </div>
+          <p className="-mt-14 px-1 text-center text-sm leading-tight text-muted-foreground">airflow not in cm/s</p>
+        </div>
+      )}
       <div
-        className="h-96 w-full"
+        className="h-96 min-w-0 flex-1"
         role="group"
         aria-label={`Scatter of ${plotted} runs by airflow and starting oxygen.${
           o2 !== undefined ? ` Scenario oxygen ${o2}%.` : ""
@@ -292,7 +375,7 @@ export function GapChart({
         <ChartCtl.Provider value={ctl}>
         <ResponsiveContainer width="100%" height="100%">
           <ScatterChart margin={{ top: 12, right: 24, bottom: 32, left: 4 }}>
-            <CartesianGrid stroke="var(--border)" strokeDasharray="" vertical={false} />
+            <CartesianGrid stroke="var(--border)" strokeDasharray="" />
             <ReferenceArea
               y1={MOON_O2}
               y2={Y_DOMAIN[1]}
@@ -313,6 +396,8 @@ export function GapChart({
               name="Airflow"
               unit=" cm/s"
               domain={[0, "dataMax"]}
+              ticks={[0, 10, 20, 30, 40, 50]}
+              height={30}
               tick={{ fill: "var(--muted-foreground)", fontSize: 14 }}
               stroke="var(--border)"
               label={{
@@ -329,7 +414,7 @@ export function GapChart({
               name="Starting O2"
               unit="%"
               domain={Y_DOMAIN}
-              ticks={[10, 15, 20, 25, 30, 35]}
+              ticks={[10, 20, 30]}
               allowDataOverflow={false}
               tick={{ fill: "var(--muted-foreground)", fontSize: 14 }}
               stroke="var(--border)"
@@ -339,15 +424,17 @@ export function GapChart({
               <Scatter key={key} data={points} shape={Dot} isAnimationActive={false} />
             ))}
 
-            {o2 !== undefined && !o2Off && flow !== undefined && (
+            {crosshair && <ReferenceLine y={o2} stroke="var(--primary)" strokeWidth={1.5} strokeDasharray="6 5" />}
+            {crosshair && <ReferenceLine x={flow} stroke="var(--primary)" strokeWidth={1.5} strokeDasharray="6 5" />}
+            {crosshair && (
               <ReferenceDot
                 x={flow}
                 y={o2}
-                r={7}
+                r={9}
                 ifOverflow="extendDomain"
-                fill="var(--background)"
-                stroke="var(--foreground)"
-                strokeWidth={2}
+                fill="none"
+                stroke="var(--primary)"
+                strokeWidth={2.5}
                 label={{ value: "Your scenario", position: "top", offset: 10, fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
@@ -355,8 +442,9 @@ export function GapChart({
               <ReferenceLine
                 y={o2}
                 ifOverflow="extendDomain"
-                stroke="var(--foreground)"
+                stroke="var(--primary)"
                 strokeWidth={2}
+                strokeDasharray="6 5"
                 label={{ value: `Your scenario: ${o2}% O2`, position: "insideBottomRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
@@ -364,8 +452,9 @@ export function GapChart({
               <ReferenceLine
                 x={flow}
                 ifOverflow="extendDomain"
-                stroke="var(--foreground)"
+                stroke="var(--primary)"
                 strokeWidth={2}
+                strokeDasharray="6 5"
                 label={{ value: `Your scenario: ${flow} cm/s`, position: "insideTopRight", fill: "var(--foreground)", fontSize: 14, fontWeight: 600, stroke: "var(--background)", strokeWidth: 4, paintOrder: "stroke" }}
               />
             )}
@@ -373,6 +462,42 @@ export function GapChart({
         </ResponsiveContainer>
         </ChartCtl.Provider>
       </div>
+      </div>
+
+      <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-muted-foreground" aria-label="Legend">
+        {colourBy === "investigation"
+          ? shownInvestigations.map((inv) => (
+              <li key={inv.id} className={legendItem}>
+                <svg width={14} height={14} viewBox="0 0 14 14" aria-hidden className="shrink-0">
+                  <circle cx={7} cy={7} r={5} fill={colourOfInvestigation(inv.id)} />
+                </svg>
+                {inv.label} ({inv.n} run{inv.n === 1 ? "" : "s"})
+              </li>
+            ))
+          : families.map((f) => (
+              <li key={f} className={legendItem}>
+                <LegendMark family={f} />
+                {familyLabel(f, plottedRuns)}
+              </li>
+            ))}
+        {(o2 !== undefined || flow !== undefined) && (
+          <li className={legendItem}>
+            <svg width={18} height={14} viewBox="0 0 18 14" aria-hidden className="shrink-0">
+              <circle cx={9} cy={7} r={5} fill="none" stroke="var(--primary)" strokeWidth={2} />
+            </svg>
+            Your scenario
+          </li>
+        )}
+        {(closestRunIds?.size ?? 0) > 0 && (
+          <li className={legendItem}>
+            <svg width={18} height={14} viewBox="0 0 18 14" aria-hidden className="shrink-0">
+              <circle cx={9} cy={7} r={5.5} fill="none" stroke="var(--foreground)" strokeWidth={2} />
+            </svg>
+            Closest run of each top-ranked investigation
+          </li>
+        )}
+        {matchingRunIds && <li>Faded marks: runs that do not match the scenario</li>}
+      </ul>
       {tip && (
         <FloatingTip anchor={tip.anchor} id="chart-tip" root="chart" interactive={tip.pinned}>
           <RunTipBody run={tip.run} investigations={investigations} />
@@ -394,6 +519,14 @@ export function GapChart({
           and an airflow. X is the highest airflow recorded in a run, because crews stepped the
           flow during some tests.
         </span>
+        {strip.length > 0 && (
+          <span>
+            The strip on the left places {strip.length} more run{strip.length === 1 ? "" : "s"} by starting
+            oxygen only, because the source does not give the airflow as a number (
+            {[...new Set(strip.map((p) => p.run.investigationId))].join(", ")}:{" "}
+            {strip.map((p) => p.run.testId).join(", ")}).
+          </span>
+        )}
         {o2Off && <span>{o2OffAxisNote(o2)}</span>}
         {reasons.length > 0 && (
           <span>

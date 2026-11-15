@@ -18,6 +18,7 @@ import { GapChart } from "./gap-chart";
 import { evidenceGaps } from "./gaps";
 import { GapsPanel } from "./gaps-panel";
 import { LimitsPanel } from "./limits-panel";
+import { closestRunIds } from "./match-explain";
 import { matchingRunIdSet } from "./matching-runs";
 import { SPACE_VS_EARTH_ID } from "./gravity-bounds-note";
 import { RankedList } from "./ranked-list";
@@ -61,6 +62,9 @@ export function LabClient({
   );
   // Runs that match every run-level dimension set; null when none is set.
   const matchingRunIds = useMemo(() => matchingRunIdSet(scenario, matches), [scenario, matches]);
+
+  // Best run of each top-ranked investigation, ringed on the gap chart.
+  const closest = useMemo(() => closestRunIds(scenario, matches, runs), [scenario, matches, runs]);
 
   // Investigations with runs whose coverage for the scenario is direct or partial.
   const matchedCoverage = useMemo(
@@ -204,7 +208,7 @@ export function LabClient({
         <h2 id="chart-heading" className="text-xl font-bold">
           Gap chart: airflow and starting oxygen of every run
         </h2>
-        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} investigations={investigations} onSelectRun={pickRun} />
+        <GapChart runs={runs} scenario={scenario} matchingRunIds={matchingRunIds} closestRunIds={closest} investigations={investigations} onSelectRun={pickRun} />
       </section>
 
       <section aria-labelledby="limits-heading" className="flex flex-col gap-3">
