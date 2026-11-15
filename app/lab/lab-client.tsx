@@ -238,7 +238,7 @@ export function LabClient({
         <h2 id="space-earth-heading" className="text-xl font-bold">
           Space vs Earth (Saffire-II)
         </h2>
-        <SpaceVsEarth runs={runs} />
+        <SpaceVsEarth runs={runs} materialFamily={scenario.materialFamily} />
       </section>
 
       {scored && (
