@@ -142,5 +142,29 @@
     "question": "Is it safe to use Velcro inside a spacecraft cabin?",
     "expectDocIds": [],
     "expectStatus": "insufficient_evidence"
+  },
+  {
+    "id": "paper-sibal-quenching-speed",
+    "question": "In the BASS and BASS-II concurrent-flow tests on SIBAL cotton-fiberglass fabric, at what flow speeds did quenching extinction occur, and how did the quenching speed change with oxygen concentration?",
+    "expectDocIds": ["ntrs-20150008962-p1", "ntrs-20150008962-p7"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "paper-saffire2-silicone-flame",
+    "question": "What happened to the flame on the Saffire-II silicone samples after the igniter was powered off, and why was that surprising?",
+    "expectDocIds": ["ntrs-20170008805-p12"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "paper-bass2-pmma-rod-diameter",
+    "question": "In the BASS-II Material Ignition and Suppression Test on PMMA rods, how did flame spread rate change with sample diameter, and how did the normal-gravity spread rates compare with the microgravity ones?",
+    "expectDocIds": ["ntrs-20160000593-p15"],
+    "expectStatus": "answered"
+  },
+  {
+    "id": "none-saffire4-6-results",
+    "question": "What fire growth measurements did Saffire-IV, V and VI report for high-oxygen, low-pressure atmospheres?",
+    "expectDocIds": [],
+    "expectStatus": "insufficient_evidence"
   }
 ]
