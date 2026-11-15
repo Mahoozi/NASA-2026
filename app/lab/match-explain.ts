@@ -11,9 +11,10 @@ const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
 const round1 = (n: number) => Math.round(n * 10) / 10;
 
 /**
- * The single run that carries an investigation's score: the one with the highest mean
- * closeness over the run-level dimensions the scenario sets, first in data order on a
- * tie. This is the same rule matchInvestigations uses. Null when no run-level
+ * The run that carries an investigation's score: one with the highest mean closeness
+ * over the run-level dimensions the scenario sets, the same values matchInvestigations
+ * keeps. Closeness saturates (any oxygen within 1 point scores 1), so several runs can
+ * tie; among those, the one nearest in real units is shown. Null when no run-level
  * dimension is set or there are no runs.
  */
 export function bestRun(
@@ -24,15 +25,28 @@ export function bestRun(
   if (!dims.length || !runs.length) return null;
   let best: { run: Run; breakdown: Partial<Record<RunDimension, number>> } | null = null;
   let bestMean = -1;
+  let bestDistance = Infinity;
   for (const run of runs) {
     const b = runBreakdown(scenario, run);
     const m = mean(dims.map((d) => b[d]!));
-    if (m > bestMean) {
+    const distance = rawDistance(scenario, run);
+    if (m > bestMean || (m === bestMean && distance < bestDistance)) {
       best = { run, breakdown: b };
       bestMean = m;
+      bestDistance = distance;
     }
   }
   return best;
+}
+
+/** Tie-break only: oxygen points plus airflow cm/s outside the run's range. */
+function rawDistance(scenario: Scenario, run: Run): number {
+  let d = 0;
+  if (scenario.o2Pct !== undefined && run.o2InitialPct !== null) d += Math.abs(run.o2InitialPct - scenario.o2Pct);
+  const { min, max } = run.flowCmS;
+  if (scenario.flowCmS !== undefined && min !== null && max !== null)
+    d += scenario.flowCmS < min ? min - scenario.flowCmS : scenario.flowCmS > max ? scenario.flowCmS - max : 0;
+  return d;
 }
 
 export type UnitGap = { label: string; text: string; source?: string };

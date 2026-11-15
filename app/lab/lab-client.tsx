@@ -30,6 +30,7 @@ import { ScenarioForm } from "./scenario-form";
 import { SpaceVsEarth } from "./space-vs-earth";
 import { WhatVaried } from "./what-varied";
 import { Summary } from "./summary";
+import { BestMatch } from "./best-match";
 
 export function LabClient({
   runs,
@@ -172,6 +173,7 @@ export function LabClient({
         </h2>
         {scored ? (
           <>
+            <BestMatch scenario={scenario} matches={matches} runs={runs} />
             <Summary matches={matches} withRuns={withRuns} />
             <WatchlistLine count={scenario.materialFamily ? (watchlistCounts[scenario.materialFamily] ?? 0) : 0} />
             <GapsPanel report={gaps} />
@@ -244,7 +246,7 @@ export function LabClient({
           <h2 id="ranked-heading" className="text-xl font-bold">
             Ranked investigations
           </h2>
-          <RankedList matches={matches} pendingIds={pendingIds} withRuns={withRuns} />
+          <RankedList matches={matches} pendingIds={pendingIds} withRuns={withRuns} scenario={scenario} runs={runs} />
         </section>
       )}
 
