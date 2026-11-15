@@ -229,10 +229,10 @@ describe("/watchlist page", () => {
 });
 
 describe("watchlist links and the Lab line", () => {
-  it("appends one nav link and one /brief link", () => {
+  it("has one nav link and one /brief link", () => {
     const nav = renderToStaticMarkup(createElement(Nav));
     expect(nav).toMatch(/href="\/watchlist"[^>]*>Watchlist</);
-    expect([...nav.matchAll(/href="([^"]+)"/g)].map((m) => m[1]).at(-1)).toBe("/watchlist");
+    expect(nav.match(/href="\/watchlist"/g)).toHaveLength(1);
     const rowsSource = readFileSync(join(ROOT, "app/brief/rows.ts"), "utf8");
     expect(rowsSource).toContain('{ label: "Hardware watchlist", href: "/watchlist" }');
   });

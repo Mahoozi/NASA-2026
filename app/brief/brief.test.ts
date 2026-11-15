@@ -180,10 +180,17 @@ describe("/brief page", () => {
     expect(html).not.toMatch(/text-(xs|\[1[0-3]px\])/);
   });
 
-  it("is linked from the nav and the landing page's How it works section", () => {
-    expect(renderToStaticMarkup(createElement(Nav))).toMatch(/href="\/brief"[^>]*>Challenge</);
+  it("is linked from the landing page (How it works and the footer), not from the nav", () => {
+    const nav = renderToStaticMarkup(createElement(Nav));
+    expect(nav).not.toContain('href="/brief"');
+    expect([...nav.matchAll(/href="(\/[a-z]*)"[^>]*>([^<]+)</g)].map((m) => m[2]).slice(-6)).toEqual([
+      "Lab", "Ask", "Investigations", "Earth", "Watchlist", "Evals",
+    ]);
     const landing = readFileSync(join(ROOT, "app/page.tsx"), "utf8");
     expect(landing.slice(landing.indexOf("How it works"))).toContain('href="/brief"');
+    const footer = landing.slice(landing.indexOf("<footer"));
+    expect(footer).toContain('href="/brief"');
+    expect(footer).toContain("How Firebreak answers the challenge");
   });
 });
 

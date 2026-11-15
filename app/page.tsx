@@ -243,6 +243,9 @@ export default function Home() {
       <footer className="flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted-foreground">
         <p>Built at the 2026 NASA Space Apps Challenge, Montréal. Not affiliated with or endorsed by NASA.</p>
         <p className="flex flex-wrap gap-4">
+          <Link href="/brief" className="underline underline-offset-4 hover:text-foreground">
+            How Firebreak answers the challenge
+          </Link>
           <a href={REPO} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-foreground">
             Source on GitHub
           </a>
