@@ -115,7 +115,7 @@ function InvestigationCard({ inv }: { inv: Investigation }) {
             {shortName(inv)}
           </Link>
           {inv.acronym && (
-            <span translate="no" className="text-xs font-normal text-muted-foreground">
+            <span translate="no" className="text-sm font-normal text-muted-foreground">
               {inv.id}
             </span>
           )}

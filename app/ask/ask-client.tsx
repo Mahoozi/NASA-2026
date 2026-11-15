@@ -259,7 +259,7 @@ function Answer({
           )}
         </>
       )}
-      <p className="text-xs text-muted-foreground">
+      <p className="text-sm text-muted-foreground">
         Each quote was checked word for word against the source text by the server. Answers report
         what NASA investigations did and found; they are not safety assessments.
       </p>

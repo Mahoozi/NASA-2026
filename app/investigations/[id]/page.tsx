@@ -93,7 +93,7 @@ export default async function InvestigationPage({ params }: PageProps<"/investig
             )}
           </section>
         ))}
-        <p className="max-w-prose text-xs text-muted-foreground">
+        <p className="max-w-prose text-sm text-muted-foreground">
           Text above is copied from the investigation’s PSI record without editing.
         </p>
       </div>

@@ -189,8 +189,8 @@ function QuestionTable({ items }: { items: EvalItem[] }) {
             <TableRow key={i.id} className={cn(!i.statusMatch && "bg-destructive/5")}>
               <TableCell className="whitespace-normal align-top">
                 <p>{i.question}</p>
-                <p translate="no" className="font-mono text-xs text-muted-foreground">{i.id}</p>
-                {i.error && <p className="text-xs text-destructive">Error: {i.error}</p>}
+                <p translate="no" className="font-mono text-sm text-muted-foreground">{i.id}</p>
+                {i.error && <p className="text-sm text-destructive">Error: {i.error}</p>}
               </TableCell>
               <TableCell className="align-top">{STATUS_LABEL[i.expectStatus]}</TableCell>
               <TableCell className="align-top">
@@ -214,7 +214,7 @@ function QuestionTable({ items }: { items: EvalItem[] }) {
                           </span>
                         </Badge>
                         {!retrieved.has(id) && (
-                          <span aria-hidden className="ml-1 text-xs text-destructive">
+                          <span aria-hidden className="ml-1 text-sm text-destructive">
                             not retrieved
                           </span>
                         )}

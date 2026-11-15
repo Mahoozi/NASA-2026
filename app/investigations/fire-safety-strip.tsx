@@ -40,7 +40,7 @@ export function FireSafetyStrip() {
                 “{quote}”
               </blockquote>
             </CardContent>
-            <CardFooter className="text-xs">
+            <CardFooter className="text-sm">
               <a href={source.url} className="underline-offset-4 hover:underline" target="_blank" rel="noreferrer">
                 Source: {source.title}
               </a>
