@@ -6,10 +6,13 @@ import runsJson from "../../data/runs.json";
 import { Nav } from "../../components/nav";
 import type { Investigation, Run } from "../../lib/schema";
 import {
-  BRIEF_SENTENCE,
+  BRIEF_FLEX_SENTENCE,
+  BRIEF_TEXT,
+  displayBriefQuote,
   EARTH_INTRO,
   EARTH_SECTIONS,
   NO_SPINOFF,
+  SUPPRESSION_NOTE,
   nomexRuns,
   runFields,
   SPINOFF_LABEL,
@@ -36,14 +39,14 @@ const quotedText = [...html.matchAll(/<(\w+)[^>]*data-quoted[^>]*>([\s\S]*?)<\/\
 describe("/earth page", () => {
   it("lists only investigations that exist, in the requested order", () => {
     expect(EARTH_SECTIONS.map((s) => [s.id, s.psiIds])).toEqual([
-      ["suppression", ["PSI-69", "PSI-68"]],
+      ["suppression", ["PSI-69"]],
       ["detection", ["PSI-102", "PSI-101", "PSI-47"]],
       ["gear", ["PSI-99"]],
     ]);
     for (const s of EARTH_SECTIONS)
       for (const id of s.psiIds) expect(investigations.some((i) => i.id === id), id).toBe(true);
     const headings = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => text(m[1]));
-    expect(headings).toEqual(["Suppression (fine water mist)", "Smoke detection", "Firefighter gear"]);
+    expect(headings).toEqual(["Suppression", "Smoke detection", "Firefighter gear"]);
   });
 
   it("has three parts per section, in order", () => {
@@ -61,11 +64,33 @@ describe("/earth page", () => {
   });
 
   it("quotes the brief exactly and labels it", () => {
-    for (const s of EARTH_SECTIONS) {
-      expect(BRIEF_SENTENCE).toContain(s.briefQuote);
-      expect(quotedText).toContain(`…${s.briefQuote}…`);
-    }
+    for (const s of EARTH_SECTIONS)
+      for (const q of s.briefQuotes) {
+        expect(BRIEF_TEXT).toContain(q);
+        expect(quotedText).toContain(displayBriefQuote(q));
+      }
     expect(text(html).match(/NASA Space Apps challenge brief/g)).toHaveLength(EARTH_SECTIONS.length);
+  });
+
+  it("Suppression shows the two brief quotes and the no-link note", () => {
+    const [suppression] = EARTH_SECTIONS;
+    expect(suppression.briefQuotes).toEqual([
+      "Suppression was studied in the Flame Extinguishment Experiment (FLEX) through dilution of the chamber atmosphere with carbon dioxide and helium, both of which suppress fire.",
+      "Fine-water-mist extinguishers developed for use on the ISS have practical applications here on Earth",
+    ]);
+    // A whole sentence gets no ellipsis; a cut-out fragment does.
+    expect(displayBriefQuote(BRIEF_FLEX_SENTENCE)).toBe(BRIEF_FLEX_SENTENCE);
+    expect(displayBriefQuote(suppression.briefQuotes[1])).toBe(`${suppression.briefQuotes[1]}…`);
+    expect(SUPPRESSION_NOTE).toBe("The brief does not link these two; Firebreak does not either.");
+    expect(text(html)).toContain(SUPPRESSION_NOTE);
+    expect(ownText).toContain(SUPPRESSION_NOTE);
+  });
+
+  it("does not show FLEX-2 (PSI-68) anywhere", () => {
+    expect(EARTH_SECTIONS.flatMap((s) => s.psiIds)).not.toContain("PSI-68");
+    expect(html).not.toContain("PSI-68");
+    expect(html).not.toContain("FLEX-2");
+    expect(text(html)).not.toContain("liquid fuels");
   });
 
   it("renders every earthBenefits string exactly as stored", () => {
@@ -108,8 +133,14 @@ describe("/earth page", () => {
     expect(get("Airflow as recorded")).toBe(run.flowCmS.raw);
     expect(get("Event keyword")).toBe("outcome not recorded");
     expect(run.events).toEqual([]);
-    for (const label of ["microgravity burn length", "1-g burn length", "source note 2"])
+    for (const label of ["microgravity burn length", "1-g burn length"])
       expect(get(label)).toBe(run.observations!.find((o) => o.label === label)!.value);
+    // Stored as "source note 2"; displayed as "Source note", value verbatim.
+    const note = run.observations!.find((o) => o.label === "source note 2")!.value;
+    expect(note).toBe("The PMMA portion was completely consumed but the Nomex was not ignited.");
+    expect(get("Source note")).toBe(note);
+    expect(fields.some((f) => f.label === "source note 2")).toBe(false);
+    expect(html).toMatch(/<dt[^>]*>Source note<\/dt><dd[^>]*data-quoted="run"[^>]*>The PMMA portion was completely consumed but the Nomex was not ignited\.<\/dd>/);
     expect(fields.filter((f) => f.flag).map((f) => f.value)).toEqual(run.flags);
     for (const f of fields) expect(quotedText).toContain(f.value);
     expect(quotedText).toContain("The PMMA portion was completely consumed but the Nomex was not ignited.");

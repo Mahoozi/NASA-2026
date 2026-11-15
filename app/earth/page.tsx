@@ -8,6 +8,7 @@ import type { Run } from "../../lib/schema";
 import { CHALLENGE_BRIEF_URL } from "../lab/higher-oxygen-note";
 import {
   EARTH_INTRO,
+  displayBriefQuote,
   EARTH_SECTIONS,
   type EarthSection,
   investigationsById,
@@ -113,14 +114,17 @@ function Section({ section, runs }: { section: EarthSection; runs: Run[] }) {
       </h2>
 
       <Part title="From the challenge brief">
-        <figure className="flex flex-col gap-1">
-          <blockquote data-quoted="brief" className="border-l-2 pl-3 text-sm leading-relaxed italic">
-            …{section.briefQuote}…
-          </blockquote>
+        <figure className="flex flex-col gap-2">
+          {section.briefQuotes.map((q) => (
+            <blockquote key={q} data-quoted="brief" className="border-l-2 pl-3 text-sm leading-relaxed italic">
+              {displayBriefQuote(q)}
+            </blockquote>
+          ))}
           <figcaption className="text-sm text-muted-foreground">
             <Ext href={CHALLENGE_BRIEF_URL}>NASA Space Apps challenge brief</Ext>
           </figcaption>
         </figure>
+        {section.briefNote && <p className="text-sm">{section.briefNote}</p>}
       </Part>
 
       <Part title="What the PSI record says">

@@ -8,9 +8,32 @@ import type { Investigation, Run } from "../../lib/schema";
 export const EARTH_INTRO =
   "NASA's microgravity fire research also feeds fire safety on Earth. Each section separates what the challenge brief says, what the PSI records say, and NASA Spinoff pages. Firebreak does not claim that any specific PSI test led to a specific Earth product.";
 
-/** The challenge brief's own sentence, from the task text; fragments below are exact substrings. */
+/**
+ * Two sentences of the challenge brief, verbatim. Fetched 2026-11-14 from
+ * https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/ (the FLEX
+ * sentence is in the paragraph that begins "Fire detection was tested in
+ * microgravity", the other in the paragraph that begins "Your dashboard could also
+ * address"). Every brief quote on the page must be an exact substring of BRIEF_TEXT.
+ */
+export const BRIEF_FLEX_SENTENCE =
+  "Suppression was studied in the Flame Extinguishment Experiment (FLEX) through dilution of the chamber atmosphere with carbon dioxide and helium, both of which suppress fire.";
 export const BRIEF_SENTENCE =
   "Fine-water-mist extinguishers developed for use on the ISS have practical applications here on Earth, and NASA technology has similarly led to improvements in terrestrial smoke detection and firefighter gear, including protective clothing and air tanks.";
+export const BRIEF_TEXT = `${BRIEF_FLEX_SENTENCE} ${BRIEF_SENTENCE}`;
+
+/** Shown under the two suppression quotes, exact text. */
+export const SUPPRESSION_NOTE = "The brief does not link these two; Firebreak does not either.";
+
+/** A brief quote as displayed: "…" only where the quote is cut out of a longer sentence. */
+export function displayBriefQuote(quote: string): string {
+  const at = BRIEF_TEXT.indexOf(quote);
+  if (at < 0) throw new Error(`Not in the brief text: ${quote}`);
+  const before = BRIEF_TEXT.slice(0, at);
+  const after = BRIEF_TEXT.slice(at + quote.length);
+  const cutStart = before !== "" && !/[.!?]\s$/.test(before);
+  const cutEnd = !/^[.!?]?(\s|$)/.test(after);
+  return `${cutStart ? "…" : ""}${quote}${cutEnd ? "…" : ""}`;
+}
 
 export const NO_SPINOFF = "No spinoff page was provided in the challenge resources.";
 export const SPINOFF_LABEL = "NASA Spinoff (not PSI data)";
@@ -20,8 +43,10 @@ export type Spinoff = { title: string; url: string };
 export type EarthSection = {
   id: "suppression" | "detection" | "gear";
   heading: string;
-  /** Contiguous part of BRIEF_SENTENCE for this topic. */
-  briefQuote: string;
+  /** Contiguous parts of BRIEF_TEXT for this topic. */
+  briefQuotes: string[];
+  /** Our own one-line note under the quotes. */
+  briefNote?: string;
   psiIds: string[];
   spinoffs: Spinoff[];
   /** Show the Saffire-II sample that includes Nomex. */
@@ -31,23 +56,23 @@ export type EarthSection = {
 export const EARTH_SECTIONS: EarthSection[] = [
   {
     id: "suppression",
-    heading: "Suppression (fine water mist)",
-    briefQuote:
-      "Fine-water-mist extinguishers developed for use on the ISS have practical applications here on Earth",
-    psiIds: ["PSI-69", "PSI-68"],
+    heading: "Suppression",
+    briefQuotes: [BRIEF_FLEX_SENTENCE, "Fine-water-mist extinguishers developed for use on the ISS have practical applications here on Earth"],
+    briefNote: SUPPRESSION_NOTE,
+    psiIds: ["PSI-69"],
     spinoffs: [],
   },
   {
     id: "detection",
     heading: "Smoke detection",
-    briefQuote: "NASA technology has similarly led to improvements in terrestrial smoke detection",
+    briefQuotes: ["NASA technology has similarly led to improvements in terrestrial smoke detection"],
     psiIds: ["PSI-102", "PSI-101", "PSI-47"],
     spinoffs: [{ title: "Fire Detector", url: "https://spinoff.nasa.gov/node/9407" }],
   },
   {
     id: "gear",
     heading: "Firefighter gear",
-    briefQuote: "firefighter gear, including protective clothing and air tanks",
+    briefQuotes: ["firefighter gear, including protective clothing and air tanks"],
     psiIds: ["PSI-99"],
     spinoffs: [
       { title: "Fireman's Air Tanks", url: "https://spinoff.nasa.gov/node/9582" },
@@ -86,7 +111,8 @@ export function nomexRuns(runs: Run[] = runsJson as Run[]): Run[] {
 export type RunField = { label: string; value: string; flag?: boolean };
 
 /** Observation labels shown for the Nomex sample; the values are the stored strings. */
-const SHOWN_OBSERVATIONS = ["microgravity burn length", "microgravity spread", "1-g burn length", "1-g spread rate", "source note 2"];
+const SOURCE_NOTE_LABEL = "source note 2";
+const SHOWN_OBSERVATIONS = ["microgravity burn length", "microgravity spread", "1-g burn length", "1-g spread rate", SOURCE_NOTE_LABEL];
 
 /**
  * Fields of a run exactly as stored. `events` empty is shown as the Lab's
@@ -107,7 +133,8 @@ export function runFields(run: Run): RunField[] {
   });
   for (const label of SHOWN_OBSERVATIONS) {
     const o = run.observations?.find((x) => x.label === label);
-    if (o) fields.push({ label: o.label, value: o.value });
+    // The stored label is "source note 2"; shown as "Source note", value verbatim.
+    if (o) fields.push({ label: label === SOURCE_NOTE_LABEL ? "Source note" : o.label, value: o.value });
   }
   for (const f of run.flags) fields.push({ label: "Flag", value: f, flag: true });
   return fields;
